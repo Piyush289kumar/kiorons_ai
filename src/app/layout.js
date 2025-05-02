@@ -28,28 +28,41 @@
 //   );
 // }
 
+'use client'
+import { useState } from 'react'
 import { Inter } from 'next/font/google'
+
+import { ChatList } from '@components/chat/ChatList'
 import './globals.css'
+import { Sidebar } from './layouts/Sidebar'
+import { SidebarOverlay } from './layouts/SidebarOverlay'
+import { SidebarToggle } from './layouts/SidebarToggle'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata = {
-  title: 'My Next.js App',
-  description: 'A scalable Next.js application',
-}
-
 export default function RootLayout({ children }) {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true)
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen)
+  }
+
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <div className="min-h-screen flex flex-col">
-          <main className="flex-grow container mx-auto px-4 py-8">{children}</main>
-          <footer className="bg-gray-100 py-4">
-            <div className="container mx-auto px-4 text-center">
-              © {new Date().getFullYear()} My App
-            </div>
-          </footer>
-        </div>
+      <body className={`${inter.className} bg-gray-100`}>
+        <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar}>
+          <ChatList />
+        </Sidebar>
+        <SidebarOverlay isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+        
+        {!isSidebarOpen && <SidebarToggle toggleSidebar={toggleSidebar} />}
+        
+        <main className={`transition-all duration-300 ease-in-out
+          ${isSidebarOpen ? 'ml-64' : 'ml-0'}`}>
+          <div className="min-h-screen">
+            {children}
+          </div>
+        </main>
       </body>
     </html>
   )
