@@ -1,7 +1,5 @@
 import React from "react";
-
 import { cn } from "@components/lib/utils";
-
 export const ShimmerButton = React.forwardRef((
   {
     shimmerColor = "#ffffff",
@@ -69,5 +67,4 @@ export const ShimmerButton = React.forwardRef((
     </button>)
   );
 });
-
 ShimmerButton.displayName = "ShimmerButton";
