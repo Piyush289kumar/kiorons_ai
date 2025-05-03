@@ -18,9 +18,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.className} custom-bg`}>
         {/* Sidebar (fixed position) */}
-        <div className="fixed top-0 left-0 h-full z-10">
-          <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-        </div>
+        {/* <div className="fixed top-0 left-0 h-full z-10">
+          <Sidebar />
+        </div> */}
 
         {/* Fixed Header */}
         <Header toggleSidebar={toggleSidebar} />
