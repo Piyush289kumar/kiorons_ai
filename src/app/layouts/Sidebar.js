@@ -1,26 +1,25 @@
-export const Sidebar = ({ isOpen, toggleSidebar, children }) => {
+'use client'
+import Link from 'next/link'
+const navItems = ['KAI', 'HumanOS', 'Vision', 'Company', 'News']
+export function Sidebar() {
   return (
-    <aside
-      className={`bg-transparent h-full transition-all duration-300
-      ${isOpen ? 'w-64' : 'w-0 overflow-hidden'}`}
-    >
-      <div className="p-4">
-        <button onClick={toggleSidebar} className="mb-4">
-          {isOpen ? '' : ''}
-        </button>
-        {isOpen && (
-          <nav className="flex flex-col justify-center h-[700px] text-white">
-            <ul>
-              <li className="py-3">KAI</li>
-              <li className="py-3">HumanOS</li>
-              <li className="py-3">News</li>
-              <li className="py-3">Company</li>
-              <li className="py-3">Vision</li>
-            </ul>
-          </nav>
-        )}
+    <aside className="w-64 h-full bg-transparent backdrop-blur-md text-white shadow-lg flex flex-col justify-center">
+      <div className="p-6">
+        {/* Navigation Links */}
+        <nav className="space-y-4">
+          {navItems.map((navItem, idx) => {
+            return (
+              <Link
+                key={idx} // Adding a key for list items
+                href="/"
+                className="flex items-center gap-3 px-4 py-2 rounded font-medium text-sm"
+              >
+                {navItem} {/* Use navItem value dynamically */}
+              </Link>
+            )
+          })}
+        </nav>
       </div>
-      {children}
     </aside>
   )
 }
