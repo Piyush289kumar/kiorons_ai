@@ -1,5 +1,6 @@
 import ContactSection from './layouts/ContactSection'
 import EverythingInOnePlaceSection from './layouts/EverthingInOnePlaceSection'
+import Footer from './layouts/Footer'
 import HeroSection from './layouts/HeroSection'
 import IdeaSection from './layouts/ideaSection'
 import KaiSection from './layouts/KaiSection'
@@ -13,7 +14,8 @@ export default function Home() {
       <EverythingInOnePlaceSection />
       <IdeaSection />
       <KaiSection />
-      <ContactSection />  
+      <ContactSection />
+      <Footer />
     </>
   )
 }
