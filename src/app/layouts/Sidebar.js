@@ -1,23 +1,27 @@
 'use client'
 import Link from 'next/link'
+
 const navItems = ['KAI', 'HumanOS', 'Vision', 'Company', 'News']
-export function Sidebar() {
+
+export function Sidebar({ isSidebarOpen, toggleSidebar }) {
   return (
-    <aside className="w-64 h-full bg-transparent backdrop-blur-md text-white shadow-lg flex flex-col justify-center">
-      <div className="p-6">
+    <aside
+      className={`fixed top-[72px] left-0 h-[calc(100%-72px)] z-40 transition-all duration-300 ease-in-out bg-black/80 text-white shadow-lg backdrop-blur-md ${
+        isSidebarOpen ? 'w-64 px-6' : 'w-0 overflow-hidden'
+      }`}
+    >
+      <div className="flex flex-col h-full justify-center items-start">
         {/* Navigation Links */}
-        <nav className="space-y-4">
-          {navItems.map((navItem, idx) => {
-            return (
-              <Link
-                key={idx} // Adding a key for list items
-                href="/"
-                className="flex items-center gap-3 px-4 py-2 rounded font-medium text-sm"
-              >
-                {navItem} {/* Use navItem value dynamically */}
-              </Link>
-            )
-          })}
+        <nav className="space-y-4 w-full">
+          {navItems.map((navItem, idx) => (
+            <Link
+              key={idx}
+              href="/"
+              className="block px-4 py-2 rounded font-medium text-sm transition"
+            >
+              {navItem}
+            </Link>
+          ))}
         </nav>
       </div>
     </aside>

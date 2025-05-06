@@ -5,24 +5,25 @@ const dataSet = ['One environment.', 'One brain.', 'One command.']
 export default function ContactSection() {
   return (
     <FadeUpSection>
-      <section className="w-full max-w-4xl mx-auto py-40">
+      <section className="w-full max-w-4xl mx-auto py-10 px-4 md:py-40">
         <div>
-          <h4 className="text-white text-6xl font-semibold mb-2">
+          <h4 className="text-white text-4xl md:text-6xl font-semibold mb-2">
             The future of <br /> building is here.
           </h4>
-          <p className="text-gray-400 text-2xl font-semibold font-gellix pt-7">
+          <p className="text-gray-400 text-xl md:text-xl font-semibold font-gellix pt-7">
             Everything you need to think, create,
             <br /> and publish — without switching tools.
           </p>
-          <p className="text-white text-2xl font-semibold font-gellix pt-2">
+          <p className="text-white text-xl md:text-xl font-semibold font-gellix pt-2">
             Built with KAI. Powered by purpose.
           </p>
         </div>
+
         <FadeUpSection>
-          <div className="flex justify-between items-center gap-8 pt-32">
-            {/* Left Image */}
-            <div className="flex-shrink-0">
-              <p className="text-white text-5xl font-semibold font-gellix pt-2 leading-16">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8 pt-16 md:pt-32">
+            {/* Left Text Section */}
+            <div className="flex-shrink-0 w-full md:w-1/2">
+              <p className="text-white text-3xl md:text-5xl font-semibold font-gellix pt-2 leading-snug">
                 Get early access.
                 <br />
                 No noise, <br />
@@ -30,12 +31,12 @@ export default function ContactSection() {
               </p>
             </div>
             {/* Right Side - Contact Card */}
-            <div className="flex justify-end w-full">
+            <div className="flex justify-center w-full md:w-1/2">
               <ContactCard className="w-full max-w-sm" />
             </div>
           </div>
         </FadeUpSection>
       </section>
     </FadeUpSection>
-  )
+  );
 }

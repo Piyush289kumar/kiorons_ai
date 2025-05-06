@@ -12,7 +12,7 @@ import { SmoothCursor } from '@/components/components/ui/smooth-cursor'
 export default function Home() {
   return (
     <>
-      <SmoothCursor />
+      {/* <SmoothCursor /> */}
       <HeroSection />
       <FadeUpSection>
         <MeetHumanOSSection />

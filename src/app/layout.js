@@ -16,15 +16,10 @@ export default function RootLayout({ children }) {
       <body className={`${inter.className} custom-bg px-6 font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {/* Sidebar (slidable) */}
-          <div
-            className={`fixed top-0 left-0 h-full z-10 transition-transform duration-300 ${
-              isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-            }`}
-          >
-            <Sidebar />
-          </div>
+          
           {/* Header */}
-          <Header toggleSidebar={toggleSidebar} />
+          <Header toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
+          <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
           {/* Main Content */}
           <main
             className={`transition-all duration-300 ease-in-out min-h-screen ${
