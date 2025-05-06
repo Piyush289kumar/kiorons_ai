@@ -3,6 +3,7 @@ import { DotPatternDemo } from '@/components/landing/DotPatternBackground'
 import { ShimmerButton } from '@/components/magicui/shimmer-button'
 import { OrbitingCircles } from '@/components/magicui/orbiting-circles'
 import { File, Settings, Search } from 'lucide-react'
+import FadeUpSection from '@/components/animation/FadeUpSection'
 const dataSet = ['Born.', 'Organized.', 'Designed.', 'and Launched.']
 export default function MeetHumanOSSection() {
   return (
@@ -15,6 +16,9 @@ export default function MeetHumanOSSection() {
         </h1>
       </div>
       {/* Orbiting Icons */}
+     
+      <FadeUpSection>
+     
       <div className="relative overflow-hidden h-[500px] w-full my-12">
         <OrbitingCircles>
           <File />
@@ -28,8 +32,13 @@ export default function MeetHumanOSSection() {
           <Search />
         </OrbitingCircles>
       </div>
+      </FadeUpSection>
+
       {/* Description and Data List */}
-      <div className="px-4 flex items-start justify-center space-y-4">
+     
+     
+      <FadeUpSection>
+         <div className="px-4 flex items-start justify-center space-y-4">
         <p className="text-white text-2xl font-gellix px-5">
           An environment <br /> where ideas
         </p>
@@ -41,6 +50,8 @@ export default function MeetHumanOSSection() {
           ))}
         </div>
       </div>
+
+      </FadeUpSection>
     </section>
   )
 }
