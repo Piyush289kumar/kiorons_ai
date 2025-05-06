@@ -1,3 +1,4 @@
+import ContactSection from './layouts/ContactSection'
 import EverythingInOnePlaceSection from './layouts/EverthingInOnePlaceSection'
 import HeroSection from './layouts/HeroSection'
 import IdeaSection from './layouts/ideaSection'
@@ -12,6 +13,7 @@ export default function Home() {
       <EverythingInOnePlaceSection />
       <IdeaSection />
       <KaiSection />
+      <ContactSection />  
     </>
   )
 }
