@@ -9,11 +9,11 @@ const dataSet = ['Born.', 'Organized.', 'Designed.', 'and Launched.']
 
 export default function MeetHumanOSSection() {
   return (
-    <section className="w-full max-w-4xl mx-auto px-4 py-12 md:py-24">
+    <section className="w-full max-w-4xl mx-auto px-4 py-12 md:py-24 font-gellix">
       {/* Heading */}
       <div className="flex flex-col items-center text-center">
-        <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-3 font-gellix">Meet</h1>
-        <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-tight font-gellix">
+        <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold  font-gellix">Meet</h1>
+        <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-10 font-gellix">
           Human<span className="gradient-text-4 font-gellix">OS</span>
         </h1>
       </div>

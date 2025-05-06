@@ -14,9 +14,9 @@ export default function Home() {
     <>
       {/* <SmoothCursor /> */}
       <HeroSection />
-      <FadeUpSection>
-        <MeetHumanOSSection />
-      </FadeUpSection>
+
+      <MeetHumanOSSection />
+
       <FadeUpSection>
         <EverythingInOnePlaceSection />
       </FadeUpSection>

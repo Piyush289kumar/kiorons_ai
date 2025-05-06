@@ -22,9 +22,9 @@ const working = [
 ]
 export default function KaiSection() {
   return (
-    <section className="w-full max-w-4xl mx-auto py-10 px-4">
+    <section className="w-full max-w-4xl mx-auto py-10 px-4 font-gellix">
       <div>
-        <h4 className="text-white text-center text-5xl md:text-7xl font-semibold mb-4">
+        <h4 className="text-white text-center text-5xl md:text-7xl font-semibold mb-4 font-gellix">
           Introducing <br /> KAI
         </h4>
         <Image
@@ -55,11 +55,11 @@ export default function KaiSection() {
         </div>
 
         {/* Right Text List */}
-        <div className="flex flex-col gap-6 w-full md:w-1/2">
+        <div className="flex flex-col gap-6 w-full md:w-1/2 font-gellix">
           {working.map((item, index) => (
             <div key={index}>
-              <h3 className="text-3xl md:text-4xl font-bold text-white">{item.title}</h3>
-              <p className="text-gray-300 text-base md:text-sm">{item.description}</p>
+              <h3 className="text-3xl md:text-4xl font-bold text-white font-gellix">{item.title}</h3>
+              <p className="text-gray-300 text-base md:text-sm font-gellix">{item.description}</p>
             </div>
           ))}
         </div>
