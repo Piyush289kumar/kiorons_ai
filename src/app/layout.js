@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
           {/* Main Content */}
           <main
             className={`transition-all duration-300 ease-in-out min-h-screen ${
-              isSidebarOpen ? 'ml-64' : 'ml-0'
+              isSidebarOpen ? 'ml-0' : 'ml-0'
             }`}
           >
             {children}

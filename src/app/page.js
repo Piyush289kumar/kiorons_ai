@@ -13,24 +13,26 @@ export default function Home() {
   return (
     <>
       {/* <SmoothCursor /> */}
-      <HeroSection />
+      <div className="mx-auto w-full max-w-4xl overflow-y-hidden">
+        <HeroSection />
 
-      <MeetHumanOSSection />
+        <MeetHumanOSSection />
 
-      <FadeUpSection>
-        <EverythingInOnePlaceSection />
-      </FadeUpSection>
-      <FadeUpSection>
-        <IdeaSection />
-      </FadeUpSection>
-      <FadeUpSection>
-        <KaiSection />
-      </FadeUpSection>
-      <FadeUpSection>
-        <ContactSection />
-      </FadeUpSection>
+        <FadeUpSection>
+          <EverythingInOnePlaceSection />
+        </FadeUpSection>
+        <FadeUpSection>
+          <IdeaSection />
+        </FadeUpSection>
+        <FadeUpSection>
+          <KaiSection />
+        </FadeUpSection>
+        <FadeUpSection>
+          <ContactSection />
+        </FadeUpSection>
 
-      <Footer />
+        <Footer />
+      </div>
     </>
   )
 }

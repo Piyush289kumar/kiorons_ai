@@ -14,13 +14,56 @@
   font-style: normal;
 }
 
-/* Set the default font for the whole app */
-body {
-  font-family: 'Gellix', sans-serif;
+@font-face {
+  font-family: 'Gellix';
+  src: url('/assets/fonts/gellix/Gellix-Medium.eot');
+  src: local('Gellix Medium'), local('Gellix-Medium'),
+    url('/assets/fonts/gellix/Gellix-Medium.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/gellix/Gellix-Medium.woff2') format('woff2'),
+    url('/assets/fonts/gellix/Gellix-Medium.woff') format('woff'),
+    url('/assets/fonts/gellix/Gellix-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
 }
+
+@font-face {
+  font-family: 'Gellix';
+  src: url('/assets/fonts/gellix/Gellix-ExtraBold.eot');
+  src: local('Gellix ExtraBold'), local('Gellix-ExtraBold'),
+    url('/assets/fonts/gellix/Gellix-ExtraBold.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/gellix/Gellix-ExtraBold.woff2') format('woff2'),
+    url('/assets/fonts/gellix/Gellix-ExtraBold.woff') format('woff'),
+    url('/assets/fonts/gellix/Gellix-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gellix';
+  src: url('/assets/fonts/gellix/Gellix-SemiBold.eot');
+  src: local('Gellix SemiBold'), local('Gellix-SemiBold'),
+    url('/assets/fonts/gellix/Gellix-SemiBold.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/gellix/Gellix-SemiBold.woff2') format('woff2'),
+    url('/assets/fonts/gellix/Gellix-SemiBold.woff') format('woff'),
+    url('/assets/fonts/gellix/Gellix-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Set the default font for the whole app */
 
 .font-gellix {
   font-family: 'Gellix', sans-serif;
+}
+.font-medium {
+  font-weight: 500;
+}
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-extrabold {
+  font-weight: 800;
 }
 body {
   font-family: 'Gellix', sans-serif;
@@ -133,11 +176,13 @@ body {
     }
   }
   @keyframes orbit {
-  0% {
-    transform: rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
+    0% {
+      transform: rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px))
+        rotate(calc(var(--angle) * -1deg));
     }
-  100% {
-    transform: rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg));
+    100% {
+      transform: rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px))
+        rotate(calc((var(--angle) * -1deg) - 360deg));
     }
   }
 }

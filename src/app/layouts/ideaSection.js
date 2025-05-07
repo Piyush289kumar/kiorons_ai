@@ -6,7 +6,7 @@ const dataSet = ['One environment.', 'One brain.', 'One command.']
 
 export default function IdeaSection() {
   return (
-    <section className="w-full max-w-6xl px-4 sm:px-6 md:px-10 mx-auto py-20 md:py-32 font-gellix">
+    <section className="w-full max-w-4xl px-4 sm:px-6 md:px-10 mx-auto py-16 md:py-32 font-gellix">
       <div>
         <h4 className="text-white text-xl sm:text-2xl md:text-2xl font-semibold mb-6 leading-relaxed font-gellix">
           Everything you need from <br /> idea to launch..

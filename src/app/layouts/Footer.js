@@ -10,7 +10,7 @@ const FooterDataSet = {
 
 export default function Footer() {
   return (
-    <footer className="w-full max-w-6xl mx-auto py-10 text-white font-gellix">
+    <footer className="w-full max-w-4xl mx-auto py-10 text-white font-gellix">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 font-gellix">
         {/* Explore Section */}
         <div className="space-y-4">
