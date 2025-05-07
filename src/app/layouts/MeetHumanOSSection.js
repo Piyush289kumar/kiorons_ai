@@ -1,15 +1,7 @@
 'use client'
-import { DotPatternDemo } from '@/components/landing/DotPatternBackground'
-import { ShimmerButton } from '@/components/magicui/shimmer-button'
-import { OrbitingCircles } from '@/components/magicui/orbiting-circles'
-import { File, Settings, Search } from 'lucide-react'
 import FadeUpSection from '@/components/animation/FadeUpSection'
-
-import { BentoCard, BentoGrid } from '@/components/magicui/bento-grid'
-import { BentoDemo } from '@/components/landing/BentoGrid'
-
+import Image from 'next/image'
 const dataSet = ['Born.', 'Organized.', 'Designed.', 'and Launched.']
-
 export default function MeetHumanOSSection() {
   return (
     <section className="w-full max-w-4xl mx-auto px-4 py-12 md:py-24 font-gellix">
@@ -22,12 +14,16 @@ export default function MeetHumanOSSection() {
           Human<span className="gradient-text-4 font-gellix">OS</span>
         </h1>
       </div>
-
       {/* Orbiting Icons */}
-      {/* <FadeUpSection>
-        <BentoDemo />
-      </FadeUpSection> */}
-
+      <div className="h-[120px] md:h-[155px] overflow-hidden flex items-center justify-center">
+        <Image
+          src="/assets/images/gif/2.gif"
+          alt="Menu Icon"
+          width={400}
+          height={400}
+          className="w-full max-w-[400px] md:w-auto object-contain md:object-cover"
+        />
+      </div>
       {/* Description and Data List */}
       <FadeUpSection>
         <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-8 mt-8">

@@ -1,5 +1,7 @@
+// import { OrbitingCircles } from "@/components/magicui/orbiting-circles";
 import { OrbitingCircles } from "@/components/magicui/orbiting-circles";
-export function OrbitingCircles() {
+
+export function OrbitingCirclesDemo() {
   return (
     <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden">
       <OrbitingCircles iconSize={40}>
@@ -18,6 +20,7 @@ export function OrbitingCircles() {
     </div>
   );
 }
+
 const Icons = {
   gitHub: () => (
     <svg width="100" height="100" viewBox="0 0 438.549 438.549">

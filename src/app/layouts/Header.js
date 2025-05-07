@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { ShimmerButton } from '@components/magicui/shimmer-button'
+import { InteractiveHoverButton } from '@/components/magicui/interactive-hover-button'
 import Image from 'next/image'
 export default function Header({ toggleSidebar }) {
   const [scrolled, setScrolled] = useState(false)
@@ -13,12 +13,12 @@ export default function Header({ toggleSidebar }) {
   }, [])
   return (
     <header className="fixed top-0 left-0 w-full bg-black/60 backdrop-blur-md z-40 transition-all duration-300 shadow">
-      <div className="flex items-center justify-between px-4 py-1">
+      <div className="flex items-center align-middle   justify-between px-4 py-1">
         {/* Left: Logo / Name */}
-        <div className="relative flex items-center ml-6">
+        <div className="relative flex items-center md:ml-6">
           <button
             onClick={toggleSidebar}
-            className="text-white text-sm focus:outline-none flex items-center gap-2"
+            className="text-white text-[10px] md:text-sm focus:outline-none flex items-center gap-2"
           >
             Menu
             {/* Menu Icon */}
@@ -27,7 +27,7 @@ export default function Header({ toggleSidebar }) {
               alt="Menu Icon"
               width={16}
               height={16}
-              className="ml-3 h-4 w-auto"
+              className="h-[12px] md:ml-1 md:h-4 w-auto"
             />
           </button>
         </div>
@@ -54,9 +54,9 @@ export default function Header({ toggleSidebar }) {
             alt="Search Icon"
             width={16}
             height={16}
-            className="h-5 w-auto"
+            className="h-5 w-auto hidden md:block"
           />
-          <ShimmerButton className="px-5 py-1 mt-2">Join Early</ShimmerButton>
+          <InteractiveHoverButton className="px-5 py-1 mt-2 text-[8px] md:text-sm md:mt-1">Join Early</InteractiveHoverButton>
         </div>
       </div>
     </header>

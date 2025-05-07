@@ -29,7 +29,7 @@ export default function HeroSection() {
           </p>
           
           {/* <ShimmerButton className="px-5 py-2 mt-4 md:mt-8">Join Early</ShimmerButton> */}
-          <AnimatedShinyTextDemo/>
+          <AnimatedShinyTextDemo />
         </div>
       </section>
     </>
