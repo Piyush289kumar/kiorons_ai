@@ -24,9 +24,9 @@ export default function MeetHumanOSSection() {
       </div>
 
       {/* Orbiting Icons */}
-      <FadeUpSection>
+      {/* <FadeUpSection>
         <BentoDemo />
-      </FadeUpSection>
+      </FadeUpSection> */}
 
       {/* Description and Data List */}
       <FadeUpSection>

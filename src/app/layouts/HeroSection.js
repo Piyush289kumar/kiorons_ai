@@ -1,6 +1,7 @@
 'use client'
 import { DotPatternBackground } from '@/components/landing/DotPatternBackground'
 import { ShimmerButton } from '@/components/magicui/shimmer-button'
+import { AnimatedShinyTextDemo } from '@/components/landing/AnimatedShinyText';
 
 export default function HeroSection() {
   return (
@@ -26,7 +27,9 @@ export default function HeroSection() {
           >
             {"From 'I have an idea to 'It's live' — in minutes."}
           </p>
-          <ShimmerButton className="px-5 py-2 mt-4 md:mt-8">Join Early</ShimmerButton>
+          
+          {/* <ShimmerButton className="px-5 py-2 mt-4 md:mt-8">Join Early</ShimmerButton> */}
+          <AnimatedShinyTextDemo/>
         </div>
       </section>
     </>

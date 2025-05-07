@@ -22,7 +22,7 @@ const working = [
 ]
 export default function KaiSection() {
   return (
-    <section className="w-full max-w-4xl mx-auto py-10 px-4 font-gellix">
+    <section className="w-full max-w-4xl mx-auto py-24 md:py-5 px-4 font-gellix">
       <div>
         <h4 className="text-white text-center text-5xl md:text-7xl font-semibold mb-4 font-gellix">
           Introducing <br /> KAI
@@ -34,10 +34,10 @@ export default function KaiSection() {
           height={100}
           className="mx-auto h-72 w-auto"
         />
-        <h3 className="text-white text-xl md:text-6xl font-semibold font-gellix pt-7">
+        <h3 className="text-white text-3xl md:text-6xl font-semibold font-gellix pt-7 leading-7 md:leading-14">
           Your co-founder. <br /> Your creative partner.
         </h3>
-        <p className="text-gray-400 text-xl md:text-2xl font-semibold font-gellix pt-7">
+        <p className="text-gray-300 text-sm md:text-2xl font-medium font-gellix pt-2 md:pt-4">
           The intelligence behind <br /> everything you build.
         </p>
       </div>
@@ -58,7 +58,7 @@ export default function KaiSection() {
         <div className="flex flex-col gap-6 w-full md:w-1/2 font-gellix">
           {working.map((item, index) => (
             <div key={index}>
-              <h3 className="text-3xl md:text-4xl font-bold text-white font-gellix">{item.title}</h3>
+              <h3 className="text-3xl md:text-4xl font-semibold text-white font-gellix">{item.title}</h3>
               <p className="text-gray-300 text-base md:text-sm font-gellix">{item.description}</p>
             </div>
           ))}

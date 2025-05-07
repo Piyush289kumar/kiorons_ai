@@ -10,7 +10,7 @@ export function Sidebar({ isSidebarOpen, toggleSidebar }) {
         isSidebarOpen ? 'w-64 px-6' : 'w-0 overflow-hidden'
       }`}
     >
-      <div className="flex flex-col h-full justify-center items-start">
+      <div className="flex flex-col h-2/3 justify-center items-start">
         {/* Navigation Links */}
         <nav className="space-y-4 w-full">
           {navItems.map((navItem, idx) => (
