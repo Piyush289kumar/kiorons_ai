@@ -34,7 +34,7 @@ export default function MeetHumanOSSection() {
           <p className="text-white text-sm sm:text-2xl font-gellix items-start md:text-left">
             An environment <br /> where ideas
           </p>
-          <div className="space-y-1 text-center md:text-left">
+          <div className="space-y-1 text-start md:text-left">
             {dataSet.map((data, idx) => (
               <h3 key={idx} className="text-white text-2xl sm:text-3xl font-semibold font-gellix">
                 {data}

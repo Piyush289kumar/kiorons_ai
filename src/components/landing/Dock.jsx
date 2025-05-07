@@ -9,7 +9,7 @@ import { Dock, DockIcon } from "@/components/magicui/dock";
 export function DockDemo() {
   return (
     <div className="relative">
-      <Dock direction="middle">
+      <Dock direction="middle w-[400px]">
         <DockIcon>
           <Icons.gitHub className="size-6" />
         </DockIcon>

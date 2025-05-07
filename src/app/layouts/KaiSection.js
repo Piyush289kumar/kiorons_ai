@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-const dataSet = ['One environment.', 'One brain.', 'One command.']
+
 const working = [
   {
     title: 'He listens.',
@@ -50,7 +50,7 @@ export default function KaiSection() {
             alt="Kiorons Logo"
             width={200}
             height={200}
-            className="h-[350px] w-auto"
+            className="h-72 md:h-96 w-auto"
           />
         </div>
 

@@ -8,7 +8,7 @@ export default function IdeaSection() {
   return (
     <section className="w-full max-w-4xl px-4 sm:px-6 md:px-10 mx-auto py-16 md:py-32 font-gellix">
       <div>
-        <h4 className="text-white text-xl sm:text-2xl md:text-2xl font-semibold mb-6 leading-relaxed font-gellix">
+        <h4 className="text-white text-md sm:text-2xl md:text-2xl font-semibold mb-6 leading-relaxed font-gellix">
           Everything you need from <br /> idea to launch..
         </h4>
 
@@ -17,7 +17,7 @@ export default function IdeaSection() {
             {dataSet.map((data, idx) => (
               <h3
                 key={idx}
-                className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-14 font-gellix"
+                className="text-white text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-6 md:leading-14 font-gellix"
               >
                 {data}
               </h3>

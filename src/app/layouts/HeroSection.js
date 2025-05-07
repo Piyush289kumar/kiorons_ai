@@ -5,7 +5,7 @@ import { ShimmerButton } from '@/components/magicui/shimmer-button'
 export default function HeroSection() {
   return (
     <>
-      <section className="relative max-w-4xl min-h-[80vh] mt-36 flex flex-col justify-center items-center align-middle !gap-y-0 bg-black px-4">
+      <section className="relative max-w-4xl min-h-[50vh] md:min-h-[80vh] mt-36 flex flex-col justify-center items-center align-middle !gap-y-0 bg-black px-4">
         <DotPatternBackground />
         <div className="absolute z-10 flex flex-col items-center text-center px-4">
           <h1
