@@ -2,7 +2,7 @@ import { connectDB } from '@/lib/database/db'
 import User from '@/models/userModel'
 import bcrypt from 'bcryptjs'
 import { signToken } from '@/lib/auth/auth'
-import { serialize } from 'cookie' // <-- npm install cookie
+import { serialize } from 'cookie'
 
 export async function POST(req) {
   await connectDB()
@@ -10,12 +10,28 @@ export async function POST(req) {
   const { email, password } = await req.json()
   const user = await User.findOne({ email })
 
-  if (!user || !(await bcrypt.compare(password, user.password))) {
+  // Check if user exists and if the email is verified
+  if (!user) {
     return new Response(JSON.stringify({ error: 'Invalid credentials' }), { status: 401 })
   }
 
+  if (!user.isVerified) {
+    return new Response(
+      JSON.stringify({ error: 'Please verify your email address to continue.' }),
+      { status: 400 }
+    )
+  }
+
+  // Check password
+  const isMatch = await bcrypt.compare(password, user.password)
+  if (!isMatch) {
+    return new Response(JSON.stringify({ error: 'Invalid credentials' }), { status: 401 })
+  }
+
+  // Generate token
   const token = signToken({ userId: user._id })
 
+  // Create cookie for storing the token
   const cookie = serialize('token', token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',

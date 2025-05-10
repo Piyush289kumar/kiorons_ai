@@ -44,6 +44,9 @@ const userSchema = new mongoose.Schema(
       enum: ['user', 'admin', 'moderator'],
       default: 'user',
     },
+
+    isVerified: { type: Boolean, default: false },
+  verificationToken: { type: String },
     // Account status
     isActive: {
       type: Boolean,

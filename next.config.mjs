@@ -4,10 +4,10 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["images.unsplash.com"],
+    domains: ['images.unsplash.com'],
   },
   experimental: {
-    serverActions: true,
+    serverActions: {},
   },
-};
-export default nextConfig;
+}
+export default nextConfig
