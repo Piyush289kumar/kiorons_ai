@@ -46,7 +46,7 @@ const userSchema = new mongoose.Schema(
     },
 
     isVerified: { type: Boolean, default: false },
-  verificationToken: { type: String },
+    verificationToken: { type: String },
     // Account status
     isActive: {
       type: Boolean,
