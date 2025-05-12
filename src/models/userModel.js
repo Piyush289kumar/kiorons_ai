@@ -64,8 +64,30 @@ const userSchema = new mongoose.Schema(
     },
     // Optional metadata
     metadata: {
-      type: mongoose.Schema.Types.Mixed,
-      default: {},
+      onboarding: {
+        startedAt: Date,
+        completedAt: Date,
+        currentStep: {
+          type: String, // one of: 'start', 'collect-role', 'collect-intent', etc.
+        },
+        stepsCompleted: [String], // list of completed step keys
+        status: {
+          type: String, // 'not_started' | 'in_progress' | 'completed'
+          default: 'not_started',
+        },
+      },
+      role: {
+        type: String, // e.g. 'user', 'admin', 'developer'
+      },
+      intent: {
+        type: String, // e.g. 'hire', 'freelance', 'explore'
+      },
+      preferences: {
+        language: String,
+        theme: String,
+        notifications: Boolean,
+        // add more preferences as needed
+      },
     },
   },
   {
