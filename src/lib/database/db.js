@@ -8,8 +8,8 @@ export async function connectDB() {
   try {
     await mongoose.connect(process.env.MONGO_URI, {
       dbName: 'humanOS',
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+      // useNewUrlParser: true,
+      // useUnifiedTopology: true,
     })
     isConnected = true
     console.log('✅ MongoDB connected')
