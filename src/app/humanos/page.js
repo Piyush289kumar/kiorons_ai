@@ -1,18 +1,11 @@
-import { cookies } from 'next/headers';
-import { verifyToken } from '@/lib/auth/auth';
-import { redirect } from 'next/navigation';
+import { Chat } from '@/components/chat/Chat';
 
 export const dynamic = 'force-dynamic';
 
-export default async function HumanosPage() {
-  const cookieStore = await cookies(); // ✅ Await it
-  const token = cookieStore.get('token')?.value;
-
-  try {
-    verifyToken(token);
-  } catch {
-    redirect('/login');
-  }
-
-  return <div>Welcome to Humanos (Protected Page)</div>;
+export default function HumanosPage() {
+  return (
+    <div className="min-h-screen flex flex-col justify-center items-center px-4">
+      <Chat />
+    </div>
+  );
 }
