@@ -33,41 +33,50 @@ export default function HumanosPage() {
         </p>
         <p className="text-2xl font-semibold">{'a mark. Everything you create here matters.'}</p>
 
-        <div className="flex gap-4">
-          <Image
-            src="/assets/images/Webapp/career/showcase4.png"
-            alt="Logo"
-            width={900}
-            height={900}
-            className="animate-fade-up w-4/6 my-20"
-          />
-          <Image
-            src="/assets/images/Webapp/career/showcase5.png"
-            alt="Logo"
-            width={900}
-            height={900}
-            className="animate-fade-up w-4/6 my-20"
-          />
-          <Image
-            src="/assets/images/Webapp/career/showcase1.png"
-            alt="Logo"
-            width={900}
-            height={900}
-            className="animate-fade-up w-4/6 my-20"
-          />
-          <Image
-            src="/assets/images/Webapp/career/showcase2.png"
-            alt="Logo"
-            width={900}
-            height={900}
-            className="animate-fade-up w-4/6 my-20"
-          />
+        <div className="relative w-full h-[500px] mt-12">
+          {/* Left Future (L3) */}
           <Image
             src="/assets/images/Webapp/career/showcase3.png"
-            alt="Logo"
-            width={900}
-            height={900}
-            className="animate-fade-up w-4/6 my-20"
+            alt="L3"
+            width={350}
+            height={350}
+            className="absolute -left-[65%] top-[5%] z-0 shadow-lg"
+          />
+
+          {/* Left Near (L2) */}
+          <Image
+            src="/assets/images/Webapp/career/showcase2.png"
+            alt="L2"
+            width={350}
+            height={350}
+            className="absolute -left-[25%] top-[25%] z-10 shadow-lg"
+          />
+
+          {/* Right Near (R2) */}
+          <Image
+            src="/assets/images/Webapp/career/showcase4.png"
+            alt="R2"
+            width={350}
+            height={350}
+            className="absolute -right-[25%] top-[25%] z-10 shadow-lg"
+          />
+
+          {/* Right Future (R3) */}
+          <Image
+            src="/assets/images/Webapp/career/showcase5.png"
+            alt="R3"
+            width={350}
+            height={350}
+            className="absolute -right-[65%] top-[5%] z-0 shadow-lg"
+          />
+
+          {/* Center (overlapping L2 and R2) */}
+          <Image
+            src="/assets/images/Webapp/career/showcase1.png"
+            alt="Center"
+            width={350}
+            height={350}
+            className="absolute left-1/2 top-[45%] transform -translate-x-1/2 z-20 shadow-2xl"
           />
         </div>
       </div>
