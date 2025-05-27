@@ -130,15 +130,29 @@ export default function HumanosPage() {
           {'If it fits our mission, we’ll reach out.'}
         </p>
 
-        <h4 className="text-xl md:text-3xl font-semibold mt-12 flex justify-center align-middle gap-x-5">
-           <Image
+        <h4 className="text-xl md:text-3xl font-semibold mt-12 flex justify-center items-center gap-x-4">
+          <Image
             src="/assets/images/icons/mails.svg"
-            alt="Logo"
-            width={20}
-            height={20}
-            className="animate-fade-up my-20"
-          />info@kiorons.com
+            alt="Mail Icon"
+            width={24}
+            height={24}
+            className="animate-fade-up"
+          />
+          <span>info@kiorons.com</span>
         </h4>
+      </div>
+
+      <div
+        className="p-10 text-white  w-8/12 text-center mt-28"
+        style={{ background: 'linear-gradient(71deg, #71D8E1 10.04%, #1B364B 69.45%)' }}
+      >
+        <h1 className="text-4xl md:text-5xl font-semibold tracking-tight">
+          {'Build something the world’s never'}
+        </h1>
+        <h1 className="text-4xl md:text-5xl font-semibold tracking-tight">{'seen before.'}</h1>
+        <button className="text-sm border border-white bg-white hover:bg-transparent hover:text-white text-black transition-all duration-300 p-2 px-6 rounded-3xl mt-12">
+          Explore Roles
+        </button>
       </div>
     </section>
   )
