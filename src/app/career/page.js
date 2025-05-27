@@ -34,6 +34,7 @@ export default function HumanosPage() {
         <p className="text-2xl font-semibold">{'a mark. Everything you create here matters.'}</p>
 
         <div className="relative w-full h-[500px] mt-12">
+          
           {/* Left Future (L3) */}
           <Image
             src="/assets/images/Webapp/career/showcase3.png"
