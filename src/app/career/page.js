@@ -6,7 +6,7 @@ export default function HumanosPage() {
   return (
     <section className="flex flex-col justify-center items-center px-4 w-full font-gellix my-24">
       <div className="text-center">
-        <h1 className="my-14">Careers</h1>
+        <h1 className="my-14 font-gellix">Careers</h1>
         <h1 className="text-8xl font-semibold tracking-tight">Build the future.</h1>
         <h1 className="text-8xl font-semibold tracking-tight">Together.</h1>
         <p className="text-xl font-semibold mt-11">
@@ -34,7 +34,7 @@ export default function HumanosPage() {
         <p className="text-2xl font-semibold">{'a mark. Everything you create here matters.'}</p>
 
         <div className="relative w-full h-[500px] mt-12">
-          
+
           {/* Left Future (L3) */}
           <Image
             src="/assets/images/Webapp/career/showcase3.png"
