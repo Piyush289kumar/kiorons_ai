@@ -14,7 +14,7 @@ export function Sidebar({ isSidebarOpen, toggleSidebar }) {
           {navItems.map((navItem, idx) => (
             <Link
               key={idx}
-              href="/"
+              href={`/${navItem.toLowerCase()}`}
               className="block px-4 py-2 rounded font-medium text-sm transition"
             >
               {navItem}

@@ -63,7 +63,7 @@ export function Chat() {
 
   return (
     <div
-      className={`flex flex-col font-gellix transition-all duration-500 ${
+      className={`flex flex-col font-gellix transition-all duration-500 w-full ${
         messages.length === 0
           ? 'justify-center items-center min-h-screen'
           : 'justify-start items-center pt-10'
@@ -125,37 +125,72 @@ export function Chat() {
         </div>
 
         {/* Input form */}
-        <form onSubmit={handleSubmit} className="relative w-full">
-          <textarea
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            className="w-full resize-none border border-[#414141] rounded-3xl px-5 py-3 pr-12 focus:outline-none focus:border-gray-400 focus:ring-1 focus:ring-white transition-all duration-300 text-sm text-white bg-transparent"
-            placeholder="Help me to build a clothing brand from zero"
-            rows={2}
-            disabled={isLoading}
-          />
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="absolute bottom-2 right-2 bg-[#1A1A1A] hover:bg-white hover:text-[#1A1A1A] text-white p-2 rounded-full shadow-md hover:cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {/* Send icon (up arrow) SVG */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+
+        <form onSubmit={handleSubmit} className="relative w-full ">
+          <div className="relative w-full">
+            {/* Left-side buttons */}
+            <div className="absolute left-2 bottom-2 flex gap-2 z-10">
+              {/* Circle + button */}
+              <button
+                type="button"
+                className="h-10 w-10 bg-[#1A1A1A] hover:bg-white hover:text-[#1A1A1A] text-white rounded-full shadow-md flex items-center justify-center"
+                onClick={() => console.log('Plus clicked')}
+              >
+                +
+              </button>
+
+              {/* Pill-shaped button */}
+              <button
+                type="button"
+                className="text-sm h-10 px-4 bg-[#1A1A1A] hover:bg-white hover:text-[#1A1A1A] text-white rounded-full shadow-md flex items-center justify-center whitespace-nowrap"
+                onClick={() => console.log('Settings clicked')}
+              >
+                ⚙ Build Brand
+              </button>
+
+              {/* Pill-shaped button */}
+              <button
+                type="button"
+                className="text-sm h-10 px-4 bg-[#1A1A1A] hover:bg-white hover:text-[#1A1A1A] text-white rounded-full shadow-md flex items-center justify-center whitespace-nowrap"
+                onClick={() => console.log('Attach clicked')}
+              >
+                ⚙ Make website
+              </button>
+            </div>
+
+            {/* Textarea */}
+            <textarea
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className="w-full resize-none border border-[#414141] rounded-3xl px-3 py-3 pb-12 focus:outline-none focus:border-gray-400 focus:ring-1 focus:ring-white transition-all duration-300 text-sm text-white bg-transparent"
+              placeholder="Ask anything to KAI"
+              rows={2}
+              disabled={isLoading}
+            />
+
+            {/* Send button on the right */}
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="absolute bottom-2 right-2 bg-[#1A1A1A] hover:bg-white hover:text-[#1A1A1A] text-white p-2 rounded-full shadow-md hover:cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M5 10l7-7m0 0l7 7m-7-7v18"
-              />
-            </svg>
-          </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 10l7-7m0 0l7 7m-7-7v18"
+                />
+              </svg>
+            </button>
+          </div>
         </form>
       </div>
     </div>
