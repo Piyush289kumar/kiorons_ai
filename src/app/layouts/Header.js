@@ -1,9 +1,12 @@
 'use client'
+
 import { useEffect, useState } from 'react'
-import { InteractiveHoverButton } from '@/components/magicui/interactive-hover-button'
 import Image from 'next/image'
-export default function Header({ toggleSidebar }) {
+import { InteractiveHoverButton } from '@/components/magicui/interactive-hover-button'
+
+export default function Header() {
   const [scrolled, setScrolled] = useState(false)
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
@@ -11,52 +14,37 @@ export default function Header({ toggleSidebar }) {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
   return (
-    <header className="fixed top-0 left-0 w-full bg-black/60 backdrop-blur-md z-40 transition-all duration-300 shadow">
-      <div className="flex items-center align-middle   justify-between px-4 py-1">
-        {/* Left: Logo / Name */}
-        <div className="relative flex items-center md:ml-6">
-          <button
-            onClick={toggleSidebar}
-            className="text-white text-[10px] md:text-sm focus:outline-none flex items-center gap-2"
-          >
-            Menu
-            {/* Menu Icon */}
-            <Image
-              src="/assets/images/icons/menu.png"
-              alt="Menu Icon"
-              width={16}
-              height={16}
-              className="h-[12px] md:ml-1 md:h-4 w-auto"
-            />
-          </button>
-        </div>
-        {/* Center: Logo or Company Name */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-center">
-          {scrolled ? (
-            <Image
-              src="/assets/images/logo/Kiorons_icon.png"
-              alt="Logo"
-              width={18}
-              height={18}
-              className="animate-fade-up"
-            />
-          ) : (
-            <span className="text-white text-lg sm:text-xl font-bold tracking-[-0.919px] animate-fade-up">
-              Kiorons
-            </span>
-          )}
-        </div>
-        {/* Right: Search & CTA */}
-        <div className="flex items-center gap-7 align-middle">
+    <header className="fixed top-0 left-0 w-full bg-black/60 backdrop-blur-md z-40 shadow transition-all duration-300 font-gellix">
+      <div className="max-w-screen-xl mx-auto flex justify-center items-center py-3 px-4 gap-11">
+        
+        {/* Left: Logo */}
+        <div className="flex items-center bg-[#292929] p-3 rounded-full">
           <Image
-            src="/assets/images/icons/Search.png"
-            alt="Search Icon"
-            width={16}
-            height={16}
-            className="h-5 w-auto hidden md:block"
+            src="/assets/images/logo/Kiorons_icon.png"
+            alt="Logo"
+            width={12}
+            height={12}
+            className="animate-fade-up"
           />
-          <InteractiveHoverButton className="px-5 py-1 mt-2 text-[8px] md:text-sm md:mt-1">Join Early</InteractiveHoverButton>
+        </div>
+
+        {/* Center: Navigation Links */}
+        <div className="flex gap-8 bg-[#292929] px-6 py-3 rounded-full text-white text-sm font-gellix">
+          <a href="#" className="hover:underline">kOne</a>
+          <a href="#" className="hover:underline">Solutions</a>
+          <a href="#" className="hover:underline">Company</a>
+          <a href="#" className="hover:underline">Think</a>
+          <a href="#" className="hover:underline">News</a>
+          <a href="#" className="hover:underline">Careers</a>
+        </div>
+
+        {/* Right: Login Button */}
+        <div>
+          <InteractiveHoverButton className="px-5 py-2 text-xs md:text-sm">
+            Login
+          </InteractiveHoverButton>
         </div>
       </div>
     </header>

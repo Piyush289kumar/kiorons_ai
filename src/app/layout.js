@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
           
           {/* Header */}
           <Header toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
-          <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+          {/* <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} /> */}
           {/* Main Content */}
           <main
             className={`transition-all duration-300 ease-in-out min-h-screen ${
