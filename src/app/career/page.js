@@ -90,29 +90,29 @@ export default function HumanosPage() {
         <p className="text-xl md:text-2xl font-semibold">of disciplines and backgrounds.</p>
 
         <div className="mt-12">
-          {[...Array(4)].map((_, index) => (
+          {[...Array(5)].map((_, index) => (
             <div
               key={index}
-              className="group border-t border-b border-gray-600 hover:border-white py-5 px-4 transition-all duration-300 ease-in-out hover:bg-white cursor-pointer"
+              className="group border-t border-b border-gray-600  py-5 px-4 transition-all duration-300 ease-in-out cursor-pointer"
             >
-              <div className="flex justify-between items-center transition-all duration-300 ease-in-out group-hover:text-black">
+              <div className="flex justify-between items-center transition-all duration-300 ease-in-out">
                 <div className="flex gap-4 items-center">
-                  <h3 className="font-semibold text-white group-hover:text-black transition-all duration-300">
+                  <h3 className="font-semibold text-white transition-all duration-300">
                     Product Designer
                   </h3>
-                  <span className="text-[#A2A2A2] text-sm group-hover:text-black transition-all duration-300">
+                  <span className="text-[#A2A2A2] text-sm transition-all duration-300">
                     Design
                   </span>
                 </div>
 
                 <div className="flex gap-4 items-center">
-                  <span className="text-[#A2A2A2] text-sm group-hover:text-black transition-all duration-300">
+                  <span className="text-[#A2A2A2] text-sm transition-all duration-300">
                     Full Time
                   </span>
-                  <span className="text-[#A2A2A2] text-sm group-hover:text-black transition-all duration-300">
+                  <span className="text-[#A2A2A2] text-sm transition-all duration-300">
                     Remote
                   </span>
-                  <button className="text-sm border border-white group-hover:border-black group-hover:text-black transition-all duration-300 p-2 px-6 rounded-3xl">
+                  <button className="text-sm border border-white transition-all duration-300 p-2 px-6 rounded-3xl">
                     Apply
                   </button>
                 </div>
@@ -120,7 +120,7 @@ export default function HumanosPage() {
             </div>
           ))}
 
-          <button className="text-sm border border-white bg-white group-hover:border-white group-hover:text-white text-black transition-all duration-300 p-2 px-6 rounded-3xl mt-12">
+          <button className="text-sm border border-white bg-white text-black transition-all duration-300 p-2 px-6 rounded-3xl mt-12 cursor-pointer">
             View open roles
           </button>
         </div>
