@@ -13,9 +13,9 @@ export default function Home() {
   return (
     <>
       {/* <SmoothCursor /> */}
-      <div className="mx-auto w-full max-w-4xl overflow-y-hidden">
+      <div className="mx-auto w-full overflow-y-hidden">
         <HeroSection />
-
+        {/* 
         <MeetHumanOSSection />
 
         <FadeUpSection>
@@ -29,7 +29,7 @@ export default function Home() {
         </FadeUpSection>
         <FadeUpSection>
           <ContactSection />
-        </FadeUpSection>
+        </FadeUpSection> */}
 
         <Footer />
       </div>
