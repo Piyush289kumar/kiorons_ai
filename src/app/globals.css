@@ -335,3 +335,13 @@ body {
 .animate-fade-in {
   animation: fadeIn 1s ease-in-out;
 }
+
+/* Add this in your global CSS file or a CSS module */
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}

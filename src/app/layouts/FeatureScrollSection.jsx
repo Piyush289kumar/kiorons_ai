@@ -1,71 +1,99 @@
 'use client'
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+
+import { useRef, useEffect } from 'react'
+import { motion, useAnimation } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
 import Image from 'next/image'
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: 'easeOut',
+export default function FeatureSection() {
+  const data = [
+    {
+      id: 1,
+      img: '/assets/images/Webapp/Home/chatbox.png',
+      title: 'Your brand, designed by intelligence.',
     },
-  },
-}
+    {
+      id: 2,
+      img: '/assets/images/Webapp/Home/chatbox.png',
+      title: 'Smart tools for modern teams.',
+    },
+    {
+      id: 3,
+      img: '/assets/images/Webapp/Home/chatbox.png',
+      title: 'Automate your workflow with AI.',
+    },
+  ]
 
-export default function FeatureScrollSection() {
   return (
-    <section className="font-gellix px-28 mt-28 h-[200vh] relative">
-      <div className="flex gap-x-28">
-        {/* Left fixed text */}
-        <div className="w-1/2 sticky top-28 h-fit self-start">
-          <h1 className="text-6xl font-semibold tracking-tight">All your tools.</h1>
-          <h1 className="text-6xl font-semibold tracking-tight">Just better.</h1>
-          <button className="text-md border border-white bg-white text-black transition-all duration-300 p-2 px-6 rounded-3xl mt-12 cursor-pointer font-semibold">
-            Explore Features
-          </button>
+    <section className="font-gellix text-white px-10 overflow-y-scroll snap-y snap-mandatory w-10/12 mx-auto h-screen snap-start pt-36 hide-scrollbar">
+      <div className="flex gap-x-16 min-h-full">
+        {/* Left Side - Fixed */}
+        <div className="w-1/2 sticky top-0 flex flex-col justify-center h-screen">
+          <div>
+            <h1 className="text-6xl font-semibold leading-tight">All your tools.</h1>
+            <h1 className="text-6xl font-semibold leading-tight">Just better.</h1>
+            <button className="text-md border border-white bg-white text-black transition-all duration-300 p-2 px-6 rounded-3xl mt-12 cursor-pointer font-semibold">
+              Explore Features
+            </button>
+          </div>
         </div>
 
-        {/* Right scrollable content with animation */}
-        <div className="w-1/2 space-y-32">
-          {[...Array(5)].map((_, index) => {
-            const ref = useRef(null)
-            const isInView = useInView(ref, { once: true, margin: '-100px' })
-
-            return (
-              <motion.div
-                key={index}
-                ref={ref}
-                variants={fadeInUp}
-                initial="hidden"
-                animate={isInView ? 'visible' : 'hidden'}
-              >
-                <Image
-                  src="/assets/images/Webapp/Home/chatbox.png"
-                  alt="chatbox"
-                  width={900}
-                  height={900}
-                  className="w-full"
-                />
-
-                <h1
-                  className="text-5xl font-semibold text-transparent bg-clip-text mt-5"
-                  style={{
-                    backgroundImage:
-                      'linear-gradient(91deg, #FFF 25%, #80D3D7 61.75%, #0D335D 93.49%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                  }}
-                >
-                  Your brand, designed <br /> by intelligence.
-                </h1>
-              </motion.div>
-            )
-          })}
+        {/* Right Side - Feature Items (snap full screen) */}
+        <div className="w-1/2">
+          {data.map((item, index) => (
+            <FeatureItem
+              key={item.id}
+              item={item}
+              index={index}
+              isLast={index === data.length - 1}
+            />
+          ))}
         </div>
       </div>
     </section>
+  )
+}
+
+function FeatureItem({ item, index, isLast }) {
+  const ref = useRef(null)
+  const { ref: inViewRef, inView } = useInView({ threshold: 0.6 })
+  const controls = useAnimation()
+
+  // Combine refs (yours + inView)
+  const setRefs = (node) => {
+    ref.current = node
+    inViewRef(node)
+  }
+
+  useEffect(() => {
+    if (inView) {
+      // Animate in
+      controls.start({ opacity: 1, y: 0 })
+    } else {
+      // Animate out (reverse animation)
+      controls.start({ opacity: 0, y: 50 })
+    }
+  }, [inView, controls])
+
+  return (
+    <motion.div
+      ref={setRefs}
+      initial={{ opacity: 0, y: 50 }}
+      animate={controls}
+      transition={{ duration: 0.5, ease: 'easeInOut' }}
+      className="h-screen snap-start flex flex-col justify-center"
+    >
+      <Image src={item.img} alt="chatbox" width={900} height={600} className="rounded-xl" />
+      <h1
+        className="text-4xl font-semibold text-transparent bg-clip-text mt-4"
+        style={{
+          backgroundImage: 'linear-gradient(91deg, #FFF 25%, #80D3D7 61.75%, #0D335D 93.49%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+        }}
+      >
+        {item.title}
+      </h1>
+    </motion.div>
   )
 }

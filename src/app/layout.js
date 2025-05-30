@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
   
   return (
     <html lang="en">
-      <body className={`${inter.className} custom-bg px-6 font-sans`}>
+      <body className={`${inter.className} custom-bg font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {/* Sidebar (slidable) */}
           

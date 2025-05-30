@@ -29,9 +29,7 @@ export default function Home() {
         </FadeUpSection>
         <FadeUpSection>
           <ContactSection />
-        </FadeUpSection> */}
-
-        <Footer />
+        </FadeUpSection> */}        
       </div>
     </>
   )
