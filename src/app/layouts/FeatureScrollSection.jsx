@@ -25,21 +25,21 @@ export default function FeatureSection() {
   ]
 
   return (
-    <section className="font-gellix text-white px-10 overflow-y-scroll snap-y snap-mandatory w-10/12 mx-auto h-screen snap-start pt-36 hide-scrollbar">
-      <div className="flex gap-x-16 min-h-full">
-        {/* Left Side - Fixed */}
-        <div className="w-1/2 sticky top-0 flex flex-col justify-center h-screen">
+    <section className="font-gellix text-white px-6 md:px-10 overflow-y-scroll snap-y snap-mandatory w-full md:w-10/12 mx-auto h-screen snap-start pt-36 hide-scrollbar">
+      <div className="flex flex-col md:flex-row gap-x-16 min-h-full">
+        {/* Left Side - Fixed on desktop, full width stacked on mobile */}
+        <div className="w-full md:w-1/2 sticky top-0 flex flex-col justify-center h-screen mb-12 md:mb-0">
           <div>
-            <h1 className="text-6xl font-semibold leading-tight">All your tools.</h1>
-            <h1 className="text-6xl font-semibold leading-tight">Just better.</h1>
-            <button className="text-md border border-white bg-white text-black transition-all duration-300 p-2 px-6 rounded-3xl mt-12 cursor-pointer font-semibold">
+            <h1 className="text-4xl md:text-6xl font-semibold leading-tight">All your tools.</h1>
+            <h1 className="text-4xl md:text-6xl font-semibold leading-tight">Just better.</h1>
+            <button className="text-md border border-white bg-white text-black transition-all duration-300 p-2 px-6 rounded-3xl mt-8 md:mt-12 cursor-pointer font-semibold">
               Explore Features
             </button>
           </div>
         </div>
 
-        {/* Right Side - Feature Items (snap full screen) */}
-        <div className="w-1/2">
+        {/* Right Side - Feature Items */}
+        <div className="w-full md:w-1/2">
           {data.map((item, index) => (
             <FeatureItem
               key={item.id}
@@ -67,10 +67,8 @@ function FeatureItem({ item, index, isLast }) {
 
   useEffect(() => {
     if (inView) {
-      // Animate in
       controls.start({ opacity: 1, y: 0 })
     } else {
-      // Animate out (reverse animation)
       controls.start({ opacity: 0, y: 50 })
     }
   }, [inView, controls])
@@ -83,11 +81,18 @@ function FeatureItem({ item, index, isLast }) {
       transition={{ duration: 0.5, ease: 'easeInOut' }}
       className="h-screen snap-start flex flex-col justify-center"
     >
-      <Image src={item.img} alt="chatbox" width={900} height={600} className="rounded-xl" />
+      <Image
+        src={item.img}
+        alt="chatbox"
+        width={900}
+        height={600}
+        className="rounded-xl mx-auto max-w-full h-auto"
+      />
       <h1
-        className="text-4xl font-semibold text-transparent bg-clip-text mt-4"
+        className="text-3xl md:text-4xl font-semibold text-transparent bg-clip-text mt-4 text-center md:text-left"
         style={{
-          backgroundImage: 'linear-gradient(91deg, #FFF 25%, #80D3D7 61.75%, #0D335D 93.49%)',
+          backgroundImage:
+            'linear-gradient(91deg, #FFF 25%, #80D3D7 61.75%, #0D335D 93.49%)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
         }}
