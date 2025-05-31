@@ -29,9 +29,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 font-gellix ${
-        scrolled ? 'backdrop-blur-md bg-black/50' : ''
-      }`}
+      className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 font-gellix`}
     >
       <div className="max-w-screen-xl mx-auto flex justify-between md:justify-center items-center py-3 px-4 gap-11">
         {/* Left: Logo */}

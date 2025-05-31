@@ -12,14 +12,19 @@ const FooterDataSet = {
 
 export default function Footer() {
   return (
-    <footer className="w-full mx-auto py-10 text-white gap-20 font-gellix px-20 my-36">
+    <footer className="w-9/12 mx-auto py-10 text-white gap-20 font-gellix px-20 my-20">
       <div className="flex justify-between font-gellix">
         {/* Explore Section */}
         <div className="space-y-4">
-          <h4 className="text-[#B8B8B8] text-lg font-gellix">Explore</h4>
+          <h4 className="text-[#B8B8B8] text-xl font-gellix tracking-tight font-medium">
+            Explore
+          </h4>
           <ul className="space-y-2">
             {FooterDataSet.Company.map((item, index) => (
-              <li key={index} className="hover:text-gray-400 cursor-pointer font-gellix text-sm">
+              <li
+                key={index}
+                className="text-white tracking-tight font-semibold cursor-pointer font-gellix text-lg"
+              >
                 {item}
               </li>
             ))}
@@ -28,10 +33,13 @@ export default function Footer() {
 
         {/* Explore Section */}
         <div className="space-y-4">
-          <h4 className="text-[#B8B8B8] text-lg font-gellix">kOne</h4>
+          <h4 className="text-[#B8B8B8] text-xl font-gellix tracking-tight font-medium">kOne</h4>
           <ul className="space-y-2">
             {FooterDataSet.kOne.map((item, index) => (
-              <li key={index} className="hover:text-gray-400 cursor-pointer font-gellix text-sm">
+              <li
+                key={index}
+                className="text-white tracking-tight font-semibold cursor-pointer font-gellix text-lg"
+              >
                 {item}
               </li>
             ))}
@@ -40,10 +48,15 @@ export default function Footer() {
 
         {/* Explore Section */}
         <div className="space-y-4">
-          <h4 className="text-[#B8B8B8] text-lg font-gellix">Services</h4>
+          <h4 className="text-[#B8B8B8] text-xl font-gellix tracking-tight font-medium">
+            Services
+          </h4>
           <ul className="space-y-2">
             {FooterDataSet.Services.map((item, index) => (
-              <li key={index} className="hover:text-gray-400 cursor-pointer font-gellix text-sm">
+              <li
+                key={index}
+                className="text-white tracking-tight font-semibold cursor-pointer font-gellix text-lg"
+              >
                 {item}
               </li>
             ))}
@@ -51,10 +64,15 @@ export default function Footer() {
         </div>
         {/* Explore Section */}
         <div className="space-y-4">
-          <h4 className="text-[#B8B8B8] text-lg font-gellix">Terms & Policies</h4>
+          <h4 className="text-[#B8B8B8] text-xl font-gellix tracking-tight font-medium">
+            Terms & Policies
+          </h4>
           <ul className="space-y-2">
             {FooterDataSet.Terms.map((item, index) => (
-              <li key={index} className="hover:text-gray-400 cursor-pointer font-gellix text-sm">
+              <li
+                key={index}
+                className="text-white tracking-tight font-semibold cursor-pointer font-gellix text-lg"
+              >
                 {item}
               </li>
             ))}
@@ -62,10 +80,15 @@ export default function Footer() {
         </div>
         {/* Explore Section */}
         <div className="space-y-4">
-          <h4 className="text-[#B8B8B8] text-lg font-gellix">Social</h4>
+          <h4 className="text-[#B8B8B8] text-xl font-gellix tracking-tight font-medium">
+            Social
+          </h4>
           <ul className="space-y-2">
             {FooterDataSet.Social.map((item, index) => (
-              <li key={index} className="hover:text-gray-400 cursor-pointer font-gellix text-sm">
+              <li
+                key={index}
+                className="text-white tracking-tight font-semibold cursor-pointer font-gellix text-lg"
+              >
                 {item}
               </li>
             ))}
@@ -74,7 +97,7 @@ export default function Footer() {
 
         {/* Terms & Policies Section */}
         <div className="space-y-4 font-gellix">
-          <h4 className="text-sm text-[#B8B8B8] font-gellix tracking-tight">
+          <h4 className="text-[#B8B8B8] text-lg font-gellix tracking-tight font-medium">
             © 2025 Kiorons. All <br />
             rights reserved.
             <br />

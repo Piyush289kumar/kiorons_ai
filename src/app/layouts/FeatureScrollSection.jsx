@@ -12,23 +12,23 @@ export default function FeatureSection() {
       img: '/assets/images/Webapp/Home/chatbox.png',
       title: 'Your brand, designed by intelligence.',
     },
-    {
-      id: 2,
-      img: '/assets/images/Webapp/Home/chatbox.png',
-      title: 'Smart tools for modern teams.',
-    },
-    {
-      id: 3,
-      img: '/assets/images/Webapp/Home/chatbox.png',
-      title: 'Automate your workflow with AI.',
-    },
+    // {
+    //   id: 2,
+    //   img: '/assets/images/Webapp/Home/chatbox.png',
+    //   title: 'Smart tools for modern teams.',
+    // },
+    // {
+    //   id: 3,
+    //   img: '/assets/images/Webapp/Home/chatbox.png',
+    //   title: 'Automate your workflow with AI.',
+    // },
   ]
 
   return (
-    <section className="font-gellix text-white px-6 md:px-10 overflow-y-scroll snap-y snap-mandatory w-full md:w-10/12 mx-auto h-screen snap-start pt-36 hide-scrollbar">
-      <div className="flex flex-col md:flex-row gap-x-16 min-h-full">
+    <section className="font-gellix text-white px-6 md:px-10 overflow-y-scroll snap-y snap-mandatory w-full md:w-9/12 mt-56 mx-auto hide-scrollbar">
+      <div className="flex flex-col md:flex-row">
         {/* Left Side - Fixed on desktop, full width stacked on mobile */}
-        <div className="w-full md:w-1/2 sticky top-0 flex flex-col justify-center h-screen mb-12 md:mb-0">
+        <div className="w-full md:w-1/2 sticky top-0 flex flex-col mb-12 md:mb-0">
           <div>
             <h1 className="text-4xl md:text-6xl font-semibold leading-tight">All your tools.</h1>
             <h1 className="text-4xl md:text-6xl font-semibold leading-tight">Just better.</h1>
@@ -39,7 +39,7 @@ export default function FeatureSection() {
         </div>
 
         {/* Right Side - Feature Items */}
-        <div className="w-full md:w-1/2">
+        <div className="w-full">
           {data.map((item, index) => (
             <FeatureItem
               key={item.id}
@@ -79,17 +79,17 @@ function FeatureItem({ item, index, isLast }) {
       initial={{ opacity: 0, y: 50 }}
       animate={controls}
       transition={{ duration: 0.5, ease: 'easeInOut' }}
-      className="h-screen snap-start flex flex-col justify-center"
+      className="flex flex-col"
     >
       <Image
         src={item.img}
         alt="chatbox"
         width={900}
         height={600}
-        className="rounded-xl mx-auto max-w-full h-auto"
+        className="rounded-md mx-auto max-w-full h-auto"
       />
       <h1
-        className="text-3xl md:text-4xl font-semibold text-transparent bg-clip-text mt-4 text-center md:text-left"
+        className="text-3xl md:text-5xl font-semibold text-transparent bg-clip-text mt-4 text-center md:text-left pr-56 tracking-tight"
         style={{
           backgroundImage:
             'linear-gradient(91deg, #FFF 25%, #80D3D7 61.75%, #0D335D 93.49%)',
