@@ -34,13 +34,13 @@ export default function Header() {
       <div className="max-w-screen-xl mx-auto flex justify-between md:justify-center items-center py-3 px-4 gap-11">
         {/* Left: Logo */}
         <div className="flex items-center backdrop-blur-md bg-white/10 p-3 rounded-full">
-          <Image
+          <a href='/'> <Image
             src="/assets/images/logo/Kiorons_icon.png"
             alt="Logo"
             width={12}
             height={12}
             className="animate-fade-up"
-          />
+          /></a>
         </div>
 
         {/* Center: Navigation Links (hidden on mobile) */}
@@ -120,7 +120,7 @@ export default function Header() {
           <a href="#" className="hover:underline">
             News
           </a>
-          <a href="#" className="hover:underline">
+          <a href="/career" className="hover:underline">
             Careers
           </a>
           <InteractiveHoverButton className="px-5 py-2 text-sm mt-4 w-full text-center">

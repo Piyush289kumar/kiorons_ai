@@ -1,13 +1,54 @@
+'use client' // <-- Required for Framer Motion
+
+import { motion, useAnimation } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import { useEffect } from 'react'
 import Image from 'next/image'
 
 export const dynamic = 'force-dynamic'
 
-export default function HumanosPage() {
+export default function JobOpeningPage() {
+
+  const controls1 = useAnimation()
+  const controls2 = useAnimation()
+  const controls3 = useAnimation()
+  const controls4 = useAnimation()
+  const controls5 = useAnimation()
+
+  // Intersection observers for each section
+  const [ref1, inView1] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [ref2, inView2] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [ref3, inView3] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [ref4, inView4] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [ref5, inView5] = useInView({ triggerOnce: true, threshold: 0.1 })
+
+  // Trigger animations when sections come into view
+  useEffect(() => {
+    if (inView1) controls1.start('visible')
+    if (inView2) controls2.start('visible')
+    if (inView3) controls3.start('visible')
+    if (inView4) controls4.start('visible')
+    if (inView5) controls5.start('visible')
+  }, [
+    controls1,
+    controls2,
+    controls3,
+    controls4,
+    controls5,
+    inView1,
+    inView2,
+    inView3,
+    inView4,
+    inView5,
+  ])
+
   return (
     <section className="flex flex-col justify-center items-center px-4 w-full font-gellix my-24">
       <div className="text-center w-11/12 md:w-6/12 mx-auto mt-16">
         <div className="text-center mb-40">
-          <h1 className="text-6xl md:text-5xl sm:text-4xl font-semibold tracking-tight">Open Positions</h1>
+          <h1 className="text-6xl md:text-5xl sm:text-4xl font-semibold tracking-tight">
+            Open Positions
+          </h1>
           <p className="text-xl md:text-lg sm:text-base font-semibold mt-4">
             {'We’re looking for curious minds from a wide range of disciplines'}
           </p>
@@ -49,14 +90,18 @@ export default function HumanosPage() {
                   <h3 className="font-semibold text-white transition-all duration-300">
                     Product Designer
                   </h3>
-                  <span className="text-[#A2A2A2] text-sm transition-all duration-300 hidden md:block">Design</span>
+                  <span className="text-[#A2A2A2] text-sm transition-all duration-300 hidden md:block">
+                    Design
+                  </span>
                 </div>
 
                 <div className="flex gap-4 items-center flex-wrap">
                   <span className="text-[#A2A2A2] text-sm transition-all duration-300 hidden md:block">
                     Full Time
                   </span>
-                  <span className="text-[#A2A2A2] text-sm transition-all duration-300 hidden md:block">Remote</span>
+                  <span className="text-[#A2A2A2] text-sm transition-all duration-300 hidden md:block">
+                    Remote
+                  </span>
                   <button className="text-sm border border-white transition-all duration-300 p-2 px-6 rounded-3xl whitespace-nowrap">
                     Apply
                   </button>
@@ -93,18 +138,27 @@ export default function HumanosPage() {
         </h4>
       </div>
 
-      <div
-        className="p-10 text-white w-full max-w-4xl text-center mt-28 rounded-lg"
-        style={{ background: 'linear-gradient(71deg, #71D8E1 10.04%, #1B364B 69.45%)' }}
+      {/* CTA Section */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="mt-20 px-4 sm:px-0 font-gellix w-full"
       >
-        <h1 className="text-4xl md:text-5xl sm:text-3xl font-semibold tracking-tight">
-          {'Build something the world’s never'}
-        </h1>
-        <h1 className="text-4xl md:text-5xl sm:text-3xl font-semibold tracking-tight">{'seen before.'}</h1>
-        <button className="text-sm border border-white bg-white hover:bg-transparent hover:text-white text-black transition-all duration-300 p-2 px-6 rounded-3xl mt-12">
-          Explore Roles
-        </button>
-      </div>
+        <div
+          className="p-5 md:p-14 text-white w-full sm:w-8/12 mx-auto text-center mt-20 sm:mt-28"
+          style={{ background: 'linear-gradient(71deg, #71D8E1 10.04%, #1B364B 69.45%)' }}
+        >
+          <h1 className="text-md md:text-5xl font-semibold tracking-tight ">
+            {'Build something the world’s never'}
+          </h1>
+          <h1 className="text-md md:text-5xl font-semibold tracking-tight">{'seen before.'}</h1>
+          <button className="w-auto text-sm md:text-lg border mt-2 md:mt-5 border-white bg-white text-black transition-all duration-300 px-3 p-2 md:px-6 rounded-3xl font-semibold cursor-pointer">
+            Explore Roles
+          </button>
+        </div>
+      </motion.section>
     </section>
   )
 }
