@@ -1,25 +1,21 @@
 'use client' // <-- Required for Framer Motion
-
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useEffect } from 'react'
 import Image from 'next/image'
 export const dynamic = 'force-dynamic'
-
 export default function CareerPage() {
   const controls1 = useAnimation()
   const controls2 = useAnimation()
   const controls3 = useAnimation()
   const controls4 = useAnimation()
   const controls5 = useAnimation()
-
   // Intersection observers for each section
   const [ref1, inView1] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [ref2, inView2] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [ref3, inView3] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [ref4, inView4] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [ref5, inView5] = useInView({ triggerOnce: true, threshold: 0.1 })
-
   // Trigger animations when sections come into view
   useEffect(() => {
     if (inView1) controls1.start('visible')
@@ -39,7 +35,6 @@ export default function CareerPage() {
     inView4,
     inView5,
   ])
-
   return (
     <section className="flex flex-col justify-center items-center px-4 w-full font-gellix my-24">
       <div className="text-center max-w-6xl mx-auto">
@@ -57,7 +52,6 @@ export default function CareerPage() {
           the next big thing, Kiorons is for you.
         </p>
       </div>
-
       <Image
         src="/assets/images/Webapp/career/careerhero.png"
         alt="Logo"
@@ -65,7 +59,6 @@ export default function CareerPage() {
         height={900}
         className="animate-fade-up w-5/6 sm:w-4/6 my-20 max-w-[900px] mx-auto"
       />
-
       <div className="text-center max-w-6xl mx-auto px-4 relative">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight">
           A place for makers.
@@ -79,7 +72,6 @@ export default function CareerPage() {
         <p className="text-xl md:text-2xl font-semibold max-w-xl mx-auto">
           {'a mark. Everything you create here matters.'}
         </p>
-
         {/* Responsive container for images */}
         <div className="relative w-full h-[500px] mt-12 overflow-visible">
           {/* For small screens, make these images stack or scale */}
@@ -94,7 +86,6 @@ export default function CareerPage() {
               sm:-left-[40%] sm:top-[10%]
               xs:static xs:mx-auto xs:mb-6 xs:relative"
           />
-
           {/* Left Near (L2) */}
           <Image
             src="/assets/images/Webapp/career/showcase2.png"
@@ -106,7 +97,6 @@ export default function CareerPage() {
               sm:-left-[15%] sm:top-[25%]
               xs:static xs:mx-auto xs:mb-6 xs:relative"
           />
-
           {/* Right Near (R2) */}
           <Image
             src="/assets/images/Webapp/career/showcase4.png"
@@ -118,7 +108,6 @@ export default function CareerPage() {
               sm:-right-[15%] sm:top-[25%]
               xs:static xs:mx-auto xs:mb-6 xs:relative"
           />
-
           {/* Right Future (R3) */}
           <Image
             src="/assets/images/Webapp/career/showcase5.png"
@@ -130,7 +119,6 @@ export default function CareerPage() {
               sm:-right-[40%] sm:top-[10%]
               xs:static xs:mx-auto xs:mb-6 xs:relative"
           />
-
           {/* Center (overlapping L2 and R2) */}
           <Image
             src="/assets/images/Webapp/career/showcase1.png"
@@ -143,7 +131,6 @@ export default function CareerPage() {
           />
         </div>
       </div>
-
       <div className="text-center w-11/12 md:w-6/12 mx-auto mt-16">
         <h1 className="text-3xl md:text-4xl lg:text-6xl font-semibold tracking-tight">
           Open Positions
@@ -152,7 +139,6 @@ export default function CareerPage() {
           We’re looking for curious minds from a wide range
         </p>
         <p className="text-lg md:text-xl font-semibold">of disciplines and backgrounds.</p>
-
         <div className="my-12">
           {[...Array(5)].map((_, index) => (
             <div
@@ -168,7 +154,6 @@ export default function CareerPage() {
                     Design
                   </span>
                 </div>
-
                 <div className="flex gap-4 items-center flex-wrap">
                   <span className="text-[#A2A2A2] text-sm transition-all duration-300 hidden md:block">
                     Full Time
@@ -191,7 +176,6 @@ export default function CareerPage() {
           View open roles
         </a>
       </div>
-
       <div className="text-center w-11/12 md:w-6/12 mx-auto mt-16">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight">
           {'Didn’t See Your Role?'}
@@ -205,7 +189,6 @@ export default function CareerPage() {
         <p className="text-lg md:text-xl font-semibold">
           {'If it fits our mission, we’ll reach out.'}
         </p>
-
         <h4 className="text-lg md:text-2xl font-semibold mt-12 flex justify-center items-center gap-x-4">
           <Image
             src="/assets/images/icons/mails.svg"
@@ -217,7 +200,6 @@ export default function CareerPage() {
           <span>info@kiorons.com</span>
         </h4>
       </div>
-
       {/* CTA Section */}
       <motion.section
         initial={{ opacity: 0 }}
@@ -226,8 +208,8 @@ export default function CareerPage() {
         transition={{ duration: 0.8 }}
         className="mt-20 px-4 sm:px-0 font-gellix w-full"
       >
-        <div
-          className="p-5 md:p-14 text-white w-full sm:w-8/12 mx-auto text-center mt-20 sm:mt-28"
+        <div          
+          className="p-5 md:p-14 text-white md:w-10/12 mx-auto text-center mt-20 sm:mt-28"
           style={{ background: 'linear-gradient(71deg, #71D8E1 10.04%, #1B364B 69.45%)' }}
         >
           <h1 className="text-md md:text-5xl font-semibold tracking-tight ">

@@ -1,27 +1,21 @@
 'use client' // <-- Required for Framer Motion
-
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useEffect } from 'react'
 import Image from 'next/image'
-
 export const dynamic = 'force-dynamic'
-
 export default function JobOpeningPage() {
-
   const controls1 = useAnimation()
   const controls2 = useAnimation()
   const controls3 = useAnimation()
   const controls4 = useAnimation()
   const controls5 = useAnimation()
-
   // Intersection observers for each section
   const [ref1, inView1] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [ref2, inView2] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [ref3, inView3] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [ref4, inView4] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [ref5, inView5] = useInView({ triggerOnce: true, threshold: 0.1 })
-
   // Trigger animations when sections come into view
   useEffect(() => {
     if (inView1) controls1.start('visible')
@@ -41,7 +35,6 @@ export default function JobOpeningPage() {
     inView4,
     inView5,
   ])
-
   return (
     <section className="flex flex-col justify-center items-center px-4 w-full font-gellix my-24">
       <div className="text-center w-11/12 md:w-6/12 mx-auto mt-16">
@@ -53,7 +46,6 @@ export default function JobOpeningPage() {
             {'We’re looking for curious minds from a wide range of disciplines'}
           </p>
         </div>
-
         <div className="w-10/12 max-w-md mx-auto">
           <div className="relative">
             <input
@@ -78,7 +70,6 @@ export default function JobOpeningPage() {
             </span>
           </div>
         </div>
-
         <div className="mt-12">
           {[...Array(5)].map((_, index) => (
             <div
@@ -94,7 +85,6 @@ export default function JobOpeningPage() {
                     Design
                   </span>
                 </div>
-
                 <div className="flex gap-4 items-center flex-wrap">
                   <span className="text-[#A2A2A2] text-sm transition-all duration-300 hidden md:block">
                     Full Time
@@ -111,7 +101,6 @@ export default function JobOpeningPage() {
           ))}
         </div>
       </div>
-
       <div className="text-center w-11/12 md:w-6/12 mx-auto mt-44">
         <h1 className="text-4xl md:text-5xl sm:text-3xl font-semibold tracking-tight">
           {'Didn’t See Your Role?'}
@@ -125,7 +114,6 @@ export default function JobOpeningPage() {
         <p className="text-xl md:text-lg sm:text-base font-semibold">
           {'If it fits our mission, we’ll reach out.'}
         </p>
-
         <h4 className="text-xl md:text-2xl font-semibold mt-12 flex justify-center items-center gap-x-4">
           <Image
             src="/assets/images/icons/mails.svg"
@@ -137,7 +125,6 @@ export default function JobOpeningPage() {
           <span>info@kiorons.com</span>
         </h4>
       </div>
-
       {/* CTA Section */}
       <motion.section
         initial={{ opacity: 0 }}
@@ -147,7 +134,7 @@ export default function JobOpeningPage() {
         className="mt-20 px-4 sm:px-0 font-gellix w-full"
       >
         <div
-          className="p-5 md:p-14 text-white w-full sm:w-8/12 mx-auto text-center mt-20 sm:mt-28"
+          className="p-5 md:p-14 text-white md:w-10/12 mx-auto text-center mt-20 sm:mt-28"
           style={{ background: 'linear-gradient(71deg, #71D8E1 10.04%, #1B364B 69.45%)' }}
         >
           <h1 className="text-md md:text-5xl font-semibold tracking-tight ">
