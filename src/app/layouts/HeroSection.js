@@ -8,6 +8,7 @@ import { AnimatedShinyTextDemo } from '@/components/landing/AnimatedShinyText'
 import Image from 'next/image'
 import FeatureSection from './FeatureScrollSection'
 import Footer from './Footer'
+import { LandingPageButton } from '@/components/landing/LandingPageButton'
 export default function HeroSection() {
   // Animation controls for each section
   const controls1 = useAnimation()
@@ -41,9 +42,9 @@ export default function HeroSection() {
     inView5,
   ])
   return (
-    <div className="scroll-smooth">
+    <div className="scroll-smooth w-9/12 mx-auto">
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] md:min-h-[80vh] flex flex-col justify-center items-center align-middle !gap-y-0 bg-black font-gellix">
+      <section className="relative min-h-[60vh] md:min-h-screen flex flex-col justify-center items-center align-middle !gap-y-0 bg-black font-gellix">
         <motion.div
           ref={ref1}
           initial="hidden"
@@ -55,27 +56,16 @@ export default function HeroSection() {
           transition={{ duration: 0.8 }}
           className="text-center z-10 mt-0 md:mt-56 px-4 sm:px-6 md:px-0"
         >
-          <h1 className="text-5xl sm:text-7xl md:text-8xl font-semibold tracking-tight">
-            Built to build
-          </h1>
-          <h1 className="text-5xl sm:text-7xl md:text-8xl font-semibold tracking-tight">
-            your Brand.
+          <h1 className="text-5xl sm:text-7xl md:text-9xl font-semibold tracking-tight">
+            Create Different.
           </h1>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-base sm:text-lg md:text-xl font-semibold mt-6 sm:mt-8 md:mt-4"
+            className="text-base sm:text-lg md:text-2xl font-medium mt-6 sm:mt-8 md:mt-4"
           >
-            Build your brand, design everything, launch
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-base sm:text-lg md:text-xl font-semibold"
-          >
-            your product, all from one place.
+            Design, technology, and intelligence
           </motion.p>
           <motion.div
             initial={{ opacity: 0 }}
@@ -83,12 +73,8 @@ export default function HeroSection() {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="flex flex-row gap-4 justify-center items-center mt-12"
           >
-            <button className="w-full sm:w-auto text-sm md:text-lg border border-white bg-white text-black transition-all duration-300 px-2 p-2 md:px-6 rounded-3xl font-semibold cursor-pointer">
-              Try kOne
-            </button>
-            <button className="w-full sm:w-auto text-sm md:text-lg border border-white bg-black text-white transition-all duration-300 px-2 p-2 md:px-6 rounded-3xl font-semibold cursor-pointer">
-              Features
-            </button>
+            <LandingPageButton text="Visit kOne" color="white" />
+            <LandingPageButton text="Explore Services" color="black" />
           </motion.div>
         </motion.div>
         <motion.div
@@ -97,11 +83,11 @@ export default function HeroSection() {
           transition={{ delay: 0.6, duration: 0.8 }}
         >
           <Image
-            src="/assets/images/Webapp/Home/hands.svg"
+            src="/assets/images/Webapp/Home/line.svg"
             alt="Logo"
-            width={900}
-            height={900}
-            className="w-[100vw] -mt-44 z-0"
+            width={8000}
+            height={8000}
+            className="mt-32"
             priority
           />
         </motion.div>
@@ -119,39 +105,20 @@ export default function HeroSection() {
         className="font-gellix md:pt-11 sm:pt-32 px-4 sm:px-0"
       >
         <div className="text-center z-10 mt-20 sm:mt-28">
-          <h1
-            className="text-5xl sm:text-7xl md:text-8xl font-semibold tracking-tight text-transparent bg-clip-text"
-            style={{
-              backgroundImage: 'linear-gradient(91deg, #FFF 50%, #80D3D7 61.75%, #0D335D 93.49%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}
-          >
-            Meet kOne.
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-semibold tracking-tight">
+            Two Divisions.
+          </h1>
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-semibold tracking-tight">
+            One Vision.
           </h1>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-sm sm:text-lg md:text-2xl font-semibold mt-6 sm:mt-11"
+            className="text-sm sm:text-lg md:text-2xl font-semibold mt-6 sm:mt-11 w-2/3 mx-auto"
           >
-            kOne is not a tool. It's your AI co-founder. Talk to it. Think with it.
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-sm sm:text-lg md:text-2xl font-semibold"
-          >
-            Build with it. From your brand to your website — everything
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-sm sm:text-lg md:text-2xl font-semibold"
-          >
-            happens here.
+            We partner with ambitious teams to design, build, and scale modern brands — through two
+            focused divisions: Studio and Tech.
           </motion.p>
           <motion.div
             initial={{ opacity: 0 }}

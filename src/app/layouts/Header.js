@@ -28,30 +28,34 @@ export default function Header() {
   }, [])
 
   return (
-    <header
-      className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 font-gellix`}
-    >
+    <header className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 font-gellix`}>
       <div className="max-w-screen-xl mx-auto flex justify-between md:justify-center items-center py-3 px-4 gap-11">
         {/* Left: Logo */}
         <div className="flex items-center backdrop-blur-md bg-white/10 p-3 rounded-full">
-          <a href='/'> <Image
-            src="/assets/images/logo/Kiorons_icon.png"
-            alt="Logo"
-            width={12}
-            height={12}
-            className="animate-fade-up"
-          /></a>
+          <a href="/">
+            {' '}
+            <Image
+              src="/assets/images/logo/Kiorons_icon.png"
+              alt="Logo"
+              width={20}
+              height={20}
+              className="animate-fade-up"
+            />
+          </a>
         </div>
 
         {/* Center: Navigation Links (hidden on mobile) */}
         <nav
-          className={`hidden md:flex gap-8 px-6 py-3 rounded-full text-white text-sm font-gellix backdrop-blur-md bg-white/10`}
+          className={`hidden md:flex gap-8 px-8 py-3 rounded-full text-white text-sm font-gellix backdrop-blur-md bg-white/10`}
         >
           <a href="#" className="hover:underline">
-            kOne
+            Studio
           </a>
           <a href="#" className="hover:underline">
-            Solutions
+            Tech
+          </a>
+          <a href="#" className="hover:underline">
+            kOne
           </a>
           <a href="#" className="hover:underline">
             Company
@@ -59,19 +63,20 @@ export default function Header() {
           <a href="#" className="hover:underline">
             Think
           </a>
-          <a href="#" className="hover:underline">
-            News
-          </a>
-          <a href="/career" className="hover:underline">
-            Careers
-          </a>
         </nav>
 
         {/* Right: Login Button and Hamburger for mobile */}
         <div className="flex items-center gap-4">
-          <InteractiveHoverButton className="px-5 py-2 text-xs md:text-sm hidden md:block">
-            Login
-          </InteractiveHoverButton>
+
+          <div className="flex items-center backdrop-blur-md bg-white/10 p-3 rounded-full">
+          <Image
+            src="/assets/images/icons/search.svg"
+            alt="Logo"
+            width={20}
+            height={20}
+            className="animate-fade-up"
+          />
+          </div>
 
           {/* Hamburger Button for mobile */}
           <button
