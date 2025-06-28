@@ -89,7 +89,7 @@ export default function HeroSection() {
             width={100}
             height={100}
             className="mt-32 w-full"
-            priority            
+            priority
           />
         </motion.div>
       </section>
@@ -146,7 +146,6 @@ export default function HeroSection() {
           />
         </div>
       </motion.section>
-      <FeatureSection />
       {/* "Ahh it's not end" Section */}
       <motion.section
         ref={ref3}
@@ -157,27 +156,28 @@ export default function HeroSection() {
           visible: { opacity: 1, y: 0 },
         }}
         transition={{ duration: 0.6 }}
-        className="font-gellix px-4 sm:px-28 text-center mt-32 mb-12 md:my-64"
+        className="font-gellix px-4 sm:px-28 text-center mt-28 mb-12 md:my-64"
       >
         <div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="text-base sm:text-lg md:text-4xl font-medium mt-6 sm:mt-8 md:mt-4"
+          >
+            Meet
+          </motion.p>
+
           <h1
-            className="text-4xl sm:text-6xl md:text-7xl font-semibold text-transparent bg-clip-text"
+            className="text-5xl sm:text-7xl md:text-[160px] font-semibold text-transparent bg-clip-text tracking-tight"
             style={{
               backgroundImage: 'linear-gradient(91deg, #FFF 50%, #80D3D7 61.75%, #0D335D 93.49%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}
           >
-            Ahh it's not end.
+            kOne
           </h1>
-          <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="w-auto text-sm md:text-lg border mt-8 border-white bg-white text-black transition-all duration-300 p-2 px-6 rounded-3xl font-semibold cursor-pointer"
-          >
-            Explore kOne
-          </motion.button>
         </div>
       </motion.section>
       {/* "No templates" Section */}
