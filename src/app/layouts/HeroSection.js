@@ -19,12 +19,14 @@ export default function HeroSection() {
   const controls3 = useAnimation()
   const controls4 = useAnimation()
   const controls5 = useAnimation()
+  const controls6 = useAnimation()
   // Intersection observers for each section
   const [ref1, inView1] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [ref2, inView2] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [ref3, inView3] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [ref4, inView4] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [ref5, inView5] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [ref6, inView6] = useInView({ triggerOnce: true, threshold: 0.1 })
   // Trigger animations when sections come into view
   useEffect(() => {
     if (inView1) controls1.start('visible')
@@ -32,17 +34,20 @@ export default function HeroSection() {
     if (inView3) controls3.start('visible')
     if (inView4) controls4.start('visible')
     if (inView5) controls5.start('visible')
+    if (inView6) controls5.start('visible')
   }, [
     controls1,
     controls2,
     controls3,
     controls4,
     controls5,
+    controls6,
     inView1,
     inView2,
     inView3,
     inView4,
     inView5,
+    inView6,
   ])
   return (
     <div className="scroll-smooth w-9/12 mx-auto font-gellix">
@@ -135,7 +140,6 @@ export default function HeroSection() {
               { text: 'Services', color: 'none' },
             ]}
           />
-
           <LandingCard
             logo="/assets/images/logo/Kiorons_icon.png"
             label="Tech"
@@ -169,7 +173,6 @@ export default function HeroSection() {
           >
             Meet
           </motion.p>
-
           <h1
             className="text-5xl sm:text-7xl md:text-[160px] font-semibold text-transparent bg-clip-text tracking-tight"
             style={{
@@ -180,7 +183,6 @@ export default function HeroSection() {
           >
             kOne
           </h1>
-
           <div className="relative mt-32 w-full">
             <Image
               src="/assets/images/Webapp/Home/videoSection.png"
@@ -189,7 +191,6 @@ export default function HeroSection() {
               height={900}
               className="w-full"
             />
-
             <Image
               src="/assets/images/icons/play_arrow.svg"
               alt="Play Button"
@@ -201,7 +202,6 @@ export default function HeroSection() {
           </div>
         </div>
       </motion.section>
-
       <motion.section
         ref={ref4}
         initial="hidden"
@@ -222,7 +222,6 @@ export default function HeroSection() {
           <LandingPageButton text="Visit kOne" color="white" />
         </div>
       </motion.section>
-
       {/* "No templates" Section */}
       <motion.section
         ref={ref5}
@@ -233,15 +232,16 @@ export default function HeroSection() {
           visible: { opacity: 1, y: 0 },
         }}
         transition={{ duration: 0.6 }}
-        className="font-gellix text-center md:my-56"
+        className="font-gellix text-center md:my-40"
       >
-        <div className="flex justify-between items-baseline mb-16">
+        <div className="flex justify-between items-baseline mb-8">
           <h4 className="text-base sm:text-lg md:text-3xl font-semibold mt-6 sm:mt-8 md:mt-4">
             Latest News
           </h4>
-          <Link href={'/'}>View All</Link>
+          <Link href={'/'} className="text-sm">
+            View All
+          </Link>
         </div>
-
         <div className="flex gap-5 justify-center">
           <div className="w-[68%] h-full">
             <BlogCard
@@ -252,7 +252,6 @@ export default function HeroSection() {
               readTime="2 min read"
             />
           </div>
-
           <div className="w-[32%] h-full">
             <BlogCard
               img="/assets/images/Webapp/Home/news2.png"
@@ -263,92 +262,64 @@ export default function HeroSection() {
             />
           </div>
         </div>
-      </motion.section>
-      {/* Thinks Section */}
-      <motion.section
-        ref={ref5}
-        initial="hidden"
-        animate={controls5}
-        variants={{
-          hidden: { opacity: 0, y: 50 },
-          visible: { opacity: 1, y: 0 },
-        }}
-        transition={{ duration: 0.6 }}
-        className="font-gellix px-4 mt-20"
-      >
-        <div>
-          <div className="flex flex-col sm:flex-row gap-x-12 sm:gap-x-28 w-full">
-            <div className="flex flex-col sm:flex-row justify-between gap-10 sm:gap-48 w-full md:w-10/12 mx-auto">
-              <h1 className="text-4xl sm:text-6xl md:text-6xl font-semibold tracking-tight text-white mb-0 md:mb-6">
-                Thinks.
-              </h1>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-              >
-                <Image
-                  src="/assets/images/Webapp/Home/sofaimg.png"
-                  alt="chatbox.png"
-                  width={900}
-                  height={900}
-                  className="w-auto md:h-[500px]"
-                  priority
-                />
-                <h3 className="text-2xl sm:text-5xl md:text-5xl font-semibold text-white mt-1 md:mt-5">
-                  Struggle with 10+ tools
-                </h3>
-              </motion.div>
-            </div>
-          </div>
-          <div className="flex flex-col sm:flex-row justify-center gap-x-12 sm:gap-x-28 mt-10 sm:mt-14 w-full md:w-10/12 mx-auto">
-            <div className="flex flex-col sm:flex-row justify-center gap-x-12 sm:gap-x-28">
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                className="mb-10 md:mb-0"
-              >
-                <Image
-                  src="/assets/images/Webapp/Home/sofa2.png"
-                  alt="chatbox.png"
-                  width={900}
-                  height={900}
-                  priority
-                />
-                <h3 className="text-2xl sm:text-5xl md:text-5xl font-semibold text-white mt-1 md:mt-5">
-                  Struggle with 10+ tools
-                </h3>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-              >
-                <Image
-                  src="/assets/images/Webapp/Home/sofa3.png"
-                  alt="chatbox.png"
-                  width={900}
-                  height={900}
-                  priority
-                />
-                <h3 className="text-2xl sm:text-5xl md:text-5xl font-semibold text-white mt-1 md:mt-5">
-                  Struggle with 10+ tools
-                </h3>
-              </motion.div>
-            </div>
-          </div>
+        {/* Blog Section */}
+        <div className="flex justify-between items-baseline mt-20 mb-8">
+          <h4 className="text-base sm:text-lg md:text-3xl font-semibold mt-6 sm:mt-8 md:mt-4">
+            Build
+          </h4>
+          <Link href={'/'} className="text-sm">
+            View All
+          </Link>
         </div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="w-full flex justify-center mt-6 sm:mt-8"
-        >
-          <button className="w-auto text-sm md:text-lg border border-white bg-white text-black transition-all duration-300 p-2 px-6 rounded-3xl font-semibold cursor-pointer">
-            Read me
-          </button>
-        </motion.div>
+        <div className="flex gap-5 justify-center">
+          <BlogCard
+            img="/assets/images/Webapp/Home/blog1.png"
+            title="Behind kOne: Building the Brain of the Brand OS"
+            category="Development"
+            date="June 20, 2025"
+            readTime="2 min read"
+          />
+          <BlogCard
+            img="/assets/images/Webapp/Home/blog3.png"
+            title="Design That Doesn’t Break at Scale"
+            category="Case Study"
+            date="May 15, 2025"
+            readTime="3 min read"
+          />
+          <BlogCard
+            img="/assets/images/Webapp/Home/blog3.png"
+            title="The Tools Behind Our Thinking"
+            category="Development"
+            date="May 15, 2025"
+            readTime="3 min read"
+          />
+        </div>
+        {/* Thinks Blog */}
+        {/* Blog Section */}
+        <div className="flex justify-between items-baseline mt-20 mb-8">
+          <h4 className="text-base sm:text-lg md:text-3xl font-semibold mt-6 sm:mt-8 md:mt-4">
+            Thinks
+          </h4>
+          <Link href={'/'} className="text-sm">
+            View All
+          </Link>
+        </div>
+        <div className="flex gap-5 justify-center">
+          <BlogCard
+            img="/assets/images/Webapp/Home/thinkblog1.png"
+            title="Create Different — Why It’s Not Just a Slogan"
+            category="Philosophy"
+            date="June 20, 2025"
+            readTime="2 min read"
+          />
+          <BlogCard
+            img="/assets/images/Webapp/Home/thinkblog2.png"
+            title="Why UX Is the New Branding"
+            category="Research"
+            date="May 15, 2025"
+            readTime="3 min read"
+          />
+        </div>
       </motion.section>
       {/* CTA Section */}
       <motion.section
@@ -356,18 +327,10 @@ export default function HeroSection() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="mt-20 px-4 sm:px-0 font-gellix"
       >
-        <div
-          className="p-5 md:p-14 text-white md:w-10/12 mx-auto text-center mt-20 sm:mt-28"
-          style={{ background: 'linear-gradient(71deg, #71D8E1 10.04%, #1B364B 69.45%)' }}
-        >
-          <h1 className="text-2xl md:text-5xl font-semibold tracking-tight md:my-11">
-            Start your brand with kOne.
-          </h1>
-          <button className="w-auto text-sm md:text-lg border mt-2 md:mt-5 border-white bg-white text-black transition-all duration-300 px-3 p-2 md:px-6 rounded-3xl font-semibold cursor-pointer">
-            Get early access
-          </button>
+        <div className="p-5 md:p-28 bg-[#151515] text-center">
+          <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-8">Join kOne waitlist.</h1>
+          <LandingPageButton text="Visit kOne" color="white" />
         </div>
       </motion.section>
     </div>
