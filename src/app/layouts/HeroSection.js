@@ -329,7 +329,7 @@ export default function HeroSection() {
         transition={{ duration: 0.8 }}
       >
         <div className="p-5 md:p-28 bg-[#151515] text-center">
-          <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-8">Join kOne waitlist.</h1>
+          <h4 className="text-4xl md:text-5xl font-semibold tracking-tight mb-8">Join kOne waitlist.</h4>
           <LandingPageButton text="Visit kOne" color="white" />
         </div>
       </motion.section>
