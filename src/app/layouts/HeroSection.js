@@ -9,6 +9,7 @@ import Image from 'next/image'
 import FeatureSection from './FeatureScrollSection'
 import Footer from './Footer'
 import { LandingPageButton } from '@/components/landing/LandingPageButton'
+import LandingCard from '@/components/landing/LandingCard'
 export default function HeroSection() {
   // Animation controls for each section
   const controls1 = useAnimation()
@@ -85,10 +86,10 @@ export default function HeroSection() {
           <Image
             src="/assets/images/Webapp/Home/line.svg"
             alt="Logo"
-            width={8000}
-            height={8000}
-            className="mt-32"
-            priority
+            width={100}
+            height={100}
+            className="mt-32 w-full"
+            priority            
           />
         </motion.div>
       </section>
@@ -120,19 +121,29 @@ export default function HeroSection() {
             We partner with ambitious teams to design, build, and scale modern brands — through two
             focused divisions: Studio and Tech.
           </motion.p>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="flex gap-4 justify-center items-center mt-12"
-          >
-            <button className="w-full sm:w-auto text-sm md:text-lg border border-white bg-white text-black transition-all duration-300 px-2 p-2 md:px-6 rounded-3xl font-semibold cursor-pointer">
-              Join early access
-            </button>
-            <button className="w-full sm:w-auto text-sm md:text-lg border border-white bg-black text-white transition-all duration-300 px-2 p-2 md:px-6 rounded-3xl font-semibold cursor-pointer">
-              Features
-            </button>
-          </motion.div>
+        </div>
+        <div className="flex justify-center gap-5 my-20">
+          <LandingCard
+            logo="/assets/images/logo/Kiorons_icon.png"
+            label="Studio"
+            heading="Creating standout brands and digital-first experiences."
+            points={['Branding', 'Design system']}
+            buttons={[
+              { text: 'Explore Studio', color: 'white' },
+              { text: 'Services', color: 'none' },
+            ]}
+          />
+
+          <LandingCard
+            logo="/assets/images/logo/Kiorons_icon.png"
+            label="Tech"
+            heading="Building products and platforms that scale."
+            points={['SaaS', 'Automations']}
+            buttons={[
+              { text: 'Explore Tech', color: 'white' },
+              { text: 'Services', color: 'none' },
+            ]}
+          />
         </div>
       </motion.section>
       <FeatureSection />
