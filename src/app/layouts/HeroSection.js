@@ -10,6 +10,8 @@ import FeatureSection from './FeatureScrollSection'
 import Footer from './Footer'
 import { LandingPageButton } from '@/components/landing/LandingPageButton'
 import LandingCard from '@/components/landing/LandingCard'
+import Link from 'next/link'
+import BlogCard from '@/components/landing/BlogCard'
 export default function HeroSection() {
   // Animation controls for each section
   const controls1 = useAnimation()
@@ -43,7 +45,7 @@ export default function HeroSection() {
     inView5,
   ])
   return (
-    <div className="scroll-smooth w-9/12 mx-auto">
+    <div className="scroll-smooth w-9/12 mx-auto font-gellix">
       {/* Hero Section */}
       <section className="relative min-h-[60vh] md:min-h-screen flex flex-col justify-center items-center align-middle !gap-y-0 bg-black font-gellix">
         <motion.div
@@ -223,7 +225,7 @@ export default function HeroSection() {
 
       {/* "No templates" Section */}
       <motion.section
-        ref={ref4}
+        ref={ref5}
         initial="hidden"
         animate={controls4}
         variants={{
@@ -231,66 +233,35 @@ export default function HeroSection() {
           visible: { opacity: 1, y: 0 },
         }}
         transition={{ duration: 0.6 }}
-        className="font-gellix flex flex-col justify-center items-center w-full sm:px-0"
-        style={{
-          backgroundImage: 'url("/assets/images/Webapp/Home/rays.svg")',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          backgroundSize: 'initial',
-        }}
+        className="font-gellix text-center md:my-56"
       >
-        <div className="z-10 my-36 sm:my-60">
-          <h1 className="text-5xl sm:text-7xl md:text-8xl font-semibold tracking-tight text-white">
-            No templates.
-          </h1>
-          <h1 className="text-5xl sm:text-7xl md:text-8xl font-semibold tracking-tight text-white">
-            No clutter.
-          </h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-base sm:text-4xl font-medium tracking-tight mt-6 sm:mt-11"
-          >
-            Kiorons is designed to think like you do. It
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-base sm:text-4xl font-medium tracking-tight"
-          >
-            doesn't just build — it helps shape your
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-base sm:text-4xl font-medium tracking-tight"
-          >
-            brand, visuals, voice, and vision. All with
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="text-base sm:text-4xl font-medium tracking-tight"
-          >
-            intelligence.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-            className="flex flex-row gap-4 justify-center items-center mt-16 md:mt-28"
-          >
-            <button className="w-full sm:w-auto text-sm md:text-lg border border-white bg-white text-black transition-all duration-300 px-2 p-2 md:px-6 rounded-3xl font-semibold cursor-pointer">
-              Know about us
-            </button>
-            <button className="w-full sm:w-auto text-sm md:text-lg border border-white bg-black text-white transition-all duration-300 px-2 p-2 md:px-6 rounded-3xl font-semibold cursor-pointer">
-              Features
-            </button>
-          </motion.div>
+        <div className="flex justify-between items-baseline mb-16">
+          <h4 className="text-base sm:text-lg md:text-3xl font-semibold mt-6 sm:mt-8 md:mt-4">
+            Latest News
+          </h4>
+          <Link href={'/'}>View All</Link>
+        </div>
+
+        <div className="flex gap-5 justify-center">
+          <div className="w-[68%] h-full">
+            <BlogCard
+              img="/assets/images/Webapp/Home/news1.png"
+              title="Introducing kOne — The Operating System for Modern Brands"
+              category="Announcements"
+              date="June 20, 2025"
+              readTime="2 min read"
+            />
+          </div>
+
+          <div className="w-[32%] h-full">
+            <BlogCard
+              img="/assets/images/Webapp/Home/news2.png"
+              title="What’s New in Our Platform — May 2025 Updates"
+              category="Product Updates"
+              date="May 15, 2025"
+              readTime="3 min read"
+            />
+          </div>
         </div>
       </motion.section>
       {/* Thinks Section */}
