@@ -156,7 +156,7 @@ export default function HeroSection() {
           visible: { opacity: 1, y: 0 },
         }}
         transition={{ duration: 0.6 }}
-        className="font-gellix px-4 sm:px-28 text-center mt-28 mb-12 md:my-64"
+        className="font-gellix px-4 sm:px-28 text-center md:my-56"
       >
         <div>
           <motion.p
@@ -178,8 +178,49 @@ export default function HeroSection() {
           >
             kOne
           </h1>
+
+          <div className="relative mt-32 w-full">
+            <Image
+              src="/assets/images/Webapp/Home/videoSection.png"
+              alt="Video Background"
+              width={900}
+              height={900}
+              className="w-full"
+            />
+
+            <Image
+              src="/assets/images/icons/play_arrow.svg"
+              alt="Play Button"
+              width={100}
+              height={100}
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"
+              priority
+            />
+          </div>
         </div>
       </motion.section>
+
+      <motion.section
+        ref={ref4}
+        initial="hidden"
+        animate={controls3}
+        variants={{
+          hidden: { opacity: 0, y: 50 },
+          visible: { opacity: 1, y: 0 },
+        }}
+        transition={{ duration: 0.6 }}
+        className="font-gellix px-4 sm:px-28 text-center md:my-56"
+      >
+        <div>
+          <p className="text-base sm:text-lg md:text-4xl font-semibold">From ideation to launch,</p>
+          <p className="text-base sm:text-lg md:text-4xl font-semibold text-center mb-12">
+            kOne is the world's first AI-powered brand ecosystem — designed to create, manage, and
+            scale modern brands with one unified intelligence.
+          </p>
+          <LandingPageButton text="Visit kOne" color="white" />
+        </div>
+      </motion.section>
+
       {/* "No templates" Section */}
       <motion.section
         ref={ref4}
