@@ -5,18 +5,18 @@ export default function LandingCard({ logo, label, heading, points, buttons }) {
   return (
     <div className="bg-[#151515] flex flex-col justify-between p-8 rounded-xl text-white w-full max-w-xl">
       {/* Logo and Label */}
-      <div className="flex items-center gap-1 mb-20">
-        <Image src={logo} alt="Logo" width={20} height={20} className="animate-fade-up w-auto h-7 mt-1.5" />
-        <span className="text-4xl font-semibold">{label}</span>
+      <div className="flex items-center gap-1 mb-12 md:mb-20">
+        <Image src={logo} alt="Logo" width={20} height={20} className="animate-fade-up w-auto h-5 md:h-7 mt-1.5" />
+        <span className="text-2xl md:text-4xl font-semibold">{label}</span>
       </div>
 
       {/* Heading */}
-      <h3 className="text-5xl font-medium mb-14 w-10/12">{heading}</h3>
+      <h3 className="text-3xl md:text-5xl font-medium mb-10 md:mb-14 md:w-10/12">{heading}</h3>
 
       {/* Bullet Points */}
-      <ul className="list-disc list-inside mb-28 space-y-2">
+      <ul className="list-disc list-inside mb-16 md:mb-28 space-y-2">
         {points.map((point, idx) => (
-          <li className="text-2xl font-semibold" key={idx}>
+          <li className="text-md md:text-2xl font-semibold" key={idx}>
             {point}
           </li>
         ))}
