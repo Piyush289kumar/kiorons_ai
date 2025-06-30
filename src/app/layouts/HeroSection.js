@@ -50,7 +50,7 @@ export default function HeroSection() {
     inView6,
   ])
   return (
-    <div className="scroll-smooth w-9/12 mx-auto font-gellix">
+    <div className="scroll-smooth w-11/12 mx-auto font-gellix">
       {/* Hero Section */}
       <section className="relative min-h-[60vh] md:min-h-screen flex flex-col justify-center items-center align-middle !gap-y-0 bg-black font-gellix">
         <motion.div
@@ -329,7 +329,9 @@ export default function HeroSection() {
         transition={{ duration: 0.8 }}
       >
         <div className="p-5 md:p-28 bg-[#151515] text-center">
-          <h4 className="text-4xl md:text-5xl font-semibold tracking-tight mb-8">Join kOne waitlist.</h4>
+          <h4 className="text-4xl md:text-5xl font-semibold tracking-tight mb-8">
+            Join kOne waitlist.
+          </h4>
           <LandingPageButton text="Visit kOne" color="white" />
         </div>
       </motion.section>
