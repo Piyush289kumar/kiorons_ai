@@ -143,156 +143,77 @@ export default function TechSection() {
         </div>
       </motion.section>
 
-      {/* Meet kOne */}
-      <motion.section
-        ref={ref3}
-        initial="hidden"
-        animate={controls3}
-        variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } }}
-        transition={{ duration: 0.6 }}
-        className="font-gellix px-4 sm:px-6 lg:px-28 text-center my-24 md:my-56"
-      >
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-          className="text-base sm:text-lg md:text-4xl font-medium mt-6 sm:mt-8 md:mt-4"
-        >
-          Meet
-        </motion.p>
-        <h1
-          className="text-5xl sm:text-7xl md:text-[160px] font-semibold text-transparent bg-clip-text tracking-tight"
-          style={{
-            backgroundImage: 'linear-gradient(91deg, #FFF 50%, #80D3D7 61.75%, #0D335D 93.49%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}
-        >
-          kOne
-        </h1>
-        <div className="relative mt-16 sm:mt-32 w-full">
-          <Image
-            src="/assets/images/Webapp/Home/videoSection.png"
-            alt="Video Background"
-            width={900}
-            height={900}
-            className="w-full"
-          />
-          <Image
-            src="/assets/images/icons/play_arrow.svg"
-            alt="Play Button"
-            width={100}
-            height={100}
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"
-            priority
-          />
-        </div>
-      </motion.section>
-
-      {/* AI Description */}
-      <motion.section
-        ref={ref4}
-        initial="hidden"
-        animate={controls4}
-        variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } }}
-        transition={{ duration: 0.6 }}
-        className="font-gellix px-4 sm:px-6 lg:px-28 text-center my-28 md:my-40"
-      >
-        <p className="text-base sm:text-lg md:text-4xl font-semibold">From ideation to launch,</p>
-        <p className="text-base sm:text-lg md:text-4xl font-semibold mb-12">
-          kOne is the world's first AI-powered brand ecosystem — designed to create, manage, and
-          scale modern brands with one unified intelligence.
-        </p>
-        <LandingPageButton text="Visit kOne" color="white" />
-      </motion.section>
-
       {/* Blog Cards */}
-      <motion.section
-        ref={ref5}
-        initial="hidden"
-        animate={controls4}
-        variants={{
-          hidden: { opacity: 0, y: 50 },
-          visible: { opacity: 1, y: 0 },
-        }}
-        transition={{ duration: 0.6 }}
-        className="font-gellix text-center my-10 md:my-40"
-      >
-        <div className="flex justify-between items-baseline mb-8">
-          <h4 className="text-2xl md:text-3xl font-semibold mt-6 sm:mt-8 md:mt-4">Latest News</h4>
-          <Link href={'/'} className="text-sm">
-            View All
-          </Link>
-        </div>
-        <div className="flex flex-wrap md:flex-nowrap gap-5 justify-center">
-          <div className="w-full md:w-[68%] h-full">
-            <BlogCard
-              img="/assets/images/Webapp/Home/news1.png"
-              title="Introducing kOne — The Operating System for Modern Brands"
-              category="Announcements"
-              date="June 20, 2025"
-              readTime="2 min read"
-            />
-          </div>
-          <div className="full md:w-[32%] h-full">
-            <BlogCard
-              img="/assets/images/Webapp/Home/news2.png"
-              title="What’s New in Our Platform — May 2025 Updates"
-              category="Product Updates"
-              date="May 15, 2025"
-              readTime="3 min read"
-            />
-          </div>
-        </div>
-        {/* Blog Section */}
-        <div className="flex justify-between items-baseline mt-8 md:mt-20 mb-8">
-          <h4 className="text-2xl md:text-3xl font-semibold mt-6 sm:mt-8 md:mt-4">Build</h4>
-          <Link href={'/'} className="text-sm">
-            View All
-          </Link>
-        </div>
+      <motion.section className="font-gellix text-center my-10 md:my-40">
+        <p className="text-base sm:text-lg md:text-4xl font-semibold mb-20">
+          How we think. How we build.
+        </p>
+
         <div className="flex flex-wrap md:flex-nowrap gap-5 justify-center">
           <BlogCard
-            img="/assets/images/Webapp/Home/blog1.png"
-            title="Behind kOne: Building the Brain of the Brand OS"
+            img="/assets/images/Webapp/Home/techblog1.png"
+            title="Engineering Principles at Kiorons"
             category="Development"
             date="June 20, 2025"
             readTime="2 min read"
           />
           <BlogCard
-            img="/assets/images/Webapp/Home/blog3.png"
-            title="Design That Doesn’t Break at Scale"
+            img="/assets/images/Webapp/Home/techblog2.png"
+            title="Human-Centered AI: Our Product Mindset"
             category="Case Study"
             date="May 15, 2025"
             readTime="3 min read"
           />
           <BlogCard
-            img="/assets/images/Webapp/Home/blog3.png"
-            title="The Tools Behind Our Thinking"
+            img="/assets/images/Webapp/Home/techblog3.png"
+            title="From Prototype to Platform"
             category="Development"
             date="May 15, 2025"
             readTime="3 min read"
           />
         </div>
-        {/* Thinks Blog */}
+      </motion.section>
+
+      {/* AI Description */}
+      <motion.section className="font-gellix px-4 sm:px-6 lg:px-28 text-center my-28 md:my-56 w-10/12 mx-auto">
+        <h4 className="text-lg md:text-4xl font-medium mb-12">
+          From our first meeting, we knew we were in good hands. Kiorons brought our product idea to
+          life — beautifully and intelligently.
+        </h4>
+        <p className="text-base md:text-lg font-semibold mt-8 md:mt-16 text-wrap text-center">
+          — Founder, Seed-stage SaaS Startup
+        </p>
+      </motion.section>
+
+      {/* Blog Cards */}
+      <motion.section className="font-gellix text-center my-10 md:my-40">
         <div className="flex justify-between items-baseline mt-8 md:mt-20 mb-8">
-          <h4 className="text-2xl md:text-3xl font-semibold mt-6 sm:mt-8 md:mt-4">Thinks</h4>
+          <h4 className="text-2xl md:text-3xl font-semibold mt-6 sm:mt-8 md:mt-4">
+            Ideas. Insights. Inside Kiorons.
+          </h4>
           <Link href={'/'} className="text-sm">
             View All
           </Link>
         </div>
         <div className="flex flex-wrap md:flex-nowrap gap-5 justify-center">
           <BlogCard
-            img="/assets/images/Webapp/Home/thinkblog1.png"
-            title="Create Different — Why It’s Not Just a Slogan"
-            category="Philosophy"
+            img="/assets/images/Webapp/Home/techblog4.png"
+            title="Designing for Scale: Our System-First Approach"
+            category="Development"
             date="June 20, 2025"
             readTime="2 min read"
           />
           <BlogCard
-            img="/assets/images/Webapp/Home/thinkblog2.png"
-            title="Why UX Is the New Branding"
-            category="Research"
+            img="/assets/images/Webapp/Home/techblog5.png"
+            title="Brand as Operating System"
+            category="Case Study"
+            date="May 15, 2025"
+            readTime="3 min read"
+          />
+          <BlogCard
+            img="/assets/images/Webapp/Home/techblog6.png"
+            title="The Tools Behind Our Thinking"
+            category="Development"
             date="May 15, 2025"
             readTime="3 min read"
           />
@@ -308,9 +229,9 @@ export default function TechSection() {
       >
         <div className="p-8 md:p-28 bg-[#151515] text-center">
           <h4 className=" text-3xl md:text-5xl font-semibold tracking-tight mb-3 md:mb-8">
-            Join kOne waitlist.
+            Ready to build the future?
           </h4>
-          <LandingPageButton text="Visit kOne" color="white" />
+          <LandingPageButton text="Contact the Tech" color="white" href="#" />
         </div>
       </motion.section>
     </div>
