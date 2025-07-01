@@ -53,13 +53,14 @@ export default function TechSection() {
     { src: '/assets/images/partners/Medium.svg', alt: 'Medium' },
     { src: '/assets/images/partners/monday.svg', alt: 'Monday' },
     { src: '/assets/images/partners/Jitter.svg', alt: 'Jitter' },
-    { src: '/assets/images/partners/monday.svg', alt: 'Monday' }, // Duplicate? Consider removing or replacing.
+    { src: '/assets/images/partners/monday.svg', alt: 'Monday' },
+    { src: '/assets/images/partners/Sentry.svg', alt: 'Sentry' },
   ]
 
   return (
     <div className="scroll-smooth w-11/12 mx-auto font-gellix">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col justify-center items-center gap-y-0 bg-black px-4 sm:px-6 md:px-0">
+      <section className="relative min-h-[95vh] md:min-h-screen flex flex-col justify-center items-center gap-y-0 bg-black px-4 sm:px-6 md:px-0">
         <motion.div
           ref={ref1}
           initial="hidden"
@@ -68,7 +69,7 @@ export default function TechSection() {
           transition={{ duration: 0.8 }}
           className="text-center z-10"
         >
-          <p className="text-sm font-medium mb-20">Tech</p>
+          <p className="text-sm font-medium mb-10 md:mb-20">Tech</p>
 
           <h1 className="text-7xl md:text-9xl font-semibold tracking-tight">Build. Smarter.</h1>
           <motion.p
@@ -98,12 +99,15 @@ export default function TechSection() {
         animate={controls2}
         variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } }}
         transition={{ duration: 0.6 }}
-        className="font-gellix px-4 sm:px-6 mb-24 md:mb-56"
+        className="font-gellix px-4 sm:px-6 md:mb-56"
       >
         <div className="text-center">
-          <h1 className="text-5xl font-semibold tracking-tight">Trusted by Visionaries</h1>
+          <h1 className="text-3xl md:text-5xl font-semibold tracking-tight">
+            Trusted by Visionaries
+          </h1>
 
-          <div className="flex flex-col lg:flex-row justify-center gap-8 mt-24">
+          {/* <div className="flex flex-col lg:flex-row justify-center gap-8 mt-12 md:mt-24"> */}
+          <div className="grid grid-cols-3 md:flex gap-4 md:gap-4 mt-12 md:mt-24">
             {partners.map((partner, idx) => (
               <Image
                 key={idx}
@@ -118,11 +122,11 @@ export default function TechSection() {
         </div>
       </motion.section>
 
-      <motion.section className="font-gellix px-4 sm:px-6 my-24 md:my-56">
-        <h3 className="text-5xl font-semibold tracking-tight text-center">
+      <motion.section className="font-gellix px-4 sm:px-6 my-32 md:my-56">
+        <h3 className="text-3xl md:text-5xl font-semibold tracking-tight text-center">
           What we build. How it performs.
         </h3>
-        <div className="flex flex-col lg:flex-row justify-center gap-8 mt-28">
+        <div className="flex flex-col lg:flex-row justify-center gap-4 md:gap-8 mt-11 md:mt-28">
           <LandingInfoCard
             logo="/assets/images/icons/system-cloud.svg"
             label="Platform Engineering"
@@ -146,7 +150,7 @@ export default function TechSection() {
 
       {/* Blog Cards */}
       <motion.section className="font-gellix text-center my-10 md:my-40">
-        <p className="text-base sm:text-lg md:text-4xl font-semibold mb-20">
+        <p className="text-3xl md:text-4xl font-semibold mb-10 md:mb-20">
           How we think. How we build.
         </p>
 
@@ -176,21 +180,21 @@ export default function TechSection() {
       </motion.section>
 
       {/* AI Description */}
-      <motion.section className="font-gellix px-4 sm:px-6 lg:px-28 text-center my-28 md:my-56 w-10/12 mx-auto">
-        <h4 className="text-lg md:text-4xl font-medium mb-12">
+      <motion.section className="font-gellix px-4 sm:px-6 lg:px-28 text-center my-28 md:my-56 md:w-10/12 mx-auto">
+        <h4 className="text-xl md:text-4xl font-medium mb-6 md:mb-12">
           From our first meeting, we knew we were in good hands. Kiorons brought our product idea to
           life — beautifully and intelligently.
         </h4>
-        <p className="text-base md:text-lg font-semibold mt-8 md:mt-16 text-wrap text-center">
+        <p className="text-sm md:text-lg italic font-semibold md:mt-16 text-wrap text-center ">
           — Founder, Seed-stage SaaS Startup
         </p>
       </motion.section>
 
       <motion.section className="font-gellix px-4 sm:px-6 my-24 md:my-56">
-        <h3 className="text-5xl font-semibold tracking-tight text-center">
+        <h3 className="text-3xl md:text-5xl font-semibold tracking-tight text-center">
           Engineered to Perform. Built to Scale.
         </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-28">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8 mt-11 md:mt-28">
           <LandingInAnalysisCard
             label="30+"
             heading="Platforms, SaaS products, and AI tools shipped."
@@ -215,16 +219,16 @@ export default function TechSection() {
       </motion.section>
 
       {/* Blog Cards */}
-      <motion.section className="font-gellix text-center my-10 md:my-40">
+      <motion.section className="font-gellix my-10 md:my-40">
         <div className="flex justify-between items-baseline mt-8 md:mt-20 mb-8">
-          <h4 className="text-2xl md:text-3xl font-semibold mt-6 sm:mt-8 md:mt-4">
+          <h4 className="text-xl md:text-3xl font-semibold mt-6 sm:mt-8 md:mt-4">
             Ideas. Insights. Inside Kiorons.
           </h4>
           <Link href={'/'} className="text-sm">
             View All
           </Link>
         </div>
-        <div className="flex flex-wrap md:flex-nowrap gap-5 justify-center">
+        <div className="flex flex-wrap md:flex-nowrap gap-12 md:gap-5 justify-center">
           <BlogCard
             img="/assets/images/Webapp/Home/techblog4.png"
             title="Designing for Scale: Our System-First Approach"
@@ -257,7 +261,7 @@ export default function TechSection() {
         transition={{ duration: 0.8 }}
       >
         <div className="p-8 md:p-28 bg-[#151515] text-center">
-          <h4 className=" text-3xl md:text-5xl font-semibold tracking-tight mb-3 md:mb-8">
+          <h4 className=" text-2xl md:text-5xl font-semibold tracking-tight mb-3 md:mb-8">
             Ready to build the future?
           </h4>
           <LandingPageButton text="Contact the Tech" color="white" href="#" />

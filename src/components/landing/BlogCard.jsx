@@ -13,7 +13,7 @@ export default function BlogCard({ img, title, category, date, readTime }) {
         priority
       />
 
-      <p className="text-base md:text-2xl font-semibold text-start mt-2 text-wrap overscroll-auto">{title}</p>
+      <p className="text-xl md:text-2xl font-semibold text-start mt-2 text-wrap overscroll-auto">{title}</p>
 
       <div className="flex flex-wrap gap-3 items-baseline mt-4">
         <p className="text-[15px] font-semibold">{category}</p>
