@@ -76,7 +76,7 @@ export default function TechSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-base sm:text-lg md:text-2xl font-medium mt-3 md:mt-4 w-8/12 mx-auto"
+            className="text-base sm:text-lg md:text-2xl font-medium mt-3 md:mt-10 w-8/12 mx-auto"
           >
             The digital engines behind tomorrow’s products — from AI to SaaS.
           </motion.p>
@@ -150,7 +150,7 @@ export default function TechSection() {
 
       {/* Blog Cards */}
       <motion.section className="font-gellix text-center my-10 md:my-40">
-        <p className="text-3xl md:text-4xl font-semibold mb-10 md:mb-20">
+        <p className="text-3xl md:text-5xl font-semibold mb-10 md:mb-20">
           How we think. How we build.
         </p>
 

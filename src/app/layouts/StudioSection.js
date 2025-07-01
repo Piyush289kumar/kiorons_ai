@@ -1,16 +1,13 @@
 'use client'
-
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { LandingPageButton } from '@/components/landing/LandingPageButton'
-import LandingCard from '@/components/landing/LandingCard'
 import BlogCard from '@/components/landing/BlogCard'
 import LandingInfoCard from '@/components/landing/LandingInforCard'
 import LandingInAnalysisCard from '@/components/landing/LandingInAnalysisCard'
-
 export default function StudioSection() {
   const controls1 = useAnimation()
   const controls2 = useAnimation()
@@ -18,14 +15,12 @@ export default function StudioSection() {
   const controls4 = useAnimation()
   const controls5 = useAnimation()
   const controls6 = useAnimation()
-
   const [ref1, inView1] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [ref2, inView2] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [ref3, inView3] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [ref4, inView4] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [ref5, inView5] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [ref6, inView6] = useInView({ triggerOnce: true, threshold: 0.1 })
-
   useEffect(() => {
     if (inView1) controls1.start('visible')
     if (inView2) controls2.start('visible')
@@ -47,7 +42,6 @@ export default function StudioSection() {
     inView5,
     inView6,
   ])
-
   const partners = [
     { src: '/assets/images/partners/Sentry.svg', alt: 'Sentry' },
     { src: '/assets/images/partners/Medium.svg', alt: 'Medium' },
@@ -56,7 +50,6 @@ export default function StudioSection() {
     { src: '/assets/images/partners/monday.svg', alt: 'Monday' },
     { src: '/assets/images/partners/Sentry.svg', alt: 'Sentry' },
   ]
-
   return (
     <div className="scroll-smooth w-11/12 mx-auto font-gellix">
       {/* Hero Section */}
@@ -69,16 +62,15 @@ export default function StudioSection() {
           transition={{ duration: 0.8 }}
           className="text-center z-10"
         >
-          <p className="text-sm font-medium mb-10 md:mb-20">Tech</p>
-
-          <h1 className="text-7xl md:text-9xl font-semibold tracking-tight">Build. Smarter.</h1>
+          <p className="text-sm font-medium mb-10 md:mb-20">Studio</p>
+          <h1 className="text-7xl md:text-9xl font-semibold tracking-tight">Design. Defined.</h1>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-base sm:text-lg md:text-2xl font-medium mt-3 md:mt-4 w-8/12 mx-auto"
+            className="text-base sm:text-lg md:text-2xl font-medium mt-3 md:mt-10 w-8/12 mx-auto"
           >
-            The digital engines behind tomorrow’s products — from AI to SaaS.
+            The visual systems that drive modern brands, products, and platforms.
           </motion.p>
           <motion.div
             initial={{ opacity: 0 }}
@@ -91,7 +83,6 @@ export default function StudioSection() {
           </motion.div>
         </motion.div>
       </section>
-
       {/* Two Divisions */}
       <motion.section
         ref={ref2}
@@ -103,9 +94,8 @@ export default function StudioSection() {
       >
         <div className="text-center">
           <h1 className="text-3xl md:text-5xl font-semibold tracking-tight">
-            Trusted by Visionaries
+            Trusted by 50+ forward-thinking brands
           </h1>
-
           {/* <div className="flex flex-col lg:flex-row justify-center gap-8 mt-12 md:mt-24"> */}
           <div className="grid grid-cols-3 md:flex gap-4 md:gap-4 mt-12 md:mt-24">
             {partners.map((partner, idx) => (
@@ -121,7 +111,6 @@ export default function StudioSection() {
           </div>
         </div>
       </motion.section>
-
       <motion.section className="font-gellix px-4 sm:px-6 my-32 md:my-56">
         <h3 className="text-3xl md:text-5xl font-semibold tracking-tight text-center">
           What we build. How it performs.
@@ -129,31 +118,29 @@ export default function StudioSection() {
         <div className="flex flex-col lg:flex-row justify-center gap-4 md:gap-8 mt-11 md:mt-28">
           <LandingInfoCard
             logo="/assets/images/icons/system-cloud.svg"
-            label="Platform Engineering"
+            label="Brand Systems"
             heading="Built to scale. Structured to last."
             subheading="We craft identity frameworks that stay relevant as your company grows — complete with scalable guidelines, systems, and a clear voice across every touchpoint."
           />
           <LandingInfoCard
             logo="/assets/images/icons/layers.svg"
-            label="AI-Driven Tools"
-            heading="Smarter systems. Faster results."
+            label="Digital Interfaces"
+            heading="Designed for humans. Built for scale."
             subheading="From SaaS dashboards to product onboarding, we design UI/UX that simplifies decisions and adapts to real user behavior  beautifully and functionally."
           />
           <LandingInfoCard
             logo="/assets/images/icons/fullstack.svg"
-            label="Full-Stack Development"
-            heading="From idea to interface."
+            label="Design Infrastructure"
+            heading="Not just pixels — process.."
             subheading="We build design ecosystems: token-based systems, dev-ready libraries, and documented workflows that turn creativity into operational scale."
           />
         </div>
       </motion.section>
-
       {/* Blog Cards */}
       <motion.section className="font-gellix text-center my-10 md:my-40">
-        <p className="text-3xl md:text-4xl font-semibold mb-10 md:mb-20">
+        <p className="text-3xl md:text-5xl font-semibold mb-10 md:mb-20">
           How we think. How we build.
         </p>
-
         <div className="flex flex-wrap md:flex-nowrap gap-5 justify-center">
           <BlogCard
             img="/assets/images/Webapp/Home/techblog1.png"
@@ -178,46 +165,44 @@ export default function StudioSection() {
           />
         </div>
       </motion.section>
-
       {/* AI Description */}
       <motion.section className="font-gellix px-4 sm:px-6 lg:px-28 text-center my-28 md:my-56 md:w-10/12 mx-auto">
         <h4 className="text-xl md:text-4xl font-medium mb-6 md:mb-12">
-          From our first meeting, we knew we were in good hands. Kiorons brought our product idea to
-          life — beautifully and intelligently.
+          Kiorons Studio isn’t just a design partner — they became our brand’s operating system.
+          Every piece of work was thoughtful, scalable, and built like it belonged to our internal
+          team.
         </h4>
         <p className="text-sm md:text-lg italic font-semibold md:mt-16 text-wrap text-center ">
           — Founder, Seed-stage SaaS Startup
         </p>
       </motion.section>
-
       <motion.section className="font-gellix px-4 sm:px-6 my-24 md:my-56">
         <h3 className="text-3xl md:text-5xl font-semibold tracking-tight text-center">
-          Engineered to Perform. Built to Scale.
+          Proven design. Real results.
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8 mt-11 md:mt-28">
           <LandingInAnalysisCard
-            label="30+"
-            heading="Platforms, SaaS products, and AI tools shipped."
-            subheading="We build future-ready systems for teams serious about scale."
+            label="50+"
+            heading="Brands & Products Built"
+            subheading="From early-stage to venture-backed — we’ve launched for teams that build seriously."
           />
           <LandingInAnalysisCard
-            label="6+"
+            label="5+"
             heading="Countries Served"
-            subheading="Collaboration without borders — our infrastructure powers teams globally."
+            subheading="Design language is universal. We work globally, in sync with fast-moving teams."
           />
           <LandingInAnalysisCard
             label="100%"
-            heading="Codebases deployed in production."
-            subheading="No prototypes for show. Every solution is tested, optimized, and shipped."
+            heading="Systems Adopted in Production"
+            subheading="Every design is built with devs in mind — clean, scalable, and implementation-ready."
           />
           <LandingInAnalysisCard
             label="98%"
-            heading="Clients return to build again."
-            subheading="From MVPs to enterprise platforms — we’re trusted for what’s next."
+            heading="Clients Returned"
+            subheading="We don’t chase retention — we earn it. Most clients return with their next product."
           />
         </div>
       </motion.section>
-
       {/* Blog Cards */}
       <motion.section className="font-gellix my-10 md:my-40">
         <div className="flex justify-between items-baseline mt-8 md:mt-20 mb-8">
@@ -252,7 +237,6 @@ export default function StudioSection() {
           />
         </div>
       </motion.section>
-
       {/* CTA */}
       <motion.section
         initial={{ opacity: 0 }}
@@ -262,7 +246,7 @@ export default function StudioSection() {
       >
         <div className="p-8 md:p-28 bg-[#151515] text-center">
           <h4 className=" text-2xl md:text-5xl font-semibold tracking-tight mb-3 md:mb-8">
-            Ready to build the future?
+            Let’s build the iconic.
           </h4>
           <LandingPageButton text="Contact the Tech" color="white" href="#" />
         </div>
