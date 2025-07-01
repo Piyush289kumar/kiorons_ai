@@ -6,7 +6,13 @@ export default function LandingCard({ logo, label, heading, points, buttons }) {
     <div className="bg-[#151515] flex flex-col justify-between p-8 rounded-xl text-white w-full max-w-xl">
       {/* Logo and Label */}
       <div className="flex items-center gap-1 mb-12 md:mb-20">
-        <Image src={logo} alt="Logo" width={20} height={20} className="animate-fade-up w-auto h-5 md:h-7 mt-1.5" />
+        <Image
+          src={logo}
+          alt="Logo"
+          width={20}
+          height={20}
+          className="animate-fade-up w-auto h-5 md:h-7 mt-1.5"
+        />
         <span className="text-2xl md:text-4xl font-semibold">{label}</span>
       </div>
 
@@ -25,7 +31,7 @@ export default function LandingCard({ logo, label, heading, points, buttons }) {
       {/* Buttons */}
       <div className="flex gap-3 mt-auto">
         {buttons.map((btn, idx) => (
-          <LandingPageButton key={idx} text={btn.text} color={btn.color} />
+          <LandingPageButton key={idx} text={btn.text} color={btn.color} href={btn.href} />
         ))}
       </div>
     </div>

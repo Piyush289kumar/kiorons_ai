@@ -11,25 +11,9 @@ import { SmoothCursor } from '@/components/components/ui/smooth-cursor'
 
 export default function Home() {
   return (
-    <>
-      {/* <SmoothCursor /> */}
+    <>      
       <div className="mx-auto w-full overflow-y-hidden">
-        <HeroSection />
-        {/* 
-        <MeetHumanOSSection />
-
-        <FadeUpSection>
-          <EverythingInOnePlaceSection />
-        </FadeUpSection>
-        <FadeUpSection>
-          <IdeaSection />
-        </FadeUpSection>
-        <FadeUpSection>
-          <KaiSection />
-        </FadeUpSection>
-        <FadeUpSection>
-          <ContactSection />
-        </FadeUpSection> */}        
+        <HeroSection />           
         <Footer/>
       </div>
     </>

@@ -8,8 +8,9 @@ import Link from 'next/link'
 import { LandingPageButton } from '@/components/landing/LandingPageButton'
 import LandingCard from '@/components/landing/LandingCard'
 import BlogCard from '@/components/landing/BlogCard'
+import LandingInfoCard from '@/components/landing/LandingInforCard'
 
-export default function HeroSection() {
+export default function TechSection() {
   const controls1 = useAnimation()
   const controls2 = useAnimation()
   const controls3 = useAnimation()
@@ -46,6 +47,14 @@ export default function HeroSection() {
     inView6,
   ])
 
+  const partners = [
+    { src: '/assets/images/partners/Sentry.svg', alt: 'Sentry' },
+    { src: '/assets/images/partners/Medium.svg', alt: 'Medium' },
+    { src: '/assets/images/partners/monday.svg', alt: 'Monday' },
+    { src: '/assets/images/partners/Jitter.svg', alt: 'Jitter' },
+    { src: '/assets/images/partners/monday.svg', alt: 'Monday' }, // Duplicate? Consider removing or replacing.
+  ]
+
   return (
     <div className="scroll-smooth w-11/12 mx-auto font-gellix">
       {/* Hero Section */}
@@ -56,16 +65,18 @@ export default function HeroSection() {
           animate={controls1}
           variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } }}
           transition={{ duration: 0.8 }}
-          className="text-center z-10 mt-24 md:mt-56"
+          className="text-center z-10"
         >
-          <h1 className="text-7xl md:text-9xl font-semibold tracking-tight">Create Different.</h1>
+          <p className="text-sm font-medium mb-20">Tech</p>
+
+          <h1 className="text-7xl md:text-9xl font-semibold tracking-tight">Build. Smarter.</h1>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-base sm:text-lg md:text-2xl font-medium mt-3 md:mt-4"
+            className="text-base sm:text-lg md:text-2xl font-medium mt-3 md:mt-4 w-8/12 mx-auto"
           >
-            Design, technology, and intelligence
+            The digital engines behind tomorrow’s products — from AI to SaaS.
           </motion.p>
           <motion.div
             initial={{ opacity: 0 }}
@@ -73,23 +84,9 @@ export default function HeroSection() {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="flex gap-2 md:gap-4 justify-center items-center mt-12"
           >
-            <LandingPageButton text="Visit kOne" color="white" />
-            <LandingPageButton text="Explore Services" color="black" />
+            <LandingPageButton text="Start Project" color="white" href="#" />
+            <LandingPageButton text="Capabilities" color="black" href="#" />
           </motion.div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-        >
-          <Image
-            src="/assets/images/Webapp/Home/line.svg"
-            alt="Logo"
-            width={100}
-            height={100}
-            className="mt-32 w-full"
-            priority
-          />
         </motion.div>
       </section>
 
@@ -100,41 +97,48 @@ export default function HeroSection() {
         animate={controls2}
         variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } }}
         transition={{ duration: 0.6 }}
-        className="font-gellix sm:pt-28 px-4 sm:px-6"
+        className="font-gellix px-4 sm:px-6 mb-24 md:mb-56"
       >
         <div className="text-center">
-          <h1 className="text-5xl md:text-7xl font-semibold tracking-tight">Two Divisions.</h1>
-          <h1 className="text-5xl md:text-7xl font-semibold tracking-tight">One Vision.</h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-md md:text-2xl font-semibold mt-6 sm:mt-11 w-full md:w-2/3 mx-auto"
-          >
-            We partner with ambitious teams to design, build, and scale modern brands — through two
-            focused divisions: Studio and Tech.
-          </motion.p>
+          <h1 className="text-5xl font-semibold tracking-tight">Trusted by Visionaries</h1>
+
+          <div className="flex flex-col lg:flex-row justify-center gap-8 mt-24">
+            {partners.map((partner, idx) => (
+              <Image
+                key={idx}
+                src={partner.src}
+                alt={partner.alt}
+                width={200}
+                height={28}
+                className="w-full h-7 object-contain"
+              />
+            ))}
+          </div>
         </div>
-        <div className="flex flex-col lg:flex-row justify-center gap-8 mt-12">
-          <LandingCard
-            logo="/assets/images/logo/Kiorons_icon.png"
-            label="Studio"
-            heading="Creating standout brands and digital-first experiences."
-            points={['Branding', 'Design system']}
-            buttons={[
-              { text: 'Explore Studio', color: 'white' },
-              { text: 'Services', color: 'none' },
-            ]}
+      </motion.section>
+
+      <motion.section className="font-gellix px-4 sm:px-6 my-24 md:my-56">
+        <h3 className="text-5xl font-semibold tracking-tight text-center">
+          What we build. How it performs.
+        </h3>
+        <div className="flex flex-col lg:flex-row justify-center gap-8 mt-28">
+          <LandingInfoCard
+            logo="/assets/images/icons/system-cloud.svg"
+            label="Platform Engineering"
+            heading="Built to scale. Structured to last."
+            subheading="We craft identity frameworks that stay relevant as your company grows — complete with scalable guidelines, systems, and a clear voice across every touchpoint."
           />
-          <LandingCard
-            logo="/assets/images/logo/Kiorons_icon.png"
-            label="Tech"
-            heading="Building products and platforms that scale."
-            points={['SaaS', 'Automations']}
-            buttons={[
-              { text: 'Explore Tech', color: 'white', href: '/tech' },
-              { text: 'Services', color: 'none' },
-            ]}
+          <LandingInfoCard
+            logo="/assets/images/icons/layers.svg"
+            label="AI-Driven Tools"
+            heading="Smarter systems. Faster results."
+            subheading="From SaaS dashboards to product onboarding, we design UI/UX that simplifies decisions and adapts to real user behavior  beautifully and functionally."
+          />
+          <LandingInfoCard
+            logo="/assets/images/icons/fullstack.svg"
+            label="Full-Stack Development"
+            heading="From idea to interface."
+            subheading="We build design ecosystems: token-based systems, dev-ready libraries, and documented workflows that turn creativity into operational scale."
           />
         </div>
       </motion.section>
