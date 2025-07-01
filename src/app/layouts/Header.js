@@ -48,10 +48,10 @@ export default function Header() {
         <nav
           className={`hidden md:flex gap-8 px-8 py-3 rounded-full text-white text-sm font-gellix backdrop-blur-md bg-white/10`}
         >
-          <a href="#" className="hover:underline">
+          <a href="/studio" className="hover:underline">
             Studio
           </a>
-          <a href="#" className="hover:underline">
+          <a href="/tech" className="hover:underline">
             Tech
           </a>
           <a href="#" className="hover:underline">
@@ -67,15 +67,14 @@ export default function Header() {
 
         {/* Right: Login Button and Hamburger for mobile */}
         <div className="flex items-center gap-4">
-
           <div className="flex items-center backdrop-blur-md bg-white/10 p-3 rounded-full">
-          <Image
-            src="/assets/images/icons/search.svg"
-            alt="Logo"
-            width={20}
-            height={20}
-            className="animate-fade-up"
-          />
+            <Image
+              src="/assets/images/icons/search.svg"
+              alt="Logo"
+              width={20}
+              height={20}
+              className="animate-fade-up"
+            />
           </div>
 
           {/* Hamburger Button for mobile */}
@@ -111,10 +110,13 @@ export default function Header() {
           onClick={() => setMenuOpen(false)} // close on link click
         >
           <a href="#" className="hover:underline">
-            kOne
+            Studio
           </a>
           <a href="#" className="hover:underline">
-            Solutions
+            Tech
+          </a>
+          <a href="#" className="hover:underline">
+            kOne
           </a>
           <a href="#" className="hover:underline">
             Company
@@ -122,15 +124,18 @@ export default function Header() {
           <a href="#" className="hover:underline">
             Think
           </a>
-          <a href="#" className="hover:underline">
-            News
-          </a>
-          <a href="/career" className="hover:underline">
-            Careers
-          </a>
-          <InteractiveHoverButton className="px-5 py-2 text-sm mt-4 w-full text-center">
-            Login
-          </InteractiveHoverButton>
+          <div className="flex items-center backdrop-blur-md bg-white/10 p-3 rounded-full">
+            <a href="/">
+              {' '}
+              <Image
+                src="/assets/images/logo/Kiorons_icon.png"
+                alt="Logo"
+                width={20}
+                height={20}
+                className="animate-fade-up"
+              />
+            </a>
+          </div>
         </nav>
       )}
     </header>

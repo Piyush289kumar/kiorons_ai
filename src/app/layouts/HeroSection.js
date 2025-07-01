@@ -133,7 +133,7 @@ export default function HeroSection() {
             points={['SaaS', 'Automations']}
             buttons={[
               { text: 'Explore Tech', color: 'white', href: '/tech' },
-              { text: 'Services', color: 'none' },
+              { text: 'Services', color: 'none', href: '/studio'},
             ]}
           />
         </div>
