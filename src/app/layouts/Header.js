@@ -33,8 +33,7 @@ export default function Header() {
               src="/assets/images/logo/Kiorons_icon.png"
               alt="Logo"
               width={20}
-              height={20}
-              className="animate-fade-up"
+              height={20}              
             />
           </a>
         </div>
