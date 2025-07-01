@@ -9,6 +9,7 @@ import { LandingPageButton } from '@/components/landing/LandingPageButton'
 import LandingCard from '@/components/landing/LandingCard'
 import BlogCard from '@/components/landing/BlogCard'
 import LandingInfoCard from '@/components/landing/LandingInforCard'
+import LandingInAnalysisCard from '@/components/landing/LandingInAnalysisCard'
 
 export default function TechSection() {
   const controls1 = useAnimation()
@@ -183,6 +184,34 @@ export default function TechSection() {
         <p className="text-base md:text-lg font-semibold mt-8 md:mt-16 text-wrap text-center">
           — Founder, Seed-stage SaaS Startup
         </p>
+      </motion.section>
+
+      <motion.section className="font-gellix px-4 sm:px-6 my-24 md:my-56">
+        <h3 className="text-5xl font-semibold tracking-tight text-center">
+          Engineered to Perform. Built to Scale.
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-28">
+          <LandingInAnalysisCard
+            label="30+"
+            heading="Platforms, SaaS products, and AI tools shipped."
+            subheading="We build future-ready systems for teams serious about scale."
+          />
+          <LandingInAnalysisCard
+            label="6+"
+            heading="Countries Served"
+            subheading="Collaboration without borders — our infrastructure powers teams globally."
+          />
+          <LandingInAnalysisCard
+            label="100%"
+            heading="Codebases deployed in production."
+            subheading="No prototypes for show. Every solution is tested, optimized, and shipped."
+          />
+          <LandingInAnalysisCard
+            label="98%"
+            heading="Clients return to build again."
+            subheading="From MVPs to enterprise platforms — we’re trusted for what’s next."
+          />
+        </div>
       </motion.section>
 
       {/* Blog Cards */}
