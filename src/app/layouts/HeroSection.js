@@ -2,7 +2,7 @@
 
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { LandingPageButton } from '@/components/landing/LandingPageButton'
@@ -45,6 +45,20 @@ export default function HeroSection() {
     inView5,
     inView6,
   ])
+
+  // Apis
+
+  const [recentBlogs, setRecentBlogs] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:8000/api/blogs')
+      .then((res) => res.json())
+      .then((data) => {
+        setRecentBlogs(data)
+        console.log(recentBlogs)
+      })
+      .catch((err) => console.error('Failed to fetch blogs', err))
+  }, [])
 
   return (
     <div className="scroll-smooth w-11/12 mx-auto font-gellix">
@@ -133,7 +147,7 @@ export default function HeroSection() {
             points={['SaaS', 'Automations']}
             buttons={[
               { text: 'Explore Tech', color: 'white', href: '/tech' },
-              { text: 'Services', color: 'none', href: '/studio'},
+              { text: 'Services', color: 'none', href: '/studio' },
             ]}
           />
         </div>
@@ -247,29 +261,26 @@ export default function HeroSection() {
             View All
           </Link>
         </div>
-        <div className="flex flex-wrap md:flex-nowrap gap-5 justify-center">
-          <BlogCard
-            img="/assets/images/Webapp/Home/blog1.png"
-            title="Behind kOne: Building the Brain of the Brand OS"
-            category="Development"
-            date="June 20, 2025"
-            readTime="2 min read"
-          />
-          <BlogCard
-            img="/assets/images/Webapp/Home/blog3.png"
-            title="Design That Doesn’t Break at Scale"
-            category="Case Study"
-            date="May 15, 2025"
-            readTime="3 min read"
-          />
-          <BlogCard
-            img="/assets/images/Webapp/Home/blog3.png"
-            title="The Tools Behind Our Thinking"
-            category="Development"
-            date="May 15, 2025"
-            readTime="3 min read"
-          />
+        <div className="overflow-x-auto">
+          <div className="flex gap-5 px-4 md:px-0 w-max">
+            {recentBlogs.map((blog) => (
+              <div key={blog.id} className="flex-shrink-0 w-[20%] sm:w-[70%] md:w-[35%]">
+                <BlogCard
+                  img={blog.image_url}
+                  title={blog.title}
+                  category={blog.category || 'Uncategorized'}
+                  date={new Date(blog.created_at).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                  readTime={blog.read_time || '2 min read'}
+                />
+              </div>
+            ))}
+          </div>
         </div>
+
         {/* Thinks Blog */}
         <div className="flex justify-between items-baseline mt-8 md:mt-20 mb-8">
           <h4 className="text-2xl md:text-3xl font-semibold mt-6 sm:mt-8 md:mt-4">Thinks</h4>

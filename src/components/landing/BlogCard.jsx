@@ -13,12 +13,12 @@ export default function BlogCard({ img, title, category, date, readTime }) {
         priority
       />
 
-      <p className="text-xl md:text-3xl font-semibold text-start mt-2 text-wrap overscroll-auto">{title}</p>
+      <p className="text-lg md:text-3xl font-semibold text-start mt-2 text-wrap overscroll-auto">{title}</p>
 
       <div className="flex flex-wrap gap-3 items-baseline mt-4">
-        <p className="text-[15px] font-semibold">{category}</p>
-        <span className="text-[15px] text-[#767676] font-semibold">{date}</span>
-        <span className="text-[15px] text-[#767676] font-semibold">{readTime}</span>
+        <p className="text-sm md:text-[15px] font-semibold">{category}</p>
+        <span className="text-sm md:text-[15px] text-[#767676] font-semibold">{date}</span>
+        <span className="text-sm md:text-[15px] text-[#767676] font-semibold">{readTime}</span>
       </div>
     </div>
   )
