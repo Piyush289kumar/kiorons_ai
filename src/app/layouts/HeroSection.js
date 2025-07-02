@@ -49,15 +49,32 @@ export default function HeroSection() {
   // Apis
 
   const [recentBlogs, setRecentBlogs] = useState([])
+  const [recentLatestNews, setRecentLatestNews] = useState([])
+  const [recentThinks, setRecentThinks] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/blogs')
+    fetch('http://localhost:8000/api/build-recent-blogs')
       .then((res) => res.json())
       .then((data) => {
         setRecentBlogs(data)
-        console.log(recentBlogs)
       })
       .catch((err) => console.error('Failed to fetch blogs', err))
+  }, [])
+  useEffect(() => {
+    fetch('http://localhost:8000/api/latest-news-recent-blogs')
+      .then((res) => res.json())
+      .then((data) => {
+        setRecentLatestNews(data)        
+      })
+      .catch((err) => console.error('Failed to fetch Latest News blogs', err))
+  }, [])
+  useEffect(() => {
+    fetch('http://localhost:8000/api/thinks-recent-blogs')
+      .then((res) => res.json())
+      .then((data) => {
+        setRecentThinks(data)        
+      })
+      .catch((err) => console.error('Failed to fetch Thinks blogs', err))
   }, [])
 
   return (
@@ -234,26 +251,44 @@ export default function HeroSection() {
             View All
           </Link>
         </div>
-        <div className="flex flex-wrap md:flex-nowrap gap-5 justify-center">
-          <div className="w-full md:w-[68%] h-full">
-            <BlogCard
-              img="/assets/images/Webapp/Home/news1.png"
-              title="Introducing kOne — The Operating System for Modern Brands"
-              category="Announcements"
-              date="June 20, 2025"
-              readTime="2 min read"
-            />
-          </div>
-          <div className="full md:w-[32%] h-full">
-            <BlogCard
-              img="/assets/images/Webapp/Home/news2.png"
-              title="What’s New in Our Platform — May 2025 Updates"
-              category="Product Updates"
-              date="May 15, 2025"
-              readTime="3 min read"
-            />
+
+        <div className="overflow-x-auto">
+          <div className="flex gap-5 md:px-0 w-max">
+            {recentLatestNews.map((blog) => (
+              <div key={blog.id} className="w-[30%] sm:w-[70%] md:w-[70%]">
+                <BlogCard
+                  img={blog.image_url}
+                  title={blog.title}
+                  slug={blog.slug}
+                  category={blog.category?.name || 'Uncategorized'} // ✅ Safe fallback
+                  date={blog.formatted_date} // ✅ Use backend-formatted date
+                  readTime={blog.read_time || '1 min read'}
+                />
+              </div>
+            ))}
           </div>
         </div>
+
+        {/* <div className="overflow-x-auto">
+          <div className="flex gap-5 justify-center">
+            {recentLatestNews.map((blog, index) => (
+              <div
+                key={blog.id}
+                className={`w-full ${index % 2 === 0 ? 'md:w-[68%]' : 'md:w-[32%]'}`}
+              >
+                <BlogCard
+                  img={blog.image_url}
+                  title={blog.title}
+                  slug={blog.slug}
+                  category={blog.category.name}
+                  date={blog.formatted_date}
+                  readTime={blog.read_time || '2 min read'}
+                />
+              </div>
+            ))}
+          </div>
+        </div> */}
+
         {/* Blog Section */}
         <div className="flex justify-between items-baseline mt-8 md:mt-20 mb-8">
           <h4 className="text-2xl md:text-3xl font-semibold mt-6 sm:mt-8 md:mt-4">Build</h4>
@@ -262,19 +297,16 @@ export default function HeroSection() {
           </Link>
         </div>
         <div className="overflow-x-auto">
-          <div className="flex gap-5 px-4 md:px-0 w-max">
+          <div className="flex gap-5 md:px-0 w-max">
             {recentBlogs.map((blog) => (
-              <div key={blog.id} className="flex-shrink-0 w-[20%] sm:w-[70%] md:w-[35%]">
+              <div key={blog.id} className="w-[30%] sm:w-[70%] md:w-[70%]">
                 <BlogCard
                   img={blog.image_url}
                   title={blog.title}
-                  category={blog.category || 'Uncategorized'}
-                  date={new Date(blog.created_at).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
-                  readTime={blog.read_time || '2 min read'}
+                  slug={blog.slug}
+                  category={blog.category?.name || 'Uncategorized'} // ✅ Safe fallback
+                  date={blog.formatted_date} // ✅ Use backend-formatted date
+                  readTime={blog.read_time || '1 min read'}
                 />
               </div>
             ))}
@@ -288,6 +320,24 @@ export default function HeroSection() {
             View All
           </Link>
         </div>
+
+        <div className="overflow-x-auto">
+          <div className="flex gap-5 md:px-0 w-max">
+            {recentThinks.map((blog) => (
+              <div key={blog.id} className="w-[30%] sm:w-[70%] md:w-[100%]">
+                <BlogCard
+                  img={blog.image_url}
+                  title={blog.title}
+                  slug={blog.slug}
+                  category={blog.category?.name || 'Uncategorized'} // ✅ Safe fallback
+                  date={blog.formatted_date} // ✅ Use backend-formatted date
+                  readTime={blog.read_time || '1 min read'}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+        {/*         
         <div className="flex flex-wrap md:flex-nowrap gap-5 justify-center">
           <BlogCard
             img="/assets/images/Webapp/Home/thinkblog1.png"
@@ -303,7 +353,7 @@ export default function HeroSection() {
             date="May 15, 2025"
             readTime="3 min read"
           />
-        </div>
+        </div> */}
       </motion.section>
 
       {/* CTA */}
