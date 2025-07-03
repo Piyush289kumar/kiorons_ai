@@ -17,7 +17,7 @@ export default function ScrollSection() {
     fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/latest-news-recent-blogs`)
       .then((res) => res.json())
       .then((data) => {
-        setRecentLatestNews(data.slice(0, 6)) // 1 for left, 3 for right
+        setRecentLatestNews(data.slice(0, 5)) // 1 for left, 3 for right
       })
       .catch((err) => console.error('Failed to fetch blogs', err))
   }, [])
