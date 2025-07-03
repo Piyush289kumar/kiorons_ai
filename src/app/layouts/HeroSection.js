@@ -53,7 +53,7 @@ export default function HeroSection() {
   const [recentThinks, setRecentThinks] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/build-recent-blogs')
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/build-recent-blogs`)
       .then((res) => res.json())
       .then((data) => {
         setRecentBlogs(data)
@@ -61,7 +61,7 @@ export default function HeroSection() {
       .catch((err) => console.error('Failed to fetch blogs', err))
   }, [])
   useEffect(() => {
-    fetch('http://localhost:8000/api/latest-news-recent-blogs')
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/latest-news-recent-blogs`)
       .then((res) => res.json())
       .then((data) => {
         setRecentLatestNews(data)
@@ -69,7 +69,7 @@ export default function HeroSection() {
       .catch((err) => console.error('Failed to fetch Latest News blogs', err))
   }, [])
   useEffect(() => {
-    fetch('http://localhost:8000/api/thinks-recent-blogs')
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/thinks-recent-blogs`)
       .then((res) => res.json())
       .then((data) => {
         setRecentThinks(data)

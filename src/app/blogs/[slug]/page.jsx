@@ -5,7 +5,7 @@ import { LandingPageButton } from '@/components/landing/LandingPageButton'
 import Footer from '@/app/layouts/Footer'
 
 export async function generateMetadata({ params }) {
-  const res = await fetch(`http://localhost:8000/api/blogs/${params.slug}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs/${params.slug}`,{
     cache: 'no-store',
   })
   const blog = await res.json()
@@ -17,7 +17,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function BlogDetailPage({ params }) {
-  const res = await fetch(`http://localhost:8000/api/blogs/${params.slug}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs/${params.slug}`,{
     cache: 'no-store',
   })
 
@@ -64,7 +64,7 @@ export default async function BlogDetailPage({ params }) {
           </div>
         )}
         <BlogsSlider
-          apiRoute={'http://localhost:8000/api/build-recent-blogs'}
+          apiRoute={`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/build-recent-blogs`}
           heading="Thinks"
           viewAllLink="/blogs/thinks"
         />
