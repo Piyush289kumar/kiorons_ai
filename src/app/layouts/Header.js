@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -41,7 +42,7 @@ export default function Header() {
       <div className="max-w-screen-xl mx-auto flex justify-between md:justify-center items-center py-2 px-4 gap-11">
         {/* Left: Logo */}
         <div className="flex items-center backdrop-blur-md bg-white/10 p-3 rounded-full">
-          <a href="/">
+          <Link href="/">
             <Image
               src="/assets/images/logo/Kiorons_icon.png"
               alt="Logo"
@@ -49,26 +50,26 @@ export default function Header() {
               height={100}
               className="w-4 h-4 md:w-5 md:h-5"
             />
-          </a>
+          </Link>
         </div>
 
         {/* Center Nav */}
         <nav className="hidden md:flex gap-8 px-8 py-3 rounded-full text-white text-sm font-gellix backdrop-blur-md bg-white/10">
-          <a href="/studio" className="hover:underline">
+          <Link href="/studio" className="hover:underline">
             Studio
-          </a>
-          <a href="/tech" className="hover:underline">
+          </Link>
+          <Link href="/tech" className="hover:underline">
             Tech
-          </a>
-          <a href="#" className="hover:underline">
+          </Link>
+          <Link href="#" className="hover:underline">
             kOne
-          </a>
-          <a href="#" className="hover:underline">
+          </Link>
+          <Link href="#" className="hover:underline">
             Company
-          </a>
-          <a href="#" className="hover:underline">
+          </Link>
+          <Link href="#" className="hover:underline">
             Think
-          </a>
+          </Link>
         </nav>
 
         {/* Right: Search + Menu */}
@@ -126,7 +127,7 @@ export default function Header() {
           {/* Logo & Company Name */}
           <div className="flex items-center gap-3 mb-8">
             <div className="bg-white/10 backdrop-blur p-2 rounded-full">
-              <a href="/">
+              <Link href="/">
                 <Image
                   src="/assets/images/logo/Kiorons_icon.png"
                   alt="Logo"
@@ -134,30 +135,30 @@ export default function Header() {
                   height={100}
                   className="w-4 h-4"
                 />
-              </a>
+              </Link>
             </div>
-            <a href="/" className="text-xl font-semibold">
+            <Link href="/" className="text-xl font-semibold">
               Kiorons
-            </a>
+            </Link>
           </div>
 
           <div className="pl-12">
             {/* Navigation Links */}
-            <a href="/studio" className="block mb-4 text-md font-normal hover:underline">
+            <Link href="/studio" className="block mb-4 text-md font-normal hover:underline">
               Studio
-            </a>
-            <a href="/tech" className="block mb-4 text-md font-normal hover:underline">
+            </Link>
+            <Link href="/tech" className="block mb-4 text-md font-normal hover:underline">
               Tech
-            </a>
-            <a href="#" className="block mb-4 text-md font-normal hover:underline">
+            </Link>
+            <Link href="#" className="block mb-4 text-md font-normal hover:underline">
               kOne
-            </a>
-            <a href="#" className="block mb-4 text-md font-normal hover:underline">
+            </Link>
+            <Link href="#" className="block mb-4 text-md font-normal hover:underline">
               Company
-            </a>
-            <a href="#" className="block mb-4 text-md font-normal hover:underline">
+            </Link>
+            <Link href="#" className="block mb-4 text-md font-normal hover:underline">
               Think
-            </a>
+            </Link>
           </div>
         </nav>
       </div>
