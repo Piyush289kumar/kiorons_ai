@@ -11,7 +11,7 @@ export async function generateMetadata({ params }) {
   const blog = await res.json()
 
   return {
-    title: blog.meta_title || blog.title,
+    title: `${blog.meta_title || blog.title} | Kiorons`,
     description: blog.meta_description,
   }
 }
@@ -26,7 +26,7 @@ export default async function BlogDetailPage({ params }) {
   const blog = await res.json()
 
   return (
-    <section className='w-full'>
+    <section className="w-full">
       <div className="max-w-full md:max-w-7xl mx-auto px-4 py-10 mt-[5%]">
         <div className="mb-8 md:mb-16 text-center">
           <p className="text-sm font-medium mb-5">{blog.category || 'Uncategorized'}</p>
