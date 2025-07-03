@@ -31,7 +31,7 @@ export default function BlogCard({
             src={img}
             alt={title}
             fill
-            className="object-cover object-center transition duration-300 group-hover:opacity-90"
+            className="object-cover object-center transition duration-300 hover:scale-110"
             priority
           />
         </div>

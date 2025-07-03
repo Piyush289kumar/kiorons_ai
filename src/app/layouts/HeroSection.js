@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { LandingPageButton } from '@/components/landing/LandingPageButton'
 import LandingCard from '@/components/landing/LandingCard'
 import BlogCard from '@/components/landing/BlogCard'
+import ScrollSection from '@/components/landing/ScrollSection'
 
 export default function HeroSection() {
   const controls1 = useAnimation()
@@ -78,7 +79,7 @@ export default function HeroSection() {
   }, [])
 
   return (
-    <div className="scroll-smooth w-11/12 mx-auto font-gellix">
+    <div className="scroll-smooth w-full font-gellix px-3 md:px-8">
       {/* Hero Section */}
       <section className="relative min-h-screen flex flex-col justify-center items-center gap-y-0 bg-black px-4 sm:px-6 md:px-0">
         <motion.div
@@ -134,13 +135,13 @@ export default function HeroSection() {
         className="font-gellix sm:pt-28 px-4 sm:px-6"
       >
         <div className="text-center">
-          <h1 className="text-5xl md:text-7xl font-semibold tracking-tight">Two Divisions.</h1>
-          <h1 className="text-5xl md:text-7xl font-semibold tracking-tight">One Vision.</h1>
+          <h1 className="text-5xl md:text-6xl font-semibold tracking-tight">Two Divisions.</h1>
+          <h1 className="text-5xl md:text-6xl font-semibold tracking-tight">One Vision.</h1>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-md md:text-2xl font-semibold mt-6 sm:mt-11 w-full md:w-2/3 mx-auto"
+            className="text-sm md:text-md font-semibold mt-6 sm:mt-11 w-full md:w-1/3 mx-auto"
           >
             We partner with ambitious teams to design, build, and scale modern brands — through two
             focused divisions: Studio and Tech.
@@ -177,7 +178,7 @@ export default function HeroSection() {
         animate={controls3}
         variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } }}
         transition={{ duration: 0.6 }}
-        className="font-gellix px-4 sm:px-6 lg:px-28 text-center my-24 md:my-56"
+        className="font-gellix px-4 sm:px-6 lg:px-6 text-center my-24 md:my-56"
       >
         <motion.p
           initial={{ opacity: 0 }}
@@ -223,15 +224,17 @@ export default function HeroSection() {
         animate={controls4}
         variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } }}
         transition={{ duration: 0.6 }}
-        className="font-gellix px-4 sm:px-6 lg:px-28 text-center my-28 md:my-40"
+        className="font-gellix px-4 sm:px-6 lg:px-28 text-center mt-28 md:mt-40 md:w-2/3 md:mx-auto"
       >
-        <p className="text-base sm:text-lg md:text-4xl font-semibold">From ideation to launch,</p>
-        <p className="text-base sm:text-lg md:text-4xl font-semibold mb-12">
-          kOne is the world's first AI-powered brand ecosystem — designed to create, manage, and
-          scale modern brands with one unified intelligence.
+        <p className="text-base sm:text-lg md:text-2xl font-semibold">From ideation to launch,</p>
+        <p className="text-base sm:text-lg md:text-2xl font-semibold mb-12">
+          {`kOne is the world's first AI-powered brand ecosystem — designed to create, manage, and
+          scale modern brands with one unified intelligence.`}
         </p>
         <LandingPageButton text="Visit kOne" color="white" />
       </motion.section>
+
+      <ScrollSection />
 
       {/* Blog Cards */}
       <motion.section
@@ -243,7 +246,7 @@ export default function HeroSection() {
           visible: { opacity: 1, y: 0 },
         }}
         transition={{ duration: 0.6 }}
-        className="font-gellix text-center my-10 md:my-40"
+        className="font-gellix text-center mb-10 md:my-0"
       >
         <div className="flex justify-between items-baseline mb-8">
           <h4 className="text-2xl md:text-3xl font-semibold mt-6 sm:mt-8 md:mt-4">Latest News</h4>
@@ -297,10 +300,10 @@ export default function HeroSection() {
             View All
           </Link>
         </div>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto md:overflow-x-hidden">
           <div className="flex gap-5 md:px-0 w-full">
             {recentBlogs.map((blog) => (
-              <div key={blog.id} className="w-[150px] md:max-w-[350px] md:w-full flex-shrink-0">
+              <div key={blog.id} className="w-[150px] md:max-w-[32vw] md:w-full flex-shrink-0">
                 <BlogCard
                   img={blog.image_url}
                   title={blog.title}
@@ -322,10 +325,10 @@ export default function HeroSection() {
           </Link>
         </div>
 
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto md:overflow-x-hidden">
           <div className="flex gap-5 md:px-0 w-full">
             {recentThinks.map((blog) => (
-              <div key={blog.id} className="w-[150px] md:max-w-[570px] md:w-full flex-shrink-0">
+              <div key={blog.id} className="w-[150px] md:max-w-[49%] md:w-full flex-shrink-0">
                 <BlogCard
                   img={blog.image_url}
                   title={blog.title}
@@ -333,6 +336,7 @@ export default function HeroSection() {
                   category={blog.category?.name || 'Uncategorized'} // ✅ Safe fallback
                   date={blog.formatted_date} // ✅ Use backend-formatted date
                   readTime={blog.read_time || '1 min read'}
+                  aspectRatio="16/9"
                 />
               </div>
             ))}
@@ -364,7 +368,7 @@ export default function HeroSection() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <div className="p-8 md:p-28 bg-[#151515] text-center">
+        <div className="p-8 md:p-28 bg-[#151515] text-center mt-32">
           <h4 className=" text-3xl md:text-5xl font-semibold tracking-tight mb-3 md:mb-8">
             Join kOne waitlist.
           </h4>

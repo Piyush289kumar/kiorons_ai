@@ -11,18 +11,18 @@ export default function LandingCard({ logo, label, heading, points, buttons }) {
           alt="Logo"
           width={20}
           height={20}
-          className="animate-fade-up w-auto h-5 md:h-7 mt-1.5"
+          className="animate-fade-up w-auto h-5 md:h-5 mt-1.5"
         />
-        <span className="text-2xl md:text-4xl font-semibold">{label}</span>
+        <span className="text-lg md:text-2xl font-semibold">{label}</span>
       </div>
 
       {/* Heading */}
-      <h3 className="text-3xl md:text-5xl font-medium mb-10 md:mb-14 md:w-10/12">{heading}</h3>
+      <h3 className="text-3xl md:text-4xl font-medium mb-10 md:mb-14 md:w-10/12">{heading}</h3>
 
       {/* Bullet Points */}
       <ul className="list-disc list-inside mb-16 md:mb-28 space-y-2">
         {points.map((point, idx) => (
-          <li className="text-md md:text-2xl font-semibold" key={idx}>
+          <li className="text-md md:text-lg font-semibold" key={idx}>
             {point}
           </li>
         ))}
