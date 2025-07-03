@@ -7,6 +7,12 @@ module.exports = {
         sans: ['Gellix', 'sans-serif'], // Override default sans
         gellix: ['Gellix', 'sans-serif'],
       },
+      aspectRatio: {
+        '1/1': [1, 1],
+        '16/9': [16, 9],
+        '4/3': [4, 3],
+        '3/2': [3, 2],
+      },
     },
   },
   plugins: [],

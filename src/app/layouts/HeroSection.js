@@ -64,7 +64,7 @@ export default function HeroSection() {
     fetch('http://localhost:8000/api/latest-news-recent-blogs')
       .then((res) => res.json())
       .then((data) => {
-        setRecentLatestNews(data)        
+        setRecentLatestNews(data)
       })
       .catch((err) => console.error('Failed to fetch Latest News blogs', err))
   }, [])
@@ -72,7 +72,7 @@ export default function HeroSection() {
     fetch('http://localhost:8000/api/thinks-recent-blogs')
       .then((res) => res.json())
       .then((data) => {
-        setRecentThinks(data)        
+        setRecentThinks(data)
       })
       .catch((err) => console.error('Failed to fetch Thinks blogs', err))
   }, [])
@@ -253,9 +253,9 @@ export default function HeroSection() {
         </div>
 
         <div className="overflow-x-auto">
-          <div className="flex gap-5 md:px-0 w-max">
+          <div className="flex gap-5 md:px-0 w-full">
             {recentLatestNews.map((blog) => (
-              <div key={blog.id} className="w-[30%] sm:w-[70%] md:w-[70%]">
+              <div key={blog.id} className="w-[150px] md:max-w-[870px] md:w-full flex-shrink-0">
                 <BlogCard
                   img={blog.image_url}
                   title={blog.title}
@@ -263,6 +263,7 @@ export default function HeroSection() {
                   category={blog.category?.name || 'Uncategorized'} // ✅ Safe fallback
                   date={blog.formatted_date} // ✅ Use backend-formatted date
                   readTime={blog.read_time || '1 min read'}
+                  aspectRatio="16/9"
                 />
               </div>
             ))}
@@ -297,9 +298,9 @@ export default function HeroSection() {
           </Link>
         </div>
         <div className="overflow-x-auto">
-          <div className="flex gap-5 md:px-0 w-max">
+          <div className="flex gap-5 md:px-0 w-full">
             {recentBlogs.map((blog) => (
-              <div key={blog.id} className="w-[30%] sm:w-[70%] md:w-[70%]">
+              <div key={blog.id} className="w-[150px] md:max-w-[350px] md:w-full flex-shrink-0">
                 <BlogCard
                   img={blog.image_url}
                   title={blog.title}
@@ -322,9 +323,9 @@ export default function HeroSection() {
         </div>
 
         <div className="overflow-x-auto">
-          <div className="flex gap-5 md:px-0 w-max">
+          <div className="flex gap-5 md:px-0 w-full">
             {recentThinks.map((blog) => (
-              <div key={blog.id} className="w-[30%] sm:w-[70%] md:w-[100%]">
+              <div key={blog.id} className="w-[150px] md:max-w-[570px] md:w-full flex-shrink-0">
                 <BlogCard
                   img={blog.image_url}
                   title={blog.title}
