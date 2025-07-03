@@ -13,6 +13,9 @@ module.exports = {
         '4/3': [4, 3],
         '3/2': [3, 2],
       },
+      colors: {
+        black: '#000000',
+      },
     },
   },
   plugins: [],

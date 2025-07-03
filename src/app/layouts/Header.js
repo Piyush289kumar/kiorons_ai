@@ -1,18 +1,27 @@
 'use client'
+
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { InteractiveHoverButton } from '@/components/magicui/interactive-hover-button'
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+
+  // Detect scroll
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
+      if (window.innerWidth < 768) {
+        setScrolled(window.scrollY > 50)
+      } else {
+        setScrolled(false) // Reset on desktop
+      }
     }
+
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-  // Close menu on window resize above md breakpoint
+
+  // Auto-close menu on large screen resize
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
@@ -22,25 +31,29 @@ export default function Header() {
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
+
   return (
-    <header className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 font-gellix`}>
-      <div className="max-w-screen-xl mx-auto flex justify-between md:justify-center items-center py-3 px-4 gap-11">
+    <header
+      className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 font-gellix ${
+        scrolled ? 'bg-black/90 backdrop-blur-md' : ''
+      }`}
+    >
+      <div className="max-w-screen-xl mx-auto flex justify-between md:justify-center items-center py-2 px-4 gap-11">
         {/* Left: Logo */}
         <div className="flex items-center backdrop-blur-md bg-white/10 p-3 rounded-full">
           <a href="/">
-            {' '}
             <Image
               src="/assets/images/logo/Kiorons_icon.png"
               alt="Logo"
-              width={20}
-              height={20}              
+              width={100}
+              height={100}
+              className="w-4 h-4 md:w-5 md:h-5"
             />
           </a>
         </div>
-        {/* Center: Navigation Links (hidden on mobile) */}
-        <nav
-          className={`hidden md:flex gap-8 px-8 py-3 rounded-full text-white text-sm font-gellix backdrop-blur-md bg-white/10`}
-        >
+
+        {/* Center Nav */}
+        <nav className="hidden md:flex gap-8 px-8 py-3 rounded-full text-white text-sm font-gellix backdrop-blur-md bg-white/10">
           <a href="/studio" className="hover:underline">
             Studio
           </a>
@@ -57,18 +70,14 @@ export default function Header() {
             Think
           </a>
         </nav>
-        {/* Right: Login Button and Hamburger for mobile */}
-        <div className="flex items-center gap-4">
-          <div className="flex items-center backdrop-blur-md bg-white/10 p-3 rounded-full">
-            <Image
-              src="/assets/images/icons/search.svg"
-              alt="Logo"
-              width={20}
-              height={20}
-              className="animate-fade-up"
-            />
+
+        {/* Right: Search + Menu */}
+        <div className="flex items-center gap-4 z-30">
+          <div className="hidden md:flex items-center backdrop-blur-md bg-white/10 p-3 rounded-full z-30">
+            <Image src="/assets/images/icons/search.svg" alt="Search" width={20} height={20} />
           </div>
-          {/* Hamburger Button for mobile */}
+
+          {/* Hamburger */}
           <button
             className="md:hidden flex flex-col justify-center items-center gap-[6px] w-8 h-8 cursor-pointer"
             onClick={() => setMenuOpen((prev) => !prev)}
@@ -93,29 +102,65 @@ export default function Header() {
           </button>
         </div>
       </div>
-      {/* Mobile Menu */}
-      {menuOpen && (
+
+      {/* Mobile Sidebar + Overlay */}
+      <div
+        className={`md:hidden fixed inset-0 z-10 transition-all duration-300 ${
+          menuOpen ? 'backdrop-blur-3xl' : 'pointer-events-none'
+        }`}
+      >
+        {/* Overlay */}
+        <div
+          className={`absolute inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ${
+            menuOpen ? 'opacity-100' : 'opacity-0'
+          }`}
+          onClick={() => setMenuOpen(false)}
+        />
+
+        {/* Sidebar */}
         <nav
-          className="md:hidden bg-black bg-opacity-80 backdrop-blur-md text-white flex flex-col gap-4 px-6 py-6 font-gellix text-base"
-          onClick={() => setMenuOpen(false)} // close on link click
+          className={`absolute top-0 left-0 h-screen w-full bg-black text-white backdrop-blur-3xl px-6 py-3 transform transition-transform duration-300 ${
+            menuOpen ? 'translate-x-0' : '-translate-x-full'
+          }`}
         >
-          <a href="/studio" className="hover:underline">
-            Studio
-          </a>
-          <a href="/tech" className="hover:underline">
-            Tech
-          </a>
-          <a href="#" className="hover:underline">
-            kOne
-          </a>
-          <a href="#" className="hover:underline">
-            Company
-          </a>
-          <a href="#" className="hover:underline">
-            Think
-          </a>
+          {/* Logo & Company Name */}
+          <div className="flex items-center gap-3 mb-8">
+            <div className="bg-white/10 backdrop-blur p-2 rounded-full">
+              <a href="/">
+                <Image
+                  src="/assets/images/logo/Kiorons_icon.png"
+                  alt="Logo"
+                  width={100}
+                  height={100}
+                  className="w-4 h-4"
+                />
+              </a>
+            </div>
+            <a href="/" className="text-xl font-semibold">
+              Kiorons
+            </a>
+          </div>
+
+          <div className="pl-12">
+            {/* Navigation Links */}
+            <a href="/studio" className="block mb-4 text-md font-normal hover:underline">
+              Studio
+            </a>
+            <a href="/tech" className="block mb-4 text-md font-normal hover:underline">
+              Tech
+            </a>
+            <a href="#" className="block mb-4 text-md font-normal hover:underline">
+              kOne
+            </a>
+            <a href="#" className="block mb-4 text-md font-normal hover:underline">
+              Company
+            </a>
+            <a href="#" className="block mb-4 text-md font-normal hover:underline">
+              Think
+            </a>
+          </div>
         </nav>
-      )}
+      </div>
     </header>
   )
 }
