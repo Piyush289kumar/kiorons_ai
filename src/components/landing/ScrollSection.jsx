@@ -13,46 +13,64 @@ export default function ScrollSection() {
 
   const [recentLatestNews, setRecentLatestNews] = useState([])
 
+  // Fetch blogs
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/latest-news-recent-blogs`)
       .then((res) => res.json())
       .then((data) => {
-        setRecentLatestNews(data.slice(0, 5)) // 1 for left, 3 for right
+        setRecentLatestNews(data.slice(0, 4))
       })
-      .catch((err) => console.error('Failed to fetch blogs', err))
+      .catch((err) => console.error('Fetch Error:', err))
   }, [])
+
+  // GSAP scroll animation
   useEffect(() => {
-    if (!rightRef.current || !containerRef.current) return
+    const right = rightRef.current
+    const container = containerRef.current
+
+    if (!right || !container || recentLatestNews.length < 2) return
 
     const isMobile = window.innerWidth < 768
-    if (isMobile) return // ✅ Don't run GSAP on mobile
+    if (isMobile) return
 
     const ctx = gsap.context(() => {
-      const rightHeight = rightRef.current.scrollHeight
-      const pinSectionHeight = rightHeight + window.innerHeight
+      const updateScrollTrigger = () => {
+        const rightHeight = right.scrollHeight
+        const totalScroll = rightHeight - window.innerHeight
 
-      ScrollTrigger.create({
-        trigger: containerRef.current,
-        start: 'top top',
-        end: () => `+=${pinSectionHeight}`,
-        pin: true,
-        scrub: true,
-        anticipatePin: 1,
-      })
+        ScrollTrigger.killAll()
 
-      gsap.to(rightRef.current, {
-        y: () => -rightHeight + window.innerHeight,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: containerRef.current,
+        ScrollTrigger.create({
+          trigger: container,
           start: 'top top',
-          end: () => `+=${pinSectionHeight}`,
+          end: `+=${rightHeight + window.innerHeight}`,
+          pin: true,
           scrub: true,
-        },
-      })
-    }, containerRef)
+        })
 
-    return () => ctx.revert()
+        gsap.to(right, {
+          y: -totalScroll,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: container,
+            start: 'top top',
+            end: `+=${rightHeight + window.innerHeight}`,
+            scrub: true,
+          },
+        })
+
+        ScrollTrigger.refresh()
+      }
+
+      setTimeout(updateScrollTrigger, 100) // Wait for DOM layout
+
+      window.addEventListener('resize', updateScrollTrigger)
+    }, container)
+
+    return () => {
+      ctx.revert()
+      ScrollTrigger.killAll()
+    }
   }, [recentLatestNews])
 
   return (
@@ -60,8 +78,8 @@ export default function ScrollSection() {
       ref={containerRef}
       className="w-full flex flex-col md:flex-row relative z-10 md:h-screen overflow-hidden"
     >
-      {/* Left (Fixed 70%) */}
-      <div className="w-full md:w-[70%] h-fit sticky top-20 flex items-start justify-center md:pl-20 mb-32 md:mb-0">
+      {/* Left sticky section */}
+      <div className="w-full md:w-[70%] h-screen sticky top-0 flex items-start justify-center md:pl-20 mb-32 md:mb-0">
         {recentLatestNews[0] ? (
           <div className="w-full">
             <BlogCard
@@ -79,10 +97,13 @@ export default function ScrollSection() {
         )}
       </div>
 
-      {/* Right (Scrollable Panels - 30%) */}
-      <div ref={rightRef} className="w-full md:w-[30%] flex flex-col gap-14 md:mt-20 h-auto">
+      {/* Right scrollable section */}
+      <div
+        ref={rightRef}
+        className="w-full md:w-[30%] flex flex-col gap-14 md:mt-20 h-screen md:pr-20"
+      >
         {recentLatestNews.slice(1).map((blog) => (
-          <div key={blog.id} className="panel flex items-center justify-center md:px-4 md:pr-20">
+          <div key={blog.id} className="panel flex items-center justify-center md:px-4">
             <div className="w-full">
               <BlogCard
                 img={blog.image_url}

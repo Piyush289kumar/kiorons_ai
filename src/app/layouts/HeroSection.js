@@ -79,7 +79,7 @@ export default function HeroSection() {
   }, [])
 
   return (
-    <div className="scroll-smooth w-full font-gellix px-3 md:px-8">
+    <div className="scroll-smooth w-full mx-auto font-gellix md:px-8">
       {/* Hero Section */}
       <section className="relative min-h-screen flex flex-col justify-center items-center gap-y-0 bg-black px-4 sm:px-6 md:px-0">
         <motion.div
@@ -88,7 +88,7 @@ export default function HeroSection() {
           animate={controls1}
           variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } }}
           transition={{ duration: 0.8 }}
-          className="text-center z-10 mt-24 md:mt-56"
+          className="text-center z-10"
         >
           <h1 className="text-7xl md:text-9xl font-semibold tracking-tight">Create Different.</h1>
           <motion.p
@@ -178,7 +178,7 @@ export default function HeroSection() {
         animate={controls3}
         variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } }}
         transition={{ duration: 0.6 }}
-        className="font-gellix px-4 sm:px-6 lg:px-6 text-center my-24 md:my-56"
+        className="font-gellix lg:px-6 text-center mt-20 md:mt-32"
       >
         <motion.p
           initial={{ opacity: 0 }}
@@ -198,20 +198,20 @@ export default function HeroSection() {
         >
           kOne
         </h1>
-        <div className="relative mt-16 sm:mt-32 w-full">
+        <div className="relative mt-5 md:mt-16 w-full md:w-10/12 mx-auto md:p-7">
           <Image
-            src="/assets/images/Webapp/Home/videoSection.png"
+            src="/assets/images/Webapp/Home/Research_Hero.png"
             alt="Video Background"
-            width={900}
-            height={900}
-            className="w-full"
+            width={1200}
+            height={1200}
+            className="w-full md:p-5 rounded-md md:rounded-3xl"
           />
           <Image
             src="/assets/images/icons/play_arrow.svg"
             alt="Play Button"
             width={100}
             height={100}
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer h-14 md:h-28"
             priority
           />
         </div>
@@ -224,17 +224,17 @@ export default function HeroSection() {
         animate={controls4}
         variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } }}
         transition={{ duration: 0.6 }}
-        className="font-gellix px-4 sm:px-6 lg:px-28 text-center mt-28 md:mt-40 md:w-2/3 md:mx-auto"
+        className="font-gellix px-4 sm:px-6 lg:px-28 text-center my-16 md:w-2/3 md:mx-auto"
       >
         <p className="text-base sm:text-lg md:text-2xl font-semibold">From ideation to launch,</p>
-        <p className="text-base sm:text-lg md:text-2xl font-semibold mb-12">
+        <p className="text-base sm:text-lg md:text-2xl font-semibold mb-8">
           {`kOne is the world's first AI-powered brand ecosystem — designed to create, manage, and
           scale modern brands with one unified intelligence.`}
         </p>
         <LandingPageButton text="Visit kOne" color="white" />
       </motion.section>
 
-      <ScrollSection />
+      {/* <ScrollSection /> */}
 
       {/* Blog Cards */}
       <motion.section
@@ -246,25 +246,33 @@ export default function HeroSection() {
           visible: { opacity: 1, y: 0 },
         }}
         transition={{ duration: 0.6 }}
-        className="font-gellix text-center mb-10 md:my-0"
+        className="font-gellix text-center mb-10 md:my-0 px-0 md:px-3 lg:px-5"
       >
-        <div className="flex justify-between items-baseline mb-8">
+        <div className="flex justify-between items-baseline mb-4 md:mb-8">
           <h4 className="text-2xl md:text-3xl font-semibold mt-6 sm:mt-8 md:mt-4">Latest News</h4>
-          <Link href={'/'} className="text-sm">
+          <Link href="/" className="text-sm">
             View All
           </Link>
         </div>
 
         <div className="overflow-x-auto">
-          <div className="flex gap-5 md:px-0 w-full">
+          <div className="flex gap-3 md:gap-6 md:px-0 w-full">
             {recentLatestNews.map((blog) => (
-              <div key={blog.id} className="w-[150px] md:max-w-[870px] md:w-full flex-shrink-0">
+              <div
+                key={blog.id}
+                className="
+          w-[45%] 
+          sm:w-[48%] 
+          md:w-[32%] 
+          flex-shrink-0
+        "
+              >
                 <BlogCard
                   img={blog.image_url}
                   title={blog.title}
                   slug={blog.slug}
-                  category={blog.category?.name || 'Uncategorized'} // ✅ Safe fallback
-                  date={blog.formatted_date} // ✅ Use backend-formatted date
+                  category={blog.category?.name || 'Uncategorized'}
+                  date={blog.formatted_date}
                   readTime={blog.read_time || '1 min read'}
                   aspectRatio="16/9"
                 />
@@ -294,7 +302,7 @@ export default function HeroSection() {
         </div> */}
 
         {/* Blog Section */}
-        <div className="flex justify-between items-baseline mt-8 md:mt-20 mb-8">
+        {/* <div className="flex justify-between items-baseline mt-8 md:mt-20 mb-8">
           <h4 className="text-2xl md:text-3xl font-semibold mt-6 sm:mt-8 md:mt-4">Build</h4>
           <Link href={'/'} className="text-sm">
             View All
@@ -311,6 +319,39 @@ export default function HeroSection() {
                   category={blog.category?.name || 'Uncategorized'} // ✅ Safe fallback
                   date={blog.formatted_date} // ✅ Use backend-formatted date
                   readTime={blog.read_time || '1 min read'}
+                />
+              </div>
+            ))}
+          </div>
+        </div> */}
+
+        <div className="flex justify-between items-baseline mb-4 md:mb-8">
+          <h4 className="text-2xl md:text-3xl font-semibold mt-10 md:mt-10">Build</h4>
+          <Link href="/" className="text-sm">
+            View All
+          </Link>
+        </div>
+
+        <div className="overflow-x-auto">
+          <div className="flex gap-3 md:gap-6 md:px-0 w-full">
+            {recentBlogs.map((blog) => (
+              <div
+                key={blog.id}
+                className="
+          w-[45%] 
+          sm:w-[48%] 
+          md:w-[32%] 
+          flex-shrink-0
+        "
+              >
+                <BlogCard
+                  img={blog.image_url}
+                  title={blog.title}
+                  slug={blog.slug}
+                  category={blog.category?.name || 'Uncategorized'}
+                  date={blog.formatted_date}
+                  readTime={blog.read_time || '1 min read'}
+                  aspectRatio="1/1"
                 />
               </div>
             ))}
@@ -368,7 +409,7 @@ export default function HeroSection() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <div className="p-8 md:p-28 bg-[#151515] text-center mt-32">
+        <div className="p-8 md:p-28 bg-[#151515] text-center mt-16 md:mt-32">
           <h4 className=" text-3xl md:text-5xl font-semibold tracking-tight mb-3 md:mb-8">
             Join kOne waitlist.
           </h4>
