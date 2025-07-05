@@ -73,6 +73,24 @@
 *::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
 }
+.prose pre {
+  background-color: #1e1e1e; /* dark background for code */
+  color: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+}
+
+.prose h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  font-weight: bold;
+}
+
+.prose a {
+  color: #4f46e5; /* indigo-600 */
+  text-decoration: underline;
+}
 body {
   font-family: 'Gellix', sans-serif;
   background: #000;

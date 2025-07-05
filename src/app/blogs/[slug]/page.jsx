@@ -5,7 +5,7 @@ import { LandingPageButton } from '@/components/landing/LandingPageButton'
 import Footer from '@/app/layouts/Footer'
 
 export async function generateMetadata({ params }) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs/${params.slug}`,{
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs/${params.slug}`, {
     cache: 'no-store',
   })
   const blog = await res.json()
@@ -17,7 +17,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function BlogDetailPage({ params }) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs/${params.slug}`,{
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs/${params.slug}`, {
     cache: 'no-store',
   })
 
@@ -27,7 +27,7 @@ export default async function BlogDetailPage({ params }) {
 
   return (
     <section className="w-full">
-      <div className="max-w-full md:max-w-7xl mx-auto px-4 py-10 mt-[5%]">
+      <div className="max-w-full md:max-w-7xl mx-auto px-4 py-10">
         <div className="mb-8 md:mb-16 text-center">
           <p className="text-sm font-medium mb-5">{blog.category || 'Uncategorized'}</p>
           <h1 className="text-3xl md:text-6xl font-semibold mb-5">{blog.title}</h1>
@@ -46,7 +46,10 @@ export default async function BlogDetailPage({ params }) {
           className="rounded-lg w-full mb-6"
         />
 
-        <article className="prose max-w-none" dangerouslySetInnerHTML={{ __html: blog.body }} />
+        <article
+          className="prose prose-lg prose-invert max-w-none"
+          dangerouslySetInnerHTML={{ __html: blog?.body || '' }}
+        />
 
         {/* Optional gallery images */}
         {blog.gallery_images?.length > 0 && (
