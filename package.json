@@ -4,9 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "dev_wifi": "next dev -H 192.168.29.175 -p 3000",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3009",
     "lint": "next lint"
   },
   "dependencies": {
