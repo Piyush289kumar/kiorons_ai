@@ -69,7 +69,7 @@ export default function HeaderSidenav({ isSidebarOpen, setIsSidebarOpen }) {
                 transition={{ duration: 0.3 }}
                 className="absolute left-0 text-white font-medium text-2xl md:text-3xl"
               >
-               <Link href={'/'}>Kiorons</Link>
+                <Link href={'/'}>Kiorons</Link>
               </motion.span>
 
               {/* Logo when SCROLLED */}
@@ -162,10 +162,9 @@ export default function HeaderSidenav({ isSidebarOpen, setIsSidebarOpen }) {
               key={link.href}
               href={link.href}
               className={`flex items-center gap-2 px-4 py-2 rounded-md transition-all ${
-                pathname === link.href
-                  ? 'bg-white text-black font-semibold'
-                  : 'text-white hover:bg-white/10'
+                pathname === link.href ? 'bg-white/10 font-semibold' : 'text-white hover:bg-white/10'
               }`}
+              style={pathname === link.href ? { color: '#000' } : {}}
             >
               <span className={`${isSidebarOpen ? 'inline' : 'hidden'} transition-all`}>
                 {link.label}
