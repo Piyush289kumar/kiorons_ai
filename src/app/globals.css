@@ -73,9 +73,9 @@
 .text-white{
   color: #fff !important;
 }
-/* .text-black{
+.text-black{
   color: #1e1e1e;
-} */
+}
 
 *::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
