@@ -1,8 +1,11 @@
 'use client' // <-- Required for Framer Motion
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
+import { LandingPageButton } from '@/components/landing/LandingPageButton'
+import Footer from '../layouts/Footer'
 export const dynamic = 'force-dynamic'
 export default function JobOpeningPage() {
   const controls1 = useAnimation()
@@ -35,8 +38,17 @@ export default function JobOpeningPage() {
     inView4,
     inView5,
   ])
+  const [recentJobOpening, setRecentJobOpening] = useState([])
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/job-opening`)
+      .then((res) => res.json())
+      .then((data) => {
+        setRecentJobOpening(data)
+      })
+      .catch((err) => console.error('Failed to fetch Job', err))
+  }, [])
   return (
-    <section className="flex flex-col justify-center items-center px-4 w-full font-gellix my-24">
+    <section className="flex flex-col justify-center items-center px-4 w-full font-gellix mt-24">
       <div className="text-center w-11/12 md:w-6/12 mx-auto mt-16">
         <div className="text-center mb-40">
           <h1 className="text-6xl md:text-5xl sm:text-4xl font-semibold tracking-tight">
@@ -71,7 +83,7 @@ export default function JobOpeningPage() {
           </div>
         </div>
         <div className="mt-12">
-          {[...Array(5)].map((_, index) => (
+          {recentJobOpening.map((job, index) => (
             <div
               key={index}
               className="group border-t border-b border-gray-600 py-5 px-4 transition-all duration-300 ease-in-out cursor-pointer"
@@ -79,22 +91,26 @@ export default function JobOpeningPage() {
               <div className="flex flex-row justify-between items-start sm:items-center transition-all duration-300 ease-in-out gap-4">
                 <div className="flex gap-4 items-center flex-wrap">
                   <h3 className="font-semibold text-white transition-all duration-300">
-                    Product Designer
+                    {job.job_title}
                   </h3>
                   <span className="text-[#A2A2A2] text-sm transition-all duration-300 hidden md:block">
-                    Design
+                    {job.position}
                   </span>
                 </div>
                 <div className="flex gap-4 items-center flex-wrap">
                   <span className="text-[#A2A2A2] text-sm transition-all duration-300 hidden md:block">
-                    Full Time
+                    {job.time}
                   </span>
                   <span className="text-[#A2A2A2] text-sm transition-all duration-300 hidden md:block">
-                    Remote
+                    {job.job_type}
                   </span>
-                  <button className="text-sm border border-white transition-all duration-300 p-2 px-6 rounded-3xl whitespace-nowrap">
+                  <Link
+                    href={`/job-opening/${job.id}`}
+                    className="text-sm border border-white transition-all duration-300 p-2 px-6 rounded-3xl whitespace-nowrap"
+                  >
                     Apply
-                  </button>
+                    {/* </button> */}
+                  </Link>
                 </div>
               </div>
             </div>
@@ -125,27 +141,25 @@ export default function JobOpeningPage() {
           <span>info@kiorons.com</span>
         </h4>
       </div>
-      {/* CTA Section */}
+      {/* CTA */}
       <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="mt-20 px-4 sm:px-0 font-gellix w-full"
+        className="w-full mt-14 md:mt-32 mb-12 md:mb-24"
       >
-        <div
-          className="p-5 md:p-14 text-white md:w-10/12 mx-auto text-center mt-20 sm:mt-28"
-          style={{ background: 'linear-gradient(71deg, #71D8E1 10.04%, #1B364B 69.45%)' }}
-        >
-          <h1 className="text-md md:text-5xl font-semibold tracking-tight ">
+        <div className="p-8 md:p-28 bg-[#151515] text-center">
+          <h4 className=" text-2xl md:text-5xl font-semibold tracking-tight">
             {'Build something the world’s never'}
-          </h1>
-          <h1 className="text-md md:text-5xl font-semibold tracking-tight">{'seen before.'}</h1>
-          <button className="w-auto text-sm md:text-lg border mt-2 md:mt-5 border-white bg-white text-black transition-all duration-300 px-3 p-2 md:px-6 rounded-3xl font-semibold cursor-pointer">
-            Explore Roles
-          </button>
+          </h4>
+          <h4 className=" text-2xl md:text-5xl font-semibold tracking-tight mb-3 md:mb-8">
+            seen before.
+          </h4>
+          <LandingPageButton text="Explore Roles" color="white" href="#" />
         </div>
       </motion.section>
+      <Footer />
     </section>
   )
 }

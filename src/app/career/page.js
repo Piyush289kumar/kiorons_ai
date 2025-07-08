@@ -1,10 +1,11 @@
 'use client' // <-- Required for Framer Motion
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { LandingPageButton } from '@/components/landing/LandingPageButton'
 import Footer from '../layouts/Footer'
+import Link from 'next/link'
 export const dynamic = 'force-dynamic'
 export default function CareerPage() {
   const controls1 = useAnimation()
@@ -37,6 +38,15 @@ export default function CareerPage() {
     inView4,
     inView5,
   ])
+  const [recentJobOpening, setRecentJobOpening] = useState([])
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/job-opening`)
+      .then((res) => res.json())
+      .then((data) => {
+        setRecentJobOpening(data)
+      })
+      .catch((err) => console.error('Failed to fetch Job', err))
+  }, [])
   return (
     <section className="flex flex-col justify-center items-center px-4 w-full font-gellix mt-20">
       <div className="text-center max-w-6xl mx-auto">
@@ -142,7 +152,7 @@ export default function CareerPage() {
         </p>
         <p className="text-lg md:text-xl font-semibold">of disciplines and backgrounds.</p>
         <div className="my-12">
-          {[...Array(5)].map((_, index) => (
+          {recentJobOpening.map((job, index) => (
             <div
               key={index}
               className="group border-t border-b border-gray-600 py-5 px-4 transition-all duration-300 ease-in-out cursor-pointer"
@@ -150,22 +160,26 @@ export default function CareerPage() {
               <div className="flex flex-row justify-between items-start sm:items-center transition-all duration-300 ease-in-out gap-4">
                 <div className="flex gap-4 items-center flex-wrap">
                   <h3 className="font-semibold text-white transition-all duration-300">
-                    Product Designer
+                    {job.job_title}
                   </h3>
                   <span className="text-[#A2A2A2] text-sm transition-all duration-300 hidden md:block">
-                    Design
+                    {job.position}
                   </span>
                 </div>
                 <div className="flex gap-4 items-center flex-wrap">
                   <span className="text-[#A2A2A2] text-sm transition-all duration-300 hidden md:block">
-                    Full Time
+                    {job.time}
                   </span>
                   <span className="text-[#A2A2A2] text-sm transition-all duration-300 hidden md:block">
-                    Remote
+                    {job.job_type}
                   </span>
-                  <button className="text-sm border border-white transition-all duration-300 p-2 px-6 rounded-3xl whitespace-nowrap">
+                  <Link
+                    href={`/job-opening/${job.id}`}
+                    className="text-sm border border-white transition-all duration-300 p-2 px-6 rounded-3xl whitespace-nowrap"
+                  >
                     Apply
-                  </button>
+                    {/* </button> */}
+                  </Link>
                 </div>
               </div>
             </div>
