@@ -39,6 +39,7 @@ export default function HeaderSidenav({ isSidebarOpen, setIsSidebarOpen }) {
     { href: '#', label: 'kOne' },
     { href: '#', label: 'Company' },
     { href: '#', label: 'Think' },
+    { href: '/career', label: 'Career' },
   ]
 
   return (

@@ -58,9 +58,9 @@ export default function TechSection() {
   ]
 
   return (
-    <div className="scroll-smooth w-11/12 mx-auto font-gellix">
+    <div className="scroll-smooth font-gellix">
       {/* Hero Section */}
-      <section className="relative min-h-[95vh] md:min-h-screen flex flex-col justify-center items-center gap-y-0 bg-black px-4 sm:px-6 md:px-0">
+      <section className="flex flex-col mt-20 mb-44 items-center gap-y-0 bg-black px-4 sm:px-6 md:px-0">
         <motion.div
           ref={ref1}
           initial="hidden"
@@ -69,7 +69,7 @@ export default function TechSection() {
           transition={{ duration: 0.8 }}
           className="text-center z-10"
         >
-          <p className="text-sm font-medium mb-10 md:mb-20">Tech</p>
+          <p className="text-sm font-medium mb-10 md:mb-14">Tech</p>
 
           <h1 className="text-7xl md:text-9xl font-semibold tracking-tight">Build. Smarter.</h1>
           <motion.p

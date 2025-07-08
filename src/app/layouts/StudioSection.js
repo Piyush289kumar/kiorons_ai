@@ -53,7 +53,7 @@ export default function StudioSection() {
   return (
     <div className="scroll-smooth w-11/12 mx-auto font-gellix">
       {/* Hero Section */}
-      <section className="relative min-h-[95vh] md:min-h-screen flex flex-col justify-center items-center gap-y-0 bg-black px-4 sm:px-6 md:px-0">
+      <section className="flex flex-col mt-20 mb-44 items-center gap-y-0 bg-black px-4 sm:px-6 md:px-0">
         <motion.div
           ref={ref1}
           initial="hidden"
@@ -62,7 +62,7 @@ export default function StudioSection() {
           transition={{ duration: 0.8 }}
           className="text-center z-10"
         >
-          <p className="text-sm font-medium mb-10 md:mb-20">Studio</p>
+          <p className="text-sm font-medium mb-10 md:mb-14">Studio</p>
           <h1 className="text-7xl md:text-9xl font-semibold tracking-tight">Design. Defined.</h1>
           <motion.p
             initial={{ opacity: 0 }}

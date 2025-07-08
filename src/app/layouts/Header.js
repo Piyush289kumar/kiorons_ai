@@ -70,6 +70,9 @@ export default function Header() {
           <Link href="#" className="hover:underline">
             Think
           </Link>
+          <Link href="/career" className="hover:underline">
+            Career
+          </Link>
         </nav>
 
         {/* Right: Search + Menu */}
@@ -158,6 +161,9 @@ export default function Header() {
             </Link>
             <Link href="#" className="block mb-4 text-md font-normal hover:underline">
               Think
+            </Link>
+            <Link href="/career" className="hover:underline">
+              Career
             </Link>
           </div>
         </nav>
