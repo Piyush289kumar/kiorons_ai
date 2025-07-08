@@ -68,11 +68,14 @@
 * {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
-  color: #fff;
+  /* color: #fff; */
 }
-.text-black{
+.text-white{
+  color: #fff !important;
+}
+/* .text-black{
   color: #1e1e1e;
-}
+} */
 
 *::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
