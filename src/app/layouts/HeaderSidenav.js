@@ -36,9 +36,9 @@ export default function HeaderSidenav({ isSidebarOpen, setIsSidebarOpen }) {
   const navLinks = [
     { href: '/studio', label: 'Studio' },
     { href: '/tech', label: 'Tech' },
-    { href: '#', label: 'kOne' },
-    { href: '#', label: 'Company' },
-    { href: '#', label: 'Think' },
+    { href: '/kone', label: 'kOne' },
+    { href: '/company', label: 'Company' },
+    { href: '/think', label: 'Think' },
     { href: '/career', label: 'Career' },
   ]
 

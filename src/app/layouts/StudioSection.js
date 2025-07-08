@@ -1,7 +1,7 @@
 'use client'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { LandingPageButton } from '@/components/landing/LandingPageButton'
@@ -50,8 +50,26 @@ export default function StudioSection() {
     { src: '/assets/images/partners/monday.svg', alt: 'Monday' },
     { src: '/assets/images/partners/Sentry.svg', alt: 'Sentry' },
   ]
+  const [recentBlogs, setRecentBlogs] = useState([])
+  const [recentLatestNews, setRecentLatestNews] = useState([])
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/build-recent-blogs`)
+      .then((res) => res.json())
+      .then((data) => {
+        setRecentBlogs(data)
+      })
+      .catch((err) => console.error('Failed to fetch blogs', err))
+  }, [])
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/latest-news-recent-blogs`)
+      .then((res) => res.json())
+      .then((data) => {
+        setRecentLatestNews(data)
+      })
+      .catch((err) => console.error('Failed to fetch Latest News blogs', err))
+  }, [])
   return (
-    <div className="scroll-smooth w-11/12 mx-auto font-gellix">
+    <div className="scroll-smooth mx-auto font-gellix">
       {/* Hero Section */}
       <section className="flex flex-col mt-20 mb-44 items-center gap-y-0 bg-black px-4 sm:px-6 md:px-0">
         <motion.div
@@ -141,28 +159,30 @@ export default function StudioSection() {
         <p className="text-3xl md:text-5xl font-semibold mb-10 md:mb-20">
           How we think. How we build.
         </p>
-        <div className="flex flex-wrap md:flex-nowrap gap-5 justify-center">
-          <BlogCard
-            img="/assets/images/Webapp/Home/techblog1.png"
-            title="Engineering Principles at Kiorons"
-            category="Development"
-            date="June 20, 2025"
-            readTime="2 min read"
-          />
-          <BlogCard
-            img="/assets/images/Webapp/Home/techblog2.png"
-            title="Human-Centered AI: Our Product Mindset"
-            category="Case Study"
-            date="May 15, 2025"
-            readTime="3 min read"
-          />
-          <BlogCard
-            img="/assets/images/Webapp/Home/techblog3.png"
-            title="From Prototype to Platform"
-            category="Development"
-            date="May 15, 2025"
-            readTime="3 min read"
-          />
+        <div className="overflow-x-auto">
+          <div className="flex gap-3 md:gap-6 md:px-0 w-full">
+            {recentLatestNews.map((blog) => (
+              <div
+                key={blog.id}
+                className="
+                          w-[45%] 
+                          sm:w-[48%] 
+                          md:w-[32%] 
+                          flex-shrink-0
+                        "
+              >
+                <BlogCard
+                  img={blog.image_url}
+                  title={blog.title}
+                  slug={blog.slug}
+                  category={blog.category?.name || 'Uncategorized'}
+                  date={blog.formatted_date}
+                  readTime={blog.read_time || '1 min read'}
+                  aspectRatio="1/1"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </motion.section>
       {/* AI Description */}
@@ -213,28 +233,30 @@ export default function StudioSection() {
             View All
           </Link>
         </div>
-        <div className="flex flex-wrap md:flex-nowrap gap-12 md:gap-5 justify-center">
-          <BlogCard
-            img="/assets/images/Webapp/Home/techblog4.png"
-            title="Designing for Scale: Our System-First Approach"
-            category="Development"
-            date="June 20, 2025"
-            readTime="2 min read"
-          />
-          <BlogCard
-            img="/assets/images/Webapp/Home/techblog5.png"
-            title="Brand as Operating System"
-            category="Case Study"
-            date="May 15, 2025"
-            readTime="3 min read"
-          />
-          <BlogCard
-            img="/assets/images/Webapp/Home/techblog6.png"
-            title="The Tools Behind Our Thinking"
-            category="Development"
-            date="May 15, 2025"
-            readTime="3 min read"
-          />
+        <div className="overflow-x-auto">
+          <div className="flex gap-3 md:gap-6 md:px-0 w-full">
+            {recentBlogs.map((blog) => (
+              <div
+                key={blog.id}
+                className="
+                          w-[45%] 
+                          sm:w-[48%] 
+                          md:w-[32%] 
+                          flex-shrink-0
+                        "
+              >
+                <BlogCard
+                  img={blog.image_url}
+                  title={blog.title}
+                  slug={blog.slug}
+                  category={blog.category?.name || 'Uncategorized'}
+                  date={blog.formatted_date}
+                  readTime={blog.read_time || '1 min read'}
+                  aspectRatio="1/1"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </motion.section>
       {/* CTA */}

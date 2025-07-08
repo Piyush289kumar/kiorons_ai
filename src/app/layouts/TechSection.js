@@ -1,8 +1,7 @@
 'use client'
-
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { LandingPageButton } from '@/components/landing/LandingPageButton'
@@ -10,7 +9,6 @@ import LandingCard from '@/components/landing/LandingCard'
 import BlogCard from '@/components/landing/BlogCard'
 import LandingInfoCard from '@/components/landing/LandingInforCard'
 import LandingInAnalysisCard from '@/components/landing/LandingInAnalysisCard'
-
 export default function TechSection() {
   const controls1 = useAnimation()
   const controls2 = useAnimation()
@@ -18,14 +16,12 @@ export default function TechSection() {
   const controls4 = useAnimation()
   const controls5 = useAnimation()
   const controls6 = useAnimation()
-
   const [ref1, inView1] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [ref2, inView2] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [ref3, inView3] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [ref4, inView4] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [ref5, inView5] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [ref6, inView6] = useInView({ triggerOnce: true, threshold: 0.1 })
-
   useEffect(() => {
     if (inView1) controls1.start('visible')
     if (inView2) controls2.start('visible')
@@ -47,7 +43,6 @@ export default function TechSection() {
     inView5,
     inView6,
   ])
-
   const partners = [
     { src: '/assets/images/partners/Sentry.svg', alt: 'Sentry' },
     { src: '/assets/images/partners/Medium.svg', alt: 'Medium' },
@@ -56,7 +51,24 @@ export default function TechSection() {
     { src: '/assets/images/partners/monday.svg', alt: 'Monday' },
     { src: '/assets/images/partners/Sentry.svg', alt: 'Sentry' },
   ]
-
+  const [recentBlogs, setRecentBlogs] = useState([])
+  const [recentLatestNews, setRecentLatestNews] = useState([])
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/build-recent-blogs`)
+      .then((res) => res.json())
+      .then((data) => {
+        setRecentBlogs(data)
+      })
+      .catch((err) => console.error('Failed to fetch blogs', err))
+  }, [])
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/latest-news-recent-blogs`)
+      .then((res) => res.json())
+      .then((data) => {
+        setRecentLatestNews(data)
+      })
+      .catch((err) => console.error('Failed to fetch Latest News blogs', err))
+  }, [])
   return (
     <div className="scroll-smooth font-gellix">
       {/* Hero Section */}
@@ -70,7 +82,6 @@ export default function TechSection() {
           className="text-center z-10"
         >
           <p className="text-sm font-medium mb-10 md:mb-14">Tech</p>
-
           <h1 className="text-7xl md:text-9xl font-semibold tracking-tight">Build. Smarter.</h1>
           <motion.p
             initial={{ opacity: 0 }}
@@ -91,7 +102,6 @@ export default function TechSection() {
           </motion.div>
         </motion.div>
       </section>
-
       {/* Two Divisions */}
       <motion.section
         ref={ref2}
@@ -105,7 +115,6 @@ export default function TechSection() {
           <h1 className="text-3xl md:text-5xl font-semibold tracking-tight">
             Trusted by Visionaries
           </h1>
-
           {/* <div className="flex flex-col lg:flex-row justify-center gap-8 mt-12 md:mt-24"> */}
           <div className="grid grid-cols-3 md:flex gap-4 md:gap-4 mt-12 md:mt-24">
             {partners.map((partner, idx) => (
@@ -121,7 +130,6 @@ export default function TechSection() {
           </div>
         </div>
       </motion.section>
-
       <motion.section className="font-gellix px-4 sm:px-6 my-32 md:my-56">
         <h3 className="text-3xl md:text-5xl font-semibold tracking-tight text-center">
           What we build. How it performs.
@@ -147,38 +155,37 @@ export default function TechSection() {
           />
         </div>
       </motion.section>
-
       {/* Blog Cards */}
       <motion.section className="font-gellix text-center my-10 md:my-40">
         <p className="text-3xl md:text-5xl font-semibold mb-10 md:mb-20">
           How we think. How we build.
         </p>
-
-        <div className="flex flex-wrap md:flex-nowrap gap-5 justify-center">
-          <BlogCard
-            img="/assets/images/Webapp/Home/techblog1.png"
-            title="Engineering Principles at Kiorons"
-            category="Development"
-            date="June 20, 2025"
-            readTime="2 min read"
-          />
-          <BlogCard
-            img="/assets/images/Webapp/Home/techblog2.png"
-            title="Human-Centered AI: Our Product Mindset"
-            category="Case Study"
-            date="May 15, 2025"
-            readTime="3 min read"
-          />
-          <BlogCard
-            img="/assets/images/Webapp/Home/techblog3.png"
-            title="From Prototype to Platform"
-            category="Development"
-            date="May 15, 2025"
-            readTime="3 min read"
-          />
+        <div className="overflow-x-auto">
+          <div className="flex gap-3 md:gap-6 md:px-0 w-full">
+            {recentBlogs.map((blog) => (
+              <div
+                key={blog.id}
+                className="
+                  w-[45%] 
+                  sm:w-[48%] 
+                  md:w-[32%] 
+                  flex-shrink-0
+                "
+              >
+                <BlogCard
+                  img={blog.image_url}
+                  title={blog.title}
+                  slug={blog.slug}
+                  category={blog.category?.name || 'Uncategorized'}
+                  date={blog.formatted_date}
+                  readTime={blog.read_time || '1 min read'}
+                  aspectRatio="1/1"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </motion.section>
-
       {/* AI Description */}
       <motion.section className="font-gellix px-4 sm:px-6 lg:px-28 text-center my-28 md:my-56 md:w-10/12 mx-auto">
         <h4 className="text-xl md:text-4xl font-medium mb-6 md:mb-12">
@@ -189,7 +196,6 @@ export default function TechSection() {
           — Founder, Seed-stage SaaS Startup
         </p>
       </motion.section>
-
       <motion.section className="font-gellix px-4 sm:px-6 my-24 md:my-56">
         <h3 className="text-3xl md:text-5xl font-semibold tracking-tight text-center">
           Engineered to Perform. Built to Scale.
@@ -217,7 +223,6 @@ export default function TechSection() {
           />
         </div>
       </motion.section>
-
       {/* Blog Cards */}
       <motion.section className="font-gellix my-10 md:my-40">
         <div className="flex justify-between items-baseline mt-8 md:mt-20 mb-8">
@@ -228,31 +233,32 @@ export default function TechSection() {
             View All
           </Link>
         </div>
-        <div className="flex flex-wrap md:flex-nowrap gap-12 md:gap-5 justify-center">
-          <BlogCard
-            img="/assets/images/Webapp/Home/techblog4.png"
-            title="Designing for Scale: Our System-First Approach"
-            category="Development"
-            date="June 20, 2025"
-            readTime="2 min read"
-          />
-          <BlogCard
-            img="/assets/images/Webapp/Home/techblog5.png"
-            title="Brand as Operating System"
-            category="Case Study"
-            date="May 15, 2025"
-            readTime="3 min read"
-          />
-          <BlogCard
-            img="/assets/images/Webapp/Home/techblog6.png"
-            title="The Tools Behind Our Thinking"
-            category="Development"
-            date="May 15, 2025"
-            readTime="3 min read"
-          />
+        <div className="overflow-x-auto">
+          <div className="flex gap-3 md:gap-6 md:px-0 w-full">
+            {recentLatestNews.map((blog) => (
+              <div
+                key={blog.id}
+                className="
+                  w-[45%] 
+                  sm:w-[48%] 
+                  md:w-[32%] 
+                  flex-shrink-0
+                "
+              >
+                <BlogCard
+                  img={blog.image_url}
+                  title={blog.title}
+                  slug={blog.slug}
+                  category={blog.category?.name || 'Uncategorized'}
+                  date={blog.formatted_date}
+                  readTime={blog.read_time || '1 min read'}
+                  aspectRatio="1/1"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </motion.section>
-
       {/* CTA */}
       <motion.section
         initial={{ opacity: 0 }}
