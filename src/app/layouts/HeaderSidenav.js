@@ -4,24 +4,33 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { motion, useAnimation } from 'framer-motion'
 
 export default function HeaderSidenav({ isSidebarOpen, setIsSidebarOpen }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const pathname = usePathname()
+  const controls = useAnimation()
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.innerWidth < 768) {
-        setScrolled(window.scrollY > 50)
+      if (window.scrollY > 50) {
+        setScrolled(true)
       } else {
         setScrolled(false)
       }
     }
-
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    if (scrolled) {
+      controls.start({ opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } })
+    } else {
+      controls.start({ opacity: 0, y: 20, transition: { duration: 0.3, ease: 'easeIn' } })
+    }
+  }, [scrolled, controls])
 
   useEffect(() => {
     const handleResize = () => {
@@ -44,7 +53,6 @@ export default function HeaderSidenav({ isSidebarOpen, setIsSidebarOpen }) {
 
   return (
     <>
-      {/* Header */}
       <header
         className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 font-gellix px-5 ${
           scrolled ? 'bg-black/90 backdrop-blur-md' : ''
@@ -53,20 +61,40 @@ export default function HeaderSidenav({ isSidebarOpen, setIsSidebarOpen }) {
         <div className="w-full mx-auto flex justify-between items-center p-2 md:p-4 z-50">
           {/* Left: Logo + Toggle */}
           <div className="flex items-end gap-8">
-            <Link href="/" className="flex items-center gap-8">
-              <Image
-                src="/assets/images/logo/Kiorons_icon.png"
-                alt="Logo"
-                width={30}
-                height={30}
-                className="w-5 h-5 hidden"
-              />
-              <span className="text-white font-medium text-2xl md:text-3xl">Kiorons</span>
-            </Link>
+            <div className="relative h-auto flex items-center">
+              {/* Company Name when NOT scrolled */}
+              <motion.span
+                initial={{ opacity: 1 }}
+                animate={{ opacity: scrolled ? 0 : 1, y: scrolled ? -10 : 0 }}
+                transition={{ duration: 0.3 }}
+                className="absolute left-0 text-white font-medium text-2xl md:text-3xl"
+              >
+               <Link href={'/'}>Kiorons</Link>
+              </motion.span>
+
+              {/* Logo when SCROLLED */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: scrolled ? 1 : 0, y: scrolled ? 0 : 10 }}
+                transition={{ duration: 0.3 }}
+                className="flex items-center gap-3"
+              >
+                <Link href="/" className="flex items-center gap-3">
+                  <Image
+                    src="/assets/images/logo/Kiorons_icon.png"
+                    alt="Logo"
+                    width={30}
+                    height={30}
+                    className="mt-3 w-5 h-5"
+                  />
+                </Link>
+              </motion.div>
+            </div>
+
             {/* Toggle Button */}
             <button
               onClick={() => setIsSidebarOpen((prev) => !prev)}
-              className="hidden md:flex items-center text-white pr-2 -mt-1"
+              className="hidden absolute cursor-pointer top-7 left-24 md:flex items-center text-white ml-14 pr-2 mt-1"
               aria-label="Toggle sidebar"
             >
               <svg
@@ -97,7 +125,6 @@ export default function HeaderSidenav({ isSidebarOpen, setIsSidebarOpen }) {
                 Login
               </button>
             </Link>
-            {/* Mobile Sidebar Toggle Button */}
             <button
               onClick={() => setMenuOpen((prev) => !prev)}
               className="md:hidden flex items-center text-white p-2"
@@ -148,21 +175,19 @@ export default function HeaderSidenav({ isSidebarOpen, setIsSidebarOpen }) {
         </nav>
       </aside>
 
-      {/* Mobile Sidebar Overlay */}
+      {/* Mobile Sidebar */}
       <div
         className={`md:hidden fixed inset-0 z-20 transition-all duration-300 ${
           menuOpen ? 'pointer-events-auto' : 'pointer-events-none'
         }`}
       >
-        {/* Dark overlay over content */}
         <div
           className={`absolute inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ${
             menuOpen ? 'opacity-100' : 'opacity-0'
           }`}
-          onClick={() => setMenuOpen(false)} // closes menu when clicking background
+          onClick={() => setMenuOpen(false)}
         />
 
-        {/* Sidebar menu */}
         <nav
           className={`absolute top-0 left-0 h-screen w-[85vw] text-white backdrop-blur-3xl px-6 py-4 transform transition-transform duration-300 ${
             menuOpen ? 'translate-x-0' : '-translate-x-full'
