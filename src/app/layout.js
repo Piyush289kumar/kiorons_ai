@@ -6,6 +6,7 @@ import { ThemeProvider } from 'next-themes'
 import './globals.css'
 import HeaderSidenav from './layouts/HeaderSidenav'
 import { Toaster } from 'react-hot-toast'
+import ResponsiveToaster from '@/components/components/ui/ResponsiveToaster'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -41,7 +42,7 @@ export default function RootLayout({ children }) {
             }`}
           >
             {children}
-            <Toaster position="top-right" />
+              <ResponsiveToaster />
           </main>
         </ThemeProvider>
       </body>

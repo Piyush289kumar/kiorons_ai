@@ -1,21 +1,26 @@
 'use client'
-import { useState } from 'react'
+
+import { useEffect, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
+
 export default function ApplyJobPage() {
   const { job_id } = useParams()
   const router = useRouter()
+
+  const [job, setJob] = useState(null)
+  const [loadingJob, setLoadingJob] = useState(true)
+
   const [form, setForm] = useState({
     full_name: '',
     email: '',
     phone: '',
     resume: null,
-    // Optional fields
     address: '',
     city: '',
     state: '',
     zip_code: '',
-    country: '',
+    country: 'India',
     date_of_birth: '',
     gender: '',
     marital_status: '',
@@ -39,35 +44,57 @@ export default function ApplyJobPage() {
     certifications: '',
     languages_known: '',
   })
+
   const [loading, setLoading] = useState(false)
   const [errors, setErrors] = useState({})
   const [clientError, setClientError] = useState('')
   const requiredFields = ['full_name', 'email', 'phone']
+
+  useEffect(() => {
+    const fetchJob = async () => {
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/job-opening/${job_id}`)
+        if (!res.ok) throw new Error()
+        const data = await res.json()
+        setJob(data)
+      } catch {
+        toast.error('Job not found!')
+        router.push('/career')
+      } finally {
+        setLoadingJob(false)
+      }
+    }
+
+    if (job_id) fetchJob()
+  }, [job_id, router])
+
   const handleChange = (e) => {
     const { name, value, files } = e.target
-    if (files) {
-      setForm({ ...form, [name]: files[0] })
-    } else {
-      setForm({ ...form, [name]: value })
-    }
+    setForm((prev) => ({
+      ...prev,
+      [name]: files ? files[0] : value,
+    }))
   }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     setClientError('')
     setErrors({})
-    // Client-side validation
+
     for (const field of requiredFields) {
       if (!form[field]) {
         setClientError(`Please fill the required field: ${field.replace('_', ' ')}`)
         return
       }
     }
-    setLoading(true)
+
     const formData = new FormData()
     formData.append('job_opening_id', job_id)
     Object.keys(form).forEach((key) => {
       if (form[key]) formData.append(key, form[key])
     })
+
+    setLoading(true)
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/apply-job`, {
         method: 'POST',
@@ -75,205 +102,266 @@ export default function ApplyJobPage() {
       })
       const data = await res.json()
       setLoading(false)
+
       if (!res.ok) {
         if (res.status === 422) {
-          setErrors(data.errors)
+          setErrors(data.errors || {})
         } else {
-          setClientError(data.message || 'Something went wrong on the server.')
+          toast.error(data.message || 'Submission failed.')
         }
       } else {
         toast.success('Application submitted successfully!')
         setTimeout(() => {
           router.push('/career')
-        }, 2000)
+        }, 2000) // waits for 2 seconds before redirecting
       }
-    } catch (err) {
+    } catch {
+      toast.error('Network error. Please try again.')
       setLoading(false)
-      toast.error('Network error: Unable to reach server.')
     }
   }
+
   return (
-    <div className="max-w-3xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">Apply for Job #{job_id}</h1>
-      {clientError && <p className="text-red-600 mb-4">{clientError}</p>}
-      <form onSubmit={handleSubmit} encType="multipart/form-data" className="space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Input
-            name="full_name"
+    <div className="w-full mx-auto px-4 py-10 max-w-6xl">
+      {loadingJob ? (
+        <div className="animate-pulse mb-6 text-gray-400">Loading job details...</div>
+      ) : job ? (
+        <div className="mb-6 border-b pb-4">
+          <h1 className="text-3xl font-bold text-gray-800 mb-1">{job.job_title}</h1>
+          <p className="text-gray-600 mb-1">
+            Type: <span className="font-medium">{job.job_type}</span> | Deadline:{' '}
+            <span className="font-medium">{job.application_deadline}</span>
+          </p>
+          <p className="text-sm text-gray-500">{job.description || 'No description available.'}</p>
+        </div>
+      ) : (
+        <div className="text-red-600">Job not found</div>
+      )}
+
+      {clientError && <div className="text-red-600 mb-4">{clientError}</div>}
+
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
+        <div className="grid md:grid-cols-2 gap-6">
+          <FloatingInput
             label="Full Name *"
+            name="full_name"
             value={form.full_name}
             onChange={handleChange}
             error={errors.full_name}
+            required
           />
-          <Input
-            name="email"
+          <FloatingInput
             label="Email *"
+            name="email"
             type="email"
             value={form.email}
             onChange={handleChange}
             error={errors.email}
+            required
           />
-          <Input
-            name="phone"
+          <FloatingInput
             label="Phone *"
+            name="phone"
             value={form.phone}
             onChange={handleChange}
             error={errors.phone}
+            required
           />
-          <Input
-            name="date_of_birth"
+          <FloatingInput
             label="Date of Birth"
+            name="date_of_birth"
             type="date"
             value={form.date_of_birth}
             onChange={handleChange}
           />
-          <Input name="gender" label="Gender" value={form.gender} onChange={handleChange} />
-          <Input
-            name="marital_status"
+          <FloatingInput label="Gender" name="gender" value={form.gender} onChange={handleChange} />
+          <FloatingInput
             label="Marital Status"
+            name="marital_status"
             value={form.marital_status}
             onChange={handleChange}
           />
-          <Input name="city" label="City" value={form.city} onChange={handleChange} />
-          <Input name="state" label="State" value={form.state} onChange={handleChange} />
-          <Input name="zip_code" label="Zip Code" value={form.zip_code} onChange={handleChange} />
-          <Input name="country" label="Country" value={form.country} onChange={handleChange} />
-        </div>
-        <Input name="address" label="Address" value={form.address} onChange={handleChange} />
-        <Input name="linkedin" label="LinkedIn URL" value={form.linkedin} onChange={handleChange} />
-        <Input name="github" label="GitHub URL" value={form.github} onChange={handleChange} />
-        <Input name="leetcode" label="LeetCode URL" value={form.leetcode} onChange={handleChange} />
-        <Input
-          name="portfolio_link"
-          label="Portfolio Link"
-          value={form.portfolio_link}
-          onChange={handleChange}
-        />
-        <Input
-          name="personal_website"
-          label="Personal Website"
-          value={form.personal_website}
-          onChange={handleChange}
-        />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Input
-            name="highest_qualification"
+          <FloatingInput label="City" name="city" value={form.city} onChange={handleChange} />
+          <FloatingInput label="State" name="state" value={form.state} onChange={handleChange} />
+          <FloatingInput
+            label="Zip Code"
+            name="zip_code"
+            value={form.zip_code}
+            onChange={handleChange}
+          />
+          <FloatingInput
+            label="Country"
+            name="country"
+            value={form.country}
+            onChange={handleChange}
+          />
+          <FloatingInput
+            label="LinkedIn"
+            name="linkedin"
+            value={form.linkedin}
+            onChange={handleChange}
+          />
+          <FloatingInput label="GitHub" name="github" value={form.github} onChange={handleChange} />
+          <FloatingInput
+            label="LeetCode"
+            name="leetcode"
+            value={form.leetcode}
+            onChange={handleChange}
+          />
+          <FloatingInput
+            label="Portfolio"
+            name="portfolio_link"
+            value={form.portfolio_link}
+            onChange={handleChange}
+          />
+          <FloatingInput
+            label="Website"
+            name="personal_website"
+            value={form.personal_website}
+            onChange={handleChange}
+          />
+          <FloatingInput
+            label="Address"
+            name="address"
+            value={form.address}
+            onChange={handleChange}
+          />
+          <FloatingInput
             label="Qualification"
+            name="highest_qualification"
             value={form.highest_qualification}
             onChange={handleChange}
           />
-          <Input
-            name="university"
+          <FloatingInput
             label="University"
+            name="university"
             value={form.university}
             onChange={handleChange}
           />
-          <Input
-            name="passing_year"
+          <FloatingInput
             label="Passing Year"
+            name="passing_year"
             value={form.passing_year}
             onChange={handleChange}
           />
-          <Input
-            name="field_of_study"
+          <FloatingInput
             label="Field of Study"
+            name="field_of_study"
             value={form.field_of_study}
             onChange={handleChange}
           />
-        </div>
-        <Input
-          name="experience"
-          label="Experience"
-          value={form.experience}
-          onChange={handleChange}
-        />
-        <Input
-          name="total_experience_years"
-          label="Total Experience Years"
-          value={form.total_experience_years}
-          onChange={handleChange}
-        />
-        <Input
-          name="current_employer"
-          label="Current Employer"
-          value={form.current_employer}
-          onChange={handleChange}
-        />
-        <Input
-          name="current_job_title"
-          label="Current Job Title"
-          value={form.current_job_title}
-          onChange={handleChange}
-        />
-        <Input
-          name="current_salary"
-          label="Current Salary"
-          value={form.current_salary}
-          onChange={handleChange}
-        />
-        <Input
-          name="notice_period"
-          label="Notice Period"
-          value={form.notice_period}
-          onChange={handleChange}
-        />
-        <Input
-          name="skills"
-          label="Skills (comma-separated)"
-          value={form.skills}
-          onChange={handleChange}
-        />
-        <Input name="projects" label="Projects" value={form.projects} onChange={handleChange} />
-        <Input
-          name="certifications"
-          label="Certifications"
-          value={form.certifications}
-          onChange={handleChange}
-        />
-        <Input
-          name="languages_known"
-          label="Languages Known"
-          value={form.languages_known}
-          onChange={handleChange}
-        />
-        <div>
-          <label className="block mb-1 font-medium">Resume (PDF)</label>
-          <input
-            type="file"
-            name="resume"
-            accept=".pdf"
+          <FloatingInput
+            label="Experience"
+            name="experience"
+            value={form.experience}
             onChange={handleChange}
-            className="w-full border p-2 rounded"
           />
-          {errors.resume && <p className="text-red-600 text-sm">{errors.resume}</p>}
+          <FloatingInput
+            label="Total Experience"
+            name="total_experience_years"
+            value={form.total_experience_years}
+            onChange={handleChange}
+          />
+          <FloatingInput
+            label="Current Employer"
+            name="current_employer"
+            value={form.current_employer}
+            onChange={handleChange}
+          />
+          <FloatingInput
+            label="Current Job Title"
+            name="current_job_title"
+            value={form.current_job_title}
+            onChange={handleChange}
+          />
+          <FloatingInput
+            label="Current Salary"
+            name="current_salary"
+            value={form.current_salary}
+            onChange={handleChange}
+          />
+          <FloatingInput
+            label="Notice Period"
+            name="notice_period"
+            value={form.notice_period}
+            onChange={handleChange}
+          />
+          <FloatingInput label="Skills" name="skills" value={form.skills} onChange={handleChange} />
+          <FloatingInput
+            label="Projects"
+            name="projects"
+            value={form.projects}
+            onChange={handleChange}
+          />
+          <FloatingInput
+            label="Certifications"
+            name="certifications"
+            value={form.certifications}
+            onChange={handleChange}
+          />
+          <FloatingInput
+            label="Languages Known"
+            name="languages_known"
+            value={form.languages_known}
+            onChange={handleChange}
+          />
+
+          <div className="relative z-0 w-full group md:col-span-2">
+            <input
+              type="file"
+              name="resume"
+              id="resume"
+              accept=".pdf"
+              onChange={handleChange}
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            />
+            <label
+              htmlFor="resume"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Resume (PDF)
+            </label>
+            {errors.resume && <p className="text-red-600 text-sm mt-1">{errors.resume}</p>}
+          </div>
         </div>
-        <button
-          type="submit"
-          disabled={loading}
-          className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
-        >
-          {loading ? 'Submitting...' : 'Submit Application'}
-        </button>
+        <div className="flex justify-center mt-10 ">
+          <button
+            type="submit"
+            disabled={loading}
+            className="mx-auto bg-white text-black border border-white hover:bg-white/95 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center"
+          >
+            {loading ? 'Submitting...' : 'Submit Application'}
+          </button>
+        </div>
       </form>
     </div>
   )
 }
-// Reusable Input component
-function Input({ label, name, type = 'text', value, onChange, error }) {
+
+function FloatingInput({ label, name, type = 'text', value, onChange, error, required = false }) {
   return (
-    <div>
-      <label htmlFor={name} className="block mb-1 font-medium">
-        {label}
-      </label>
+    <div className="relative z-0 w-full group">
       <input
         type={type}
-        id={name}
         name={name}
+        id={name}
         value={value}
         onChange={onChange}
-        className="w-full border p-2 rounded"
+        placeholder=" "
+        required={required}
+        className={`block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2
+        border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer
+        ${error ? 'border-red-500 focus:border-red-500' : ''}`}
       />
-      {error && <p className="text-red-600 text-sm">{error}</p>}
+      <label
+        htmlFor={name}
+        className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform
+        -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-placeholder-shown:scale-100
+        peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+      >
+        {label}
+      </label>
+      {error && <p className="text-red-600 text-sm mt-1">{error}</p>}
     </div>
   )
 }
