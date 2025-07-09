@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
 import './globals.css'
 import HeaderSidenav from './layouts/HeaderSidenav'
+import { Toaster } from 'react-hot-toast'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -31,10 +32,7 @@ export default function RootLayout({ children }) {
       <body className={`${inter.className} custom-bg font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {/* Header + Sidebar */}
-          <HeaderSidenav
-            isSidebarOpen={isSidebarOpen}
-            setIsSidebarOpen={setIsSidebarOpen}
-          />
+          <HeaderSidenav isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
 
           {/* Main Content */}
           <main
@@ -43,6 +41,7 @@ export default function RootLayout({ children }) {
             }`}
           >
             {children}
+            <Toaster position="top-right" />
           </main>
         </ThemeProvider>
       </body>

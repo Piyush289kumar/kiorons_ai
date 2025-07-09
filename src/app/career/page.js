@@ -174,7 +174,7 @@ export default function CareerPage() {
                     {job.job_type}
                   </span>
                   <Link
-                    href={`/job-opening/${job.id}`}
+                    href={`/job-opening/apply-job/${job.id}`}
                     className="text-sm border border-white transition-all duration-300 p-2 px-6 rounded-3xl whitespace-nowrap"
                   >
                     Apply

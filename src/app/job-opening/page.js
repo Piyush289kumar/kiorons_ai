@@ -104,8 +104,8 @@ export default function JobOpeningPage() {
                   <span className="text-[#A2A2A2] text-sm transition-all duration-300 hidden md:block">
                     {job.job_type}
                   </span>
-                  <Link
-                    href={`/job-opening/${job.id}`}
+                  <Link                    
+                    href={`/job-opening/apply-job/${job.id}`}
                     className="text-sm border border-white transition-all duration-300 p-2 px-6 rounded-3xl whitespace-nowrap"
                   >
                     Apply
