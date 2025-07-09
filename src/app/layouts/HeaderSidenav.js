@@ -9,20 +9,27 @@ import { motion, useAnimation } from 'framer-motion'
 export default function HeaderSidenav({ isSidebarOpen, setIsSidebarOpen }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [scrollDirection, setScrollDirection] = useState('up')
+  const [lastScrollY, setLastScrollY] = useState(0)
   const pathname = usePathname()
   const controls = useAnimation()
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true)
-      } else {
-        setScrolled(false)
+      const currentScrollY = window.scrollY
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setScrollDirection('down')
+      } else if (currentScrollY < lastScrollY) {
+        setScrollDirection('up')
       }
+
+      setLastScrollY(currentScrollY)
     }
+
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [lastScrollY])
 
   useEffect(() => {
     if (scrolled) {
@@ -33,14 +40,10 @@ export default function HeaderSidenav({ isSidebarOpen, setIsSidebarOpen }) {
   }, [scrolled, controls])
 
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setMenuOpen(false)
-      }
+    if (window.innerWidth < 768) {
+      setMenuOpen(false)
     }
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
+  }, [pathname])
 
   const navLinks = [
     { href: '/studio', label: 'Studio' },
@@ -53,9 +56,12 @@ export default function HeaderSidenav({ isSidebarOpen, setIsSidebarOpen }) {
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 font-gellix px-5 ${
-          scrolled ? 'bg-black/90 backdrop-blur-md' : ''
+      <motion.header
+        initial={{ y: 0 }}
+        animate={{ y: scrollDirection === 'down' ? '-100%' : 0 }}
+        transition={{ duration: 0.2, ease: 'easeOut' }}
+        className={`fixed top-0 left-0 w-full z-40 transition-all font-gellix px-5 ${
+          scrolled ? 'bg-black backdrop-blur-md' : 'bg-black'
         }`}
       >
         <div className="w-full mx-auto flex justify-between items-center p-2 md:p-4 z-50">
@@ -148,12 +154,12 @@ export default function HeaderSidenav({ isSidebarOpen, setIsSidebarOpen }) {
             </button>
           </div>
         </div>
-      </header>
+      </motion.header>
 
       {/* Desktop Sidebar */}
       <aside
         className={`hidden md:flex fixed top-0 left-0 h-screen ${
-          isSidebarOpen ? 'w-[220px]' : 'w-[60px]'
+          isSidebarOpen ? 'w-[220px]' : 'w-[0px]'
         } transition-all duration-300 bg-black text-white flex-col py-6 px-4 z-20`}
       >
         <nav className="flex flex-col gap-2 text-sm font-medium mt-56">
@@ -162,7 +168,9 @@ export default function HeaderSidenav({ isSidebarOpen, setIsSidebarOpen }) {
               key={link.href}
               href={link.href}
               className={`flex items-center gap-2 px-4 py-2 rounded-md transition-all ${
-                pathname === link.href ? 'bg-white/10 font-semibold' : 'text-white hover:bg-white/10'
+                pathname === link.href
+                  ? 'bg-white/10 font-semibold'
+                  : 'text-white hover:bg-white/10'
               }`}
               style={pathname === link.href ? { color: '#000' } : {}}
             >

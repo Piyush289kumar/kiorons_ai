@@ -79,7 +79,7 @@ export default function HeroSection() {
   }, [])
 
   return (
-    <div className="scroll-smooth w-full mx-auto font-gellix md:px-8">
+    <div className="scroll-smooth w-full mx-auto font-gellix">
       {/* Hero Section */}
       <section className="relative min-h-screen flex flex-col justify-center items-center gap-y-0 bg-black px-4 sm:px-6 md:px-0">
         <motion.div
@@ -147,7 +147,7 @@ export default function HeroSection() {
             focused divisions: Studio and Tech.
           </motion.p>
         </div>
-        <div className="flex flex-col lg:flex-row justify-center gap-8 mt-12">
+        <div className="flex flex-col lg:flex-row justify-center gap-4 mt-12">
           <LandingCard
             logo="/assets/images/logo/Kiorons_icon.png"
             label="Studio"
@@ -274,7 +274,7 @@ export default function HeroSection() {
                   category={blog.category?.name || 'Uncategorized'}
                   date={blog.formatted_date}
                   readTime={blog.read_time || '1 min read'}
-                  aspectRatio="16/9"
+                  aspectRatio="1/1"
                 />
               </div>
             ))}

@@ -38,7 +38,7 @@ export default function RootLayout({ children }) {
           {/* Main Content */}
           <main
             className={`transition-all duration-300 pt-20 px-5 ${
-              isSidebarOpen ? 'md:ml-[220px]' : 'md:ml-[60px]'
+              isSidebarOpen ? 'md:ml-[220px]' : 'md:ml-[0px]'
             }`}
           >
             {children}

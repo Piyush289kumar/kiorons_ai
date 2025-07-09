@@ -9,7 +9,7 @@ const FooterDataSet = {
 }
 export default function Footer() {
   return (
-    <footer className="w-full mx-auto text-white font-gellix md:px-10 my-12 md:my-12">
+    <footer className="w-full mx-auto text-white font-gellix md:px-10 mb-12 md:mb-12 mt-20 md:mt-52">
       <div className="flex flex-col md:flex-row md:justify-between md:gap-20 gap-10">
         <h3 className="text-3xl md:text-5xl font-semibold tracking-tight md:mb-8">Kiorons</h3>
         {/* Section Template */}
@@ -21,7 +21,7 @@ export default function Footer() {
           { title: 'kOne', items: FooterDataSet.kOne },
         ].map((section, idx) => (
           <div className="space-y-4" key={idx}>
-            <h4 className="text-[#B8B8B8] text-md tracking-tight font-semibold">{section.title}</h4>
+            <h4 className="text-[#3a3a3a] text-md tracking-tight font-semibold">{section.title}</h4>
             <ul className="space-y-2">
               {section.items.map((item, i) => (
                 <li

@@ -3,7 +3,7 @@ import { LandingPageButton } from './LandingPageButton' // Adjust path
 
 export default function LandingCard({ logo, label, heading, points, buttons }) {
   return (
-    <div className="bg-[#151515] flex flex-col justify-between p-8 rounded-xl text-white w-full max-w-xl">
+    <div className="bg-[#151515] flex flex-col justify-between p-8 rounded-lg text-white w-full max-w-md">
       {/* Logo and Label */}
       <div className="flex items-center gap-1 mb-12 md:mb-20">
         <Image

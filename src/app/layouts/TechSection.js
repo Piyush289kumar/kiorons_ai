@@ -72,7 +72,7 @@ export default function TechSection() {
   return (
     <div className="scroll-smooth font-gellix">
       {/* Hero Section */}
-      <section className="flex flex-col mt-20 mb-44 items-center gap-y-0 bg-black px-4 sm:px-6 md:px-0">
+      <section className="flex flex-col mt-12 mb-44 items-center gap-y-0 bg-black px-4 sm:px-6 md:px-0">
         <motion.div
           ref={ref1}
           initial="hidden"
