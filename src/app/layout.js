@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className={`${inter.className} custom-bg font-sans`}>
+      <body className={`${inter.className} custom-bg font-sans overflow-x-hidden`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {/* Header + Sidebar */}
           <HeaderSidenav isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
@@ -38,7 +38,7 @@ export default function RootLayout({ children }) {
           {/* Main Content */}
           <main
             className={`transition-all duration-300 pt-20 px-5 ${
-              isSidebarOpen ? 'md:ml-[220px]' : 'md:ml-[0px]'
+              isSidebarOpen ? 'md:ml-[180px]' : 'md:ml-[0px]'
             }`}
           >
             {children}

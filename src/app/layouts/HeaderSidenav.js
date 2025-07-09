@@ -159,10 +159,10 @@ export default function HeaderSidenav({ isSidebarOpen, setIsSidebarOpen }) {
       {/* Desktop Sidebar */}
       <aside
         className={`hidden md:flex fixed top-0 left-0 h-screen ${
-          isSidebarOpen ? 'w-[220px]' : 'w-[0px]'
+          isSidebarOpen ? 'w-[180px]' : 'w-[0px]'
         } transition-all duration-300 bg-black text-white flex-col py-6 px-4 z-20`}
       >
-        <nav className="flex flex-col gap-2 text-sm font-medium mt-56">
+        <nav className="flex flex-col gap-2 text-sm font-normal mt-48">
           {navLinks.map((link) => (
             <Link
               key={link.href}

@@ -79,7 +79,7 @@ export default function HeroSection() {
   }, [])
 
   return (
-    <div className="scroll-smooth w-full mx-auto font-gellix">
+    <div className="scroll-smooth w-full md:w-[90vw] mx-auto font-gellix">
       {/* Hero Section */}
       <section className="relative min-h-screen flex flex-col justify-center items-center gap-y-0 bg-black px-4 sm:px-6 md:px-0">
         <motion.div
@@ -198,7 +198,7 @@ export default function HeroSection() {
         >
           kOne
         </h1>
-        <div className="relative mt-5 md:mt-16 w-full md:w-10/12 mx-auto md:p-7">
+        <div className="relative mt-5 md:mt-16 w-full md:w-8/12 mx-auto md:p-7">
           <Image
             src="/assets/images/Webapp/Home/Research_Hero.png"
             alt="Video Background"

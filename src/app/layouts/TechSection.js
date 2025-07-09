@@ -70,7 +70,7 @@ export default function TechSection() {
       .catch((err) => console.error('Failed to fetch Latest News blogs', err))
   }, [])
   return (
-    <div className="scroll-smooth font-gellix">
+    <div className="scroll-smooth font-gellix w-full md:w-[90vw] ">
       {/* Hero Section */}
       <section className="flex flex-col mt-12 mb-44 items-center gap-y-0 bg-black px-4 sm:px-6 md:px-0">
         <motion.div
