@@ -5,7 +5,6 @@ export default function Home() {
   return (
     <>
       <div className="mx-auto w-full overflow-y-hidden">
-        {/* <HeroProdulctSection /> */}
         <HeroSection />
       </div>
     </>

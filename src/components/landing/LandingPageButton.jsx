@@ -6,16 +6,16 @@ export function LandingPageButton({ text, color = 'white', href = '#' }) {
   `
 
   if (color === 'white') {
-    buttonClasses += ' bg-white text-black border border-white'
+    buttonClasses += ' !bg-white !text-black !border !border-white'
   } else if (color === 'black') {
-    buttonClasses += ' bg-black text-white border border-white'
+    buttonClasses += ' !bg-black !text-white !border !border-white'
   } else if (color === 'none') {
-    buttonClasses += ' bg-transparent text-white border-none'
+    buttonClasses += ' !bg-transparent !text-white !border-none'
   }
 
   return (
     <Link href={href}>
-      <button className={buttonClasses}>{text}</button>
+      <button className={buttonClasses.trim()}>{text}</button>
     </Link>
   )
 }

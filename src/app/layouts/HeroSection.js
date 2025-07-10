@@ -1,4 +1,22 @@
 'use client'
+
+import '@/styles/assets/css/4105e979b7485bff.css'
+import '@/styles/assets/css/ba2e6b7c939be632.css'
+import '@/styles/assets/css/1be87e885847316b.css'
+import '@/styles/assets/css/833eabf499e625b2.css'
+import '@/styles/assets/css/9cd2a96b2ee898ce.css'
+
+import '@/styles/assets/css/1bfffb9d5bad202f.css'
+
+import '@/styles/assets/css/97e3c45dcae8ebe6.css'
+import '@/styles/assets/css/d1cfe8dedc57da26.css'
+import '@/styles/assets/css/d230b7644f178243.css'
+import '@/styles/assets/css/9db570bb1a7b37d9.css'
+import '@/styles/assets/css/e2c5b4cbada55ed0.css'
+import '@/styles/assets/css/3e6a8afa8b7ca6ac.css'
+import '@/styles/assets/css/877938fdea4e370b.css'
+import '@/styles/assets/css/8154015444e20430.css'
+
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useEffect, useState } from 'react'
@@ -1374,93 +1392,7 @@ export default function HeroSection() {
                 Kiorons
               </span>
               <article className="flex flex-col gap-2xl @md:gap-3xl">
-                <div className="px-sm @md:px-md @md:-mb-3xl @md:h-[calc(100svh-40px-var(--header-h))] max-w-container h-[calc(100svh-var(--header-h))] max-h-[920px] min-h-[400px] w-full">
-                  <div className="relative flex h-full w-full flex-col justify-between">
-                    <div className="flex h-full w-full flex-col justify-center">
-                      <div className="duration-short ease-curve-a flex flex-col items-center justify-center opacity-100 transition-opacity">
-                        <span className="mb-sm mx-auto text-center text-[28px] font-semibold leading-[34px] tracking-[0.3px]">
-                          What can I help with?
-                        </span>
-                        <div className="@container relative z-40 mx-auto w-full max-w-[768px]">
-                          <form className="relative">
-                            <label className="@md:rounded-3xl light:border-primary-12 dark:bg-primary-4 light:border light:bg-secondary-100 light:shadow-splash-chatpgpt-input relative flex w-full cursor-text flex-col overflow-hidden rounded-2xl py-4 pl-4 pr-[52px]">
-                              <div className="sr-only">Message Kiorons</div>
-                              <textarea
-                                className="placeholder:text-primary-60 text-p2 w-full resize-none bg-transparent !text-base focus:outline-none"
-                                rows="3"
-                                placeholder="Ask KOne..."
-                              ></textarea>
-                            </label>
-                            <div className="absolute bottom-3 right-3 mt-auto flex justify-end">
-                              <button
-                                className="bg-primary-100 text-secondary-100 disabled:bg-primary-4 disabled:text-primary-44 relative h-9 w-9 rounded-full p-0 transition-colors hover:opacity-70 disabled:hover:opacity-100"
-                                type="submit"
-                                disabled=""
-                                aria-label="Send prompt to Kiorons"
-                              >
-                                <svg
-                                  width="36"
-                                  height="36"
-                                  viewBox="0 0 32 32"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    d="M16 22L16 10M16 10L11 15M16 10L21 15"
-                                    stroke="currentColor"
-                                    strokeWidth="1.7"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                  ></path>
-                                </svg>
-                              </button>
-                            </div>
-                          </form>
-                          <div className="@md:min-h-[96px] mt-6 w-full">
-                            <div className="flex flex-wrap justify-center gap-2 mx-auto w-full @sm:max-w-[545px]">
-                              <a
-                                className="transition ease-curve-a duration-250 border-primary-12 hover:bg-primary-4 whitespace-nowrap text-cta flex h-[40px] items-center !rounded-full border border-solid bg-transparent px-3 leading-none transition light:shadow-splash-chatpgpt-links"
-                                target="_blank"
-                                href="https://chatgpt.com/?hints=search"
-                              >
-                                <span className="text-primary-60 relative">
-                                  Search with Kiorons
-                                </span>
-                              </a>
-                              <a
-                                className="transition ease-curve-a duration-250 border-primary-12 hover:bg-primary-4 whitespace-nowrap text-cta flex h-[40px] items-center !rounded-full border border-solid bg-transparent px-3 leading-none transition light:shadow-splash-chatpgpt-links"
-                                target="_blank"
-                                href="https://chatgpt.com/?mode=voice"
-                              >
-                                <span className="text-primary-60 relative">Talk with Kiorons</span>
-                              </a>
-                              <a
-                                className="transition ease-curve-a duration-250 border-primary-12 hover:bg-primary-4 whitespace-nowrap text-cta flex h-[40px] items-center !rounded-full border border-solid bg-transparent px-3 leading-none transition light:shadow-splash-chatpgpt-links"
-                                href="/research/"
-                              >
-                                <span className="text-primary-60 relative">Research</span>
-                              </a>
-                              <a
-                                className="transition ease-curve-a duration-250 border-primary-12 hover:bg-primary-4 whitespace-nowrap text-cta flex h-[40px] items-center !rounded-full border border-solid bg-transparent px-3 leading-none transition light:shadow-splash-chatpgpt-links"
-                                target="_blank"
-                                href="https://sora.com"
-                              >
-                                <span className="text-primary-60 relative">Sora</span>
-                              </a>
-                              <button
-                                type="button"
-                                className="transition duration-short ease-curve-a rounded-[2.5rem] text-nowrap min-h-md flex items-center justify-center gap-[0.3em] text-cta focus:outline focus:outline-1 outline-offset-2 h-[2.5rem] border-primary-12 hover:bg-primary-4 whitespace-nowrap text-cta flex h-[40px] items-center !rounded-full border border-solid bg-transparent px-3 leading-none transition text-primary-60 light:shadow-splash-chatpgpt-links rounded-full text-primary-100 hover:text-primary-60 disabled:text-primary-44 focus:outline-none focus-visible:outline-primary-44 px-0 !rounded"
-                                data-analytics="home-splash-show-more"
-                              >
-                                <span className="relative">More</span>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                
                 <div className="@container w-full">
                   <div className="@lg:max-w-container @lg:grid-cols-4 gap-sm grid w-full grid-cols-1">
                     <div className="@lg:col-span-3 @lg:sticky @lg:mb-0 mb-sm duration-medium grid-cols-1 self-start transition-[top] @lg:top-header-h">
