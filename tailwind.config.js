@@ -34,6 +34,19 @@ module.exports = {
           },
         },
       },
+      spacing: {
+        'nav-width': '16rem',
+        'nav-width-mobile': '4rem',
+      },
+      transitionProperty: {
+        'grid-template-columns': 'grid-template-columns',
+      },
+      transitionDuration: {
+        sidebar: '300ms',
+      },
+      transitionTimingFunction: {
+        'curve-sidebar': 'cubic-bezier(0.4, 0, 0.2, 1)',
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],

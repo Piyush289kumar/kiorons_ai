@@ -59,7 +59,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.className} text-primary-100 text-p1 bg-background font-sans overflow-x-hidden`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           {/* <HeaderSidenav isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} /> */}
           
           <div>

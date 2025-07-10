@@ -9,8 +9,38 @@ import LandingCard from '@/components/landing/LandingCard'
 import BlogCard from '@/components/landing/BlogCard'
 import ScrollSection from '@/components/landing/ScrollSection'
 import Footer from './Footer'
+import HeroProdulctSection from './HeroProdulctSection'
 export default function HeroSection() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+      setIsSidebarOpen(window.innerWidth >= 1024) // Default sidebar open only on large screens
+    }
+
+    window.addEventListener('resize', checkMobile)
+    checkMobile()
+
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  // Constants simulating Tailwind theme values
+  const navWidthMobile = '4rem' // same as theme(spacing.nav-width-mobile)
+  const navWidth = '16rem' // same as theme(spacing.nav-width)
+
+  const getGridTemplateColumns = () => {
+    if (isMobile) {
+      return isSidebarOpen
+        ? `${navWidthMobile} 1fr` // Mobile + open sidebar
+        : `0 1fr` // Mobile + closed sidebar
+    } else {
+      return isSidebarOpen
+        ? `0 ${navWidth} 1fr` // Desktop + open sidebar
+        : `0 0 1fr` // Desktop + closed sidebar
+    }
+  }
   return (
     <>
       <header>
@@ -24,8 +54,9 @@ export default function HeroSection() {
           <div className="md:-mr-5xs flex items-center flex-row-reverse md:flex-row">
             <button
               type="button"
+              onClick={() => setIsSidebarOpen((prev) => !prev)}
               aria-controls="sidebar-drawer"
-              aria-expanded="false"
+              aria-expanded={isSidebarOpen}
               className="p-xs text-primary-44 hover:text-primary-100 duration-short ease-curve-a cursor-pointer transition-colors pr-0 md:hidden pl-0"
               aria-label="Toggle navigation sidebar"
             >
@@ -38,6 +69,7 @@ export default function HeroSection() {
                 ></path>
               </svg>
             </button>
+
             <div className="gap-4xs items-center transition-opacity duration-300 flex">
               <div className="relative z-[51]">
                 <div className="duration-short ease-primary rounded-full backdrop-blur-3xl transition delay-200">
@@ -148,7 +180,14 @@ export default function HeroSection() {
                     ></path>
                     <path d="M287.636 1.25H276.416V60.75H287.636V1.25Z" fill="currentColor"></path>
                   </svg> */}{' '}
-                  <span style={{ color: '#ffffff', fontWeight: '700', fontSize: '28px', marginTop: '-35px' }}>
+                  <span
+                    style={{
+                      color: '#ffffff',
+                      fontWeight: '700',
+                      fontSize: '28px',
+                      marginTop: '-35px',
+                    }}
+                  >
                     <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
                       Kiorons
                     </Link>
@@ -180,7 +219,13 @@ export default function HeroSection() {
               className="p-xs text-primary-44 hover:text-primary-100 duration-short ease-curve-a cursor-pointer transition-colors hidden md:block"
               aria-label="Toggle navigation sidebar"
             >
-              <svg width="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="md:mt-[10px]">
+              <svg
+                width="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="md:mt-[10px]"
+              >
                 <path
                   fillRule="evenodd"
                   clipRule="evenodd"
@@ -198,10 +243,12 @@ export default function HeroSection() {
       <div
         className={`${
           isSidebarOpen
-            ? 'duration-sidebar ease-curve-sidebar grid transition-[grid-template-columns] grid-cols-[0_1fr] md:grid-cols-[0_theme(spacing.nav-width)_1fr]' // style A
-            : 'duration-sidebar ease-curve-sidebar grid transition-[grid-template-columns] grid-cols-[0_1fr] md:grid-cols-[0_0_1fr]' // style B
+            ? 'duration-sidebar ease-curve-sidebar grid transition-[grid-template-columns] grid-cols-[0_1fr] md:grid-cols-[0_theme(spacing.nav-width)_1fr]'
+            : 'duration-sidebar ease-curve-sidebar grid transition-[grid-template-columns] grid-cols-[0_1fr] md:grid-cols-[0_0_1fr]'
         }`}
       >
+        {/* duration-sidebar ease-curve-sidebar grid transition-[grid-template-columns] grid-cols-[theme(spacing.nav-width-mobile)_1fr] md:grid-cols-[0_theme(spacing.nav-width)_1fr] */}
+
         <div className="relative hidden overflow-x-hidden md:block">
           <div
             className="text-nav px-xs w-nav-width mt-[187px] absolute right-0 top-0"
@@ -1322,8 +1369,9 @@ export default function HeroSection() {
               </div>
             </dialog>
             <main id="main" tabIndex="-1" className="@container relative z-[1] outline-none">
+              <HeroProdulctSection />
               <span className="sr-only" aria-live="polite" aria-atomic="true">
-                OpenAI
+                Kiorons
               </span>
               <article className="flex flex-col gap-2xl @md:gap-3xl">
                 <div className="px-sm @md:px-md @md:-mb-3xl @md:h-[calc(100svh-40px-var(--header-h))] max-w-container h-[calc(100svh-var(--header-h))] max-h-[920px] min-h-[400px] w-full">
