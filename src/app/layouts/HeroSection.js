@@ -17,7 +17,7 @@ import '@/styles/assets/css/3e6a8afa8b7ca6ac.css'
 import '@/styles/assets/css/877938fdea4e370b.css'
 import '@/styles/assets/css/8154015444e20430.css'
 
-import { motion, useAnimation } from 'framer-motion'
+import { motion, useAnimation, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
@@ -28,9 +28,21 @@ import BlogCard from '@/components/landing/BlogCard'
 import ScrollSection from '@/components/landing/ScrollSection'
 import Footer from './Footer'
 import HeroProdulctSection from './HeroProdulctSection'
+
 export default function HeroSection() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
+
+  const [showLogo, setShowLogo] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowLogo(window.scrollY > 10)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   useEffect(() => {
     const checkMobile = () => {
@@ -169,47 +181,44 @@ export default function HeroSection() {
                 </svg>
                 <div className="absolute mt-[7px] h-[24px] w-[91px] md:left-[1.5px] md:mt-[3px] BrandIsland_wordmark__SByOy opacity-100 BrandIsland_visible__DYeyd">
                   {/* <!-- Header Logo --> */}
-                  {/* <svg
-                    className="w-[4.9375rem] will-change-transform md:w-[5.625rem]"
-                    width="90"
-                    viewBox="0 0 288 78"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M30.6 0.398438C13.77 0.398438 0 14.1684 0 30.9984C0 47.8284 13.77 61.5984 30.6 61.5984C47.43 61.5984 61.2 47.9134 61.2 30.9984C61.2 14.0834 47.515 0.398438 30.6 0.398438ZM30.6 50.6334C20.145 50.6334 11.73 42.0484 11.73 30.9984C11.73 19.9484 20.145 11.3634 30.6 11.3634C41.055 11.3634 49.47 19.9484 49.47 30.9984C49.47 42.0484 41.055 50.6334 30.6 50.6334Z"
-                      fill="currentColor"
-                    ></path>
-                    <path
-                      d="M92.1393 17.3984C86.6143 17.3984 81.2593 19.6084 78.4543 23.3484V18.2484H67.4043V77.7484H78.4543V56.2434C81.2593 59.7284 86.4443 61.5984 92.1393 61.5984C104.039 61.5984 113.389 52.2484 113.389 39.4984C113.389 26.7484 104.039 17.3984 92.1393 17.3984ZM90.2693 51.9934C83.9793 51.9934 78.3693 47.0634 78.3693 39.4984C78.3693 31.9334 83.9793 27.0034 90.2693 27.0034C96.5593 27.0034 102.169 31.9334 102.169 39.4984C102.169 47.0634 96.5593 51.9934 90.2693 51.9934Z"
-                      fill="currentColor"
-                    ></path>
-                    <path
-                      d="M139.401 17.3984C127.331 17.3984 117.811 26.8334 117.811 39.4984C117.811 52.1634 126.141 61.5984 139.741 61.5984C150.876 61.5984 158.016 54.8834 160.226 47.3184H149.431C148.071 50.4634 144.246 52.6734 139.656 52.6734C133.961 52.6734 129.626 48.6784 128.606 42.9834H160.736V38.6484C160.736 27.0884 152.661 17.3984 139.401 17.3984ZM128.691 35.1634C129.881 29.8084 134.301 26.3234 139.656 26.3234C145.351 26.3234 149.686 30.0634 150.196 35.1634H128.691Z"
-                      fill="currentColor"
-                    ></path>
-                    <path
-                      d="M190.145 17.3984C185.215 17.3984 180.03 19.6084 177.65 23.2634V18.2484H166.6V60.7484H177.65V37.8834C177.65 31.2534 181.22 26.9184 187 26.9184C192.355 26.9184 195.245 30.9984 195.245 36.6934V60.7484H206.295V34.9084C206.295 24.3684 199.835 17.3984 190.145 17.3984Z"
-                      fill="currentColor"
-                    ></path>
-                    <path
-                      d="M234.596 1.25L210.541 60.75H222.356L227.456 47.745H254.826L259.926 60.75H271.911L248.026 1.25H234.596ZM231.281 37.885L241.141 12.98L250.916 37.885H231.281Z"
-                      fill="currentColor"
-                    ></path>
-                    <path d="M287.636 1.25H276.416V60.75H287.636V1.25Z" fill="currentColor"></path>
-                  </svg> */}{' '}
-                  <span
-                    style={{
-                      color: '#ffffff',
-                      fontWeight: '700',
-                      fontSize: '28px',
-                      marginTop: '-35px',
-                    }}
-                  >
-                    <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-                      Kiorons
-                    </Link>
-                  </span>
+                  <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <AnimatePresence mode="wait" initial={false}>
+                      {showLogo ? (
+                        <motion.div
+                          key="logo"
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.95 }}
+                          transition={{ duration: 0.25 }}
+                        >
+                          <Image
+                            src="/assets/images/logo/Kiorons_icon.png"
+                            alt="Kiorons Logo"
+                            width={20}
+                            height={20}
+                            className="!mt-0 md:!mt-1"
+                          />
+                        </motion.div>
+                      ) : (
+                        <motion.span
+                          key="text"
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.3 }}
+                          style={{
+                            color: '#ffffff',
+                            fontWeight: 700,
+                            fontSize: '28px',
+                            marginTop: '-37px',
+                            display: 'inline-block',
+                          }}
+                        >
+                          Kiorons
+                        </motion.span>
+                      )}
+                    </AnimatePresence>
+                  </Link>
                 </div>
               </Link>
             </div>
@@ -242,7 +251,7 @@ export default function HeroSection() {
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="md:mt-[10px]"
+                className="md:mt-[4px]"
               >
                 <path
                   fillRule="evenodd"
@@ -1392,7 +1401,6 @@ export default function HeroSection() {
                 Kiorons
               </span>
               <article className="flex flex-col gap-2xl @md:gap-3xl">
-                
                 <div className="@container w-full">
                   <div className="@lg:max-w-container @lg:grid-cols-4 gap-sm grid w-full grid-cols-1">
                     <div className="@lg:col-span-3 @lg:sticky @lg:mb-0 mb-sm duration-medium grid-cols-1 self-start transition-[top] @lg:top-header-h">

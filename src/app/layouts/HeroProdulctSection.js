@@ -44,7 +44,7 @@ export default function HeroProdulctSection() {
 
   return (
     <>
-      <section className="relative !min-h-screen flex flex-col justify-center items-center !gap-y-0 !bg-black !px-4 sm:!px-6 md:!px-0">
+      <section className="relative !min-h-[85vh] md:!min-h-screen flex flex-col justify-center items-center !gap-y-0 !bg-black !px-4 sm:!px-6 md:!px-0">
         <div className="text-center z-10">
           <h1 className="!text-7xl md:!text-9xl !font-semibold !tracking-tight">
             Create Different.
@@ -61,8 +61,8 @@ export default function HeroProdulctSection() {
           <Image
             src="/assets/images/Webapp/Home/line.svg"
             alt="Logo"
-            width={100}
-            height={100}
+            width={900}
+            height={900}
             className="!mt-32 !w-full"
             priority
           />
