@@ -4,7 +4,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['images.unsplash.com', 'localhost', 'backend.web.kiorons.com'],
+    domains: ['images.unsplash.com', 'localhost', 'backend.web.kiorons.com', 'images.ctfassets.net'],
   },
   experimental: {
     serverActions: {},

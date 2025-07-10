@@ -1,20 +1,12 @@
-import FadeUpSection from '@/components/animation/FadeUpSection'
-import ContactSection from './layouts/ContactSection'
-import EverythingInOnePlaceSection from './layouts/EverthingInOnePlaceSection'
-import Footer from './layouts/Footer'
+import HeroProdulctSection from './layouts/HeroProdulctSection'
 import HeroSection from './layouts/HeroSection'
-import IdeaSection from './layouts/ideaSection'
-import KaiSection from './layouts/KaiSection'
-import MeetHumanOSSection from './layouts/MeetHumanOSSection'
-// import { SmoothCursor } from '@/components/ui/smooth-cursor'
-import { SmoothCursor } from '@/components/components/ui/smooth-cursor'
 
 export default function Home() {
   return (
-    <>      
+    <>
       <div className="mx-auto w-full overflow-y-hidden">
-        <HeroSection />           
-        <Footer/>
+        {/* <HeroProdulctSection /> */}
+        <HeroSection />
       </div>
     </>
   )
