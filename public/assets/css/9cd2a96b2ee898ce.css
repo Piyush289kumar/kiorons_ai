@@ -40,7 +40,7 @@
   position: relative;
 }
 .sticky {
-  position: sticky;
+  position: sticky !important;
 }
 .inset-0 {
   inset: 0;
@@ -7686,7 +7686,7 @@
     position: relative;
   }
   .\@md\:sticky {
-    position: sticky;
+    position: sticky !important;
   }
   .\@md\:-left-2xs {
     left: -1rem;
@@ -8281,7 +8281,7 @@
     position: absolute;
   }
   .\@lg\:sticky {
-    position: sticky;
+    position: sticky !important;
   }
   .\@lg\:right-0 {
     right: 0;
