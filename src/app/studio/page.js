@@ -6,7 +6,6 @@ export default function Home() {
     <>
       <div className="mx-auto w-full overflow-y-hidden">
         <StudioSection />
-        <Footer />
       </div>
     </>
   )

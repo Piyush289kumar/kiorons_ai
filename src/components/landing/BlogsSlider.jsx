@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import BlogCard from './BlogCard' // Adjust path if needed
 
-export default function BlogsSlider({ apiRoute, heading = 'Blogs', viewAllLink = '/' }) {
+export default function BlogsSlider({ apiRoute, heading, viewAllLink = '/' }) {
   const [blogs, setBlogs] = useState([])
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function BlogsSlider({ apiRoute, heading = 'Blogs', viewAllLink =
 
   return (
     <>
-      <div className="@container w-full">
+      <div className="@container w-full !font-gellix">
         <div className="max-w-container mb-md flex items-baseline justify-between md:px-8">
           <div>
             <h2 className="text-h4 text-primary-100">{heading}</h2>
