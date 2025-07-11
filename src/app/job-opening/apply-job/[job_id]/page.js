@@ -111,9 +111,7 @@ export default function ApplyJobPage() {
         }
       } else {
         toast.success('Application submitted successfully!')
-        setTimeout(() => {
-          router.push('/career')
-        }, 2000) // waits for 2 seconds before redirecting
+        setTimeout(() => router.push('/career'), 2000)
       }
     } catch {
       toast.error('Network error. Please try again.')
@@ -122,213 +120,69 @@ export default function ApplyJobPage() {
   }
 
   return (
-    <div className="w-full mx-auto px-4 py-10 max-w-6xl">
+    <div className="!w-full !mx-auto !px-4 !py-10 !max-w-6xl">
       {loadingJob ? (
-        <div className="animate-pulse mb-6 text-gray-400">Loading job details...</div>
+        <div className="animate-pulse mb-6 !text-white">Loading job details...</div>
       ) : job ? (
-        <div className="mb-6 border-b pb-4">
-          <h1 className="text-3xl font-bold text-gray-800 mb-1">{job.job_title}</h1>
-          <p className="text-gray-600 mb-1">
-            Type: <span className="font-medium">{job.job_type}</span> | Deadline:{' '}
-            <span className="font-medium">{job.application_deadline}</span>
+        <div className="!mb-6 !border-b !pb-4">
+          <h1 className="!text-3xl !font-bold !text-white !mb-1">{job.job_title}</h1>
+          <p className="!text-white !mb-1">
+            Type: <span className="!font-medium">{job.job_type}</span> | Deadline:{' '}
+            <span className="!font-medium">{job.application_deadline}</span>
           </p>
-          <p className="text-sm text-gray-500">{job.description || 'No description available.'}</p>
+          <article
+            className="!prose !prose-lg !prose-invert !w-full !mb-10"
+            dangerouslySetInnerHTML={{ __html: job?.description || '' }}
+          />
         </div>
       ) : (
-        <div className="text-red-600">Job not found</div>
+        <div className="!text-red-600">Job not found</div>
       )}
 
-      {clientError && <div className="text-red-600 mb-4">{clientError}</div>}
+      {clientError && <div className="!text-red-600 !mb-4">{clientError}</div>}
 
       <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <div className="grid md:grid-cols-2 gap-6">
-          <FloatingInput
-            label="Full Name *"
-            name="full_name"
-            value={form.full_name}
-            onChange={handleChange}
-            error={errors.full_name}
-            required
-          />
-          <FloatingInput
-            label="Email *"
-            name="email"
-            type="email"
-            value={form.email}
-            onChange={handleChange}
-            error={errors.email}
-            required
-          />
-          <FloatingInput
-            label="Phone *"
-            name="phone"
-            value={form.phone}
-            onChange={handleChange}
-            error={errors.phone}
-            required
-          />
-          <FloatingInput
-            label="Date of Birth"
-            name="date_of_birth"
-            type="date"
-            value={form.date_of_birth}
-            onChange={handleChange}
-          />
-          <FloatingInput label="Gender" name="gender" value={form.gender} onChange={handleChange} />
-          <FloatingInput
-            label="Marital Status"
-            name="marital_status"
-            value={form.marital_status}
-            onChange={handleChange}
-          />
-          <FloatingInput label="City" name="city" value={form.city} onChange={handleChange} />
-          <FloatingInput label="State" name="state" value={form.state} onChange={handleChange} />
-          <FloatingInput
-            label="Zip Code"
-            name="zip_code"
-            value={form.zip_code}
-            onChange={handleChange}
-          />
-          <FloatingInput
-            label="Country"
-            name="country"
-            value={form.country}
-            onChange={handleChange}
-          />
-          <FloatingInput
-            label="LinkedIn"
-            name="linkedin"
-            value={form.linkedin}
-            onChange={handleChange}
-          />
-          <FloatingInput label="GitHub" name="github" value={form.github} onChange={handleChange} />
-          <FloatingInput
-            label="LeetCode"
-            name="leetcode"
-            value={form.leetcode}
-            onChange={handleChange}
-          />
-          <FloatingInput
-            label="Portfolio"
-            name="portfolio_link"
-            value={form.portfolio_link}
-            onChange={handleChange}
-          />
-          <FloatingInput
-            label="Website"
-            name="personal_website"
-            value={form.personal_website}
-            onChange={handleChange}
-          />
-          <FloatingInput
-            label="Address"
-            name="address"
-            value={form.address}
-            onChange={handleChange}
-          />
-          <FloatingInput
-            label="Qualification"
-            name="highest_qualification"
-            value={form.highest_qualification}
-            onChange={handleChange}
-          />
-          <FloatingInput
-            label="University"
-            name="university"
-            value={form.university}
-            onChange={handleChange}
-          />
-          <FloatingInput
-            label="Passing Year"
-            name="passing_year"
-            value={form.passing_year}
-            onChange={handleChange}
-          />
-          <FloatingInput
-            label="Field of Study"
-            name="field_of_study"
-            value={form.field_of_study}
-            onChange={handleChange}
-          />
-          <FloatingInput
-            label="Experience"
-            name="experience"
-            value={form.experience}
-            onChange={handleChange}
-          />
-          <FloatingInput
-            label="Total Experience"
-            name="total_experience_years"
-            value={form.total_experience_years}
-            onChange={handleChange}
-          />
-          <FloatingInput
-            label="Current Employer"
-            name="current_employer"
-            value={form.current_employer}
-            onChange={handleChange}
-          />
-          <FloatingInput
-            label="Current Job Title"
-            name="current_job_title"
-            value={form.current_job_title}
-            onChange={handleChange}
-          />
-          <FloatingInput
-            label="Current Salary"
-            name="current_salary"
-            value={form.current_salary}
-            onChange={handleChange}
-          />
-          <FloatingInput
-            label="Notice Period"
-            name="notice_period"
-            value={form.notice_period}
-            onChange={handleChange}
-          />
-          <FloatingInput label="Skills" name="skills" value={form.skills} onChange={handleChange} />
-          <FloatingInput
-            label="Projects"
-            name="projects"
-            value={form.projects}
-            onChange={handleChange}
-          />
-          <FloatingInput
-            label="Certifications"
-            name="certifications"
-            value={form.certifications}
-            onChange={handleChange}
-          />
-          <FloatingInput
-            label="Languages Known"
-            name="languages_known"
-            value={form.languages_known}
-            onChange={handleChange}
-          />
+        <div className="!grid md:!grid-cols-2 !gap-6">
+          {Object.entries(form).map(([key, value]) =>
+            key !== 'resume' ? (
+              <FloatingInput
+                key={key}
+                label={
+                  key.replace(/_/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase()) +
+                  (requiredFields.includes(key) ? ' *' : '')
+                }
+                name={key}
+                value={value}
+                onChange={handleChange}
+                error={errors[key]}
+                required={requiredFields.includes(key)}
+              />
+            ) : null
+          )}
 
-          <div className="relative z-0 w-full group md:col-span-2">
+          <div className="!relative !z-0 !w-full !group md:!col-span-2">
             <input
               type="file"
               name="resume"
               id="resume"
               accept=".pdf"
               onChange={handleChange}
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              className="!block !py-2.5 !px-0 !w-full !text-sm !text-white !bg-transparent !border-0 !border-b-2 !border-white appearance-none focus:!outline-none focus:!ring-0 focus:!border-blue-600 peer"
             />
             <label
               htmlFor="resume"
-              className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              className="peer-focus:!font-medium !absolute !text-sm !text-white !duration-300 !transform -!translate-y-6 !scale-75 !top-3 -!z-10 origin-[0] peer-placeholder-shown:!scale-100 peer-placeholder-shown:!translate-y-0 peer-focus:!scale-75 peer-focus:-!translate-y-6"
             >
               Resume (PDF)
             </label>
-            {errors.resume && <p className="text-red-600 text-sm mt-1">{errors.resume}</p>}
+            {errors.resume && <p className="!text-red-600 !text-sm !mt-1">{errors.resume}</p>}
           </div>
         </div>
-        <div className="flex justify-center mt-10 ">
+        <div className="!flex !justify-center !mt-10">
           <button
             type="submit"
             disabled={loading}
-            className="mx-auto bg-white text-black border border-white hover:bg-white/95 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center"
+            className="!mx-auto !bg-white !text-black !border !border-white hover:!bg-white/95 focus:!ring-4 focus:!outline-none focus:!ring-blue-300 !font-medium !rounded-3xl !text-sm !w-auto !px-5 !py-2.5 !text-center"
           >
             {loading ? 'Submitting...' : 'Submit Application'}
           </button>
@@ -340,7 +194,7 @@ export default function ApplyJobPage() {
 
 function FloatingInput({ label, name, type = 'text', value, onChange, error, required = false }) {
   return (
-    <div className="relative z-0 w-full group">
+    <div className="!relative !z-0 !w-full !group">
       <input
         type={type}
         name={name}
@@ -349,19 +203,19 @@ function FloatingInput({ label, name, type = 'text', value, onChange, error, req
         onChange={onChange}
         placeholder=" "
         required={required}
-        className={`block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2
-        border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer
-        ${error ? 'border-red-500 focus:border-red-500' : ''}`}
+        className={`!block !py-2.5 !px-0 !w-full !text-sm !text-white !bg-transparent !border-0 !border-b-2
+        !border-white appearance-none focus:!outline-none focus:!ring-0 focus:!border-blue-600 peer
+        ${error ? '!border-red-500 focus:!border-red-500' : ''}`}
       />
       <label
         htmlFor={name}
-        className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform
-        -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-placeholder-shown:scale-100
-        peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        className="peer-focus:!font-medium !absolute !text-sm !text-white !duration-300 !transform
+        -!translate-y-6 !scale-75 !top-3 -!z-10 origin-[0] peer-placeholder-shown:!scale-100
+        peer-placeholder-shown:!translate-y-0 peer-focus:!scale-75 peer-focus:-!translate-y-6"
       >
         {label}
       </label>
-      {error && <p className="text-red-600 text-sm mt-1">{error}</p>}
+      {error && <p className="!text-red-600 !text-sm !mt-1">{error}</p>}
     </div>
   )
 }
