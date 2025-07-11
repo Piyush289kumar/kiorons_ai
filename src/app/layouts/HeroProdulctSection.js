@@ -124,7 +124,7 @@ export default function HeroProdulctSection() {
             alt="Video Background"
             width={900}
             height={900}
-            className="rounded-[0.4rem] md:!rounded-sm mx-auto"
+            className="rounded-[0.3rem]  mx-auto"
           />
           <Image
             src="/assets/images/icons/play_arrow.svg"
