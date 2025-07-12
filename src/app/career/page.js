@@ -74,7 +74,7 @@ export default function CareerPage() {
                 alt="Logo"
                 width={900}
                 height={900}
-                className="!animate-fade-up sm:!w-4/6 !my-20 !w-full !mx-auto"
+                className="!animate-fade-up sm:!w-4/6 !my-20 !w-full !mx-auto !overflow-hidden"
               />
               <div className="!text-center !max-w-6xl !mx-auto !px-4 !relative">
                 <h1 className="!text-4xl md:!text-5xl lg:!text-6xl !font-semibold !tracking-tight">
@@ -123,7 +123,7 @@ export default function CareerPage() {
                     alt="Center"
                     width={350}
                     height={350}
-                    className="!absolute left-1/2 top-[45%] transform -translate-x-1/2 !z-20 !shadow-2xl sm:top-[40%] xs:static xs:mx-auto xs:mb-6 xs:relative xs:transform-none"
+                    className="!absolute left-[85%] top-[45%] transform -translate-x-1/2 !z-20 !shadow-2xl sm:top-[40%] xs:static xs:mx-auto xs:mb-6 xs:relative xs:transform-none"
                   />
                 </div>
               </div>
