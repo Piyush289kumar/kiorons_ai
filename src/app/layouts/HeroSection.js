@@ -74,6 +74,8 @@ export default function HeroSection() {
   const [recentBlogs, setRecentBlogs] = useState([])
   const [recentLatestNews, setRecentLatestNews] = useState([])
   const [recentThinks, setRecentThinks] = useState([])
+  const [informationalBigBlog, setInformationalBigBlog] = useState([])
+  const [informationalSmallBlog, setInformationalSmallBlog] = useState([])
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/build-recent-blogs`)
@@ -98,6 +100,15 @@ export default function HeroSection() {
         setRecentThinks(data.slice(0, 2))
       })
       .catch((err) => console.error('Failed to fetch Thinks blogs', err))
+  }, [])
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/informational-blogs`)
+      .then((res) => res.json())
+      .then((data) => {
+        setInformationalBigBlog(data.slice(0, 1))
+        setInformationalSmallBlog(data.slice(1, 2))
+      })
+      .catch((err) => console.error('Failed to fetch Informational blogs', err))
   }, [])
 
   return (
@@ -154,100 +165,158 @@ export default function HeroSection() {
               </div>
 
               <div className="px-sm @md:px-md @lg:px-0 @lg:pb-[var(--pb)] relative hidden md:block">
-                <div className="group relative">
-                  <div
-                    className="bg-primary-12 absolute left-0 top-0 w-full rounded-md"
-                    style={{ aspectRatio: 16 / 9 }}
-                  ></div>
-                  <div className="ease-curve-c duration-normal max-w-container-desktop relative mx-auto overflow-hidden transition-opacity rounded-md [&amp;_img]:scale-100 [&amp;_img]:transform-gpu [&amp;_video]:transform-gpu [&amp;_img]:transition-transform [&amp;_img]:duration-300 [&amp;_video]:transition-transform [&amp;_video]:duration-200 group-hover:[&amp;_img]:scale-[1.0125] group-hover:[&amp;_video]:scale-[1.0125]">
-                    <div className="relative w-full" style={{ aspectRatio: 16 / 9 }}>
-                      <div className="h-full w-full">
-                        <div className="relative h-full w-full overflow-hidden rounded-none aspect-16/9 bg-surface-loading">
-                          {/* <img alt="Sam Altman and Jony Ive" data-nosnippet="true" loading="lazy" decoding="async"
-                                data-nimg="fill" className="object-cover object-center"
-                                style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent"
+                {informationalBigBlog.map((blog) => (
+                  <>
+                    <div className="group relative">
+                      <div
+                        className="bg-primary-12 absolute left-0 top-0 w-full rounded-md"
+                        style={{ aspectRatio: 16 / 9 }}
+                      ></div>
+                      <div className="ease-curve-c duration-normal max-w-container-desktop relative mx-auto overflow-hidden transition-opacity rounded-md [&amp;_img]:scale-100 [&amp;_img]:transform-gpu [&amp;_video]:transform-gpu [&amp;_img]:transition-transform [&amp;_img]:duration-300 [&amp;_video]:transition-transform [&amp;_video]:duration-200 group-hover:[&amp;_img]:scale-[1.0125] group-hover:[&amp;_video]:scale-[1.0125]">
+                        <div className="relative w-full" style={{ aspectRatio: 16 / 9 }}>
+                          <div className="h-full w-full">
+                            <div className="relative h-full w-full overflow-hidden rounded-none aspect-16/9 bg-surface-loading">
+                              <Image
+                                data-nosnippet="true"
+                                loading="lazy"
+                                decoding="async"
+                                fill
+                                className="object-cover object-center"
+                                style={{
+                                  position: 'absolute',
+                                  height: '100%',
+                                  width: '100%',
+                                  left: 0,
+                                  top: 0,
+                                  right: 0,
+                                  bottom: 0,
+                                  color: 'transparent',
+                                }}
                                 sizes="(min-width: 1728px) 1728px, 100vw"
-                                srcSet="https://images.ctfassets.net/kftzwdyauwt9/15kshpgxK5cIDIeI2eHCCI/70cf68c982fc0da3bae51e6388a56c37/CMD_250406_VIRGO_001_346_05a-BW-1200x630.jpg?w=640&amp;q=90&amp;fm=webp 640w, https://images.ctfassets.net/kftzwdyauwt9/15kshpgxK5cIDIeI2eHCCI/70cf68c982fc0da3bae51e6388a56c37/CMD_250406_VIRGO_001_346_05a-BW-1200x630.jpg?w=750&amp;q=90&amp;fm=webp 750w, https://images.ctfassets.net/kftzwdyauwt9/15kshpgxK5cIDIeI2eHCCI/70cf68c982fc0da3bae51e6388a56c37/CMD_250406_VIRGO_001_346_05a-BW-1200x630.jpg?w=828&amp;q=90&amp;fm=webp 828w, https://images.ctfassets.net/kftzwdyauwt9/15kshpgxK5cIDIeI2eHCCI/70cf68c982fc0da3bae51e6388a56c37/CMD_250406_VIRGO_001_346_05a-BW-1200x630.jpg?w=1080&amp;q=90&amp;fm=webp 1080w, https://images.ctfassets.net/kftzwdyauwt9/15kshpgxK5cIDIeI2eHCCI/70cf68c982fc0da3bae51e6388a56c37/CMD_250406_VIRGO_001_346_05a-BW-1200x630.jpg?w=1200&amp;q=90&amp;fm=webp 1200w, https://images.ctfassets.net/kftzwdyauwt9/15kshpgxK5cIDIeI2eHCCI/70cf68c982fc0da3bae51e6388a56c37/CMD_250406_VIRGO_001_346_05a-BW-1200x630.jpg?w=1920&amp;q=90&amp;fm=webp 1920w, https://images.ctfassets.net/kftzwdyauwt9/15kshpgxK5cIDIeI2eHCCI/70cf68c982fc0da3bae51e6388a56c37/CMD_250406_VIRGO_001_346_05a-BW-1200x630.jpg?w=2048&amp;q=90&amp;fm=webp 2048w, https://images.ctfassets.net/kftzwdyauwt9/15kshpgxK5cIDIeI2eHCCI/70cf68c982fc0da3bae51e6388a56c37/CMD_250406_VIRGO_001_346_05a-BW-1200x630.jpg?w=3840&amp;q=90&amp;fm=webp 3840w"
-                                src="https://images.ctfassets.net/kftzwdyauwt9/15kshpgxK5cIDIeI2eHCCI/70cf68c982fc0da3bae51e6388a56c37/CMD_250406_VIRGO_001_346_05a-BW-1200x630.jpg?w=3840&amp;q=90&amp;fm=webp" /> */}
+                                src={blog.image_url}
+                                alt={blog.title}
+                              />
+                            </div>
+                          </div>
                         </div>
                       </div>
+                      <Link
+                        className="transition ease-curve-a duration-250 pt-2xs duration-normal ease-curve-d block w-full transition-[opacity,background] after:absolute after:inset-0 after:content-[&#x27;&#x27;]"
+                        data-analytics="2-0-home-card-grid-featured-sam-and-jony"
+                        id="48bHYUWfdD9gvoHFsnbXln"
+                        aria-label={blog.title}
+                        href={`/blogs/${blog.slug}`}
+                      >
+                        <div className="text-primary-100 relative w-full">
+                          <div className="mb-2xs text-h2 @md:pr-2xl">
+                            <p>{blog.title || 'N/A'}</p>
+                          </div>
+                          <p className="text-meta gap-x-3xs gap-y-4xs flex flex-wrap @md:pr-md">
+                            <span className="text-nowrap">
+                              {blog.category?.name || 'Uncategorized'}
+                            </span>
+                            <span className="gap-x-3xs gap-y-4xs flex flex-wrap">
+                              <span className="text-primary-44 text-nowrap">
+                                {blog.read_time || '1 min read'}
+                              </span>
+                            </span>
+                          </p>
+                        </div>
+                      </Link>
                     </div>
-                  </div>
-                  <a
-                    aria-label="A letter from Sam &amp; Jony - Company - Jul 9, 2025"
-                    className="transition ease-curve-a duration-250 pt-2xs duration-normal ease-curve-d block w-full transition-[opacity,background] after:absolute after:inset-0 after:content-[&#x27;&#x27;]"
-                    data-analytics="2-0-home-card-grid-featured-sam-and-jony"
-                    id="48bHYUWfdD9gvoHFsnbXln"
-                    href="/sam-and-jony/"
-                  >
-                    <div className="text-primary-100 relative w-full">
-                      <div className="mb-2xs text-h2 @md:pr-2xl">
-                        <p>A letter from Sam &amp; Jony</p>
-                      </div>
-                      <p className="text-meta gap-x-3xs gap-y-4xs flex flex-wrap @md:pr-md">
-                        <span className="text-nowrap">Company Demo2</span>
-                        <span className="gap-x-3xs gap-y-4xs flex flex-wrap">
-                          <span className="text-primary-44 text-nowrap">3 min read</span>
-                        </span>
-                      </p>
-                    </div>
-                  </a>
-                </div>
+                  </>
+                ))}
               </div>
             </div>
             <div className="px-sm @md:px-md @lg:px-0 @lg:grid-cols-1 gap-y-xl gap-x-2xs col-span-1 grid grid-cols-1 @md:grid-cols-3">
-              <div className="@lg:pb-[var(--pb)] relative">
-                <div className="group relative">
-                  <div
-                    className="bg-primary-12 absolute left-0 top-0 w-full rounded-md"
-                    style={{ aspectRatio: 1 / 1 }}
-                  ></div>
-                  <div className="ease-curve-c duration-normal max-w-container-desktop relative mx-auto overflow-hidden transition-opacity rounded-md [&amp;_img]:scale-100 [&amp;_img]:transform-gpu [&amp;_video]:transform-gpu [&amp;_img]:transition-transform [&amp;_img]:duration-300 [&amp;_video]:transition-transform [&amp;_video]:duration-200 group-hover:[&amp;_img]:scale-[1.025] group-hover:[&amp;_video]:scale-[1.025]">
-                    <div className="relative w-full" style={{ aspectRatio: 1 / 1 }}>
-                      <div className="aspect-1/1  :min-h-full min-w-full overflow-hidden absolute left-0 top-0 h-full w-full object-cover">
-                        <button
-                          type="button"
-                          className="text-secondary-100 bg-primary-44 focus:outline-primary-44 backdrop-blur-[4.375rem] ease-curve-a flex items-center justify-center disabled:text-gray-40 focus-visible:outline focus-visible:outline-1 outline-offset-2 focus-visible:outline-offset-0 rounded-full w-[32px] h-[32px] hover:bg-primary-60 right-2xs top-2xs absolute z-[1] opacity-0 transition duration-200 hover:opacity-100 group-hover:opacity-100"
-                          aria-label="Pause video"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="10"
-                            viewBox="0 0 11 16"
-                            fill="none"
-                          >
-                            <path
-                              d="M0.302795 4.13636C0.302795 3.50877 0.811563 3 1.43916 3H2.8028C3.43039 3 3.93916 3.50877 3.93916 4.13636V11.8636C3.93916 12.4912 3.43039 13 2.8028 13H1.43916C0.811563 13 0.302795 12.4912 0.302795 11.8636V4.13636Z"
-                              fill="currentColor"
-                            ></path>
-                            <path
-                              d="M6.66643 4.13636C6.66643 3.50877 7.1752 3 7.8028 3H9.16643C9.79403 3 10.3028 3.50877 10.3028 4.13636V11.8636C10.3028 12.4912 9.79403 13 9.16643 13H7.8028C7.1752 13 6.66643 12.4912 6.66643 11.8636V4.13636Z"
-                              fill="currentColor"
-                            ></path>
-                          </svg>
-                        </button>
+              {informationalSmallBlog.map((blog) => (
+                <>
+                  <div className="@lg:pb-[var(--pb)] relative">
+                    <div className="group relative">
+                      <div
+                        className="bg-primary-12 absolute left-0 top-0 w-full rounded-md"
+                        style={{ aspectRatio: 1 / 1 }}
+                      ></div>
+                      <div className="ease-curve-c duration-normal max-w-container-desktop relative mx-auto overflow-hidden transition-opacity rounded-md [&amp;_img]:scale-100 [&amp;_img]:transform-gpu [&amp;_video]:transform-gpu [&amp;_img]:transition-transform [&amp;_img]:duration-300 [&amp;_video]:transition-transform [&amp;_video]:duration-200 group-hover:[&amp;_img]:scale-[1.025] group-hover:[&amp;_video]:scale-[1.025]">
+                        <div className="relative w-full" style={{ aspectRatio: 1 / 1 }}>
+                          <div className="h-full w-full">
+                            <div className="relative h-full w-full overflow-hidden rounded-none aspect-1/1 bg-surface-loading">
+                              <Image
+                                data-nosnippet="true"
+                                loading="lazy"
+                                decoding="async"
+                                fill
+                                className="object-cover object-center"
+                                style={{
+                                  position: 'absolute',
+                                  height: '100%',
+                                  width: '100%',
+                                  left: 0,
+                                  top: 0,
+                                  right: 0,
+                                  bottom: 0,
+                                  color: 'transparent',
+                                }}
+                                sizes="(min-width: 1728px) 1728px, 100vw"
+                                src={blog.image_url}
+                                alt={blog.title}
+                              />
+                            </div>
+                          </div>
+
+                          <div className="aspect-1/1  :min-h-full min-w-full overflow-hidden absolute left-0 top-0 h-full w-full object-cover">
+                            <button
+                              type="button"
+                              className="text-secondary-100 bg-primary-44 focus:outline-primary-44 backdrop-blur-[4.375rem] ease-curve-a flex items-center justify-center disabled:text-gray-40 focus-visible:outline focus-visible:outline-1 outline-offset-2 focus-visible:outline-offset-0 rounded-full w-[32px] h-[32px] hover:bg-primary-60 right-2xs top-2xs absolute z-[1] opacity-0 transition duration-200 hover:opacity-100 group-hover:opacity-100"
+                              aria-label="Pause video"
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="10"
+                                viewBox="0 0 11 16"
+                                fill="none"
+                              >
+                                <path
+                                  d="M0.302795 4.13636C0.302795 3.50877 0.811563 3 1.43916 3H2.8028C3.43039 3 3.93916 3.50877 3.93916 4.13636V11.8636C3.93916 12.4912 3.43039 13 2.8028 13H1.43916C0.811563 13 0.302795 12.4912 0.302795 11.8636V4.13636Z"
+                                  fill="currentColor"
+                                ></path>
+                                <path
+                                  d="M6.66643 4.13636C6.66643 3.50877 7.1752 3 7.8028 3H9.16643C9.79403 3 10.3028 3.50877 10.3028 4.13636V11.8636C10.3028 12.4912 9.79403 13 9.16643 13H7.8028C7.1752 13 6.66643 12.4912 6.66643 11.8636V4.13636Z"
+                                  fill="currentColor"
+                                ></path>
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
                       </div>
+                      <Link
+                        className="transition ease-curve-a duration-250 pt-2xs duration-normal ease-curve-d block w-full transition-[opacity,background] after:absolute after:inset-0 after:content-[&#x27;&#x27;]"
+                        data-analytics="2-0-home-card-grid-featured-small-codex"
+                        id="5Jp3tazBlA8Cj0dABwshH7"
+                        aria-label={blog.title}
+                        href={`/blogs/${blog.slug}`}
+                      >
+                        <div className="text-primary-100 relative w-full">
+                          <div className="mb-2xs text-h5 @md:pr-md">{blog.title || 'N/A'}</div>
+                          <p className="text-meta gap-x-3xs gap-y-4xs flex flex-wrap @md:pr-3xs">
+                            <span className="text-nowrap">
+                              {' '}
+                              {blog.category?.name || 'Uncategorized'}
+                            </span>
+                            <span className="gap-x-3xs gap-y-4xs flex flex-wrap">
+                              <span className="text-primary-44 text-nowrap">
+                                {' '}
+                                {blog.read_time || '1 min read'}
+                              </span>
+                            </span>
+                          </p>
+                        </div>
+                      </Link>
                     </div>
                   </div>
-                  <a
-                    aria-label="Introducing Codex - Release - May 16, 2025"
-                    className="transition ease-curve-a duration-250 pt-2xs duration-normal ease-curve-d block w-full transition-[opacity,background] after:absolute after:inset-0 after:content-[&#x27;&#x27;]"
-                    data-analytics="2-0-home-card-grid-featured-small-codex"
-                    id="5Jp3tazBlA8Cj0dABwshH7"
-                    href="/index/introducing-codex/"
-                  >
-                    <div className="text-primary-100 relative w-full">
-                      <div className="mb-2xs text-h5 @md:pr-md">Introducing Codex</div>
-                      <p className="text-meta gap-x-3xs gap-y-4xs flex flex-wrap @md:pr-3xs">
-                        <span className="text-nowrap">Release</span>
-                        <span className="gap-x-3xs gap-y-4xs flex flex-wrap">
-                          <span className="text-primary-44 text-nowrap">12 min read</span>
-                        </span>
-                      </p>
-                    </div>
-                  </a>
-                </div>
-              </div>
+                </>
+              ))}
+
               {/* <div className="@lg:pb-[var(--pb)] relative">
                 <div className="group relative">
                   <div
@@ -458,7 +527,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <CTA heading='Join kOne waitlist.' btnText='Visit kOne' href='/kone' />
+        <CTA heading="Join kOne waitlist." btnText="Visit kOne" href="/kone" />
       </article>
 
       <div></div>
