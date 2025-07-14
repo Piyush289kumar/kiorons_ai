@@ -1,4 +1,3 @@
-import SeoHead from '@/components/landing/SeoHead'
 import HeroSection from './layouts/HeroSection'
 
 export async function generateMetadata() {
@@ -33,7 +32,6 @@ export async function generateMetadata() {
 export default function Home() {
   return (
     <>
-      <SeoHead tab="Home" />
       <div className="mx-auto w-full overflow-y-hidden">
         <HeroSection />
       </div>
