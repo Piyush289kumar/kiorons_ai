@@ -53,13 +53,17 @@ export default function Navbar() {
         {/* Logo */}
         <div className="flex-shrink-0">
           <Link href="/">
-            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-[#f0f0f0] shadow backdrop-blur-lg transition-all">
+            <div
+              className="w-12 h-12 flex items-center justify-center rounded-full bg-[#404040]/25
+            backdrop-blur-md
+            border border-white/7 transition-all"
+            >
               <Image
                 src="/logo/kiorons_logo.svg"
                 alt="Kiorons Logo"
-                className="invert"
-                width={20}
-                height={20}
+                // className="invert"
+                width={16}
+                height={16}
                 priority
               />
             </div>
@@ -69,12 +73,14 @@ export default function Navbar() {
         <div
           className="
             flex-1 flex items-center
-            rounded-xl
-            bg-[#f0f0f0]/80
-            px-8 py-3
-            space-x-14
+            rounded-full
+            bg-[#404040]/25
+            backdrop-blur-md
+            border border-white/7
+            px-10 py-3
+            space-x-10
             font-light
-            text-md
+            text-sm
           "
         >
           {navLinks.map((link, idx) => (
@@ -82,7 +88,7 @@ export default function Navbar() {
               href={link.href}
               key={link.label}
               className={`
-                text-zinc-700 hover:text-zinc-900 transition-all duration-500 ease-in-out
+                text-zinc-50 hover:text-zinc-900 transition-all duration-500 ease-in-out
                 ${
                   hoveredIdx !== null && hoveredIdx !== idx
                     ? "blur-xs opacity-60"
