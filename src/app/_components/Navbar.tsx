@@ -1,9 +1,12 @@
 // /src/app/_components/Navbar.tsx
+
 "use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, Menu, Search } from "lucide-react";
+
 const navLinks = [
   { label: "kOne", href: "/kone" },
   { label: "Company", href: "/company" },
@@ -11,140 +14,209 @@ const navLinks = [
   { label: "Career", href: "/career" },
   { label: "Search", href: "/search" },
 ];
+
 export default function Navbar() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
-  const [blur, setBlur] = useState<boolean>(false);
-  // Scroll-based show/hide logic
+  const [blur, setBlur] = useState(false);
   const [showNav, setShowNav] = useState(true);
-  const lastScrollPos = useRef(0);
+  const lastScroll = useRef(0);
+
   useEffect(() => {
     const handleScroll = () => {
-      const currScrollPos = window.scrollY;
-      // Only show nav if scrolling up OR at the very top
-      if (currScrollPos < 10 || currScrollPos < lastScrollPos.current) {
-        setShowNav(true);
-      } else {
-        setShowNav(false);
-      }
-      lastScrollPos.current = currScrollPos;
+      const y = window.scrollY;
+      if (y < 10 || y < lastScroll.current) setShowNav(true);
+      else setShowNav(false);
+      lastScroll.current = y;
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  // Handler for arrow hover
+
   const handleArrowHover = () => {
     setBlur(true);
-    setTimeout(() => setBlur(false), 1000);
+    setTimeout(() => setBlur(false), 500);
   };
+
+  // Hamburger open/close - you can expand this for a real menu if you wish
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <nav
       className={`
-    w-full flex flex-col items-center gap-2 pt-8
-    fixed top-0 left-0 z-50 bg-transparent
-    transition-all duration-500 ease-in-out
-    ${
-      showNav
-        ? "opacity-100 pointer-events-auto"
-        : "opacity-0 pointer-events-none -translate-y-6"
-    }
-  `}
+        w-full flex flex-col items-center gap-2
+        fixed top-0 left-0 z-50
+        transition-all duration-500       
+      `}
+      aria-label="Main navigation"
     >
-      <div className="flex items-center gap-2 w-auto">
+      {/* Desktop Nav */}
+      <div className="hidden md:flex items-center gap-2 w-auto mt-3">
         {/* Logo */}
-        <div className="flex-shrink-0">
-          <Link href="/">
-            <div
-              className="w-12 h-12 flex items-center justify-center rounded-full bg-[#404040]/25
-            backdrop-blur-md
-            border border-white/7 transition-all"
-            >
-              <Image
-                src="/logo/kiorons_logo.svg"
-                alt="Kiorons Logo"
-                // className="invert"
-                width={16}
-                height={16}
-                priority
-              />
-            </div>
-          </Link>
-        </div>
+        <Link href="/" tabIndex={0} aria-label="Back to homepage">
+          <div className="w-12 h-12 flex items-center justify-center rounded-full bg-[#404040]/25 backdrop-blur-md border border-white/10 transition-all">
+            <Image
+              src="/logo/kiorons_logo.svg"
+              alt="Kiorons Logo"
+              width={20}
+              height={20}
+              priority
+            />
+          </div>
+        </Link>
         {/* Nav Links */}
-        <div
-          className="
-            flex-1 flex items-center
-            rounded-full
-            bg-[#404040]/25
-            backdrop-blur-md
-            border border-white/7
-            px-10 py-3
-            space-x-10
-            font-light
-            text-sm
-          "
-        >
+        <nav className="flex-1 flex items-center rounded-full bg-[#404040]/25 backdrop-blur-md border border-white/10 px-10 py-3 space-x-8 font-light text-sm">
           {navLinks.map((link, idx) => (
             <Link
               href={link.href}
               key={link.label}
               className={`
-                text-zinc-50 hover:text-zinc-900 transition-all duration-500 ease-in-out
-                ${
-                  hoveredIdx !== null && hoveredIdx !== idx
-                    ? "blur-xs opacity-60"
-                    : ""
-                }
+                text-zinc-50 transition-all duration-500
+                ${hoveredIdx !== null && hoveredIdx !== idx ? "blur-[1px]" : ""}
                 ${hoveredIdx === idx ? "z-10" : ""}
               `}
               onMouseEnter={() => setHoveredIdx(idx)}
               onMouseLeave={() => setHoveredIdx(null)}
+              tabIndex={0}
             >
               {link.label}
             </Link>
           ))}
+        </nav>
+      </div>
+
+      {/* Mobile Nav */}
+      <div className="flex md:hidden items-center w-full justify-between px-4 py-2">
+        {/* Left: Company logo */}
+        <Link href="/" aria-label="Back to homepage">
+          <div className="w-11 h-11 flex items-center justify-center rounded-full bg-[#404040]/25 backdrop-blur-md border border-white/10 transition-all">
+            <Image
+              src="/logo/kiorons_logo.svg"
+              alt="Kiorons Logo"
+              width={18}
+              height={18}
+              priority
+            />
+          </div>
+        </Link>
+        {/* Right: Search, then Menu */}
+        <div className="flex items-center space-x-2">
+          <Link href="/search" aria-label="Search">
+            <div className="w-10 h-10 flex items-center justify-center rounded-full bg-[#404040]/25 backdrop-blur-md border border-white/10 transition-all">
+              <Search className="w-5 h-5 text-zinc-50" />
+            </div>
+          </Link>
+          <button
+            aria-label="Open menu"
+            onClick={() => setMobileMenuOpen(true)}
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-[#404040]/25 backdrop-blur-md border border-white/10 transition-all"
+          >
+            <Menu className="w-5 h-5 text-zinc-50" />
+          </button>
         </div>
       </div>
-      {/* update bar */}
+
+      {/* Update bar (always visible, you can hide on mobile if you wish) */}
       <div
-        className="
-        relative flex items-center
-        rounded-xl
-        bg-[#f0f0f0]/80
-        px-1 py-1
-        font-light
-        text-sm
-        w-full
-        max-w-[20rem]
-        mx-auto
-        mt-2
-        min-h-[30px]
-      "
+        className={`
+          hidden
+          relative md:flex items-center
+          rounded-xl
+          bg-[#404040]/25
+          backdrop-blur-md
+          border border-white/10
+          px-1 py-1
+          font-light
+          text-sm
+          w-full
+          max-w-[18rem]
+          mx-auto
+          min-h-[30px]
+          transition-all duration-500
+          cursor-pointer
+          ${
+            showNav
+              ? "opacity-100"
+              : "opacity-0 pointer-events-none -translate-y-8"
+          }
+        `}
+        onMouseEnter={handleArrowHover}
       >
-        {/* Left placeholder for symmetry */}
         <div className="w-9" aria-hidden="true" />
-        {/* Centered Text with blur transition */}
         <span
           className={`
-          absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
-          text-center text-sm text-zinc-900/30 pointer-events-none select-none w-full
-          transition-all duration-1000 ease-in-out
-          ${blur ? "blur-sm opacity-60" : ""}
-        `}
+            absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
+            text-center text-sm text-zinc-50 pointer-events-none select-none w-full
+            transition-all duration-500
+            ${blur ? "blur-sm opacity-60" : ""}
+          `}
         >
           kOne new version out now
         </span>
-        {/* Right Arrow Link */}
         <a
           href="https://lucide.dev"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1 text-zinc-900 hover:text-zinc-900 transition-all duration-500 ease-in-out absolute right-2 top-1/2 -translate-y-1/2"
+          className="
+            flex items-center gap-1 text-zinc-50
+            hover:text-blue-200 transition-all duration-200
+            absolute right-2 top-1/2 -translate-y-1/2
+          "
           aria-label="lucide.dev"
-          onMouseEnter={handleArrowHover}
         >
-          <ArrowUpRight className="w-5 h-5" />
+          <ArrowRight className="w-5 h-5" />
         </a>
       </div>
+      {mobileMenuOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex flex-col"
+          onClick={() => setMobileMenuOpen(false)}
+          aria-modal="true"
+          role="dialog"
+        >
+          {/* Menu Panel */}
+          <div
+            className="
+        bg-[#222]/95
+        w-full
+        rounded-b-3xl
+        shadow-xl
+        border-b border-white/10
+        py-6 px-4
+        pt-7
+        animate-[slideDown_0.45s_ease]
+        flex flex-col
+        items-center
+        gap-5
+        relative
+        max-w-full
+      "
+            onClick={(e) => e.stopPropagation()} // Prevent click outside close when clicking inside
+          >
+            {/* Close button */}
+            <button
+              aria-label="Close menu"
+              className="absolute top-3 right-5 text-zinc-300 hover:text-white text-2xl"
+              onClick={() => setMobileMenuOpen(false)}
+              tabIndex={0}
+            >
+              ×
+            </button>
+            {/* Nav Links */}
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full rounded-xl text-lg py-3 px-3 text-zinc-100 text-center font-medium hover:bg-[#444]/80 transition"
+                tabIndex={0}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+          {/* Transparent backdrop fills remaining space */}
+        </div>
+      )}
     </nav>
   );
 }
