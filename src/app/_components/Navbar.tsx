@@ -5,7 +5,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
-import { ArrowRight, Menu, Search } from "lucide-react";
+import { ChevronRight, Menu, Search } from "lucide-react";
 
 const navLinks = [
   { label: "kOne", href: "/kone" },
@@ -163,7 +163,7 @@ export default function Navbar() {
           "
           aria-label="lucide.dev"
         >
-          <ArrowRight className="w-5 h-5" />
+          <ChevronRight className="w-4 h-4" />
         </a>
       </div>
       {mobileMenuOpen && (
