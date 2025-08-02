@@ -2,42 +2,58 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 const navLinks = [
-  { label: "Wearable", href: "/wearable" },
-  { label: "Neural", href: "/neural" },
-  { label: "Programs", href: "/programs" },
-  { label: "Science", href: "/science" },
+  { label: "kOne", href: "/kone" },
+  { label: "Company", href: "/company" },
+  { label: "News", href: "/blogs" },
+  { label: "Career", href: "/career" },
   { label: "Search", href: "/search" },
 ];
 export default function Navbar() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
-  const [blur, setBlur] = useState<boolean | null>(false);
-
+  const [blur, setBlur] = useState<boolean>(false);
+  // Scroll-based show/hide logic
+  const [showNav, setShowNav] = useState(true);
+  const lastScrollPos = useRef(0);
+  useEffect(() => {
+    const handleScroll = () => {
+      const currScrollPos = window.scrollY;
+      // Only show nav if scrolling up OR at the very top
+      if (currScrollPos < 10 || currScrollPos < lastScrollPos.current) {
+        setShowNav(true);
+      } else {
+        setShowNav(false);
+      }
+      lastScrollPos.current = currScrollPos;
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   // Handler for arrow hover
   const handleArrowHover = () => {
     setBlur(true);
-    setTimeout(() => setBlur(false), 1000); // 1s = 1000ms
+    setTimeout(() => setBlur(false), 1000);
   };
-
   return (
-    <nav className="w-full flex flex-col items-center gap-4 pt-8">
-      <div className="flex items-center gap-4 w-auto">
+    <nav
+      className={`
+    w-full flex flex-col items-center gap-2 pt-8
+    fixed top-0 left-0 z-50 bg-transparent
+    transition-all duration-500 ease-in-out
+    ${
+      showNav
+        ? "opacity-100 pointer-events-auto"
+        : "opacity-0 pointer-events-none -translate-y-6"
+    }
+  `}
+    >
+      <div className="flex items-center gap-2 w-auto">
         {/* Logo */}
         <div className="flex-shrink-0">
           <Link href="/">
-            <div
-              className="
-                w-12 h-12
-                flex items-center justify-center
-                rounded-full
-                bg-[#f0f0f0]
-                shadow
-                backdrop-blur-lg
-                transition-all
-              "
-            >
+            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-[#f0f0f0] shadow backdrop-blur-lg transition-all">
               <Image
                 src="/logo/kiorons_logo.svg"
                 alt="Kiorons Logo"
@@ -54,12 +70,10 @@ export default function Navbar() {
           className="
             flex-1 flex items-center
             rounded-xl
-            bg-[#f0f0f0]
-            backdrop-blur-md
-            shadow
-            px-6 py-3
-            space-x-10
-            font-normal
+            bg-[#f0f0f0]/80
+            px-8 py-3
+            space-x-14
+            font-light
             text-md
           "
         >
@@ -68,7 +82,7 @@ export default function Navbar() {
               href={link.href}
               key={link.label}
               className={`
-                text-zinc-900 hover:text-zinc-900 transition-all duration-500 ease-in-out
+                text-zinc-700 hover:text-zinc-900 transition-all duration-500 ease-in-out
                 ${
                   hoveredIdx !== null && hoveredIdx !== idx
                     ? "blur-xs opacity-60"
@@ -84,22 +98,19 @@ export default function Navbar() {
           ))}
         </div>
       </div>
-
       {/* update bar */}
       <div
         className="
         relative flex items-center
         rounded-xl
-        bg-[#f0f0f0]
-        backdrop-blur-md
-        shadow
+        bg-[#f0f0f0]/80
         px-1 py-1
         font-light
         text-sm
         w-full
         max-w-[20rem]
         mx-auto
-        mt-1
+        mt-2
         min-h-[30px]
       "
       >
@@ -109,7 +120,7 @@ export default function Navbar() {
         <span
           className={`
           absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
-          text-center text-zinc-900 pointer-events-none select-none w-full
+          text-center text-sm text-zinc-900/30 pointer-events-none select-none w-full
           transition-all duration-1000 ease-in-out
           ${blur ? "blur-sm opacity-60" : ""}
         `}
@@ -123,7 +134,6 @@ export default function Navbar() {
           rel="noopener noreferrer"
           className="flex items-center gap-1 text-zinc-900 hover:text-zinc-900 transition-all duration-500 ease-in-out absolute right-2 top-1/2 -translate-y-1/2"
           aria-label="lucide.dev"
-          // Blur the text on hover of the arrow
           onMouseEnter={handleArrowHover}
         >
           <ArrowUpRight className="w-5 h-5" />
