@@ -102,7 +102,7 @@ export default function NewsSection() {
                 Latest news
               </h2>
             </div>
-            <Link href="/news" className="flex items-center gap-1 group w-fit">
+            <Link href="/blogs" className="flex items-center gap-1 group w-fit">
               <span className="mt-3 text-xs text-balance leading-6 transition-colors group-hover:text-blue-300">
                 View more
               </span>
@@ -133,7 +133,7 @@ export default function NewsSection() {
               </h2>
             </div>
 
-            <Link href="/news" className="flex items-center gap-1 group w-fit">
+            <Link href="/blogs" className="flex items-center gap-1 group w-fit">
               <span className="mt-3 text-xs text-balance leading-6 transition-colors group-hover:text-blue-300">
                 View more
               </span>
