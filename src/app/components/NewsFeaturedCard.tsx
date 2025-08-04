@@ -12,6 +12,7 @@ export interface NewsFeaturedCardProps {
   summary: string;
   tag?: string;
   className?: string;
+  reverse?: boolean;
 }
 export default function NewsFeaturedCard({
   slug,
@@ -22,12 +23,16 @@ export default function NewsFeaturedCard({
   summary,
   tag,
   className = "",
+  reverse = false,
 }: NewsFeaturedCardProps) {
   return (
     <div
       className={`group relative !border-b !border-t border-zinc-700 ${className}`}
     >
-      <div className="flex flex-col gap-10 py-16 md:flex-row md:gap-12">
+      <div className={`
+        flex flex-col gap-10 py-16 md:gap-12
+        ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'}
+      `}>
         {/* Left/Text Block */}
         <div className="flex flex-col gap-4 md:gap-12 xl:flex-row flex-1 order-2 md:order-1">
           {/* Date above block */}

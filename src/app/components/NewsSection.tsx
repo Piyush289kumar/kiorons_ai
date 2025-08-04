@@ -71,7 +71,7 @@ const blogData = [
     summary:
       "We are thrilled to unveil kOne 3, our most advanced model yet, blending superior reasoning with extensive pretraining knowledge.",
   },
-   {
+  {
     slug: "/news/grok-3",
     img: "/images/blogs/news1.png",
     label: "kOne 3",
@@ -112,6 +112,7 @@ export default function NewsSection() {
           <NewsFeaturedCard
             key={blog.slug}
             {...blog}
+            reverse={idx % 2 === 1}
             className={`
       ${idx === 0 ? "border-t border-zinc-700 mt-32" : ""}
       ${idx === 2 ? "border-b border-zinc-700" : ""}
