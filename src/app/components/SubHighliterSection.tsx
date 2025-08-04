@@ -15,7 +15,7 @@ export default function SubHighlighterSection({
 }: SubHighlighterSectionProps) {
   return (
     <>
-      <section className="py-16 sm:py-0 pt-44 sm:pt-52 font-gellix mx-auto px-4 text-center">
+      <section className="py-16 sm:py-0 pt-44 sm:pt-52 font-gellix mx-auto px-4 text-center w-full md:w-10/12">
         <p className="text-xs uppercase text-primary font-medium">{label}</p>
         <h2 className="text-4xl sm:text-4xl font-semibold my-8 mb-20 text-zinc-50 max-w-2xl mx-auto">
           {title}
