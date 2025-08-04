@@ -27,12 +27,14 @@ export default function NewsFeaturedCard({
 }: NewsFeaturedCardProps) {
   return (
     <div
-      className={`group relative !border-b !border-t border-zinc-700 ${className}`}
+      className={`group relative !border-b !border-t border-zinc-900 ${className}`}
     >
-      <div className={`
-        flex flex-col gap-10 py-16 md:gap-12
-        ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'}
-      `}>
+      <div
+        className={`
+        flex flex-col gap-10 py-12 md:gap-12
+        ${reverse ? "md:flex-row-reverse" : "md:flex-row"}
+      `}
+      >
         {/* Left/Text Block */}
         <div className="flex flex-col gap-4 md:gap-12 xl:flex-row flex-1 order-2 md:order-1">
           {/* Date above block */}
@@ -41,12 +43,12 @@ export default function NewsFeaturedCard({
           </div>
           {/* Main content */}
           <div className="flex flex-1 flex-col space-y-6">
-            <div className="block grow space-y-4 pr-40">
+            <div className="block grow space-y-4 pr-20">
               <Link href={slug}>
                 <div className="absolute inset-0" />
-                <h3 className="!text-3xl leading-8 font-semibold">{title}</h3>
+                <h3 className="!text-4xl leading-10 font-semibold">{title}</h3>
               </Link>
-              <p className="grow text-balance text-sm !text-zinc-500 mt-4">
+              <p className="grow text-balance text-sm !text-zinc-200 mt-12">
                 {summary}
               </p>
             </div>
@@ -66,10 +68,11 @@ export default function NewsFeaturedCard({
           </div>
         </div>
         {/* Right/Image Block */}
-        <div className="flex-1 xl:max-w-[500px] order-1 md:order-2">
+        <div className="flex-1 xl:max-w-[600px] order-1 md:order-2 overflow-hidden rounded-sm">
           <div
             className="
-              flex items-center duration-150 w-full aspect-[16/10] text-4xl tracking-tight leading-[2.5rem] rounded-sm bg-[#0C0C0B] overflow-hidden shadow"
+              flex items-center w-full aspect-[16/10] text-4xl tracking-tight leading-[2.5rem] rounded-sm bg-[#0C0C0B] overflow-hidden shadow
+               transition-transform duration-300 will-change-transform hover:scale-105 cursor-pointer"
             style={{
               backgroundImage: `url(${img})`,
               backgroundSize: "cover", // Ensures the image covers the box

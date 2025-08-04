@@ -2,7 +2,6 @@ import { ChevronRight } from "lucide-react";
 import NewsFeaturedCard from "./NewsFeaturedCard";
 import NewsGridCard from "./NewsGridCard";
 import Link from "next/link";
-
 const blogData = [
   // Big card (first)
   {
@@ -84,7 +83,6 @@ const blogData = [
   },
   // ...add more grid cards as needed
 ];
-
 export default function NewsSection() {
   return (
     <section className="py-16 sm:py-32 pt-44 sm:pt-52 font-gellix">
@@ -115,7 +113,6 @@ export default function NewsSection() {
           <NewsFeaturedCard
             key={blog.slug}
             {...blog}
-            reverse={idx % 2 === 1}
             className={`
       ${idx === 0 ? "border-t border-zinc-700 mt-32" : ""}
       ${idx === 2 ? "border-b border-zinc-700" : ""}
@@ -123,7 +120,6 @@ export default function NewsSection() {
           />
         ))}
         {/* Blog Card Grid */}
-
         {/*  Blog Header */}
         <div className="space-y-12 mt-32">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between font-gellix">
@@ -132,7 +128,6 @@ export default function NewsSection() {
                 Thinks
               </h2>
             </div>
-
             <Link href="/blogs" className="flex items-center gap-1 group w-fit">
               <span className="mt-3 text-xs text-balance leading-6 transition-colors group-hover:text-blue-300">
                 View more
@@ -141,7 +136,6 @@ export default function NewsSection() {
             </Link>
           </div>
         </div>
-
         <div className="pt-16">
           <div className="grid gap-10 sm:gap-6 !gap-y-24 sm:grid-cols-2 lg:grid-cols-3">
             {blogData.slice(3, 6).map((blog, idx) => (
