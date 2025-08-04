@@ -1,5 +1,7 @@
+import { ChevronRight } from "lucide-react";
 import NewsFeaturedCard from "./NewsFeaturedCard";
 import NewsGridCard from "./NewsGridCard";
+import Link from "next/link";
 
 const blogData = [
   // Big card (first)
@@ -87,7 +89,7 @@ export default function NewsSection() {
   return (
     <section className="py-16 sm:py-32 pt-44 sm:pt-52 font-gellix">
       <div className="mx-auto w-full px-4 lg:px-6 xl:max-w-7xl">
-        {/* Header */}
+        {/*  News Header */}
         <div className="space-y-12">
           <div>
             <div className="mono-tag flex items-center gap-2 text-sm">
@@ -100,11 +102,12 @@ export default function NewsSection() {
                 Latest news
               </h2>
             </div>
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:gap-12">
-              <p className="mt-3 w-full max-w-md flex-1 text-balance leading-6 underline text-xs">
+            <Link href="/news" className="flex items-center gap-1 group w-fit">
+              <span className="mt-3 text-xs text-balance leading-6 transition-colors group-hover:text-blue-300">
                 View more
-              </p>
-            </div>
+              </span>
+              <ChevronRight className="w-4 h-4 mt-4 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-blue-300" />
+            </Link>
           </div>
         </div>
         {/* Featured Card */}
@@ -119,7 +122,26 @@ export default function NewsSection() {
     `}
           />
         ))}
-        {/* News Card Grid */}
+        {/* Blog Card Grid */}
+
+        {/*  Blog Header */}
+        <div className="space-y-12 mt-32">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between font-gellix">
+            <div className="max-w-xl space-y-12">
+              <h2 className="text-balance text-3xl md:text-2xl lg:text-5xl tracking-tight">
+                Thinks
+              </h2>
+            </div>
+
+            <Link href="/news" className="flex items-center gap-1 group w-fit">
+              <span className="mt-3 text-xs text-balance leading-6 transition-colors group-hover:text-blue-300">
+                View more
+              </span>
+              <ChevronRight className="w-4 h-4 mt-4 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-blue-300" />
+            </Link>
+          </div>
+        </div>
+
         <div className="pt-16">
           <div className="grid gap-10 sm:gap-6 !gap-y-24 sm:grid-cols-2 lg:grid-cols-3">
             {blogData.slice(3, 6).map((blog, idx) => (
