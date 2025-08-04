@@ -42,7 +42,7 @@ export default function HeroSection() {
           <h1
             className="
             text-6xl md:text-8xl lg:text-8xl
-            font-semibold font-gellix text-zinc-50 drop-shadow 
+            font-semibold font-gellix text-zinc-50
              leading-16 md:leading-24 tracking-tight
             text-balance
           "

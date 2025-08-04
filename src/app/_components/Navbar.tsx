@@ -57,8 +57,8 @@ export default function Navbar() {
             <Image
               src="/logo/kiorons_logo.svg"
               alt="Kiorons Logo"
-              width={20}
-              height={20}
+              width={16}
+              height={16}
               priority
             />
           </div>
@@ -70,7 +70,7 @@ export default function Navbar() {
               href={link.href}
               key={link.label}
               className={`
-                text-zinc-50 transition-all duration-500
+                text-zinc-50 transition-all duration-500 font-medium
                 ${hoveredIdx !== null && hoveredIdx !== idx ? "blur-[1px]" : ""}
                 ${hoveredIdx === idx ? "z-10" : ""}
               `}
