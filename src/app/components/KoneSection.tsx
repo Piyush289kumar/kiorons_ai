@@ -1,47 +1,34 @@
 import Image from "next/image";
 import GlassButton from "./GlassButton";
+
 export default function KoneSection() {
   return (
-    <section className="font-gellix w-full md:w-10/12 px-4 md:px-0 py-20 bg-transparent mx-auto flex justify-center items-center">
+    <section className="font-gellix w-full py-20 bg-transparent mx-auto flex justify-center items-center">
       <div
-        className="
-          flex flex-col items-center justify-center
-          w-full
-          mx-auto
-          rounded-3xl          
-          backdrop-blur-md
-          border border-white/10
-          shadow-lg
-          p-8 md:p-12
-          text-center
-          overflow-hidden
-        "
+        className="relative flex flex-col items-center justify-start w-full mx-auto h-[85vh] shadow-lg md:py-12 text-center overflow-hidden"
+        style={{
+          backgroundImage: "url('/images/svg/chip.svg')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "contain", // or "contain" if you want the SVG to be fully visible
+          backgroundPosition: "bottom",
+        }}
       >
-        <Image
-          src="/logo/kiorons_logo.svg"
-          alt="Kiorons Logo"
-          width={30}
-          height={30}
-          priority
-          className="h-8 w-8 mb-6"
-        />
-        <h2 className="text-2xl font-semibold text-zinc-50 mb-8 md:w-7/12 md:mx-auto">
-          kOne is not a software. it’s a new operating system for the web-- for
-          creatioves, builders, and thinkers.
-        </h2>
-        <GlassButton className="mt-2 px-6 py-3 text-base font-medium">
-          View Manifesto
-        </GlassButton>
+        {/* Top Black Blur */}
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/80 to-transparent z-20 pointer-events-none" />
 
-        <h1
-          className="text-[20rem] font-extrabold text-transparent -mt-20 -mb-44"
-          style={{
-            color: "transparent",
-            WebkitTextStroke: "1px #525252", // Use your desired color here
-          }}
-        >
-          kOne
-        </h1>
+        {/* Bottom Black Blur */}
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/80 to-transparent z-20 pointer-events-none" />
+
+        {/* Content starting from top */}
+        <div className="relative z-30 flex flex-col items-center !justify-center">
+          <p className="text-xl font-medium text-zinc-50 mb-2">Introducing</p>
+          <h2 className="text-5xl font-medium text-zinc-50 mb-8">
+            The Future of Building
+          </h2>
+          <GlassButton className="mt-2 !py-2 text-xs font-normal">
+            Learn more
+          </GlassButton>
+        </div>
       </div>
     </section>
   );

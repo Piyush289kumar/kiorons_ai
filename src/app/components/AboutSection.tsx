@@ -1,7 +1,7 @@
 import GlassButton from "./GlassButton";
 export default function AboutSection() {
   return (
-    <section className="font-gellix w-full md:w-10/12 px-4 md:px-0 py-20 bg-transparent mx-auto">
+    <section className="font-gellix w-full md:w-10/12 px-4 md:px-0 py-44 bg-transparent mx-auto">
       <div
         className="
         max-w-6xl mx-auto
@@ -12,7 +12,7 @@ export default function AboutSection() {
       >
         {/* Left Part */}
         <div className="w-full md:w-1/2 flex flex-col items-start space-y-6 md:px-10">
-          <h2 className="text-3xl md:text-3xl lg:text-4xl font-semibold text-zinc-50 mb-2">
+          <h2 className="text-3xl md:text-3xl lg:text-4xl font-medium text-zinc-50 mb-2">
             At Kiorons, we build AI to serve humanity’s long-term well-being.
           </h2>
           <GlassButton className="mt-16">

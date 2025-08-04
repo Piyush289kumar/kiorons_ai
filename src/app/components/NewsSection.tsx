@@ -96,7 +96,7 @@ export default function NewsSection() {
           </div>
           <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between font-gellix">
             <div className="max-w-xl space-y-12">
-              <h2 className="text-balance text-3xl md:text-2xl lg:text-5xl tracking-tight">
+              <h2 className="text-balance font-semibold text-3xl md:text-2xl lg:text-5xl tracking-tight">
                 Latest news
               </h2>
             </div>
@@ -124,8 +124,8 @@ export default function NewsSection() {
         <div className="space-y-12 mt-32">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between font-gellix">
             <div className="max-w-xl space-y-12">
-              <h2 className="text-balance text-3xl md:text-2xl lg:text-5xl tracking-tight">
-                Thinks
+              <h2 className="text-balance font-semibold text-3xl md:text-2xl lg:text-5xl tracking-tight">
+                Think
               </h2>
             </div>
             <Link href="/blogs" className="flex items-center gap-1 group w-fit">
