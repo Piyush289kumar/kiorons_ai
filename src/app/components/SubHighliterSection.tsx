@@ -1,13 +1,11 @@
 import Image from "next/image";
 import React from "react";
 import PrincipalsSection from "./PrincipalsSection";
-
 interface SubHighlighterSectionProps {
   label: string;
   title: string;
   imageSrc: string;
 }
-
 export default function SubHighlighterSection({
   label,
   title,
@@ -15,7 +13,7 @@ export default function SubHighlighterSection({
 }: SubHighlighterSectionProps) {
   return (
     <>
-      <section className="py-16 sm:py-0 pt-44 sm:pt-52 font-gellix mx-auto px-4 text-center w-full md:w-10/12">
+      <section className="py-16 sm:py-0 pt-44 sm:pt-44 font-gellix mx-auto px-4 text-center w-full xl:px-12 xl:max-w-8xl">
         <p className="text-xs uppercase text-primary font-medium">{label}</p>
         <h2 className="text-4xl sm:text-4xl font-semibold my-8 mb-20 text-zinc-50 max-w-2xl mx-auto">
           {title}
