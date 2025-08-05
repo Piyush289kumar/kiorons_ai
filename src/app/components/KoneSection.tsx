@@ -9,7 +9,7 @@ export default function KoneSection() {
         style={{
           backgroundImage: "url('/images/svg/chip.svg')",
           backgroundRepeat: "no-repeat",
-          backgroundSize: "contain", // or "contain" if you want the SVG to be fully visible
+          backgroundSize: "cover", // or "contain" if you want the SVG to be fully visible
           backgroundPosition: "bottom",
         }}
       >

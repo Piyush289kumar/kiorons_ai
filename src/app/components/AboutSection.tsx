@@ -1,7 +1,7 @@
 import GlassButton from "./GlassButton";
 export default function AboutSection() {
   return (
-    <section className="font-gellix w-full md:w-10/12 px-4 md:px-0 py-44 bg-transparent mx-auto">
+    <section className="font-gellix w-full xl:px-12 xl:max-w-8xl px-4 md:px-0 py-44 bg-transparent mx-auto">
       <div
         className="
         max-w-6xl mx-auto

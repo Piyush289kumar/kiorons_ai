@@ -86,7 +86,7 @@ const blogData = [
 export default function NewsSection() {
   return (
     <section className="py-16 sm:py-32 pt-44 sm:pt-52 font-gellix">
-      <div className="mx-auto w-full px-4 lg:px-6 xl:max-w-7xl">
+      <div className="mx-auto w-full px-4 xl:px-12 xl:max-w-8xl">
         {/*  News Header */}
         <div className="space-y-12">
           <div>
