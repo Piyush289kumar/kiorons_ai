@@ -72,7 +72,7 @@ export default function NewsFeaturedCard({
           <div
             className="
               flex items-center w-full aspect-[16/10] text-4xl tracking-tight leading-[2.5rem] rounded-sm bg-[#0C0C0B] overflow-hidden shadow
-               transition-transform duration-300 will-change-transform hover:scale-105 cursor-pointer"
+               transition-transform duration-300 will-change-transform group-hover:scale-105 cursor-pointer"
             style={{
               backgroundImage: `url(${img})`,
               backgroundSize: "cover", // Ensures the image covers the box
