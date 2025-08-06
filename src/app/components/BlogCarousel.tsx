@@ -98,7 +98,7 @@ export default function BlogCarousel({
           <div className="space-y-12">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between font-gellix">
               <div className="max-w-xl space-y-12">
-                <h2 className="text-balance font-semibold text-3xl md:text-2xl lg:text-5xl tracking-tight">
+                <h2 className="text-balance font-semibold text-3xl md:text-2xl lg:text-4xl tracking-tight">
                   {heading || "Latest Blogs"}
                 </h2>
               </div>

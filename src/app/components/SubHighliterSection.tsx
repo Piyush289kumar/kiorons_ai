@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import PrincipalsSection from "./PrincipalsSection";
-import { Timelines } from "./Timelines";
+import AboutSection from "./AboutSection";
 interface SubHighlighterSectionProps {
   label: string;
   title: string;
@@ -16,20 +16,31 @@ export default function SubHighlighterSection({
     <>
       <section className="py-16 sm:py-0 pt-44 sm:pt-44 font-gellix mx-auto px-4 text-center w-full xl:px-12 xl:max-w-8xl">
         <p className="text-xs uppercase text-primary font-medium">{label}</p>
-        <h2 className="text-4xl sm:text-4xl font-semibold my-8 mb-20 text-zinc-50 max-w-2xl mx-auto">
+        <h2 className="text-5xl font-semibold my-8 mb-20 text-zinc-50 max-w-4xl mx-auto">
           {title}
         </h2>
-        <div className="w-10/12 mx-auto h-auto rounded-sm shadow-lg overflow-hidden">
+        <div className="w-9/12 mx-auto h-auto shadow-lg overflow-hidden">
           <Image
             src={imageSrc}
             alt={label}
-            width={1200}
-            height={700}
-            className="w-full h-auto object-cover rounded-lg"
+            width={8000}
+            height={8000}
+            className="w-full h-auto object-cover rounded-md"
             priority
           />
         </div>
       </section>
+      <AboutSection
+        heading="Come build with us. Come build with us."
+        btnText="View Manifesto"
+        summary={`
+         We're creating a future where software, systems, and creators move at the speed of AI.
+         We're creating a future where software, systems, and creators move at the speed of AI.
+         <br /><br />
+         If you're obsessed with building great things — this is your invitation.
+          We're creating a future where software, systems, and creators move at the speed of AI.
+        `}
+      />
       <PrincipalsSection />
     </>
   );

@@ -18,6 +18,17 @@
     --foreground: #ededed;
   }
 }
+/* Apply custom selection effect globally */
+::selection {
+  background: #fff; /* white background */
+  color: #000; /* black text */
+}
+
+/* For Firefox */
+::-moz-selection {
+  background: #fff;
+  color: #000;
+}
 
 /* Optional: Custom styles */
 /* Regular font */

@@ -72,7 +72,7 @@ export default function BlogBigCard({
           w-full aspect-[16/10] 
           bg-[#0C0C0B]
           text-4xl tracking-tight leading-[2.5rem]
-          rounded-2xl overflow-hidden
+          rounded-xl overflow-hidden
           shadow
           whitespace-pre-wrap break-words
         "

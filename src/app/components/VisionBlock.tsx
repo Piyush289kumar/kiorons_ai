@@ -42,10 +42,10 @@ export default function VisionBlock() {
               </div>
             </div>
             {/* Right/Image Block */}
-            <div className="flex-1 w-[800px] order-1 md:order-2 overflow-hidden rounded-sm">
+            <div className="flex-1 w-[800px] order-1 md:order-2 overflow-hidden rounded-xl">
               <div
                 className="
-                    flex items-center w-full aspect-[1/1] text-4xl tracking-tight leading-[2.5rem] rounded-sm bg-[#0C0C0B] overflow-hidden shadow
+                    flex items-center w-full aspect-[1/1] text-4xl tracking-tight leading-[2.5rem] rounded-xl bg-[#0C0C0B] overflow-hidden shadow
                      transition-transform duration-300 will-change-transform hover:scale-105 cursor-pointer"
                 style={{
                   backgroundImage: `url('/images/vision.png')`,

@@ -3,7 +3,7 @@ import GlassButton from "./GlassButton";
 // Add 'dangerouslySetInnerHTML' for summary rendering
 export default function AboutSection({ heading, summary, btnText, btnUrl = "#" }) {
   return (
-    <section className="font-gellix w-full xl:px-12 xl:max-w-8xl px-4 md:px-0 py-44 bg-transparent mx-auto">
+    <section className="font-gellix w-full xl:px-12 xl:max-w-8xl px-4 md:px-0 pb-44 pt-24 bg-transparent mx-auto">
       <div
         className="
           max-w-6xl mx-auto

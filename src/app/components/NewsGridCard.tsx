@@ -21,7 +21,7 @@ export default function NewsGridCard({
   return (
     <div className="flex flex-col group relative">
       <div className="w-full aspect-square mb-4">
-        <div className="relative group w-full aspect-[1/1] rounded-sm overflow-hidden">
+        <div className="relative group w-full aspect-[1/1] rounded-xl overflow-hidden">
           {/* Scalable Background Image */}
           <div
             className="
@@ -40,12 +40,12 @@ export default function NewsGridCard({
       </div>
       <div className="block mt-0 pb-7">
         <Link href={slug} className="absolute inset-0 z-10" tabIndex={-1} />
-        <h4 className="text-lg font-semibold leading-6">{title}</h4>
+        <h4 className="text-2xl font-medium leading-8 pr-6">{title}</h4>
         {/* <p className="mt-2 leading-6 text-secondary line-clamp-3">{summary}</p> */}
       </div>
-      <div className="flex justify-start items-center gap-5 mt-auto pt-0 z-20 relative">
-        <span className="mono-tag text-sm font-semibold">{label}</span>
-        <span className="mono-tag text-xs">{date}</span>
+      <div className="flex justify-start items-center gap-3 mt-auto pt-0 z-20 relative">
+        <span className="mono-tag text-sm font-normal uppercase">{label}</span>
+        <span className="!text-white/60 mono-tag text-sm font-normal uppercase">{date}</span>
       </div>
     </div>
   );
