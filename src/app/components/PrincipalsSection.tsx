@@ -23,7 +23,7 @@ function PrincipleBlock({ Icon, ariaLabel, heading, summary, className = "" }) {
 }
 export default function PrincipalsSection() {
   return (
-    <section className="py-16 sm:py-32 pt-44 sm:pt-52 font-gellix w-full md:w-10/12 mx-auto">
+    <section className="py-16 pt-44 sm:pt-52 font-gellix w-full md:w-10/12 mx-auto">
       <div className="mx-auto w-full px-4 lg:px-6 xl:max-w-7xl">
         <div className="space-y-12">
           <div>
@@ -71,7 +71,7 @@ export default function PrincipalsSection() {
             {/* Left/Text Block */}
             <div className="flex flex-col gap-4 md:gap-12 xl:flex-row flex-1 order-2 md:order-1">
               {/* Main content */}
-              <div className="flex flex-1 flex-col space-y-6 px-24">
+              <div className="flex flex-1 flex-col space-y-6">
                 <div className="block grow space-y-4">
                   <div className="absolute inset-0" />
                   <h3 className="!text-5xl leading-14 font-semibold">

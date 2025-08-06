@@ -1,6 +1,7 @@
 "use client";
 import AboutSection from "../components/AboutSection";
 import BlogCarousel from "../components/BlogCarousel";
+import { Timelines } from "../components/Timelines";
 import VisionBlock from "../components/VisionBlock";
 export default function Kone() {
   return (
@@ -28,7 +29,7 @@ export default function Kone() {
         ))}
       </div>
       <section
-        className="font-gellix w-full xl:px-12 xl:max-w-8xl max-w-6xl px-4 md:px-0 mx-auto h-screen flex justify-start items-center my-52"
+        className="font-gellix w-full xl:px-12 xl:max-w-8xl max-w-6xl px-4 md:px-0 mx-auto h-screen flex justify-start items-center my-72"
         style={{
           backgroundImage: "url('/images/svg/sidelins.svg')",
           backgroundRepeat: "no-repeat",
@@ -50,7 +51,8 @@ export default function Kone() {
       </section>
       {/* Vision Block */}
       <VisionBlock />
-      <BlogCarousel heading="Studies" limit={3}/>
+      <Timelines />
+      <BlogCarousel heading="Studies" limit={3} />
     </>
   );
 }

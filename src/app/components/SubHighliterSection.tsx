@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import PrincipalsSection from "./PrincipalsSection";
+import { Timelines } from "./Timelines";
 interface SubHighlighterSectionProps {
   label: string;
   title: string;

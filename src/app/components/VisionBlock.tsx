@@ -3,7 +3,7 @@ import GlassButtonWithText from "./GlassButtonWithText";
 
 export default function VisionBlock() {
   return (
-    <section className=" font-gellix w-full md:w-11/12 mx-auto">
+    <section className="my-72 font-gellix w-full md:w-11/12 mx-auto">
       <div className="mx-auto w-full xl:max-w-7xl">
         <div className={`group relative mt-44`}>
           <div
