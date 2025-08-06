@@ -4,6 +4,8 @@ import { ArrowUpRight, ChevronDown } from "lucide-react";
 import CareerSubSection from "../components/CareerSubSection";
 import GlassButtonWithText from "../components/GlassButtonWithText";
 import JobCard from "../components/JobCard";
+import GlassButton from "../components/GlassButton";
+import BlogCarousel from "../components/BlogCarousel";
 export default function Career() {
   return (
     <>
@@ -29,22 +31,26 @@ export default function Career() {
       <CareerSubSection />
 
       <section className="py-16 sm:py-0 pt-44 sm:pt-44 font-gellix mx-auto px-4 text-center w-full xl:px-12 xl:max-w-8xl">
-        <h2 className="text-4xl sm:text-6xl font-semibold mb-8 text-zinc-50 max-w-2xl mx-auto">
+        <h2 className="text-4xl sm:text-6xl font-semibold mb-5 text-zinc-50 max-w-2xl mx-auto">
           Featured Roles
         </h2>
-        <p className="text-lg text-primary font-medium mb-8 max-w-lg mx-auto">
+        <p className="text-lg text-primary font-normal mb-8 max-w-lg mx-auto">
           We’re looking for curious minds from a wide range of disciplines and
           backgrounds.
         </p>
-        <GlassButtonWithText
+
+        <GlassButton className="mt-2 !py-2 text-sm font-normal">
+          View All Roles
+        </GlassButton>
+
+        {/* <GlassButtonWithText
           as="a"
           href="#loadmore"
           text="View All Roles"
           icon={<ArrowUpRight className="w-3 h-3" />}
           iconPosition="right"
           className="!px-3 !py-0"
-        />
-
+        /> */}
 
         <div className="my-20">
           {[...Array(5)].map((_, index) => (
@@ -58,6 +64,8 @@ export default function Career() {
           ))}
         </div>
       </section>
+
+      <BlogCarousel heading="Resources" limit={3}/>
     </>
   );
 }

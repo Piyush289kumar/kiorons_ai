@@ -1,7 +1,6 @@
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import NewsGridCard from "./NewsGridCard";
-
 const blogData = [
   // Big card (first)
   {
@@ -83,7 +82,6 @@ const blogData = [
   },
   // ...add more grid cards as needed
 ];
-
 export default function BlogCarousel({
   heading = "Latest Blogs",
   apiUrl = "#",
@@ -92,13 +90,12 @@ export default function BlogCarousel({
   return (
     <>
       {/*  Blog Header */}
-
       <section className="py-16 sm:py-32 font-gellix">
         <div className="mx-auto w-full px-4 xl:px-12 xl:max-w-8xl">
           <div className="space-y-12">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between font-gellix">
               <div className="max-w-xl space-y-12">
-                <h2 className="text-balance font-semibold text-3xl md:text-2xl lg:text-4xl tracking-tight">
+                <h2 className="text-balance font-medium text-3xl md:text-2xl lg:text-4xl tracking-tight">
                   {heading || "Latest Blogs"}
                 </h2>
               </div>

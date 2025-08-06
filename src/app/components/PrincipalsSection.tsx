@@ -45,7 +45,7 @@ export default function PrincipalsSection() {
               </h2>
             </div>
           </div>
-          <div className="flex flex-col lg:flex-row my-44 space-y-12 lg:space-y-0 lg:space-x-12">
+          <div className="flex flex-col lg:flex-row my-44 mt-32 space-y-12 lg:space-y-0 lg:space-x-12">
             <PrincipleBlock
               Icon={Cpu}
               ariaLabel="CPU Icon"
@@ -73,7 +73,7 @@ export default function PrincipalsSection() {
       <div className={`group relative mb-44 px-4 xl:px-12 xl:max-w-8xl`}>
         <div
           className={`
-        flex flex-col gap-10 py-24 md:gap-12 md:flex-row
+        flex flex-col gap-10 py-10 md:gap-12 md:flex-row
       `}
         >
           {/* Left/Text Block */}
