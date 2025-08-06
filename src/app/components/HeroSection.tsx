@@ -24,9 +24,6 @@ export default function HeroSection() {
         priority
       />
 
-      {/* Glass overlay, optional for readability */}
-      {/* <div className="absolute inset-0 bg-black/10 pointer-events-none" /> */}
-
       {/* Content container */}
       <div
         className="

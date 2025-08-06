@@ -18,7 +18,7 @@ export default function SubHighlighterSection({
         <h2 className="text-4xl sm:text-4xl font-semibold my-8 mb-20 text-zinc-50 max-w-2xl mx-auto">
           {title}
         </h2>
-        <div className="w-8/12 mx-auto h-auto rounded-sm shadow-lg overflow-hidden">
+        <div className="w-10/12 mx-auto h-auto rounded-sm shadow-lg overflow-hidden">
           <Image
             src={imageSrc}
             alt={label}
