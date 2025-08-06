@@ -131,6 +131,7 @@ export default function Navbar() {
           max-w-[18rem]
           mx-auto
           min-h-[30px]
+          hover:scale-103
           transition-all duration-500
           cursor-pointer
           ${
@@ -147,7 +148,7 @@ export default function Navbar() {
             absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
             text-center text-sm text-zinc-50 pointer-events-none select-none w-full
             transition-all duration-500
-            ${blur ? "blur-sm opacity-60" : ""}
+            ${blur ? "blur-[1px] opacity-90" : ""}
           `}
         >
           kOne new version out now

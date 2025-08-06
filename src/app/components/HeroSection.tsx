@@ -89,7 +89,7 @@ export default function HeroSection() {
           }}
           onClick={handleScroll}
         >
-          <ChevronDown className="w-5 h-5 text-blue-200 drop-shadow" />
+          <ChevronDown className="w-3 h-3 text-blue-200" />
         </GlassButton>
       </div>
     </section>

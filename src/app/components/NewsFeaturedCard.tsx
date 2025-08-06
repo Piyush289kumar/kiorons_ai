@@ -60,7 +60,7 @@ export default function NewsFeaturedCard({
               </div>
               <div>
                 Read
-                <GlassButton as="a" href={slug} className="!px-3 !py-0 mx-2">
+                <GlassButton as="a" href={slug} className="!px-3 !py-0 mx-2 group-hover:scale-110 transition-all duration-500">
                   <ArrowUpRight className="w-3 h-3" />
                 </GlassButton>
               </div>
