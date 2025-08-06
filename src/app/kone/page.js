@@ -1,5 +1,6 @@
 "use client";
 import AboutSection from "../components/AboutSection";
+import BlogCarousel from "../components/BlogCarousel";
 import VisionBlock from "../components/VisionBlock";
 export default function Kone() {
   return (
@@ -21,7 +22,7 @@ export default function Kone() {
          <br /><br />
          with kOne we believe building brands, Saas, and managing is simplified. for the first time we’ll not going to create pretty screens but the real systems.`}
       />
-      <div className="font-gellix space-y-0 text-7xl mx-auto text-center font-semibold leading-tighter">
+      <div className="font-gellix space-y-0 text-9xl mx-auto text-center font-semibold leading-tighter">
         {["Think Brand", "Think Product", "Think One"].map((text, i) => (
           <h1 key={i}>{text}</h1>
         ))}
@@ -49,6 +50,7 @@ export default function Kone() {
       </section>
       {/* Vision Block */}
       <VisionBlock />
+      <BlogCarousel heading="Studies" limit={3}/>
     </>
   );
 }

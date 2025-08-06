@@ -1,7 +1,7 @@
 import { ChevronRight } from "lucide-react";
-import NewsFeaturedCard from "./NewsFeaturedCard";
-import NewsGridCard from "./NewsGridCard";
 import Link from "next/link";
+import NewsGridCard from "./NewsGridCard";
+
 const blogData = [
   // Big card (first)
   {
@@ -83,70 +83,45 @@ const blogData = [
   },
   // ...add more grid cards as needed
 ];
-export default function NewsSection() {
+
+export default function BlogCarousel({
+  heading = "Latest Blogs",
+  apiUrl = "#",
+  limit = 3,
+}) {
   return (
-    <section className="py-16 sm:py-32 pt-44 sm:pt-52 font-gellix">
-      <div className="mx-auto w-full px-4 xl:px-12 xl:max-w-8xl">
-        {/*  News Header */}
-        <div className="space-y-12">
-          <div>
-            <div className="mono-tag flex items-center gap-2 text-sm">
-              <span>[</span> <span>What new</span> <span>]</span>
-            </div>
-          </div>
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between font-gellix">
-            <div className="max-w-xl space-y-12">
-              <h2 className="text-balance font-semibold text-3xl md:text-2xl lg:text-5xl tracking-tight">
-                Latest news
-              </h2>
-            </div>
-            <Link href="/blogs" className="flex items-center gap-1 group w-fit">
-              <span className="mt-3 text-xs text-balance leading-6 transition-colors group-hover:text-blue-300">
-                View more
-              </span>
-              <ChevronRight className="w-4 h-4 mt-4 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-blue-300" />
-            </Link>
-          </div>
-        </div>
-        {/* Featured Card */}
-        {blogData.slice(0, 3).map((blog, idx) => (
-          <NewsFeaturedCard
-            key={blog.slug}
-            {...blog}
-            className={`
-      ${idx === 0 ? "border-t border-zinc-700 mt-32" : ""}
-      ${idx === 2 ? "border-b border-zinc-700" : ""}
-    `}
-          />
-        ))}
-        {/* Blog Card Grid */}
-        {/*  Blog Header */}
-        <div className="space-y-12 mt-32">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between font-gellix">
-            <div className="max-w-xl space-y-12">
-              <h2 className="text-balance font-semibold text-3xl md:text-2xl lg:text-5xl tracking-tight">
-                Think
-              </h2>
-            </div>
-            <Link href="/blogs" className="flex items-center gap-1 group w-fit">
-              <span className="mt-3 text-xs text-balance leading-6 transition-colors group-hover:text-blue-300">
-                View more
-              </span>
-              <ChevronRight className="w-4 h-4 mt-4 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-blue-300" />
-            </Link>
-          </div>
-        </div>
-        <div className="pt-16">
-          <div className="grid gap-10 sm:gap-6 !gap-y-24 sm:grid-cols-2 lg:grid-cols-3">
-            {blogData.slice(3, 6).map((blog, idx) => (
-              <NewsGridCard key={blog.slug} {...blog} />
-            ))}
-          </div>
-        </div>
+    <>
+      {/*  Blog Header */}
 
-
-        
-      </div>
-    </section>
+      <section className="py-16 sm:py-32 font-gellix">
+        <div className="mx-auto w-full px-4 xl:px-12 xl:max-w-8xl">
+          <div className="space-y-12">
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between font-gellix">
+              <div className="max-w-xl space-y-12">
+                <h2 className="text-balance font-semibold text-3xl md:text-2xl lg:text-5xl tracking-tight">
+                  {heading || "Latest Blogs"}
+                </h2>
+              </div>
+              <Link
+                href="/blogs"
+                className="flex items-center gap-1 group w-fit"
+              >
+                <span className="mt-3 text-xs text-balance leading-6 transition-colors group-hover:text-blue-300">
+                  View more
+                </span>
+                <ChevronRight className="w-4 h-4 mt-4 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-blue-300" />
+              </Link>
+            </div>
+          </div>
+          <div className="pt-16">
+            <div className="grid gap-10 sm:gap-6 !gap-y-24 sm:grid-cols-2 lg:grid-cols-3">
+              {blogData.slice(0, limit).map((blog, idx) => (
+                <NewsGridCard key={blog.slug} {...blog} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

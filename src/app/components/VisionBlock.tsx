@@ -3,12 +3,12 @@ import GlassButtonWithText from "./GlassButtonWithText";
 
 export default function VisionBlock() {
   return (
-    <section className=" font-gellix w-full md:w-10/12 mx-auto">
+    <section className=" font-gellix w-full md:w-11/12 mx-auto">
       <div className="mx-auto w-full xl:max-w-7xl">
-        <div className={`group relative my-44`}>
+        <div className={`group relative mt-44`}>
           <div
             className={`
-              flex flex-col gap-10 py-24 md:gap-12 md:flex-row
+              flex flex-col gap-10 md:gap-12 md:flex-row
             `}
           >
             {/* Left/Text Block */}
@@ -17,10 +17,10 @@ export default function VisionBlock() {
               <div className="flex flex-1 flex-col space-y-6 px-24">
                 <div className="block grow space-y-4">
                   <div className="absolute inset-0" />
-                  <h3 className="!text-5xl leading-14 font-semibold">
+                  <h3 className="!text-6xl leading-20 font-semibold">
                     Our vision for
                   </h3>
-                  <h3 className="!text-5xl leading-0 font-semibold">
+                  <h3 className="!text-6xl leading-0 font-semibold">
                     sthe future
                   </h3>
                   <p className="grow text-balance text-lg mt-18 md:w-2/3">
