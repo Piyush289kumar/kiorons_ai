@@ -1,5 +1,4 @@
 "use client";
-
 import { ArrowUpRight, ChevronDown } from "lucide-react";
 import CareerSubSection from "../components/CareerSubSection";
 import GlassButtonWithText from "../components/GlassButtonWithText";
@@ -19,17 +18,16 @@ export default function Career() {
         }}
       >
         <div>
-          <h1 className="text-8xl font-semibold leading-20 font-gellix">
+          <h1 className="text-6xl md:text-8xl font-semibold leading-20 font-gellix">
             Build the
           </h1>
-          <h1 className="text-8xl font-semibold font-gellix">New System.</h1>
-          <p className="text-lg mt-10 max-w-md mx-auto font-medium">
+          <h1 className="text-6xl md:text-8xl font-semibold font-gellix">New System.</h1>
+          <p className="text-xl px-5 mt-10 max-w-md mx-auto font-medium">
             {"If you're obsessed with shaping what comes next you belong here."}
           </p>
         </div>
       </section>
       <CareerSubSection />
-
       <section className="py-16 sm:py-0  font-gellix mx-auto px-4 text-center w-full xl:px-12 xl:max-w-8xl">
         <h2 className="text-4xl sm:text-6xl font-semibold mb-5 text-zinc-50 max-w-2xl mx-auto">
           Featured Roles
@@ -38,11 +36,9 @@ export default function Career() {
           We’re looking for curious minds from a wide range of disciplines and
           backgrounds.
         </p>
-
         <GlassButton className="mt-2 !py-2 text-sm font-normal">
           View All Roles
         </GlassButton>
-
         {/* <GlassButtonWithText
           as="a"
           href="#loadmore"
@@ -51,7 +47,6 @@ export default function Career() {
           iconPosition="right"
           className="!px-3 !py-0"
         /> */}
-
         <div className="my-20">
           {[...Array(5)].map((_, index) => (
             <JobCard
@@ -64,7 +59,6 @@ export default function Career() {
           ))}
         </div>
       </section>
-
       <BlogCarousel heading="Resources" limit={3}/>
     </>
   );

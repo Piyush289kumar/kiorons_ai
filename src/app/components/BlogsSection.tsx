@@ -99,18 +99,15 @@ const blogData = [
 
 export default function BlogsSection() {
   return (
-    <section className="py-16 sm:py-0 pt-44 sm:pt-44 font-gellix">
+    <section className="py-16 sm:py-0 pt-24 sm:pt-44 font-gellix">
       <div className="mx-auto w-full px-4 lg:px-6 xl:max-w-7xl">
         {/*  News Header */}
-        <div className="space-y-12">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between font-gellix">
-            <div className="max-w-xl space-y-12">
-              <h2 className="text-balance text-3xl md:text-2xl lg:text-5xl tracking-tight">
-                Latest news
-              </h2>
-            </div>
-          </div>
+        <div className="max-w-xl space-y-12">
+          <h2 className="text-balance font-medium text-3xl md:text-2xl lg:text-4xl tracking-tight">
+            {"Latest Blogs"}
+          </h2>
         </div>
+
         {/* Featured Card */}
         {blogData.slice(0, 1).map((blog, idx) => (
           <NewsFeaturedCard
@@ -118,7 +115,7 @@ export default function BlogsSection() {
             {...blog}
             reverse={idx % 2 === 1}
             className={`
-      ${idx === 0 ? "border-t border-zinc-700 mt-32" : ""}
+      ${idx === 0 ? "border-t border-zinc-700 mt-10 md:mt-32" : ""}
       ${idx === 2 ? "border-b border-zinc-700" : ""}
     `}
           />

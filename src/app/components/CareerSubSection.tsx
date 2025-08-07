@@ -29,46 +29,46 @@ function PrincipleBlock({ Icon, ariaLabel, heading, summary, className = "" }) {
 
 export default function CareerSubSection() {
   return (
-    <section className=" font-gellix mx-auto w-full px-4 xl:px-12 xl:max-w-7xl pt-24">
-      <div className="w-full">
-        <div className="space-y-10">
-          <div>
-            <div className="mono-tag flex items-center uppercase pl-1 text-sm">
-              <span>Career</span>
+      <section className="font-gellix mx-auto w-full my-24 md:my-44 px-4 sm:px-6 md:px-8 xl:px-12 xl:max-w-7xl">
+            <div className="w-full">
+              <div className="space-y-12 md:mb-0">
+                <div>
+                  <div className="mono-tag flex items-center uppercase pl-1 text-sm">
+                    <span>Principles</span>
+                  </div>
+                </div>
+                <div>
+                  <h2 className="font-semibold text-5xl md:text-6xl tracking-tight">
+                    Built Different,
+                  </h2>
+                  <h2 className="font-semibold text-5xl md:text-6xl tracking-tight">
+                    Built to Last
+                  </h2>
+                </div>
+              </div>
+              <div className="flex flex-col lg:flex-row my-5 md:my-44 gap-y-5 lg:gap-y-0 gap-x-0 lg:gap-x-12">
+                <PrincipleBlock
+                  Icon={Cpu}
+                  ariaLabel="CPU Icon"
+                  heading="First Principles Thinking"
+                  summary="We break everything down to its atomic truth—no assumptions, no fluff. Just logic, clarity, and sharp execution."
+                  className="md:border-r border-zinc-900"
+                />
+                <PrincipleBlock
+                  Icon={PieChart}
+                  ariaLabel="Pie Chart Icon"
+                  heading="Data-Driven Decisions"
+                  summary="Every action we take is powered by reliable, actionable data—not guesswork. This keeps us sharp and focused."
+                  className="md:border-r border-zinc-900"
+                />
+                <PrincipleBlock
+                  Icon={Activity}
+                  ariaLabel="Activity Icon"
+                  heading="Relentless Execution"
+                  summary="We value speed with precision. Our teams turn strategy into results, consistently and efficiently."
+                />
+              </div>
             </div>
-          </div>
-          <div>
-            <h2 className="text-balance font-semibold text-6xl tracking-tight">
-              The Code
-            </h2>
-            <h2 className="text-balance font-semibold text-6xl tracking-tight">
-              Beneath It All.
-            </h2>
-          </div>
-        </div>
-        <div className="flex flex-col lg:flex-row my-44 mt-32 space-y-12 lg:space-y-0 lg:space-x-12">
-          <PrincipleBlock
-            Icon={Cpu}
-            ariaLabel="CPU Icon"
-            heading="Build with Intent"
-            summary="We build what matters — with clarity, conviction, and craft. Every decision is deliberate. Every product is made to last."
-            className="border-r border-zinc-900"
-          />
-          <PrincipleBlock
-            Icon={PieChart}
-            ariaLabel="Pie Chart Icon"
-            heading="Beauty is Built-In"
-            summary="No handoffs. No silos. From sketch to system, we think and build as one. Great design isn’t an afterthought — it’s engineered into the core."
-            className="border-r border-zinc-900"
-          />
-          <PrincipleBlock
-            Icon={Activity}
-            ariaLabel="Activity Icon"
-            heading="Always Forward"
-            summary="Progress is our habit. We iterate, refine, and reimagine — constantly. We’re not trying to catch up. We’re here to define what’s next."
-          />
-        </div>
-      </div>
-    </section>
+          </section>
   );
 }

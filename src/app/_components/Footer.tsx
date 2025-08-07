@@ -1,9 +1,8 @@
 import CTA from "../components/CTA";
-
 export default function Footer() {
   return (
     <div
-      className="relative px-2 md:px-8 mb-0 mt-0 md:mt-24 min-h-[80vh] h-fit overflow-hidden"
+      className="relative px-2 md:px-8 mb-0 mt-0 md:mt-24 min-h-screen h-fit"
       style={{
         backgroundImage: "url('/images/footerbg.png')",
         backgroundRepeat: "no-repeat",
@@ -22,9 +21,8 @@ export default function Footer() {
           `,
         }}
       />
-
       {/* Main content */}
-      <div className="absolute bottom-0 z-10 left-1/2 -translate-x-1/2 w-full px-4  xl:max-w-7xl">
+      <div className="absolute bottom-0 z-10 left-1/2 -translate-x-1/2 w-full px-4 md:px-16 xl:max-w-8xl">
         <CTA />
         <footer className="
           bg-white-800 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20
