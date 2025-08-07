@@ -52,7 +52,7 @@ export default function Kone() {
       {/* Vision Block */}
       <VisionBlock />
       <Timelines />
-      <BlogCarousel heading="Studies" limit={3} />
+      <BlogCarousel category="studies" limit={3} />
     </>
   );
 }

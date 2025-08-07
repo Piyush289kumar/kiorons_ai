@@ -46,9 +46,10 @@ export default function NewsFeaturedCard({
                 <div className="absolute inset-0" />
                 <h3 className="!text-4xl leading-10 font-semibold">{title}</h3>
               </Link>
-              <p className="grow text-balance text-sm !text-zinc-200 mt-12">
-                {body}
-              </p>
+              <p
+                className="grow text-balance text-sm !text-zinc-200 mt-12"
+                dangerouslySetInnerHTML={{ __html: body }}
+              />
             </div>
             <div className="flex items-center justify-between gap-3">
               <div>
@@ -58,7 +59,11 @@ export default function NewsFeaturedCard({
               </div>
               <div>
                 Read
-                <GlassButton as="a" href={slug} className="!px-3 !py-0 mx-2 group-hover:scale-110 transition-all duration-500">
+                <GlassButton
+                  as="a"
+                  href={slug}
+                  className="!px-3 !py-0 mx-2 group-hover:scale-110 transition-all duration-500"
+                >
                   <ArrowUpRight className="w-3 h-3" />
                 </GlassButton>
               </div>

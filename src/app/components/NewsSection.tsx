@@ -1,23 +1,18 @@
 "use client";
-
 import { ChevronRight } from "lucide-react";
 import NewsFeaturedCard from "./NewsFeaturedCard";
 import NewsGridCard from "./NewsGridCard";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { fetchNewsBlogs, fetchThinkBlogs } from "../lib/apiClient";
-
-function stripHtmlTags(html: string) {
-  return html.replace(/<[^>]*>?/gm, "");
-}
-
+import truncateHtml from "../lib/truncateHtml";
 export default function NewsSection() {
   const [newsBlogs, setNewsBlogs] = useState([]);
   const [thinkBlogs, setThinkBlogs] = useState([]);
   // const [loading, setLoading] = useState(true);
-
   useEffect(() => {
-    fetchNewsBlogs()
+    const LIMIT = 3;
+    fetchNewsBlogs(LIMIT)
       .then((data) => {
         setNewsBlogs(data.data); // ✅ directly use array, not data.data
         // setLoading(false);
@@ -26,9 +21,7 @@ export default function NewsSection() {
         console.error("Error fetching blogs:", err);
         // setLoading(false);
       });
-
-    
-      fetchThinkBlogs()
+    fetchThinkBlogs(LIMIT)
       .then((data) => {
         setThinkBlogs(data.data); // ✅ directly use array, not data.data
         // setLoading(false);
@@ -37,10 +30,7 @@ export default function NewsSection() {
         console.error("Error fetching blogs:", err);
         // setLoading(false);
       });
-
-
   }, []);
-
   return (
     <section className="py-16 sm:py-32 sm:pt-52 font-gellix">
       <div className="mx-auto w-full px-4 xl:px-12 xl:max-w-8xl">
@@ -71,7 +61,7 @@ export default function NewsSection() {
             key={blog.slug}
             slug={`/blog/${blog.slug}`} // assuming blog route
             title={blog.title}
-            body={stripHtmlTags(blog.body).slice(0, 120) + "..."} // trim if needed
+            body={truncateHtml(blog.body, 120)}
             img={blog.image_url || "/default-blog.jpg"} // fallback image
             date={blog.formatted_date}
             category={blog.category}
@@ -100,7 +90,7 @@ export default function NewsSection() {
         </div>
         <div className="pt-16">
           <div className="grid gap-10 sm:gap-6 !gap-y-24 sm:grid-cols-2 lg:grid-cols-3">
-           {thinkBlogs.map((blog) => (
+            {thinkBlogs.map((blog) => (
               <NewsGridCard
                 key={blog.slug}
                 slug={`/blog/${blog.slug}`}
@@ -108,7 +98,7 @@ export default function NewsSection() {
                 label={blog.category}
                 date={blog.formatted_date}
                 title={blog.title}
-                body={stripHtmlTags(blog.body).slice(0, 100)}
+                body={truncateHtml(blog.body, 120)}
               />
             ))}
           </div>

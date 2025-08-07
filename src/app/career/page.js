@@ -59,7 +59,7 @@ export default function Career() {
           ))}
         </div>
       </section>
-      <BlogCarousel heading="Resources" limit={3}/>
+      <BlogCarousel category="resources" limit={3}/>
     </>
   );
 }

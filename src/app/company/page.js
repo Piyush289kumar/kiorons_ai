@@ -11,8 +11,8 @@ export default function Blogs() {
         title="Make the future. smarter, and faster for the next generation of creators, founders, and builders"
         imageSrc="/images/team.png"
       />
-      <Timelines />      
-      <BlogCarousel heading="Studies" limit={3} />
+      <Timelines />            
+      <BlogCarousel category="studies" limit={3}/>
     </>
   );
 }

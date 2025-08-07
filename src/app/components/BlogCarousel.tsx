@@ -1,93 +1,56 @@
+"use client";
+
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import NewsGridCard from "./NewsGridCard";
-const blogData = [
-  // Big card (first)
-  {
-    slug: "/news/grok-4",
-    img: "/images/blogs/news1.png",
-    label: "kOne",
-    date: "July 09, 2025",
-    title: "kOne",
-    summary:
-      "kOne 4 is the most intelligent model in the world. It includes native tool use and real-time search integration, and is available now to SuperkOne and Premium+ subscriber tool use and real-time search integration, and is available now to SuperkOne and Premium+ subscriber ...",
-    tag: "Company",
-  },
-  // Grid cards
-  {
-    slug: "/news/government",
-    img: "/images/blogs/news2.png",
-    label: "kOne for Government",
-    date: "July 14, 2025",
-    title: "Announcing kOne for Government",
-    summary:
-      "We are excited to announce kOne For Government – a suite of frontier AI products available first to United States Government customers.",
-  },
-  {
-    slug: "/news/grok-3",
-    img: "/images/blogs/news3.png",
-    label: "kOne 3",
-    date: "Feb 19, 2025",
-    title: "kOne 3 Beta — The Age of Reasoning Agents",
-    summary:
-      "We are thrilled to unveil kOne 3, our most advanced model yet, blending superior reasoning with extensive pretraining knowledge.",
-    tag: "Company",
-  },
-  {
-    slug: "/news/grok-3",
-    img: "/images/blogs/news3.png",
-    label: "kOne 3",
-    date: "Feb 19, 2025",
-    title: "kOne 3 Beta — The Age of Reasoning Agents",
-    summary:
-      "We are thrilled to unveil kOne 3, our most advanced model yet, blending superior reasoning with extensive pretraining knowledge.",
-    tag: "Company",
-  },
-  {
-    slug: "/news/grok-3",
-    img: "/images/blogs/news3.png",
-    label: "kOne 3",
-    date: "Feb 19, 2025",
-    title: "kOne 3 Beta — The Age of Reasoning Agents",
-    summary:
-      "We are thrilled to unveil kOne 3, our most advanced model yet, blending superior reasoning with extensive pretraining knowledge.",
-    tag: "Company",
-  },
-  {
-    slug: "/news/grok-3",
-    img: "/images/blogs/news1.png",
-    label: "kOne 3",
-    date: "Feb 19, 2025",
-    title: "kOne 3 Beta — The Age of Reasoning Agents",
-    summary:
-      "We are thrilled to unveil kOne 3, our most advanced model yet, blending superior reasoning with extensive pretraining knowledge.",
-  },
-  {
-    slug: "/news/grok-3",
-    img: "/images/blogs/news1.png",
-    label: "kOne 3",
-    date: "Feb 19, 2025",
-    title: "kOne 3 Beta — The Age of Reasoning Agents",
-    summary:
-      "We are thrilled to unveil kOne 3, our most advanced model yet, blending superior reasoning with extensive pretraining knowledge.",
-  },
-  {
-    slug: "/news/grok-3",
-    img: "/images/blogs/news1.png",
-    label: "kOne 3",
-    date: "Feb 19, 2025",
-    title: "kOne 3 Beta — The Age of Reasoning Agents",
-    summary:
-      "We are thrilled to unveil kOne 3, our most advanced model yet, blending superior reasoning with extensive pretraining knowledge.",
-  },
-  // ...add more grid cards as needed
-];
-export default function BlogCarousel({
-  heading = "Latest Blogs",
-  apiUrl = "#",
+import truncateHtml from "../lib/truncateHtml";
+import { useEffect, useState } from "react";
+import {
+  fetchNewsBlogs,
+  fetchThinkBlogs,
+  fetchStudieskBlogs,
+  fetchResourcesBlogs,
+} from "../lib/apiClient";
+
+export default function BlogCarousel({  
+  category = "news", // news, think, studies, resources
   limit = 3,
 }) {
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    async function fetchBlogs() {
+      try {
+        let data;
+
+        switch (category.toLowerCase()) {
+          case "news":
+            data = await fetchNewsBlogs(limit);
+            break;
+          case "think":
+            data = await fetchThinkBlogs(limit);
+            break;
+          case "studies":
+            data = await fetchStudieskBlogs(limit);
+            break;
+          case "resources":
+            data = await fetchResourcesBlogs(limit);
+            break;
+          default:
+            console.warn(`Unknown category: ${category}`);
+            return;
+        }
+
+        setBlogs(data.data || []);
+      } catch (err) {
+        console.error(`Error fetching ${category} blogs:`, err);
+      }
+    }
+
+    fetchBlogs();
+  }, [category, limit]);
   return (
+    
     <>
       {/*  Blog Header */}
       <section className="py-16 sm:py-32 font-gellix">
@@ -95,8 +58,8 @@ export default function BlogCarousel({
           <div className="space-y-12">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between font-gellix">
               <div className="max-w-xl space-y-12">
-                <h2 className="text-balance font-medium text-3xl md:text-2xl lg:text-4xl tracking-tight">
-                  {heading || "Latest Blogs"}
+                <h2 className="text-balance font-medium text-3xl md:text-2xl lg:text-4xl tracking-tight capitalize">
+                  {category || "Latest Blogs"}
                 </h2>
               </div>
               <Link
@@ -112,8 +75,16 @@ export default function BlogCarousel({
           </div>
           <div className="pt-16">
             <div className="grid gap-10 sm:gap-6 !gap-y-24 sm:grid-cols-2 lg:grid-cols-3">
-              {blogData.slice(0, limit).map((blog, idx) => (
-                <NewsGridCard key={blog.slug} {...blog} />
+              {blogs.map((blog) => (
+                <NewsGridCard
+                  key={blog.slug}
+                  slug={`/blog/${blog.slug}`}
+                  img={blog.image_url || "/default-blog.jpg"}
+                  label={blog.category}
+                  date={blog.formatted_date}
+                  title={blog.title}
+                  body={truncateHtml(blog.body, 120)}
+                />
               ))}
             </div>
           </div>
