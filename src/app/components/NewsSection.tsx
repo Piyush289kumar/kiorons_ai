@@ -59,7 +59,7 @@ export default function NewsSection() {
         {newsBlogs.map((blog, idx) => (
           <NewsFeaturedCard
             key={blog.slug}
-            slug={`/blog/${blog.slug}`} // assuming blog route
+            slug={`/blogs/${blog.slug}`} // assuming blog route
             title={blog.title}
             body={truncateHtml(blog.body, 120)}
             img={blog.image_url || "/default-blog.jpg"} // fallback image
@@ -93,7 +93,7 @@ export default function NewsSection() {
             {thinkBlogs.map((blog) => (
               <NewsGridCard
                 key={blog.slug}
-                slug={`/blog/${blog.slug}`}
+                slug={`/blogs/${blog.slug}`}
                 img={blog.image_url || "/default-blog.jpg"}
                 label={blog.category}
                 date={blog.formatted_date}

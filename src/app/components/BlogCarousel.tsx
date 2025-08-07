@@ -78,7 +78,7 @@ export default function BlogCarousel({
               {blogs.map((blog) => (
                 <NewsGridCard
                   key={blog.slug}
-                  slug={`/blog/${blog.slug}`}
+                  slug={`/blogs/${blog.slug}`}
                   img={blog.image_url || "/default-blog.jpg"}
                   label={blog.category}
                   date={blog.formatted_date}
