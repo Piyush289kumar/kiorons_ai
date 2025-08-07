@@ -46,8 +46,8 @@ export default function BlogCarousel({
   return (
     <>
       {/*  Blog Header */}
-      <section className="py-16 sm:py-32 font-gellix">
-        <div className="mx-auto w-full px-4 xl:px-12 xl:max-w-8xl">
+      <section className="py-8 sm:py-32 font-gellix">
+        <div className="mx-auto w-full px-7 xl:px-12 xl:max-w-8xl">
           <div className="space-y-12">
             <div className="flex gap-6 flex-row items-start lg:items-start justify-between font-gellix">
               <div className="max-w-xl space-y-12">
@@ -66,8 +66,8 @@ export default function BlogCarousel({
               </Link>
             </div>
           </div>
-          <div className="pt-16">
-            <div className="grid gap-10 sm:gap-6 !gap-y-24 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="pt-8 md:pt-16">
+            <div className="grid !gap-12 md:gap-y-24 sm:grid-cols-2 lg:grid-cols-3">
               {blogs.map((blog) => (
                 <NewsGridCard
                   key={blog.slug}

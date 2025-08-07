@@ -30,7 +30,7 @@ function PrincipleBlock({ Icon, ariaLabel, heading, summary, className = "" }) {
 export default function PrincipalsSection() {
   return (
     <>
-      <section className="font-gellix mx-auto w-full my-24 md:my-44 px-4 sm:px-6 md:px-8 xl:px-12 xl:max-w-7xl">
+      <section className="font-gellix mx-auto w-full my-24 md:my-44 px-7 sm:px-6 md:px-8 xl:px-12 xl:max-w-7xl ">
         <div className="w-full">
           <div className="space-y-6 md:space-y-12 md:mb-0">
             <div>

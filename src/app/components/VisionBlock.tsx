@@ -3,7 +3,7 @@ import GlassButtonWithText from "./GlassButtonWithText";
 
 export default function VisionBlock() {
   return (
-    <div className="group relative mb-24 md:mb-44 px-4 sm:px-6 md:px-8 xl:px-12 xl:max-w-8xl mx-auto">
+    <div className="group relative mb-24 md:mb-44 px-7 sm:px-6 md:px-8 xl:px-12 xl:max-w-8xl mx-auto">
       <div className="flex flex-col md:gap-x-8 lg:gap-x-12 gap-y-10 md:gap-y-0 md:flex-row py-10">
         {/* Left/Text Block */}
         <div className="flex flex-col gap-4 md:gap-12 xl:flex-row flex-1 order-2 md:order-1">
