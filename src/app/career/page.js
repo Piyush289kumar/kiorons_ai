@@ -18,17 +18,17 @@ export default function Career() {
         }}
       >
         <div>
-          <h1 className="text-6xl md:text-8xl font-semibold leading-20 font-gellix">
+          <h1 className="text-5xl md:text-8xl font-semibold leading-12 font-gellix">
             Build the
           </h1>
-          <h1 className="text-6xl md:text-8xl font-semibold font-gellix">New System.</h1>
-          <p className="text-xl mt-10 max-w-md mx-auto font-medium">
+          <h1 className="text-5xl md:text-8xl font-semibold font-gellix">New System.</h1>
+          <p className="text-lg mt-5 max-w-md mx-auto font-medium px-5">
             {"If you're obsessed with shaping what comes next you belong here."}
           </p>
         </div>
       </section>
       <CareerSubSection />
-      <section className="py-16 sm:py-0  font-gellix mx-auto px-4 text-center w-full xl:px-12 xl:max-w-8xl">
+      <section className="py-16 sm:py-0  font-gellix mx-auto text-center w-full xl:px-12 xl:max-w-8xl">
         <div className="px-12 md:px-0">
           <h2 className="text-3xl sm:text-6xl font-semibold mb-5 text-zinc-50 max-w-2xl mx-auto">
           Featured Roles
