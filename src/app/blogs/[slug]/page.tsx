@@ -1,14 +1,19 @@
-// app/blog/[slug]/page.tsx
-import React from "react";
-import Image from "next/image";
+// app/blogs/[slug]/page.tsx
 import { notFound } from "next/navigation";
+import Image from "next/image";
+import React from "react";
 
-// Your API
+type Props = {
+  params: {
+    slug: string;
+  };
+};
+
 const baseApi = "http://localhost:8000";
 
 async function fetchBlogBySlug(slug: string) {
   const res = await fetch(`${baseApi}/api/blogs/${slug}`, {
-    cache: "no-store", // optional for SSR freshness
+    cache: "no-store",
   });
 
   if (!res.ok) {
@@ -18,11 +23,7 @@ async function fetchBlogBySlug(slug: string) {
   return res.json();
 }
 
-export default async function BlogDetailPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default async function BlogDetailPage({ params }: Props) {
   const blog = await fetchBlogBySlug(params.slug);
 
   if (!blog) return notFound();
@@ -57,8 +58,6 @@ export default async function BlogDetailPage({
           className="prose prose-lg prose-invert max-w-none"
           dangerouslySetInnerHTML={{ __html: blog?.body || "" }}
         />
-
-      
       </div>
     </section>
   );
