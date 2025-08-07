@@ -6,22 +6,20 @@ import { ArrowUpRight } from "lucide-react";
 export interface NewsFeaturedCardProps {
   slug: string;
   img: string;
-  label: string;
   date: string;
   title: string;
-  summary: string;
-  tag?: string;
+  body: string;
+  category?: string;
   className?: string;
   reverse?: boolean;
 }
 export default function NewsFeaturedCard({
   slug,
   img,
-  label,
   date,
   title,
-  summary,
-  tag,
+  body,
+  category,
   className = "",
   reverse = false,
 }: NewsFeaturedCardProps) {
@@ -49,13 +47,13 @@ export default function NewsFeaturedCard({
                 <h3 className="!text-4xl leading-10 font-semibold">{title}</h3>
               </Link>
               <p className="grow text-balance text-sm !text-zinc-200 mt-12">
-                {summary}
+                {body}
               </p>
             </div>
             <div className="flex items-center justify-between gap-3">
               <div>
-                {tag && (
-                  <span className="mono-tag text-xs uppercase">{tag}</span>
+                {category && (
+                  <span className="mono-tag text-xs uppercase">{category}</span>
                 )}
               </div>
               <div>

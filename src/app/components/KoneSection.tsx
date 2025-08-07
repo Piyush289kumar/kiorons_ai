@@ -7,14 +7,8 @@ export default function KoneSection() {
       <div
         className="
           relative flex flex-col items-center justify-start w-full mx-auto 
-          min-h-screen h-[calc(100vh-80px)]
+          h-2/3 md:h-screen bg-kone-mobile
         "
-        style={{
-          backgroundImage: "url('/images/svg/mchip.svg')",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          backgroundPosition: "bottom center",
-        }}
       >
         {/* Top Black Blur */}
         <div className="absolute inset-x-0 top-0 h-[22%] bg-gradient-to-b from-black/80 to-transparent z-20 pointer-events-none" />
@@ -22,7 +16,7 @@ export default function KoneSection() {
         <div className="absolute inset-x-0 bottom-0 h-[22%] bg-gradient-to-t from-black to-transparent z-20 pointer-events-none" />
 
         {/* Content */}
-        <div className="relative z-30 flex flex-col items-center justify-center pt-16 md:pt-0">
+        <div className="relative z-30 flex flex-col items-center justify-center pt-24 md:pt-12">
           <p className="text-lg md:text-2xl font-medium text-zinc-50 mb-5 md:mb-2">
             Introducing
           </p>

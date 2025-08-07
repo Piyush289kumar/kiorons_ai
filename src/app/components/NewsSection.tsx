@@ -1,89 +1,46 @@
+"use client";
+
 import { ChevronRight } from "lucide-react";
 import NewsFeaturedCard from "./NewsFeaturedCard";
 import NewsGridCard from "./NewsGridCard";
 import Link from "next/link";
-const blogData = [
-  // Big card (first)
-  {
-    slug: "/news/grok-4",
-    img: "/images/blogs/news1.png",
-    label: "kOne",
-    date: "July 09, 2025",
-    title: "kOne",
-    summary:
-      "kOne 4 is the most intelligent model in the world. It includes native tool use and real-time search integration, and is available now to SuperkOne and Premium+ subscriber tool use and real-time search integration, and is available now to SuperkOne and Premium+ subscriber ...",
-    tag: "Company",
-  },
-  // Grid cards
-  {
-    slug: "/news/government",
-    img: "/images/blogs/news2.png",
-    label: "kOne for Government",
-    date: "July 14, 2025",
-    title: "Announcing kOne for Government",
-    summary:
-      "We are excited to announce kOne For Government – a suite of frontier AI products available first to United States Government customers.",
-  },
-  {
-    slug: "/news/grok-3",
-    img: "/images/blogs/news3.png",
-    label: "kOne 3",
-    date: "Feb 19, 2025",
-    title: "kOne 3 Beta — The Age of Reasoning Agents",
-    summary:
-      "We are thrilled to unveil kOne 3, our most advanced model yet, blending superior reasoning with extensive pretraining knowledge.",
-    tag: "Company",
-  },
-  {
-    slug: "/news/grok-3",
-    img: "/images/blogs/news3.png",
-    label: "kOne 3",
-    date: "Feb 19, 2025",
-    title: "kOne 3 Beta — The Age of Reasoning Agents",
-    summary:
-      "We are thrilled to unveil kOne 3, our most advanced model yet, blending superior reasoning with extensive pretraining knowledge.",
-    tag: "Company",
-  },
-  {
-    slug: "/news/grok-3",
-    img: "/images/blogs/news3.png",
-    label: "kOne 3",
-    date: "Feb 19, 2025",
-    title: "kOne 3 Beta — The Age of Reasoning Agents",
-    summary:
-      "We are thrilled to unveil kOne 3, our most advanced model yet, blending superior reasoning with extensive pretraining knowledge.",
-    tag: "Company",
-  },
-  {
-    slug: "/news/grok-3",
-    img: "/images/blogs/news1.png",
-    label: "kOne 3",
-    date: "Feb 19, 2025",
-    title: "kOne 3 Beta — The Age of Reasoning Agents",
-    summary:
-      "We are thrilled to unveil kOne 3, our most advanced model yet, blending superior reasoning with extensive pretraining knowledge.",
-  },
-  {
-    slug: "/news/grok-3",
-    img: "/images/blogs/news1.png",
-    label: "kOne 3",
-    date: "Feb 19, 2025",
-    title: "kOne 3 Beta — The Age of Reasoning Agents",
-    summary:
-      "We are thrilled to unveil kOne 3, our most advanced model yet, blending superior reasoning with extensive pretraining knowledge.",
-  },
-  {
-    slug: "/news/grok-3",
-    img: "/images/blogs/news1.png",
-    label: "kOne 3",
-    date: "Feb 19, 2025",
-    title: "kOne 3 Beta — The Age of Reasoning Agents",
-    summary:
-      "We are thrilled to unveil kOne 3, our most advanced model yet, blending superior reasoning with extensive pretraining knowledge.",
-  },
-  // ...add more grid cards as needed
-];
+import { useEffect, useState } from "react";
+import { fetchNewsBlogs, fetchThinkBlogs } from "../lib/apiClient";
+
+function stripHtmlTags(html: string) {
+  return html.replace(/<[^>]*>?/gm, "");
+}
+
 export default function NewsSection() {
+  const [newsBlogs, setNewsBlogs] = useState([]);
+  const [thinkBlogs, setThinkBlogs] = useState([]);
+  // const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchNewsBlogs()
+      .then((data) => {
+        setNewsBlogs(data.data); // ✅ directly use array, not data.data
+        // setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching blogs:", err);
+        // setLoading(false);
+      });
+
+    
+      fetchThinkBlogs()
+      .then((data) => {
+        setThinkBlogs(data.data); // ✅ directly use array, not data.data
+        // setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching blogs:", err);
+        // setLoading(false);
+      });
+
+
+  }, []);
+
   return (
     <section className="py-16 sm:py-32 sm:pt-52 font-gellix">
       <div className="mx-auto w-full px-4 xl:px-12 xl:max-w-8xl">
@@ -109,10 +66,15 @@ export default function NewsSection() {
           </div>
         </div>
         {/* Featured Card */}
-        {blogData.slice(0, 3).map((blog, idx) => (
+        {newsBlogs.map((blog, idx) => (
           <NewsFeaturedCard
             key={blog.slug}
-            {...blog}
+            slug={`/blog/${blog.slug}`} // assuming blog route
+            title={blog.title}
+            body={stripHtmlTags(blog.body).slice(0, 120) + "..."} // trim if needed
+            img={blog.image_url || "/default-blog.jpg"} // fallback image
+            date={blog.formatted_date}
+            category={blog.category}
             className={`
       ${idx === 0 ? "border-t border-zinc-700 mt-10 md:mt-32" : ""}
       ${idx === 2 ? "border-b border-zinc-700" : ""}
@@ -138,8 +100,16 @@ export default function NewsSection() {
         </div>
         <div className="pt-16">
           <div className="grid gap-10 sm:gap-6 !gap-y-24 sm:grid-cols-2 lg:grid-cols-3">
-            {blogData.slice(3, 6).map((blog, idx) => (
-              <NewsGridCard key={blog.slug} {...blog} />
+           {thinkBlogs.map((blog) => (
+              <NewsGridCard
+                key={blog.slug}
+                slug={`/blog/${blog.slug}`}
+                img={blog.image_url || "/default-blog.jpg"}
+                label={blog.category}
+                date={blog.formatted_date}
+                title={blog.title}
+                body={stripHtmlTags(blog.body).slice(0, 100)}
+              />
             ))}
           </div>
         </div>

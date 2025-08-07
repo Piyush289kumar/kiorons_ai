@@ -136,3 +136,21 @@ body {
     transform: translateY(3px);
   } /* smaller movement, adjust as needed */
 }
+
+/* Mobile background image */
+.bg-kone-mobile {
+  background-image: url("/images/svg/mchip.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom center;
+}
+
+/* Medium (md) and above: use chip.svg */
+@media (min-width: 768px) {
+  .bg-kone-mobile {
+    background-image: url("/images/svg/chip.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom center;
+  }
+}

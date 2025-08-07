@@ -8,7 +8,7 @@ export interface NewsGridCardProps {
   label: string;
   date: string;
   title: string;
-  summary: string;
+  body: string;
 }
 export default function NewsGridCard({
   slug,
@@ -16,7 +16,7 @@ export default function NewsGridCard({
   label,
   date,
   title,
-  summary,
+  body,
 }: NewsGridCardProps) {
   return (
     <div className="flex flex-col group relative">
