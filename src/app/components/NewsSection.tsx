@@ -85,18 +85,18 @@ const blogData = [
 ];
 export default function NewsSection() {
   return (
-    <section className="py-16 sm:py-32 pt-44 sm:pt-52 font-gellix">
+    <section className="py-16 sm:py-32 sm:pt-52 font-gellix">
       <div className="mx-auto w-full px-4 xl:px-12 xl:max-w-8xl">
         {/*  News Header */}
-        <div className="space-y-12">
-          <div>
+        <div className="space-y-6 md:space-y-12">
+          <div className="hidden md:">
             <div className="mono-tag flex items-center gap-2 text-sm">
               <span>[</span> <span>What new</span> <span>]</span>
             </div>
           </div>
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between font-gellix">
+          <div className="flex gap-6 flex-row lg:items-start justify-between font-gellix">
             <div className="max-w-xl space-y-12">
-              <h2 className="text-balance font-semibold text-3xl md:text-2xl lg:text-5xl tracking-tight">
+              <h2 className="text-balance font-semibold text-5xl tracking-tight">
                 Latest news
               </h2>
             </div>
@@ -114,17 +114,17 @@ export default function NewsSection() {
             key={blog.slug}
             {...blog}
             className={`
-      ${idx === 0 ? "border-t border-zinc-700 mt-32" : ""}
+      ${idx === 0 ? "border-t border-zinc-700 mt-10 md:mt-32" : ""}
       ${idx === 2 ? "border-b border-zinc-700" : ""}
     `}
           />
         ))}
         {/* Blog Card Grid */}
         {/*  Blog Header */}
-        <div className="space-y-12 mt-32">
+        <div className="space-y-12 mt-10 md:mt-32">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between font-gellix">
             <div className="max-w-xl space-y-12">
-              <h2 className="text-balance font-semibold text-3xl md:text-2xl lg:text-5xl tracking-tight">
+              <h2 className="text-balance font-semibold text-5xl tracking-tight">
                 Think
               </h2>
             </div>
@@ -143,9 +143,6 @@ export default function NewsSection() {
             ))}
           </div>
         </div>
-
-
-        
       </div>
     </section>
   );

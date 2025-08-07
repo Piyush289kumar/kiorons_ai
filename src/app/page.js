@@ -11,20 +11,13 @@ export default function Home() {
       <HeroSection />
       <AboutSection
         heading="At Kiorons, we build AI to serve humanity’s long-term well-being."
-        btnText="View Manifesto"
+        btnText="Manifesto"
         summary={`
-    ehehehe cbdshbvcdbvhbdsv csdhgvcgudvcudcvuhbd
-    cnjhdbcvhjduhnuhuvheiuhvufehvnuhfnuvhfuvhufhvnufhnvufhnvuhfu
-    <br />
-    ehehehe cbdshbvcdbvhbdsv csdhgvcgudvcudcvuhbd
-    njhdbcvhjduhnuhuvheiuhvufehvnuhfnuvhfuvhufhvnufhnvufhnvuhfuvhfuvhufhvuhf
-    vuhfuvhiufhb viufh bu buh fdubh uibhvhfuvhufhvuhf vuhfuvhiufhb viufh
-    bu buh fdubh uibh
+    At Kiorons, we build AI to serve humanity’s long-term well-being.
+    At Kiorons, we build AI to serve humanity’s long-term well-being.
     <br /><br />
-    ehehehe cbdshbvcdbvhbdsv csdhgvcgudvcudcvuhbd
-    njhdbcvhjduhnuhuvheiuhvufehvnuhfnuvhfuvhufhvnufhnvufhnvuhfuvhfuvhufhvuhf
-    vuhfuvhiufhb viufh bu buh fdubh uibhvhfuvhufhvuhf vuhfuvhiufhb viufh
-    bu buh fdubh uibh
+    At Kiorons, we build AI to serve humanity’s long-term well-being.
+    At Kiorons, we build AI to serve humanity’s long-term well-being.
   `}
       />
       <KoneSection />

@@ -3,31 +3,37 @@ import GlassButton from "./GlassButton";
 
 export default function KoneSection() {
   return (
-    <section className="font-gellix w-full py-20 bg-transparent mx-auto flex justify-center items-center">
+    <section className="font-gellix w-full py-16 md:py-20 bg-transparent mx-auto flex justify-center items-center">
       <div
-        className="relative flex flex-col items-center justify-start w-full mx-auto h-screen shadow-lg md:py-12 text-center overflow-hidden"
+        className="
+          relative flex flex-col items-center justify-start w-full mx-auto 
+          min-h-screen h-[calc(100vh-80px)]
+        "
         style={{
-          backgroundImage: "url('/images/svg/chip.svg')",
+          backgroundImage: "url('/images/svg/mchip.svg')",
           backgroundRepeat: "no-repeat",
-          backgroundSize: "cover", // or "contain" if you want the SVG to be fully visible
-          backgroundPosition: "bottom",
+          backgroundSize: "cover",
+          backgroundPosition: "bottom center",
         }}
       >
         {/* Top Black Blur */}
-        <div className="absolute inset-x-0 top-0 h-[23%] bg-gradient-to-b from-black/80 to-transparent z-20 pointer-events-none" />
-
+        <div className="absolute inset-x-0 top-0 h-[22%] bg-gradient-to-b from-black/80 to-transparent z-20 pointer-events-none" />
         {/* Bottom Black Blur */}
-        <div className="absolute inset-x-0 bottom-0 h-[23%] bg-gradient-to-t from-black to-transparent z-20 pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-[22%] bg-gradient-to-t from-black to-transparent z-20 pointer-events-none" />
 
-        {/* Content starting from top */}
-        <div className="relative z-30 flex flex-col items-center !justify-center pt-26">
-          <p className="text-2xl font-medium text-zinc-50 mb-2">Introducing</p>
-          <h2 className="text-6xl font-semibold text-zinc-50 mb-8">
+        {/* Content */}
+        <div className="relative z-30 flex flex-col items-center justify-center pt-16 md:pt-0">
+          <p className="text-lg md:text-2xl font-medium text-zinc-50 mb-5 md:mb-2">
+            Introducing
+          </p>
+          <h2 className="text-5xl md:text-7xl font-semibold text-zinc-50 mb-8 max-w-2xl text-center break-words">
             The Future of Building
           </h2>
-          <GlassButton className="mt-2 !py-2 text-sm font-normal">
-            Learn more
-          </GlassButton>
+          <div className="mt-8 md:mt-08">
+            <GlassButton className="px-6 py-2 text-sm font-normal">
+              Learn more
+            </GlassButton>
+          </div>
         </div>
       </div>
     </section>
