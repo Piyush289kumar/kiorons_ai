@@ -14,12 +14,12 @@ export default function SubHighlighterSection({
 }: SubHighlighterSectionProps) {
   return (
     <>
-      <section className="py-16 sm:py-0 pt-24 sm:pt-44 font-gellix mx-auto px-4 text-center w-full xl:px-12 xl:max-w-8xl">
+      <section className="py-16 sm:py-0 pt-26 sm:pt-44 font-gellix mx-auto px-4 text-center w-full xl:px-12 xl:max-w-8xl">
         <p className="text-xs uppercase text-primary font-medium">{label}</p>
-        <h2 className="text-3xl md:text-5xl font-semibold my-8 mb-20 text-zinc-50 max-w-4xl mx-auto">
+        <h2 className="text-4xl px-5 md:px-0 md:text-7xl font-semibold my-8 mb-20 text-zinc-50 max-w-4xl mx-auto">
           {title}
         </h2>
-        <div className="md:w-9/12 mx-auto h-auto shadow-lg overflow-hidden">
+        <div className="w-11/12 md:w-9/12 mx-auto h-auto shadow-lg overflow-hidden">
           <Image
             src={imageSrc}
             alt={label}

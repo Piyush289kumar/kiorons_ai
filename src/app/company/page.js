@@ -8,7 +8,7 @@ export default function Blogs() {
     <>
       <SubHighlighterSection
         label="Mission"
-        title="Make the future. smarter, and faster for the next generation of creators, founders, and builders"
+        title="Make the future, smarter, and faster."
         imageSrc="/images/team.png"
       />
       <Timelines />            

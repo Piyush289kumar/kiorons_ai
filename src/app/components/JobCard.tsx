@@ -9,7 +9,7 @@ export default function JobCard({ designation, area, type, apply_link }) {
         flex flex-col md:flex-row
         justify-between items-start md:items-center
         border-b border-white/10
-        p-4 sm:p-5 gap-5 sm:gap-4
+        p-4 sm:p-5 gap-2 sm:gap-4
         max-w-4xl mx-auto
         transition-all duration-300 hover:border-white/70
         cursor-pointer
@@ -17,7 +17,7 @@ export default function JobCard({ designation, area, type, apply_link }) {
     >
       {/* Left: Role & Area */}
       <div className="flex flex-col md:flex-row gap-2 sm:gap-4 items-start md:items-center w-full md:w-auto">
-        <span className="text-lg sm:text-xl font-medium text-zinc-100">
+        <span className="text-md sm:text-xl font-medium text-zinc-100">
           {designation}
         </span>
         <span className="!text-white/50 text-md font-normal sm:mx-5">

@@ -28,7 +28,7 @@ export function GlassButtonWithText({
           {icon}
         </GlassButton>
       )}
-      <span className="text-zinc-50 font-medium text-sm mx-2 select-none">{text}</span>
+      <span className="text-zinc-50 font-medium text-sm mr-2 select-none">{text}</span>
       {iconPosition === "right" && (
         <GlassButton as={as} href={href} className={className} {...rest}>
           {icon}

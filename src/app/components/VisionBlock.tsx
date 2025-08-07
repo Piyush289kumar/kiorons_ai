@@ -8,25 +8,25 @@ export default function VisionBlock() {
         {/* Left/Text Block */}
         <div className="flex flex-col gap-4 md:gap-12 xl:flex-row flex-1 order-2 md:order-1">
           <div className="flex flex-1 flex-col space-y-10 sm:space-y-16 my-auto px-0 sm:pl-4 md:pl-16">
-            <div className="space-y-4 mt-24 md:mt-0">
-              <h3 className="text-5xl md:text-6xl leading-3 md:leading-5 font-semibold">
+            <div className="space-y-4">
+              <h3 className="text-3xl md:text-6xl leading-0 md:leading-5 font-semibold">
                 Our vision for
               </h3>
-              <h3 className="text-5xl md:text-6xl font-semibold">the future</h3>
-              <p className="text-md mt-6 md:w-2/3 max-w-full break-words">
+              <h3 className="text-3xl md:text-6xl font-semibold">the future</h3>
+              <p className="text-md mt-6 w-10/12 max-w-full break-words">
                 {
                   "To create the world's first truly intelligent operating system — an AI ecosystem built for the next generation of builders."
                 }
               </p>
             </div>
-            <div className="flex items-center gap-3 mt-4">
+            <div className="flex items-center gap-2">
               <GlassButtonWithText
                 as="a"
                 href="#loadmore"
                 text="Read the Vision"
                 icon={<ArrowUpRight className="w-3 h-3" />}
                 iconPosition="right"
-                className="!px-4 !py-1"
+                className=""
               />
             </div>
           </div>

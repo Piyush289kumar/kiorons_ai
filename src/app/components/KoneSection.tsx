@@ -6,7 +6,7 @@ export default function KoneSection() {
     <section className="font-gellix w-full py-16 md:py-20 bg-transparent mx-auto flex justify-center items-center">
       <div
         className="
-          relative flex flex-col items-center justify-start w-full mx-auto 
+          relative flex flex-col items-center justify-start w-full mx-auto
           h-2/3 md:h-screen bg-kone-mobile
         "
       >

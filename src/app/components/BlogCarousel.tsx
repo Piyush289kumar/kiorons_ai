@@ -1,5 +1,4 @@
 "use client";
-
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import NewsGridCard from "./NewsGridCard";
@@ -11,18 +10,15 @@ import {
   fetchStudieskBlogs,
   fetchResourcesBlogs,
 } from "../lib/apiClient";
-
-export default function BlogCarousel({  
+export default function BlogCarousel({
   category = "news", // news, think, studies, resources
   limit = 3,
 }) {
   const [blogs, setBlogs] = useState([]);
-
   useEffect(() => {
     async function fetchBlogs() {
       try {
         let data;
-
         switch (category.toLowerCase()) {
           case "news":
             data = await fetchNewsBlogs(limit);
@@ -40,25 +36,22 @@ export default function BlogCarousel({
             console.warn(`Unknown category: ${category}`);
             return;
         }
-
         setBlogs(data.data || []);
       } catch (err) {
         console.error(`Error fetching ${category} blogs:`, err);
       }
     }
-
     fetchBlogs();
   }, [category, limit]);
   return (
-    
     <>
       {/*  Blog Header */}
       <section className="py-16 sm:py-32 font-gellix">
         <div className="mx-auto w-full px-4 xl:px-12 xl:max-w-8xl">
           <div className="space-y-12">
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between font-gellix">
+            <div className="flex gap-6 flex-row items-start lg:items-start justify-between font-gellix">
               <div className="max-w-xl space-y-12">
-                <h2 className="text-balance font-medium text-3xl md:text-2xl lg:text-4xl tracking-tight capitalize">
+                <h2 className="font-medium text-2xl md:text-5xl tracking-tight capitalize">
                   {category || "Latest Blogs"}
                 </h2>
               </div>
@@ -66,7 +59,7 @@ export default function BlogCarousel({
                 href="/blogs"
                 className="flex items-center gap-1 group w-fit"
               >
-                <span className="mt-3 text-xs text-balance leading-6 transition-colors group-hover:text-blue-300">
+                <span className="mt-3 text-md text-balance leading-6 transition-colors group-hover:text-blue-300">
                   View more
                 </span>
                 <ChevronRight className="w-4 h-4 mt-4 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-blue-300" />

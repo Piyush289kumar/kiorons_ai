@@ -33,8 +33,8 @@ export default function Kone() {
         style={{
           backgroundImage: "url('/images/svg/sidelins.svg')",
           backgroundRepeat: "no-repeat",
-          backgroundSize: "fill",
-          backgroundPosition: "right center",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
         <div>

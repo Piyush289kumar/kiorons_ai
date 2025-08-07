@@ -14,10 +14,10 @@ export default function Home() {
         btnText="Manifesto"
         summary={`
     At Kiorons, we build AI to serve humanity’s long-term well-being.
-    At Kiorons, we build AI to serve humanity’s long-term well-being.
+    At Kiorons, we build AI to serve humanity’s long-term.
     <br /><br />
-    At Kiorons, we build AI to serve humanity’s long-term well-being.
-    At Kiorons, we build AI to serve humanity’s long-term well-being.
+    At Kiorons, we build AI to serve humanity’s long-term.
+    At Kiorons, we build AI to serve humanity’s long-term.
   `}
       />
       <KoneSection />
