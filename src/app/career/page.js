@@ -30,7 +30,7 @@ export default function Career() {
       </section>
       <CareerSubSection />
 
-      <section className="py-16 sm:py-0 pt-44 sm:pt-44 font-gellix mx-auto px-4 text-center w-full xl:px-12 xl:max-w-8xl">
+      <section className="py-16 sm:py-0  font-gellix mx-auto px-4 text-center w-full xl:px-12 xl:max-w-8xl">
         <h2 className="text-4xl sm:text-6xl font-semibold mb-5 text-zinc-50 max-w-2xl mx-auto">
           Featured Roles
         </h2>
