@@ -2,7 +2,7 @@ import GlassButton from "./GlassButton";
 
 export default function AboutSection({ heading, summary, btnText, btnUrl = "#" }) {
   return (
-    <section className="font-gellix w-full max-w-8xl mx-auto bg-transparent py-16 md:py-24 px-4 sm:px-8 xl:px-12">
+    <section className="font-gellix w-full max-w-8xl mx-auto bg-transparent py-16 md:py-24 px-4 sm:px-8 xl:px-12 mb-12 md:mb-0">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-10 md:gap-16 items-start justify-between">
         {/* Left */}
         <div className="w-full flex flex-col items-start space-y-6 md:px-6">
