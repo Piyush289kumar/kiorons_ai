@@ -23,13 +23,13 @@ export default function Kone() {
          <br /><br />
          with kOne we believe building brands, Saas, and managing is simplified. for the first time we’ll not going to create pretty screens but the real systems.`}
       />
-      <div className="font-gellix space-y-0 text-9xl mx-auto text-center font-semibold leading-tighter">
+      <div className="font-gellix space-y-0 text-6xl md:text-9xl mx-auto text-center font-semibold leading-tighter my-52 md:my-72">
         {["Think Brand", "Think Product", "Think One"].map((text, i) => (
           <h1 key={i}>{text}</h1>
         ))}
       </div>
       <section
-        className="font-gellix w-full xl:px-12 xl:max-w-8xl max-w-6xl px-4 md:px-0 mx-auto h-screen flex justify-start items-center my-72"
+        className="font-gellix w-full xl:px-12 xl:max-w-8xl max-w-6xl px-4 md:px-0 mx-auto h-screen flex justify-start items-center my-44 md:my-72"
         style={{
           backgroundImage: "url('/images/svg/sidelins.svg')",
           backgroundRepeat: "no-repeat",
@@ -38,10 +38,10 @@ export default function Kone() {
         }}
       >
         <div>
-          <h1 className="text-6xl font-semibold leading-20 font-gellix">
+          <h1 className="text-5xl md:text-6xl font-semibold md:leading-20 font-gellix">
             This is Future
           </h1>
-          <h1 className="text-6xl font-semibold font-gellix">
+          <h1 className="text-5xl md:text-6xl font-semibold font-gellix">
             we are building.
           </h1>
           <p className="text-lg mt-10 max-w-md font-medium">
