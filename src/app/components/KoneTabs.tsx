@@ -85,7 +85,7 @@ export function KoneTabs() {
     },
   ];
   return (
-    <div className="h-fit md:h-screen [perspective:1000px] relative flex flex-col max-w-4xl mx-auto w-full items-start justify-center my-40">
+    <div className="h-fit md:h-screen [perspective:1000px] relative flex flex-col max-w-5xl mx-auto w-full items-start justify-center my-40">
       <Tabs tabs={tabs} />
     </div>
   );
@@ -127,7 +127,7 @@ export const DummyContent = ({ images }: DummyContentProps) => {
         initial="initial"
         animate="animate"
         exit="exit"
-        className="flex flex-col gap-6 md:flex-row w-full h-[80vh]"
+        className="flex flex-col gap-6 md:flex-row w-full h-[90vh]"
       >
         {/* Left full-height image */}
         <div className="w-full md:w-1/2 h-64 md:h-full relative">

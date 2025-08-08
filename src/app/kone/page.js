@@ -21,6 +21,7 @@ export default function Kone() {
           <h1 key={i}>{text}</h1>
         ))}
       </div>
+      <KoneTabs />
       <section
         className="font-gellix w-full xl:px-12 xl:max-w-8xl max-w-6xl px-4 md:px-0 mx-auto h-screen flex justify-start items-center my-44 md:my-72"
         style={{
@@ -43,10 +44,11 @@ export default function Kone() {
         </div>
       </section>
 
-      <KoneTabs />
+      <Timelines />
+
       {/* Vision Block */}
       <VisionBlock />
-      <Timelines />
+
       <BlogCarousel category="studies" limit={3} />
     </>
   );
