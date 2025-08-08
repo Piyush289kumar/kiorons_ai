@@ -1,6 +1,7 @@
 // /src/lib/apiClient.ts
 
-const baseApi = "http://localhost:8000";
+// const baseApi = "http://localhost:8000";
+const baseApi = process.env.NEXT_PUBLIC_BACKEND_API_URL;
 
 export async function fetchNewsBlogs(limit = 3) {
   const res = await fetch(`${baseApi}/api/b/news/limits?limit=${limit}`);

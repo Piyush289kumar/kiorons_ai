@@ -9,7 +9,8 @@ type Props = {
   };
 };
 
-const baseApi = "http://localhost:8000";
+// const baseApi = "http://localhost:8000";
+const baseApi = process.env.NEXT_PUBLIC_BACKEND_API_URL;
 
 async function fetchBlogBySlug(slug: string) {
   const res = await fetch(`${baseApi}/api/blogs/${slug}`, {
