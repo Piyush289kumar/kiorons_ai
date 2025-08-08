@@ -113,6 +113,7 @@ export default function BlogsSection() {
           <NewsFeaturedCard
             key={blog.slug}
             {...blog}
+            body={""}
             reverse={idx % 2 === 1}
             className={`
       ${idx === 0 ? "border-t border-zinc-700 mt-10 md:mt-32" : ""}
@@ -125,7 +126,7 @@ export default function BlogsSection() {
         <div className="pt-16">
           <div className="grid gap-10 sm:gap-6 !gap-y-24 sm:grid-cols-2 lg:grid-cols-3">
             {blogData.map((blog, idx) => (
-              <NewsGridCard key={blog.slug} {...blog} />
+              <NewsGridCard  body={""} key={blog.slug} {...blog} />
             ))}
           </div>
         </div>

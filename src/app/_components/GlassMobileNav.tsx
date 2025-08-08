@@ -165,7 +165,7 @@ export default function GlassMobileNav() {
                   initial="hidden"
                   animate="visible"
                   custom={i}
-                  variants={listItemVariants}
+                  // variants={listItemVariants}
                 >
                   {/* <span className="w-6 text-zinc-400 text-xs font-mono">
                     {String(i + 1).padStart(2, "0")}
@@ -174,7 +174,7 @@ export default function GlassMobileNav() {
                     <button
                       type="button"
                       className="nav-list-item-link flex-1 text-[40px] leading-10 font-medium py-3 text-zinc-100 text-left hover:bg-white/10 rounded-lg transition"
-                      onClick={() => setSubmenu(item.submenu)}
+                      // onClick={() => setSubmenu(item.submenu ?? )}
                     >
                       {item.label}
                     </button>

@@ -14,8 +14,8 @@ export interface NewsFeaturedCardProps {
   reverse?: boolean;
 }
 export default function NewsFeaturedCard({
-  slug,
-  img,
+  slug = "#",
+  img ="#",
   date,
   title,
   body,

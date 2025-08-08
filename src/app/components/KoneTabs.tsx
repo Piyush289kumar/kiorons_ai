@@ -123,7 +123,7 @@ export const DummyContent = ({ images }: DummyContentProps) => {
     <AnimatePresence mode="sync">
       <motion.div
         key={key}
-        variants={fadeBlurVariant}
+        // variants={fadeBlurVariant}
         initial="initial"
         animate="animate"
         exit="exit"

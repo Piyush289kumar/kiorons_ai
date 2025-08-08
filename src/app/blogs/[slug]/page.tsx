@@ -3,28 +3,20 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import React from "react";
 
-type Props = {
-  params: {
-    slug: string;
-  };
-};
-
-// const baseApi = "http://localhost:8000";
+// You must define this in your .env.local file
 const baseApi = process.env.NEXT_PUBLIC_BACKEND_API_URL;
 
-async function fetchBlogBySlug(slug: string) {
+async function fetchBlogBySlug(slug: any) {
   const res = await fetch(`${baseApi}/api/blogs/${slug}`, {
     cache: "no-store",
   });
 
-  if (!res.ok) {
-    return null;
-  }
+  if (!res.ok) return null;
 
   return res.json();
 }
 
-export default async function BlogDetailPage({ params }: Props) {
+export default async function BlogDetailPage({ params }: any) {
   const blog = await fetchBlogBySlug(params.slug);
 
   if (!blog) return notFound();
