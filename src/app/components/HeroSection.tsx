@@ -91,6 +91,9 @@ export default function HeroSection() {
       className="relative w-full h-screen flex flex-col justify-center overflow-hidden bg-black font-gellix"
       style={{
         backgroundImage: 'url("/images/video.png")',
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "center",
+        backgroundPosition: "top",
       }}
     >
       {/* Content */}
