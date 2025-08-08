@@ -48,7 +48,7 @@ export const Tabs = ({
               onMouseEnter={() => setHovering(true)}
               onMouseLeave={() => setHovering(false)}
               className={cn(
-                "relative px-5 py-2 rounded-full text-sm cursor-pointer",
+                "relative px-4 md:px-5 py-2 rounded-full text-sm cursor-pointer",
                 tabClassName
               )}
               style={{
@@ -72,17 +72,19 @@ export const Tabs = ({
           ))}
         </div>
       </div>
+      <h2 className="font-medium text-xl md:text-2xl tracking-tight capitalize text-center my-10 mt-8 md:mt-16 w-full">
+        The new and Productive way of Startegize everything
+      </h2>
       <FadeInDiv
         tabs={tabs}
         active={active}
         key={active.value}
         hovering={hovering}
-        className={cn("mt-16", contentClassName)}
+        className={cn("mt-0", contentClassName)}
       />
     </>
   );
 };
-
 export const FadeInDiv = ({
   className,
   tabs,
@@ -112,7 +114,7 @@ export const FadeInDiv = ({
           animate={{
             y: isActive(tab) ? [0, 0, 0] : 0,
           }}
-          className={cn("w-full h-full absolute top-0 left-0", className)}
+          className={cn("w-full h-screen md:h-full absolute top-0 left-0", className)}
         >
           {tab.content}
         </motion.div>
@@ -120,7 +122,6 @@ export const FadeInDiv = ({
     </div>
   );
 };
-
 // export const FadeInDiv = ({
 //   className,
 //   tabs,

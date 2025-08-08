@@ -130,7 +130,7 @@ export const DummyContent = ({ images }: DummyContentProps) => {
         className="flex flex-col gap-6 md:flex-row w-full h-[90vh]"
       >
         {/* Left full-height image */}
-        <div className="w-full md:w-1/2 h-64 md:h-full relative">
+        <div className="w-full md:w-1/2 h-full md:h-full relative">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat rounded-2xl"
             style={{ backgroundImage: `url("${leftImg}")` }}
@@ -139,14 +139,14 @@ export const DummyContent = ({ images }: DummyContentProps) => {
         {/* Right two stacked images */}
         <div className="w-full md:w-1/2 flex gap-6 flex-col h-full">
           {/* Top image */}
-          <div className="h-64 md:h-1/2 relative">
+          <div className="h-full md:h-1/2 relative">
             <div
               className="absolute inset-0 bg-cover bg-center bg-no-repeat rounded-2xl"
               style={{ backgroundImage: `url("${topRightImg}")` }}
             />
           </div>
           {/* Bottom image */}
-          <div className="h-64 md:h-1/2 relative">
+          <div className="h-full md:h-1/2 relative">
             <div
               className="absolute inset-0 bg-cover bg-center bg-no-repeat rounded-2xl"
               style={{ backgroundImage: `url("${bottomRightImg}")` }}
