@@ -47,7 +47,7 @@ export default function BlogCarousel({
     <>
       {/*  Blog Header */}
       <section className="py-8 sm:py-32 font-gellix">
-        <div className="mx-auto w-full px-7 xl:px-12 xl:max-w-8xl">
+        <div className="mx-auto w-full px-5 xl:px-12 xl:max-w-8xl">
           <div className="space-y-12">
             <div className="flex gap-6 flex-row items-start lg:items-start justify-between font-gellix">
               <div className="max-w-xl space-y-12">
@@ -67,17 +67,29 @@ export default function BlogCarousel({
             </div>
           </div>
           <div className="pt-8 md:pt-16">
-            <div className="grid !gap-12 md:gap-y-24 sm:grid-cols-2 lg:grid-cols-3">
+            <div
+              className="
+      flex gap-6 overflow-x-auto pb-2 -mx-4 px-1
+      sm:-mx-0 sm:px-0
+      md:grid md:!gap-12 md:gap-y-24 md:grid-cols-2
+      lg:grid-cols-3
+      [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]
+    "
+            >
               {blogs.map((blog) => (
-                <NewsGridCard
+                <div
                   key={blog.slug}
-                  slug={`/blogs/${blog.slug}`}
-                  img={blog.image_url || "/default-blog.jpg"}
-                  label={blog.category}
-                  date={blog.formatted_date}
-                  title={blog.title}
-                  body={truncateHtml(blog.body, 120)}
-                />
+                  className="min-w-[280px] max-w-xs flex-shrink-0 md:max-w-none md:min-w-0"
+                >
+                  <NewsGridCard
+                    slug={`/blogs/${blog.slug}`}
+                    img={blog.image_url || "/default-blog.jpg"}
+                    label={blog.category}
+                    date={blog.formatted_date}
+                    title={blog.title}
+                    body={truncateHtml(blog.body, 120)}
+                  />
+                </div>
               ))}
             </div>
           </div>
