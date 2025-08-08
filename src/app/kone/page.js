@@ -1,6 +1,7 @@
 "use client";
 import AboutSection from "../components/AboutSection";
 import BlogCarousel from "../components/BlogCarousel";
+import { KoneTabs } from "../components/KoneTabs";
 import { Timelines } from "../components/Timelines";
 import VisionBlock from "../components/VisionBlock";
 export default function Kone() {
@@ -41,6 +42,8 @@ export default function Kone() {
           </p>
         </div>
       </section>
+
+      <KoneTabs />
       {/* Vision Block */}
       <VisionBlock />
       <Timelines />

@@ -11,9 +11,9 @@ export default function KoneSection() {
         "
       >
         {/* Top Black Blur */}
-        <div className="absolute inset-x-0 top-0 h-[0%] md:h-[20%] bg-gradient-to-b from-black/80 to-transparent z-20 pointer-events-none" />
+        <div className="absolute inset-x-0 top-0 h-[0%] md:h-[10%] bg-gradient-to-b from-black/80 to-transparent z-20 pointer-events-none" />
         {/* Bottom Black Blur */}
-        <div className="absolute inset-x-0 bottom-0 h-[0%] md:h-[20%] bg-gradient-to-t from-black to-transparent z-20 pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-[0%] md:h-[10%] bg-gradient-to-t from-black to-transparent z-20 pointer-events-none" />
 
         {/* Content */}
         <div className="relative z-30 flex flex-col items-center justify-center pt-24 md:pt-12">
