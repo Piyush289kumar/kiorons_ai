@@ -6,15 +6,7 @@ import VisionBlock from "../components/VisionBlock";
 export default function Kone() {
   return (
     <>
-      <section
-        className="font-gellix mx-auto text-center w-full h-screen flex justify-center items-center xl:px-12 xl:max-w-8xl"
-        style={{
-          backgroundImage: "url('/images/svg/koneHero.svg')",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "fill",
-          backgroundPosition: "center",
-        }}
-      ></section>
+      <section className="font-gellix mx-auto text-center w-full h-screen flex justify-center items-center xl:px-12 xl:max-w-8xl bg-kone-hero-mobile"></section>
       <AboutSection
         heading="We believe on creating future more simplified and powerful"
         btnText="Read Manifesto"

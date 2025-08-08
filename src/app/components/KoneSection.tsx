@@ -11,9 +11,9 @@ export default function KoneSection() {
         "
       >
         {/* Top Black Blur */}
-        <div className="absolute inset-x-0 top-0 h-[22%] bg-gradient-to-b from-black/80 to-transparent z-20 pointer-events-none" />
+        <div className="absolute inset-x-0 top-0 h-[0%] md:h-[20%] bg-gradient-to-b from-black/80 to-transparent z-20 pointer-events-none" />
         {/* Bottom Black Blur */}
-        <div className="absolute inset-x-0 bottom-0 h-[22%] bg-gradient-to-t from-black to-transparent z-20 pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-[0%] md:h-[20%] bg-gradient-to-t from-black to-transparent z-20 pointer-events-none" />
 
         {/* Content */}
         <div className="relative z-30 flex flex-col items-center justify-center pt-24 md:pt-12">
@@ -23,7 +23,7 @@ export default function KoneSection() {
           <h2 className="text-5xl md:text-7xl font-semibold text-zinc-50 mb-8 max-w-2xl text-center break-words">
             The Future of Building
           </h2>
-          <div className="mt-8 md:mt-08">
+          <div className="mt-8 md:mt-0 hidden md:block">
             <GlassButton className="px-6 py-2 text-sm font-normal">
               Learn more
             </GlassButton>

@@ -49,7 +49,7 @@ export default function BlogCarousel({
       <section className="py-8 sm:py-32 font-gellix">
         <div className="mx-auto w-full px-5 xl:px-12 xl:max-w-8xl">
           <div className="space-y-12">
-            <div className="flex gap-6 flex-row items-start lg:items-start justify-between font-gellix">
+            <div className="flex gap-6 flex-row items-end lg:items-start justify-between font-gellix">
               <div className="max-w-xl space-y-12">
                 <h2 className="font-medium text-2xl md:text-5xl tracking-tight capitalize">
                   {category || "Latest Blogs"}
@@ -69,7 +69,7 @@ export default function BlogCarousel({
           <div className="pt-8 md:pt-16">
             <div
               className="
-      flex gap-6 overflow-x-auto pb-2 -mx-4 px-1
+      flex gap-4 overflow-x-auto pb-2 -mx-4 px-3
       sm:-mx-0 sm:px-0
       md:grid md:!gap-12 md:gap-y-24 md:grid-cols-2
       lg:grid-cols-3
@@ -79,7 +79,7 @@ export default function BlogCarousel({
               {blogs.map((blog) => (
                 <div
                   key={blog.slug}
-                  className="min-w-[280px] max-w-xs flex-shrink-0 md:max-w-none md:min-w-0"
+                  className="min-w-[300px] max-w-xs flex-shrink-0 md:max-w-none md:min-w-0"
                 >
                   <NewsGridCard
                     slug={`/blogs/${blog.slug}`}

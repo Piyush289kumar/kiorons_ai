@@ -125,7 +125,8 @@ body {
   background-image: url("/images/svg/mchip.svg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: bottom center;
+  background-position: center;
+  height: 80vh;
 }
 /* Medium (md) and above: use chip.svg */
 @media (min-width: 768px) {
@@ -134,6 +135,24 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom center;
+  }
+}
+/* Mobile background image */
+.bg-kone-hero-mobile {
+  background-image: url("/images/svg/mkoneHero.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+}
+/* Medium (md) and above: use chip.svg */
+@media (min-width: 768px) {
+  .bg-kone-hero-mobile {
+    background-image: url("/images/svg/koneHero.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
   }
 }
 @keyframes fadeInUp {

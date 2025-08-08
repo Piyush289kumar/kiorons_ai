@@ -5,10 +5,12 @@ import { motion } from "framer-motion";
 
 const MAIN_LINKS = [
   { label: "Search", type: "search" },
-  { label: "Wearable", type: "submenu", submenu: "wearable" },
-  { label: "Neural", type: "submenu", submenu: "neural" },
-  { label: "Programs", href: "/programs" },
-  { label: "Updates", href: "/updates" },
+  // { label: "kOne", type: "submenu", submenu: "wearable" },
+  // { label: "Neural", type: "submenu", submenu: "neural" },
+  { label: "kOne", href: "/kone" },
+  { label: "Company", href: "/company" },
+  { label: "News", href: "/blogs" },
+  { label: "Career", href: "/career" },
 ];
 
 const SUBMENUS = {
