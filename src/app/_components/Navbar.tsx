@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { ChevronRight, Menu, Search } from "lucide-react";
+import GlassMobileNav from "./GlassMobileNav";
 
 const navLinks = [
   { label: "kOne", href: "/kone" },
@@ -85,10 +86,10 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Nav */}
-      <div className="flex md:hidden items-center w-full justify-between p-1 md:px-4 md:py-2">
+      <div className="absolute md:hidden left-4 top-4 z-40">
         {/* Left: Company logo */}
         <Link href="/" aria-label="Back to homepage">
-          <div className="w-11 h-11 flex items-center justify-center rounded-full bg-[#404040]/25 backdrop-blur-md border border-white/10 transition-all">
+          <div className="w-12 h-12 flex items-center justify-center rounded-full bg-[#404040]/25 backdrop-blur-md border border-white/10 transition-all">
             <Image
               src="/logo/kiorons_logo.svg"
               alt="Kiorons Logo"
@@ -99,21 +100,6 @@ export default function Navbar() {
             />
           </div>
         </Link>
-        {/* Right: Search, then Menu */}
-        <div className="flex items-center space-x-2">
-          <Link href="/search" aria-label="Search">
-            <div className="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-[#404040]/25 backdrop-blur-md border border-white/10 transition-all">
-              <Search className="w-5 h-5 text-zinc-50" />
-            </div>
-          </Link>
-          <button
-            aria-label="Open menu"
-            onClick={() => setMobileMenuOpen(true)}
-            className="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-[#404040]/25 backdrop-blur-md border border-white/10 transition-all"
-          >
-            <Menu className="w-5 h-5 text-zinc-50" />
-          </button>
-        </div>
       </div>
 
       {/* Update bar (always visible, you can hide on mobile if you wish) */}
@@ -168,57 +154,9 @@ export default function Navbar() {
           <ChevronRight className="w-4 h-4" />
         </a>
       </div>
-      {mobileMenuOpen && (
-        <div
-          className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex flex-col"
-          onClick={() => setMobileMenuOpen(false)}
-          aria-modal="true"
-          role="dialog"
-        >
-          {/* Menu Panel */}
-          <div
-            className="
-        bg-[#222]/95
-        w-full
-        rounded-b-3xl
-        shadow-xl
-        border-b border-white/10
-        py-6 px-4
-        pt-7
-        animate-[slideDown_0.45s_ease]
-        flex flex-col
-        items-center
-        gap-5
-        relative
-        max-w-full
-      "
-            onClick={(e) => e.stopPropagation()} // Prevent click outside close when clicking inside
-          >
-            {/* Close button */}
-            <button
-              aria-label="Close menu"
-              className="absolute top-3 right-5 text-zinc-300 hover:text-white text-2xl"
-              onClick={() => setMobileMenuOpen(false)}
-              tabIndex={0}
-            >
-              ×
-            </button>
-            {/* Nav Links */}
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full rounded-xl text-lg py-3 px-3 text-zinc-100 text-center font-medium hover:bg-[#444]/80 transition"
-                tabIndex={0}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-          {/* Transparent backdrop fills remaining space */}
-        </div>
-      )}
+
+      {/* Mobile Navigation (replace your mobile nav/menu code with this) */}
+      <GlassMobileNav />
     </nav>
   );
 }

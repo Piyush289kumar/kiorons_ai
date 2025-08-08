@@ -1,17 +1,14 @@
 @import "tailwindcss";
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
-
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -23,13 +20,11 @@
   background: #fff; /* white background */
   color: #000; /* black text */
 }
-
 /* For Firefox */
 ::-moz-selection {
   background: #fff;
   color: #000;
 }
-
 /* Optional: Custom styles */
 /* Regular font */
 @font-face {
@@ -44,7 +39,6 @@
   font-weight: normal;
   font-style: normal;
 }
-
 @font-face {
   font-family: "Gellix";
   src: url("/assets/fonts/gellix/Gellix-Medium.eot");
@@ -57,7 +51,6 @@
   font-weight: 500;
   font-style: normal;
 }
-
 @font-face {
   font-family: "Gellix";
   src: url("/assets/fonts/gellix/Gellix-ExtraBold.eot");
@@ -70,7 +63,6 @@
   font-weight: 800;
   font-style: normal;
 }
-
 @font-face {
   font-family: "Gellix";
   src: url("/assets/fonts/gellix/Gellix-SemiBold.eot");
@@ -83,9 +75,7 @@
   font-weight: 600;
   font-style: normal;
 }
-
 /* Set the default font for the whole app */
-
 .font-gellix {
   font-family: "Gellix", sans-serif !important;
 }
@@ -95,27 +85,22 @@
 .font-semibold {
   font-weight: 600;
 }
-
 .font-extrabold {
   font-weight: 800;
 }
-
 * {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
   color: #fff;
 }
-
 *::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
 }
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: "Gellix", Arial, Helvetica, sans-serif;
 }
-
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -126,7 +111,6 @@ body {
     transform: translateY(0) scale(1);
   }
 }
-
 @keyframes small-bounce {
   0%,
   100% {
@@ -136,7 +120,6 @@ body {
     transform: translateY(3px);
   } /* smaller movement, adjust as needed */
 }
-
 /* Mobile background image */
 .bg-kone-mobile {
   background-image: url("/images/svg/mchip.svg");
@@ -144,7 +127,6 @@ body {
   background-size: cover;
   background-position: bottom center;
 }
-
 /* Medium (md) and above: use chip.svg */
 @media (min-width: 768px) {
   .bg-kone-mobile {
@@ -153,4 +135,30 @@ body {
     background-size: cover;
     background-position: bottom center;
   }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+.fade-in {
+  animation: fadeInUp 0.2s ease-out forwards;
+}
+.fade-out {
+  animation: fadeOutUp 0.3s ease-out forwards;
 }
